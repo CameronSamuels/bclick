@@ -1,0 +1,155 @@
+<!--
+    Version 3.4.2 - Start 10/3/2016 11:00AM - End 11/15/2016 3:54PM
+    
+    10/3/2016 : {
+        11:04AM
+            -Removed Beta button
+            -Removed Debug Secret
+            -Removed {} on 1 line IF's
+            -Removed Comments
+        ~11:10AM - Added Poke B and Chalk B
+        1:19PM - Fixed bug for cheating when a new month happens to any month
+    }
+    10/7/2016 : {
+        3:14PM - Added game over once hit infinity: Flicker main, red bg, multiplier*2, hard reset
+    }
+    10/21/2016 : {
+        12:05PM - Added New B's: Baseball and Giant
+        12:37PM - New Icon!!
+    }
+    10/25/2016 : {
+        3:17PM - Added New B: Challah
+        6:56PM - Added New B's: Picasso, Spear, Superhero, and CandyCane
+        7:40PM - Buttons now change to oval border radius when hover
+        7:57PM - Removed play bocracy and make games; Changed bclick div to download div; Changed download div to below achievements
+    }
+    10/26/2016 : {
+        ~3:15PM- Added New B's: Duck, and Dragonball Z 
+        ~3:25PM- Added custom B tooltip functionality with a other object parameter for date and others
+        3:38PM - Added tooltips to B's
+    }
+    10/27/2016 : {
+        2:55PM - Added more tooltips to B's
+        3:34PM - Cleaned, removed, and organized code. Ex: logOn variable, d date var
+    }
+    11/1/2016 : {
+        3:53PM - Changed font to Orbitron
+        3:54PM - Changed font size to 90%
+        4:01PM-4:21PM - Changed tooltip to be always showing below the B
+        4:30PM - Changed color of tooltip, buttons, and bButton
+        4:30PM-4:40PM - Removed transparency of bButton, bButton now doesnt get covered up from most tooltips, Removed portrait mode
+    }
+    11/11/2016 : {
+        2:59PM - Added New B: Nature B
+    }
+    11/12/2016 : {
+        3:32PM - Added New B's: Santa and Year3 B's
+        3:50PM - Changed times and orders of the 3 christmas B's
+        4:13PM - Added BG to game
+    }
+    11/13/2016 : {
+        3:45PM - Removed css comments, -o and -moz css lines, uneccesary css, removed background stripes
+        3:48PM - Removed HTML comments
+        3:50PM - Removed uneccesary JS code
+        4:48PM - Removed ontouchend events on iframes
+        5:18PM - Improved cheat checking to not reset if there is a new month.
+    }
+    11/14/2016 : {
+        3:14PM - Changed click sound
+        ~3:40-4:05PM - Organized htaccess
+        ~4:05PM - Redid the restriction of old versions and added a secret way to access old versions
+        ~4:30PM - Changed colors of leaderboards
+        ~5:30PM - Organized, changed, improved leaderboards
+        5:56PM - First place shows latest first place score
+    }
+    11/15/2016 : {
+        2:49PM - Leaderboards order by most recent if score is the same value
+        2:53PM - When you max out, you add a + not a _
+        2:58PM - Added leaderboards monitor notice
+        3:17PM - Added New B's: Turkey, Dragonborn, and Mage B
+    }
+-->
+
+<!DOCTYPE html><html>
+    <head>
+        <title>v3.4.2 - bClick</title>
+        <meta name="viewport" content="user-scalable=0, width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+        <link rel="shortcut icon" type="image/png" href="icon.png" />
+        <link rel="stylesheet" type="text/css" href="bclick.css" />
+        <script src="https://playbclick.com/assets/js/coam.js"></script>
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="apple-touch-icon" href="icon.png" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        
+        <meta name="description" content="bClick - The b-Click-ing Game! Unlock, Click, Deposit, Get first place!" />
+        <meta property="og:url" content="https://playbclick.com" />
+        <meta property="og:type" content="game" />
+        <meta property="og:title" content="bClick - The b-Click-ing Game!" />
+        <meta property="og:description" content="bClick - The b-Click-ing Game! Unlock, Click, Deposit, Get first place!" />
+        <meta property="og:image" content="https://playbclick.com/assets/ico/icon-200.png" />
+    </head>
+    <body id="body">
+        <main id="main">
+            <section id="logSection" class="section">
+                <div class="section-header header">The Log</div>
+                <div id="theLog"></div>
+            </section>
+            <section id="bSection" class="section">
+                <div class="header dashedHeader" id="pointsDiv"><marquee><div id="Points">Points: 0</div></marquee></div>
+                <div id="LeftArrow" class="arrow button" ontouchend="b.loop.previous()"></div> 
+                <div class="" id="bButton" ontouchend="ClickB()"></div>
+                <div id="RightArrow" class="arrow button" ontouchend="b.loop.next()"></div>
+                <div class="button" id="bUnlock" ontouchend="UnlockB()"></div>
+                <div id="bName"></div>
+                <div class="button" id="btnDeposit" ontouchend="bank.deposit()">Deposit</div>
+                <div class="header dashedHeader" id="interestDiv"><marquee><div id="Interest">Interest: 0</div></marquee></div>
+            </section>
+            <section id="settingsSection" class="section">
+                <div class="section-header header">The Settings</div> 
+                <div class="divider"></div>
+                <div class="category-header header"><span>General</span><span id="minimizeGeneral" class="minimize" ontouchend="Minimize('generalDiv', 'minimizeGeneral')">-</span></div>
+                <div class="settingGroup" id="generalDiv">
+                    <div class="button" ontouchend="data.reset.reset()">New Game</div>
+                    <div class="divider"></div>
+                    <div class="button" ontouchend="ChangeUsername()" id="btnChangeUsername">Change Username</div>
+                    <div class="button" ontouchend="SeeWinners()">See Scores</div>
+                </div>
+                <div class="divider"></div>
+                <div class="category-header header"><span>Social</span><span id="minimizeNew" class="minimize" ontouchend="Minimize('newDiv', 'minimizeNew')">-</span></div>
+                <div class="settingGroup" id="newDiv">
+                    <div class="iframeParent"><iframe id="FirstPlaceIframe" class="iframe" src=""></iframe></div>
+                    <div class="iframeParent"><iframe id="OnlinePlayersIframe" class="iframe" src=""></iframe></div>
+                </div>
+                <div class="divider"></div>
+                <div class="category-header header"><span>Coming Soon</span><span id="minimizeComingSoon" class="minimize" ontouchend="Minimize('comingSoonDiv', 'minimizeComingSoon')">-</span></div>
+                <div class="settingGroup" id="comingSoonDiv"><div id="comingSoonBList"></div></div>
+                <div class="divider"></div>
+                <div id="achievementsGroup" class="category-header header"><span>Achievements</span><span id="minimizeAchievements" class="minimize" ontouchend="Minimize('AchievementsList', 'minimizeAchievements')">-</span></div>
+                    <div id="AchievementsList" style="margin-top: 5px"></div>
+                </div>
+                <div class="divider"></div>
+                <div class="category-header header"><span>Download</span><span id="minimizedownload" class="minimize" ontouchend="Minimize('downloadDiv', 'minimizedownload')">-</span></div>
+                <div class="settingGroup" id="downloadDiv">
+                    <div class="button" id="googlePlayBadge" ontouchend="window.open('https://play.google.com/store/apps/details?id=com.playbclick.bclick', '_top')"><br/><br /></div>
+                    <div class="button" id="chromeStoreBadge" ontouchend="window.open('https://chrome.google.com/webstore/detail/bclick/fccplfmeljdiinmnjbemkgaganpbkghf', '_top')"><br/><br /></div>
+                </div>
+                <div class="divider"></div>
+                <div class="category-header header"><span>Information</span></div>
+                <div class="settingGroup" id="info">
+                    <div>Version 3.4.2<span class="red">live</span></div>
+                    <div class="divider"></div>
+                    <div>Made by<br />&#9733<span class="flicker"><a href="https://playbclick.com/cameron">Cameron Samuels</a></span>&#9733
+                    <div class="divider"></div>
+                    With
+                    <a href="https://playbclick.com/team">The B Team</a></div>
+                    <div class="divider"></div>
+                    <div>Copyright &copy<br />2013-<script>var d = new Date(); document.write(d.getFullYear());</script></div>
+                </div>
+            </section>
+            <div id="logText" class="flicker"></div>
+            <iframe id="winFrame" src=""></iframe><iframe id="statsFrame" src=""></iframe>
+        </main>
+    </body>
+    <script src="bclick.js"></script>
+</html>

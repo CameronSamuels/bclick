@@ -1,0 +1,55 @@
+body {
+	font-family: helvetica, arial, sans serif;
+	margin: 0px;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+#pencil {
+	position: absolute;	
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+	-webkit-radius: 50px;
+	background-color: #AAA;
+	background-image: url('image/pencil.png');
+	background-size: cover;
+	background-position: center;
+	/*top: 0; left: 0; right: 0; bottom: 0;*/
+	margin: auto;
+}
+canvas {
+	position: fixed;
+	width: calc(100% - 8px);
+	height: calc(100% - 8px);
+	opacity: 0.5;
+	border: 4px red solid;
+}
+#msg {
+	width: 300px;
+	height: 200px;
+
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+
+	margin: auto;
+
+	background-color: #4a3c5d;
+	border: 4px #3a2c4d solid;
+	border-radius: 5px;
+
+	display: none;
+}
+#msgTitle, #msgText {
+	text-align: center;
+	vertical-align: middle;
+	line-height: 90px;
+}
+header {
+	position: fixed;
+	text-align: center;
+	width: 100%;
+}

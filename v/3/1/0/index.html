@@ -1,0 +1,686 @@
+<!DOCTYPE html><html>
+    <head>
+        <title>bClick - v3-1.0</title>
+        <meta name="viewport" content="width = device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <link rel="shortcut icon" type="image/png" href="https://gaftop.com/bClick/assets/ico/icon.png">
+        
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="apple-touch-icon" href="https://gaftop.com/bClick/assets/ico/icon.png">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        <style type="text/css">
+
+            body {
+                margin: 0px 0px;
+                font-family: 'Open Sans', sans-serif;
+            }
+            
+            .PointsText {
+                text-shadow: 1px 1px #F0F;
+                text-decoration: underline;
+            }
+
+            .left {
+                float: left;
+                margin: 4px 4px;
+            }
+            
+            @media screen and (min-width: 351px) {
+                .leftborder {
+                    float: left;
+                    margin: 0px 0px;
+                    width: 50%;
+                }
+                #RegularBDiv {
+                    margin-top: 67px;
+                }
+                
+                #TurkeyBDiv {
+                    margin-top: 75px;
+                }
+            }
+        
+            
+            @media screen and (max-width: 350px) {
+                .leftborder {
+                    float: left;
+                    margin: 0px 0px;
+                    width: 100%;
+                }
+            }
+            
+            .clear {
+                clear: both;
+            }
+            
+            #BankDiv {
+                background-color: #666;
+                text-align: center;
+                
+                padding: 20px;
+                
+                width: calc(100% - 40px);
+            }
+            
+            .bank-button {
+                margin-left: 4% !important;
+                
+                float: left !important;
+                
+                height:15px !important;
+                width:25% !important;
+                
+                padding: 2px !important;
+                
+                line-height: 15px !important;
+                
+                font-size: 80% !important;
+            }
+            
+            
+            .footer-button {
+                width: calc(100% - 20px) !important;
+                height: 30px !important;
+                line-height: 30px !important;
+                
+                font-size: 100% !important;
+            }
+            
+            .button {
+                border: 1px black solid;
+                background-color: #DDD;
+                color: black;
+                margin: 0 auto;
+                text-align: center;
+                vertical-align: middle;
+                width: 75%;
+                height: 20px;
+                line-height: 20px;
+            }
+            
+            #PatternBDiv {
+                background: url("https://gaftop.com/bClick/assets/img/pattern.jpg");
+            }
+            
+            
+            #DiscoBDiv {
+                background-color: white;
+                -webkit-animation-name: DiscoBAnimation;
+                -webkit-animation-duration: 4s;
+                animation-name: DiscoBAnimation;
+                animation-duration: 4s;
+                animation-iteration-count: infinite;
+            }
+
+            @-webkit-keyframes DiscoBAnimation {
+                0%   {background-color: red;}
+                10%  {background-color: yellow;}               
+                30%  {background-color: green;}
+                55%  {background-color: blue;}
+                85%  {background-color: yellow;}
+                100% {background-color: red;}
+            }
+            
+            @keyframes DiscoBAnimation {
+                0%   {background-color: red;}
+                20%  {background-color: yellow;}               
+                40%  {background-color: green;}
+                60%  {background-color: blue;}
+                80%  {background-color: white;}
+                100% {background-color: red;}
+            }
+            
+            #GradientBDiv {
+                  background: -webkit-linear-gradient(left, red , blue);
+                  background: -o-linear-gradient(right, red, blue);
+                  background: -moz-linear-gradient(right, red, blue);
+                  background: linear-gradient(to right, red , blue);
+            }
+          .popup {
+            width:80%;
+            height:80%;
+            position:fixed;
+            top:10%;
+            background-color: #444;
+            border: 1px white solid;
+          }
+          
+          .popup table tr, .popup table td {
+              border: 1px white solid;
+          }
+          
+          .popup table td {
+              width: 50%;
+              text-align: center;
+          }
+          
+          .popup table {
+              margin: 0 auto;
+              width: 95%;
+              height: 100%;
+              padding: 7.5px;
+          }
+          
+            @-webkit-keyframes slide {
+                100% { left: 10%; }
+            }
+            
+            @keyframes slide {
+                100% { left: 10%; }
+            }
+            
+            .popup-start {
+                display: none;
+                left: -82%;
+            }
+            
+            .slide {
+                display: block;
+                left: -82%;
+                -webkit-animation-name: slide;
+                -webkit-animation-duration: 1s;
+                animation-name: slide;
+                animation-duration: 1s;
+                animation-fill-mode: forwards;
+                -webkit-animation-fill-mode: forwards;
+            }
+            
+            @-webkit-keyframes slide-2 {
+                100% { left: -82%; }
+            }
+            
+            @keyframes slide-2 {
+                100% { left: -82%; }
+            }
+            
+            .slide-2 {
+                display: block;
+                left: 10%;
+                -webkit-animation-name: slide-2;
+                -webkit-animation-duration: 1s;
+                animation-name: slide-2;
+                animation-duration: 1s;
+                animation-fill-mode: forwards;
+                -webkit-animation-fill-mode: forwards;
+            }
+            
+        </style>
+        
+        <script type="text/javascript">
+            function showPopup(id) {
+                var popup = document.getElementById(id);
+                popup.style.display = 'block';
+                popup.setAttribute("class", "popup slide");
+            }
+            function hidePopup(id) {
+                var popup = document.getElementById(id);
+                popup.style.display = 'block';
+                popup.setAttribute("class", "popup slide-2");
+                // popup.style.display = 'none';
+            }
+            function UpdatePopup(BName, Cost, Worth) {
+                var NameText = document.getElementById("PopupBName");
+                var CostText = document.getElementById("PopupCost");
+                var WorthText = document.getElementById("PopupWorth");
+                var UnlockButton = document.getElementById("UnlockButton");
+                
+                var NewCost = Cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                var NewWorth = Worth.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+                NameText.innerHTML = BName + " B";
+                CostText.innerHTML = NewCost + " Points";
+                WorthText.innerHTML = NewWorth + " Points";
+                UnlockButton.setAttribute("ontouchend", "UnlockB('" + BName + "B', " + Cost + ");");
+
+                RenderMouseEvents();
+                showPopup('popup');
+            }
+        </script>
+
+</head>
+  
+<body onload="Load()" style="width:100%;">
+    <div id="wrapper" style="display:none">
+<div id="Game" style="margin:0px 0px;padding-left:0px">
+
+<div style="background-color:#333;position:fixed;width:100%;display:block;margin:0px 0px;height:67px"><h2 id="Points" class="PointsText">Points: 0</h2></div>
+<main style="width:100%;">
+
+<div id="popup" class="popup popup-start" style="color:#FFF;">
+  <table border="0">
+        <tr>
+            <td>Name: </td>
+            <td id="PopupBName">Regular B</td>
+        </tr>
+        <tr>
+            <td>Cost: </td>
+            <td id="PopupCost">0 Points</td>
+            
+        </tr>
+        <tr>
+            <td>Worth: </td>
+            <td id="PopupWorth">10 Points</td>
+        </tr>
+        <tr>
+            <td>Unlock</td>
+            <td><div onclick='UnlockRegularB()' style="width:80%" id="UnlockButton" class="button">Purchase</div></td>
+        </tr>
+        <tr>
+            <td colspan="2"><div ontouchend="hidePopup('popup');" class="button">Done</div></td>
+        </tr>
+  </table>
+</div>
+
+<div id="LowercaseBDiv"  class="leftborder" style="background-color:White;margin-top:67px">
+<div id="LowercaseBImgDiv" class="left"><img src="https://gaftop.com/bClick/assets/b/new/LowercaseB.png" width="52" height="70" ontouchend="ClickB('LowercaseB', 1)" id="LowercaseBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Lowercase', 0, 1);" style="width:160px">See Details</div>
+<div><h3 id="LowercaseB">Not Unlocked</h3></div>
+</div></div>
+
+<div id="RegularBDiv"  class="leftborder" style="background-color:#BBB;">
+<div id="RegularBImgDiv" class="left"><img src="https://gaftop.com/bClick/assets/b/new/RegularB.png" width="52" height="70" ontouchend="ClickB('RegularB', 10)" id="RegularBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Regular', 50, 10);" style="width:160px">See Details</div>
+<div><h3 id="RegularB">Not Unlocked</h3></div>
+</div></div>
+
+<div id="SawBDiv" class="leftborder"  style="background-color:red;">
+<div id="SawBImgDiv" class="left"><img src="https://gaftop.com/bClick/assets/b/new/SawB.png" width="52" height="75" ontouchend="ClickB('SawB', 100)" id="SawBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Saw', 300, 100);" style="width:160px">See Details</div>
+<div><h3 id="SawB">Not Unlocked</h3></div>
+</div></div>
+
+<div id="SpikyBDiv" class="leftborder"  style="background-color:#FF0080;">
+<div id="SpikyBImgDiv" class="left"><img src="https://gaftop.com/bClick/assets/b/new/SpikyB.png" width="52" height="75" ontouchend="ClickB('SpikyB', 500)" id="SpikyBImg"></div>
+<div class="left">
+<div><div class="button" ontouchend="UpdatePopup('Spiky', 5000, 500);" style="width:160px">See Details</div></div>
+<div><h3 id="SpikyB">Not Unlocked</h3></div>
+</div></div>
+
+<div id="ElectricBDiv" class="leftborder"  style="background-color:orange;">
+<div id="ElectricBImgDiv" class="left"><img src="https://gaftop.com/bClick/assets/b/new/ElectricB.png" width="52" height="75" ontouchend="ClickB('ElectricB', 1000)" id="ElectricBImg"></div>
+<div class="left">
+<div><div class="button" ontouchend="UpdatePopup('Electric', 10000, 1000);" style="width:160px">See Details</div></div>
+<div><h3 id="ElectricB">Not Unlocked</h3></div>
+</div></div>
+
+<div id="ThinBDiv" class="leftborder"  style="background-color:yellow">
+<div id="ThinBImgDiv" class="left"><img src="https://gaftop.com/bClick/assets/b/new/ThinB.png" width="52" height="75" ontouchend="ClickB('ThinB', 5000)" id="ThinBImg"></div>
+<div class="left">
+<div><div class="button" ontouchend="UpdatePopup('Thin', 25000, 5000);" style="width:160px">See Details</div></div>
+<div><h3 id="ThinB">Not Unlocked</h3></div>
+</div></div>
+
+<div id="CurvedBDiv" class="leftborder" style="background-color:#0D0">
+ <div id="CurvedBImgDiv" class="left"><img src="https://gaftop.com/bClick/assets/b/new/CurvedB.png" width="52" height="75" ontouchend="ClickB('CurvedB', 10000)" id="CurvedBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Curved', 100000, 10000);" style="width:160px">See Details</div>
+<div><h3 id="CurvedB">Not Unlocked</h3></div>
+</div></div>
+
+<div id="SharkBDiv" class="leftborder"  style="background-color:green">
+<div id="SharkBImgDiv" class="left"><img src="https://gaftop.com/bClick/assets/b/new/SharkB.png" width="52" height="75" ontouchend="ClickB('SharkB', 25000)" id="SharkBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Shark', 500000, 25000);" style="width:160px">See Details</div>
+<div><h3 id="SharkB">Not Unlocked</h3></div>
+</div></div>
+
+<div id="FancyBDiv" class="leftborder" style="background-color:aqua">
+<div id="FancyBImgDiv" class="left"><img src="https://gaftop.com/bClick/assets/b/new/FancyB.png" width="52" height="75" ontouchend="ClickB('FancyB', 50000)" id="FancyBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Fancy', 1000000, 50000);" style="width:160px">See Details</div class="button" >
+<h3 id="FancyB">Not Unlocked</h3>
+</div></div>
+
+<div id="LightningBDiv" class="leftborder" style="background:navy">
+<div id="LightningBImgDiv" class="left"><img src="https://gaftop.com/bClick/assets/b/new/LightningB.png" width="52" height="75" ontouchend="ClickB('LightningB', 100000)" id="LightningBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Lightning', 5000000, 100000);" style="width:160px">See Details</div>
+<h3 id="LightningB" style="color:white">Not Unlocked</h3>
+</div></div>
+
+<div id="AwesomeBDiv" class="leftborder" style="background-color:#C0C">
+<div id="AwesomeBImgDiv" class="left"><img src="https://gaftop.com/bClick/assets/b/new/AwesomeB.png" width="52" height="75" ontouchend="ClickB('AwesomeB', 1000000)" id="AwesomeBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Awesome', 100000000, 1000000);" style="width:160px">See Details</div>
+<h3 id="AwesomeB">Not Unlocked</h3>
+</div></div>
+
+<div id="GoldenBDiv" class="leftborder" style="background-color:#606">
+<div id="GoldenBImgDiv" class="left"><img src="https://gaftop.com/bClick/assets/b/new/GoldenB.png" width="52" height="75" ontouchend="ClickB('GoldenB', 10000000)" id="GoldenBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Golden', 10000000, 10000000);" style="width:160px">See Details</div>
+<h3 id="GoldenB">Not Unlocked</h3>
+</div></div>
+
+<div id="HandrawnBDiv" class="leftborder" style="background-color:black;">
+<div id="HandrawnBImgDiv" class="left"><img src="https://gaftop.com/bClick/assets/b/new/HandrawnB.png" width="52" height="75" ontouchend="ClickB('HandrawnB', 1000000000)" id="HandrawnBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Handrawn', 1000000000, 1000000000);" style="width:160px">See Details</div>
+<h3 id="HandrawnB" style="color:white">Not Unlocked</h3>
+</div></div>
+
+<div id="PatternBDiv" class="leftborder">
+<div id="PatternBImgDiv" class="left"><img src="https://gaftop.com/bClick/assets/b/new/RegularB.jpg" width="52" height="75" ontouchend="ClickB('PatternB', 1000000000000)" id="PatternBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Pattern', 1000000000000, 1000000000000);" style="width:160px">See Details</div>
+<h3 id="PatternB" style="color:#000;background-color:#FFF;display:inline-block">Not Unlocked</h3>
+</div></div>
+
+<div id="GradientBDiv" class="leftborder">
+<div id="GradientBImgDiv" class="left"><img src="https://gaftop.com/bClick/assets/b/new/RegularB.png" width="52" height="75" ontouchend="ClickB('GradientB', 1000000000000000)" id="GradientBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Gradient', 1000000000000000, 1000000000000000);" style="width:160px">See Details</div>
+<h3 id="GradientB">Not Unlocked</h3>
+</div></div>
+
+<div id="DiscoBDiv" class="leftborder">
+<div id="DiscoBImgDiv" class="left"><img src="https://gaftop.com/bClick/assets/b/new/RegularB.png" width="52" height="75" ontouchend="ClickB('DiscoB', 1000000000000000000)" id="DiscoBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Disco', 1000000000000000000, 1000000000000000000);" style="width:160px">See Details</div>
+<h3 id="DiscoB">Not Unlocked</h3>
+</div></div>
+
+<div class="clear"></div>
+
+<div id="CandyCaneBDiv" class="leftborder" style="background-image:url('https://gaftop.com/bClick/assets/img/red-green.png');background-repeat:no-repeat;background-size:100%;margin-top:75px">
+<div id="CandyCaneBImgDiv" class="left"><img src="https://gaftop.com/bClick/assets/b/holiday/candycane.png" width="52" height="75" ontouchend="ClickB('CandyCaneB', InterestVar)" id="CandyCaneBImg"></div>
+<div class="left">
+    <h2 id="CandyCaneB">Not Unlocked</h2>
+</div></div>
+
+<div id="TurkeyBDiv" class="leftborder" style="background-color:#630;">
+<div id="TurkeyBImgDiv" class="left"><img src="https://gaftop.com/bClick/assets/b/holiday/turkey.png" width="52" height="75" ontouchend="ClickB('TurkeyB', InterestVar)" id="TurkeyBImg"></div>
+<div class="left">
+    <h2 id="TurkeyB">Not Unlocked</h2>
+</div></div>
+
+<div id="GhostBDiv" class="leftborder" style="background-color:purple;">
+<div id="GhostBImgDiv" class="left"><img src="https://gaftop.com/bClick/assets/b/holiday/GhostB.png" width="52" height="75" ontouchend="DrawGhostB()" id="GhostBImg"></div>
+<div class="left">
+<h2 id="GhostB">Not Unlocked</h2>
+</div></div>
+
+</main>
+</div>
+
+<div class="clear"></div>
+
+<div id="BankDiv" style="margin-top:10px">
+    <table border="0" style="width:100%"> 
+        <tr><td><div id="InterestValueDiv" style="margin: 4px"><h3 id="Interest">Interest: 0</h3></div></td></tr>
+            
+        <tr><td>
+            <div id="DepositDiv" style="width:100%;line-height:24px;height:100%">
+                <form name="bank" style="height:100%"><input type="text" name="Deposit" value="0" style="width:30%;border:1px #000 solid;border-radius:0px;height:15px;float:left;padding:2px"></form>
+               <div class="bank-button button" id="BankDepositButton" ontouchend="Deposit()">Deposit</div>
+               <div id="BankDepositAllButton" class="bank-button button" ontouchend="DepositAll()">Deposit All</div>
+            </div>
+        </td></tr>
+    </table>
+</div>
+
+<div class="clear"></div>
+  
+<div id="Footer" style="width:calc(100% - 20px);padding:10px">
+    <div ontouchend="YouWin()" class="footer-button button" id="WinButton">Pay 1 Septillion (1e+24) Points To Win</div>
+    <div class="clear"></div>
+    <div ontouchend="Leaderboards()" class="footer-button button" id="LeaderboardsButton">See Winners</div>
+    <div class="clear"></div>
+    <div ontouchend="ClickNewGame()" class="footer-button button" id="NewGameButton">Start Over</div>
+</div>
+</div>
+</body>
+
+  <script type="text/javascript">
+var PointsVar = localStorage.PointsSaved;
+var InterestVar = localStorage.Interest;
+
+        var isMobile = {
+            Android: function() {
+                return navigator.userAgent.match(/Android/i);
+            },
+            iOS: function() {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+            },
+            Windows: function() {
+                return navigator.userAgent.match(/IEMobile/i);
+            },
+            any: function() {
+                return (isMobile.Android() || isMobile.iOS() || isMobile.Windows());
+            }
+    };
+
+function openURL(url) {
+    window.open(url, "_blank");
+}
+
+ function Leaderboards() {
+     window.open("https://gaftop.com/bClick/game/win/leaderboards.php", "_blank");
+ }
+ 
+ function Earn(amount) {
+     PointsVar = parseFloat(PointsVar) + parseFloat(amount);
+     localStorage.PointsSaved = PointsVar;
+     Commas();
+ }
+ 
+ function Purchase(amount) {
+     PointsVar = parseFloat(PointsVar) - parseFloat(amount);
+     localStorage.PointsSaved = PointsVar;
+     Commas();
+ }
+
+function ClickB(name, worth) {
+    if (localStorage.getItem(name) == "Unlocked") {
+        Earn(worth);
+    }
+}
+
+function UnlockB(name, cost) {
+    if (localStorage.getItem(name) == "Not Unlocked") {  
+        if (PointsVar >= cost) {
+            document.getElementById(name).innerHTML = "Unlocked";
+            localStorage.setItem(name, "Unlocked");
+            Purchase(cost);
+        }
+    }
+}
+
+function DrawGhostB() {
+  if (localStorage.GhostB == "Unlocked") {
+        PointsVar = parseFloat(PointsVar) * 1.25;
+        localStorage.PointsSaved = PointsVar;
+        Commas();  
+  }
+}
+
+function CollectInterest() {  
+  Earn(InterestVar);
+}
+
+function Deposit() {
+        if (PointsVar >= document.bank.Deposit.value) {
+            InterestVar = parseFloat(InterestVar) + parseFloat(document.bank.Deposit.value) * 0.05;
+            localStorage.Interest = InterestVar;
+            Purchase(document.bank.Deposit.value);
+        }
+}
+
+function DepositAll() {
+    document.bank.Deposit.value = Math.round(PointsVar);
+    Deposit();
+}
+
+function YouWin() {  
+    if (PointsVar >= 1e+24) {
+        var answer = confirm("Are You Sure You Want To Win With Username '" + localStorage.Username + "' ?")
+        if (answer == true) {
+            window.open("https://gaftop.com/bClick/game/win/win.php?username=" + localStorage.Username + "&points=" + PointsVar.toString(), "_blank");
+            NewGame();
+            alert("Great Job Winning bClick!");
+        }
+        else {
+            ChooseUsername();
+        }
+   } 
+}
+
+function Commas() {
+	var NewPointsVar = Math.round(PointsVar);
+   	NewPointsVar = NewPointsVar.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	document.getElementById("Points").innerHTML = "Points: " + NewPointsVar;
+
+	var NewInterest = Math.round(InterestVar);
+	NewInterest = NewInterest.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	document.getElementById("Interest").innerHTML = "Interest: " + NewInterest;
+}
+
+function RenderMouseEvents() {
+    var buttons = document.getElementsByClassName("button");
+    var i;
+    for (i = 0; i < buttons.length; i++) {
+        var onclick = buttons[i].getAttribute("ontouchend");
+        buttons[i].setAttribute("onclick", onclick, false);
+    }
+    var images = document.getElementsByTagName("IMG");
+    var i;
+    for (i = 0; i < images.length; i++) {
+        var onclickimg = images[i].getAttribute("ontouchend");
+        images[i].setAttribute("onclick", onclickimg, false);
+    }
+}
+
+function Load() {
+    if (localStorage.NewGameYetMobile != undefined) {
+        Refresh();
+    }
+    else {
+        NewGame();
+    }
+    
+    var BankTimer=setInterval(function(){CollectInterest()},1000);
+        
+    LoadDeposit();
+    
+    if (localStorage.Username == undefined) {
+        ChooseUsername();
+    }
+    if (!isMobile.any()) {
+        RenderMouseEvents();
+    }
+    var d = new Date()
+    var month = d.getMonth();
+    var day = d.getDate();
+    
+    switch (month) {
+        case 9:
+            if (day == 31) {
+                alert("Happy Halloween! You have unlocked an exclusive Ghost B. You keep it even if you start a new game. The ghost B multiplies your points by 1.25.");
+                UnlockB('GhostB', 0);
+            }
+            break;
+        case 10: 
+            if (day == 26) {
+                    alert("Happy Thanksgiving! You have unlocked an exclusive Turkey B. You keep it even if you start a new game. The turkey B gives you how much your interest is.");
+                UnlockB('TurkeyB', 0); 
+            }
+            break;   
+    }
+    document.getElementById("wrapper").style.display = "block";
+}
+
+function ChooseUsername() {
+    var userText = prompt("Please Choose A Username.");
+    localStorage.Username = userText;
+}
+
+function LoadDeposit() {
+    var depositvalue = getQueryVariable("Deposit");
+    if (depositvalue != undefined) {
+        document.bank.Deposit.value = depositvalue;
+        Deposit();
+    }
+}
+
+    function getQueryVariable(variable) {
+      var query = window.location.search.substring(1);
+      var vars = query.split("&");
+      for (var i=0;i<vars.length;i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == variable) {
+          return pair[1];
+        }
+      }
+    }
+ 
+
+function NewGame() {
+    localStorage.PointsSaved = 0;
+    PointsVar = 0;
+    localStorage.LowercaseB = "Not Unlocked";
+    localStorage.RegularB = "Not Unlocked";
+    localStorage.SawB = "Not Unlocked";
+    localStorage.SpikyB = "Not Unlocked";
+    localStorage.ElectricB = "Not Unlocked";
+    localStorage.ThinB = "Not Unlocked";
+    localStorage.CurvedB = "Not Unlocked";
+    localStorage.SharkB = "Not Unlocked";
+    localStorage.FancyB = "Not Unlocked";
+    localStorage.LightningB = "Not Unlocked";
+    localStorage.AwesomeB = "Not Unlocked";
+    localStorage.GoldenB = "Not Unlocked";
+    localStorage.HandrawnB = "Not Unlocked";
+    localStorage.PatternB = "Not Unlocked";
+    localStorage.GradientB = "Not Unlocked";
+    localStorage.DiscoB = "Not Unlocked";
+    localStorage.Interest = 0;
+    InterestVar = 0;
+    
+    Refresh();
+    
+    localStorage.NewGameYetMobile = "true";
+}
+
+function ClickNewGame() {
+    var answer = confirm("Are You Sure You Want To Start A New Game?");
+    if (answer == true) {
+        NewGame();
+    }
+}
+
+function Refresh() {
+        document.getElementById("LowercaseB").innerHTML = localStorage.LowercaseB;
+        document.getElementById("RegularB").innerHTML = localStorage.RegularB;
+        document.getElementById("SawB").innerHTML = localStorage.SawB;
+        document.getElementById("SpikyB").innerHTML = localStorage.SpikyB;
+        document.getElementById("ElectricB").innerHTML = localStorage.ElectricB;
+        document.getElementById("ThinB").innerHTML = localStorage.ThinB;
+        document.getElementById("CurvedB").innerHTML = localStorage.CurvedB;
+        document.getElementById("SharkB").innerHTML = localStorage.SharkB;
+        document.getElementById("FancyB").innerHTML = localStorage.FancyB;
+        document.getElementById("LightningB").innerHTML = localStorage.LightningB;
+        document.getElementById("AwesomeB").innerHTML = localStorage.AwesomeB;
+        document.getElementById("GoldenB").innerHTML = localStorage.GoldenB;
+        document.getElementById("HandrawnB").innerHTML = localStorage.HandrawnB;
+        document.getElementById("PatternB").innerHTML = localStorage.PatternB;
+        document.getElementById("GradientB").innerHTML = localStorage.GradientB;
+        document.getElementById("DiscoB").innerHTML = localStorage.DiscoB;
+        
+        var turkeyB = localStorage.TurkeyB;
+        if (turkeyB != undefined) document.getElementById("TurkeyB").innerHTML = localStorage.TurkeyB;
+        
+        var CandyCaneB = localStorage.CandyCaneB;
+        if (CandyCaneB != undefined) document.getElementById("CandyCaneB").innerHTML = localStorage.CandyCaneB;
+        
+        var ghostB = localStorage.GhostB;
+        if (ghostB != undefined) document.getElementById("GhostB").innerHTML = localStorage.GhostB;
+        Commas();
+}
+
+    </script>
+  </html>

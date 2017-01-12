@@ -1,0 +1,54 @@
+<!DOCTYPE html><html>
+    <head>
+    	<title>PolyGen: User-friendly Canvas Polygon Generator</title>
+    	<style>
+    	    html, body {
+    	        padding: 1px;
+    	        margin: 0px;
+    	        
+    	        width: 100%;
+    	        height: 100%;
+    	    }
+    	    .code {
+    	        padding: 2px;
+    	        margin: 2px;
+    	        
+    	        background-color: #BBB;
+    	        
+    	        border: 1px black solid;
+    	        border-radius: 3px;
+    	    }
+    	    .language {
+    	        color: #4C4C4C;
+    	        text-decoration: underline;
+    	    }
+    	</style>
+    </head>
+    <body>
+        <h1>PolyGen - User-friendly Canvas Polygon Generator</h1>
+        <h3>Made by Cameron Samuels</h3>
+        <hr />
+        <div><a href="polygen.js" download="polygen.js">Download</a> the code</div>
+        <hr />
+        <div class="language">HTML</div>
+        <div class="code">
+            &ltscript src="polygen.js"&gt&lt/script&gt
+        </div>
+        <hr />
+        <div class="language">JavaScript</div>
+        <div class="code">
+            //Object of canvas. Ex value: document.getElementById('canvasElement');<br />
+            PolyGen.Canvas = null;<br />
+            //Canvas Context. Ex value: Polygen.Context = PolyGen.Canvas.getContext('2d');<br />
+            PolyGen.Context = null;<br />
+            //Thickness of side lines<br />
+            PolyGen.Thickness = 8;<br />
+            //Color of lines. It can be any color that can be used for strokeStyles in canvases<br />
+            PolyGen.Color ='#000000';<br />
+            //Size of shape<br />
+            PolyGen.Size = 409.6;<br />
+        </div>
+        <hr />
+        <footer id="footer">Copyright &copy Cameron Samuels</footer>
+    </body>
+</html>

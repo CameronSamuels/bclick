@@ -1,0 +1,76 @@
+html, body {
+	margin: 0px;
+	padding: 0px;
+
+	width: 100%;
+	height: 100%;
+}
+main {
+	width: 100%;
+	height: 100%;
+}
+header {
+    height: 30px;
+    width: 100%;
+    
+    text-align: center;
+}
+a {
+    text-decoration: none;
+    color: #555;
+}
+a:visited {
+    color: #555;
+}
+#left, #right {
+    float: left;
+    
+    width: calc(50% - 10px);
+    height: calc(100% - 30px);
+    
+    padding: 0px;
+    margin: 0px;
+}
+#left {
+    border-right: 10px black solid;
+}
+textarea {
+    width: 100%;
+    height: 100%;
+    
+    padding: 0px;
+    margin: 0px;
+    
+    border: 0px;
+}
+.clear {
+    clear: both;
+}
+#info {
+    text-align: center;
+    
+    padding: 10px;
+    
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+@media screen and (max-width: 500px) {
+    #info {
+        display: none;
+    }
+    #left, #right {
+        float: none;
+        border: 0px;
+        width: 100%;
+        height: calc(50% - 40px);
+    }
+    #left {
+        border-bottom: 10px black solid !important;
+    }
+}
+@media screen and (max-height: 500px) {
+    #info {
+        display: none;
+    }
+}

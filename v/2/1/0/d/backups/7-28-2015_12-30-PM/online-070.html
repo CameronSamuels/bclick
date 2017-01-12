@@ -1,0 +1,610 @@
+<!DOCTYPE html><html>
+
+  <head>
+
+  <title>The Letter B Game</title>
+
+  <link href="http://fonts.googleapis.com/css?family=Roboto+Mono:400,400italic">
+
+  <style type="text/css">
+
+    body {
+      margin: 0px 0px;
+      font-family: 'Roboto Mono';
+    }
+
+    #Game {
+      margin-top: 80px;
+      margin-left: 5%;
+      margin-right: auto;
+
+      width: 610px;
+      height: auto;
+
+      background-color: #FFF;
+
+      float: left;
+    }
+
+    header {
+      position: fixed;
+
+      width: 100%;
+      height: 60px;
+
+      background: gray no-repeat;
+      border: 1px black solid;
+    }
+
+    aside {
+      margin-top: 60px;
+      margin-left: auto;
+      margin-right: auto;
+
+      float: right;
+
+      background-color: #333;
+
+      height: 100%;
+      width: auto;
+    }
+
+    footer {
+      background-color: #AAA;
+
+      width: 100%;
+
+      margin-top: 10px;
+    }
+
+    .PointsText {
+      position: fixed;
+
+      text-shadow: 1px 1px #FF00FF;
+      text-decoration: underline;
+    }
+
+    button {
+      font-family: 'Roboto Mono';
+    }
+
+    #NewGame {
+
+    }
+
+    .left {
+      margin: 4px 4px;
+    }
+
+    .leftbordertop {
+      border: 1px dashed black;
+      border-radius: 10px;
+
+      margin: 2px 2px;
+    }
+
+    .leftbordermiddle {
+      border: 1px dashed black;
+      border-radius: 10px;
+
+      margin: 0.6px 0.6px;
+    }
+
+
+    .leftborderbottom {
+      border: 1px dashed black;
+      border-radius: 10px;
+
+      margin: 0.05px 0.05px;
+    }
+
+    .clear {
+      clear: both;
+    }
+
+    </style>
+
+  </head>
+  
+  <body onload="Load()">
+
+    <header>
+      <h2 id="Points" class="PointsText">Points: 0</h2>
+    </header>
+
+    <div class="clear"></div>
+
+
+    <div class="clear"></div>
+
+    <div id="wrapper">
+
+      <div id="Game">
+
+        <div id="RegularBDiv"  class="leftbordertop" style="background-color:White;float:left">
+          <div id="RegularBImgDiv" class="left"><img src="http://goo.gl/SvR4go" width="62" height="75" onclick="DrawRegularB()"></div>
+          <div class="left">
+          <div><button onclick="UnlockRegularB()"> Unlock B For 0000 pt. </button></div>
+          <div><h3 id="RegularB">Not Unlocked</h3></div>
+        </div></div>
+
+        <div id="SawBDiv" class="leftbordertop"  style="background-color:red;float:left">
+          <div id="SawBImgDiv" class="left"><img src="http://goo.gl/gTKdYN" width="62" height="75" onclick="DrawSawB()"></div>
+          <div class="left">
+          <div><button onclick="UnlockSawB()"> Unlock B For 0500 pt.</button></div>
+          <div><h3 id="SawB">Not Unlocked</h3></div>
+        </div></div>
+
+        <div id="SpikyBDiv" class="leftbordertop"  style="background-color:Green;float:left">
+          <div id="SpikyBImgDiv" class="left"><img src="http://goo.gl/AVqSJs" width="62" height="75" onclick="DrawSpikyB()"></div>
+          <div class="left">
+          <div><button onclick="UnlockSpikyB()"> Unlock B For 7.5K pt.</button></div>
+          <div><h3 id="SpikyB">Not Unlocked</h3></div>
+        </div></div>
+
+        <div id="ElectricBDiv" class="leftbordertop"  style="background-color:Yellow;float:left">
+          <div id="ElectricBImgDiv" class="left"><img src="http://goo.gl/I5uq0m" width="62" height="75" onclick="DrawElectricB()"></div>
+          <div class="left">
+          <div><button onclick="UnlockElectricB()"> Unlock B For 020K pt.</button></div>
+          <div><h3 id="ElectricB">Not Unlocked</h3></div>
+        </div></div>
+
+        <div class="clear"></div>
+
+        <div id="iPadAirBDiv" class="leftbordermiddle"  style="background-color:Gray;float:left">
+          <div id="iPadAirBImgDiv" class="left"><img src="http://goo.gl/9HvNE8" width="20" height="75" onclick="DrawiPadAirB()"></div>
+          <div class="left">
+          <div><button onclick="UnlockiPadAirB()"> Unlock B For 050K pt. </button></div>
+          <div><h3 id="iPadAirB">Not Unlocked</h3></div>
+        </div></div>
+
+        <div id="CurvedBDiv" class="leftbordermiddle" style="background-color:#F60;float:left">
+           <div id="CurvedBImgDiv" class="left"><img src="http://goo.gl/yoIMOe" width="62" height="75" onclick="DrawCurvedB()"></div>
+          <div class="left">
+          <div><button onclick="UnlockCurvedB()"> Unlock B For 250K pt. </button></div>
+          <div><h3 id="CurvedB">Not Unlocked</h3></div>
+        </div></div>
+
+        <div id="SharkBDiv" class="leftbordermiddle"  style="background-color:Blue;float:left">
+          <div id="SharkBImgDiv" class="left"><img src="http://goo.gl/ctggTb" width="62" height="75" onclick="DrawSharkB()"></div>
+          <div class="left">
+          <div><button onclick="UnlockSharkB()"> Unlock B For 500K pt. </button></div>
+          <div><h3 id="SharkB">Not Unlocked</h3></div>
+        </div></div>
+
+        <div id="DuckBDiv" class="leftbordermiddle" style="background-color:Purple;float:left">
+          <div id="DuckBImgDiv" class="left"><img src="http://goo.gl/2blmLi" width="62" height="75" onclick="DrawDuckB()"></div>
+          <div class="left">
+          <button onclick="UnlockDuckB()"> Unlock B For 500K pt. </button>
+          <h3 id="DuckB">Not Unlocked</h3>
+        </div></div>
+
+        <div class="clear"></div>
+
+        <div id="UltraFancyBDiv" class="leftborderbottom" style="background-color:Aqua;float:left">
+          <div id="UltraFancyBImgDiv" class="left"><img src="http://goo.gl/efuf2P" width="62" height="75" onclick="DrawUltraFancyB()"></div>
+          <div class="left">
+          <button onclick="UnlockUltraFancyB()"> Unlock B For 001M pt. </button>
+          <h3 id="UltraFancyB">Not Unlocked</h3>
+        </div></div>
+
+        <div id="LightningBDiv" class="leftborderbottom" style="background:Brown;float:left">
+          <div id="LightningBImgDiv" class="left"><img src="http://goo.gl/DmvktR" width="62" height="75" onclick="DrawLightningB()"></div>
+          <div class="left">
+          <button onclick="UnlockLightningB()">Unlock B For 005M pt.</button>
+          <h3 id="LightningB">Not Unlocked</h3>
+        </div></div>
+
+        <div id="BAWEDiv" class="leftborderbottom" style="background-color:Navy;float:left">
+          <div id="BAWEImgDiv" class="left"><img src="http://goo.gl/xLfbFm" width="62" height="75" onclick="DrawBAWE()"></div>
+          <div class="left">
+          <button onclick="UnlockBAWE()">Unlock B For 500M pt.</button>
+          <h3 id="BAWE">Not Unlocked</h3>
+        </div></div>
+
+        <div id="GoldenBDiv" class="leftborderbottom" style="background-color:Fuchsia;float:left">
+          <div id="GoldenBImgDiv" class="left"><img src="http://goo.gl/4oUlbv" width="62" height="75" onclick="DrawGoldenB()"></div>
+          <div class="left">
+          <button onclick="UnlockGoldenB()"> Unlock B For 001B pt. </button>
+          <h3 id="GoldenB">Not Unlocked</h3>
+        </div></div>
+
+        <div class="clear"></div>
+
+      </div>
+        
+    
+      <aside>
+
+        <div id="BankDiv">
+
+          <div id="InBankValueDiv"  class="left"><h3 id="InBank">In Bank: 0 </h3></div>
+          <div id="InterestValueDiv"  class="left"><h3 id="Interest">Interest: 0</h3></div>
+
+          <div id="DepositDiv"><br>
+            <div id="BankInputDiv">
+            <form name="bank" class="left" style="float:left">
+            <textarea name="Deposit" value="0" rows="1" cols="15" style="width:137px;resize:horizontal"></textarea></form>
+            <div class="left" id="BankDepositButton" style="float:left"><button onclick="Deposit()">Deposit</button></div></div>
+          </div>
+          
+          <div class="clear"></div>
+
+        </div>
+
+        <button onclick="NewGame()" id="NewGame" class="left" style="width:210px">New Game</button>
+        <br>
+        <button type="button" onclick="YouWin()" class="left">Win The Game (100 Quintillion pt)</button>
+
+      </aside>
+
+    <div class="clear"></div>
+  
+    <footer>
+      <p>Copyright &copy Gaftop Corp 2013-2015. All Rights Reserved</p>
+    </footer>
+
+  </body>
+
+  <script type="text/javascript">
+
+/* ===========  Variables  =========== */
+
+var PointsVar = localStorage.PointsSaved;
+
+var InterestVar = localStorage.Interest;
+var InBankVar = localStorage.InBank;
+
+
+/* ===========  Clicking  =========== */
+
+function DrawRegularB() {
+  if (localStorage.RegularB == "Unlocked") {	
+    Earn(10);
+  }
+}
+
+function DrawSawB() {
+  if (localStorage.SawB == "Unlocked") {
+    Earn(175);
+  }
+}
+
+function DrawSpikyB() {
+  if (localStorage.SpikyB == "Unlocked") {
+    Earn(250);
+  }
+}
+
+function DrawElectricB() {
+  if (localStorage.ElectricB == "Unlocked") {
+    Earn(500);
+  }
+}
+
+function DrawiPadAirB() {
+  if (localStorage.iPadAirB == "Unlocked") {
+    Earn(750);
+  }
+}
+
+function DrawCurvedB() {
+  if (localStorage.CurvedB == "Unlocked") {
+   Earn(1500);
+  }
+}
+
+function DrawSharkB() {
+  if (localStorage.SharkB == "Unlocked") {
+    Earn(2000);
+  }
+}
+
+function DrawDuckB() {
+  if (localStorage.DuckB == "Unlocked") {
+    Earn(2000);
+  }
+}
+
+function DrawUltraFancyB() {
+  if (localStorage.UltraFancyB == "Unlocked") {
+    Earn(5000);
+  }
+}
+
+function DrawLightningB() {
+  if (localStorage.LightningB == "Unlocked") {
+    Earn(7500);
+  }
+}
+
+function DrawBAWE() {
+  if (localStorage.BAWE == "Unlocked") {
+    Earn(50000);
+  }
+}
+
+function DrawGoldenB() {
+  if (localStorage.GoldenB == "Unlocked") {
+    Earn(1000000);
+  }
+}
+
+
+/* ===========  Unlocking  =========== */
+
+
+function UnlockRegularB() {  
+  localStorage.RegularB = "Unlocked";
+  document.getElementById("RegularB").innerHTML = "Unlocked";
+}
+
+function UnlockSawB() {
+  if (localStorage.SawB == "Not Unlocked") {  
+    if (PointsVar >= 500) {
+      Purchase(500);
+      document.getElementById("SawB").innerHTML = "Unlocked";
+      localStorage.SawB = "Unlocked";
+    }
+  }
+}
+
+function UnlockSpikyB() {
+  if (localStorage.SpikyB == "Not Unlocked") {  
+    if (PointsVar >= 7500) {
+      Purchase(7500);
+      document.getElementById("SpikyB").innerHTML = "Unlocked";
+      localStorage.SpikyB = "Unlocked";
+    }
+  }
+}
+
+function UnlockElectricB() {  
+  if (localStorage.ElectricB == "Not Unlocked") {  
+    if (PointsVar >= 20000) {
+      Purchase(20000);
+      document.getElementById("ElectricB").innerHTML = "Unlocked";
+      localStorage.ElectricB = "Unlocked";
+    }
+  }
+}
+
+function UnlockiPadAirB() {  
+  if (localStorage.iPadAirB == "Not Unlocked") {  
+    if (PointsVar >= 50000) {
+      Purchase(50000);
+      document.getElementById("iPadAirB").innerHTML = "Unlocked";
+      localStorage.iPadAirB = "Unlocked";
+    }
+  }
+}
+
+
+
+function UnlockCurvedB() {
+  if (localStorage.CurvedB == "Not Unlocked") {  
+    if (PointsVar >= 250000) {
+      Purchase(250000);
+      document.getElementById("CurvedB").innerHTML = "Unlocked";
+      localStorage.CurvedB = "Unlocked";
+    }
+  }
+}
+
+function UnlockSharkB() {
+  if (localStorage.SharkB == "Not Unlocked") {  
+    if (PointsVar >= 500000) {
+      Purchase(500000);
+      document.getElementById("SharkB").innerHTML = "Unlocked";
+      localStorage.SharkB = "Unlocked";
+    }
+  }
+}
+
+function UnlockDuckB() {
+  if (localStorage.DuckB == "Not Unlocked") {  
+    if (PointsVar >= 500000) {
+      Purchase(500000);
+      document.getElementById("DuckB").innerHTML = "Unlocked";
+      localStorage.DuckB = "Unlocked";
+    }
+  }
+}
+  
+  function UnlockUltraFancyB() {
+   if (localStorage.UltraFancyB == "Not Unlocked") {  
+    if (PointsVar >= 1000000) {
+      Purchase(1000000);
+      document.getElementById("UltraFancyB").innerHTML = "Unlocked";
+      localStorage.UltraFancyB = "Unlocked";
+    }
+  }
+ }
+
+  function UnlockLightningB() {
+   if (localStorage.lightningB == "Not Unlocked") {  
+    if (PointsVar >= 5000000) {
+      Purchase(5000000);
+      document.getElementById("LightningB").innerHTML = "Unlocked";
+      localStorage.LightningB = "Unlocked";
+    }
+  }
+}
+  
+function UnlockBAWE() {
+  if (localStorage.BAWE == "Not Unlocked") {  
+    if (PointsVar >= 500000000) {
+      Purchase(500000000);
+      document.getElementById("BAWE").innerHTML = "Unlocked";
+      localStorage.BAWE = "Unlocked";
+    }
+  }
+}
+  
+function UnlockGoldenB() {
+  if (localStorage.GoldenB == "Not Unlocked") {  
+    if (PointsVar >= 1000000000) {
+      Purchase(1000000000);
+      document.getElementById("GoldenB").innerHTML = "Unlocked";
+      localStorage.GoldenB = "Unlocked";
+    }
+  }
+}
+
+
+    /* ===========  Bank  ===========  */
+
+
+function CollectBonus() {  
+  PointsVar = parseFloat(PointsVar) + parseFloat(InterestVar);
+  document.getElementById("Points").innerHTML = "Points: " + PointsVar;
+
+  localStorage.PointsSaved = PointsVar;
+  Commas();
+}
+
+function Deposit() {
+
+  if (PointsVar >= document.bank.Deposit.value) {
+    InBankVar = parseFloat(InBankVar) + parseFloat(document.bank.Deposit.value);
+    document.getElementById("InBank").innerHTML = "In Bank: " + InBankVar;
+
+    InterestVar = parseFloat(InterestVar) + parseFloat(document.bank.Deposit.value) * 0.05;
+    document.getElementById("Interest").innerHTML = "Interest: " + InterestVar;
+    
+    PointsVar = parseFloat(PointsVar) - document.bank.Deposit.value;
+    document.getElementById("Points").innerHTML = "Points: " + PointsVar;
+
+  if (TimerEnabled == "False") {
+    TimerEnabled = "True";
+    var myVar=setInterval(function(){CollectBonus()},1000);
+  }
+
+  localStorage.PointsSaved = PointsVar;
+  localStorage.Interest = InterestVar;
+  localStorage.InBank = InBankVar;
+
+  Commas();
+
+  } 
+}
+
+
+    /* ===========  Other  =========== */
+
+function YouWin() {  
+  if (PointsVar >= 100000000000000000000) {
+    PointsVar = parseFloat(PointsVar) - 100000000000000000000;
+    localStorage.PointsSaved = PointsVar;
+    location.href = 'http://theletterbgame.com/youwin.html';
+    Commas();
+  } 
+}
+
+
+    /* ===========  Common  =========== */
+
+
+function Earn(Amount) {
+  PointsVar = parseFloat(PointsVar) + Amount;
+  document.getElementById("Points").innerHTML = "Points: " + PointsVar;
+  localStorage.PointsSaved = PointsVar;
+  Commas();
+}
+
+function Purchase(Amount) {
+  PointsVar = parseFloat(PointsVar) - Amount;
+  localStorage.PointsSaved = PointsVar;
+  document.getElementById("Points").innerHTML = "Points: " + PointsVar;
+  Commas();
+}
+
+
+function Commas() {
+
+  var NewPointsVar = Math.round(PointsVar);
+  NewPointsVar = PointsVar.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("Points").innerHTML = "Points: " + NewPointsVar;
+
+  var NewInterest = Math.round(InterestVar);
+  NewInterest = InterestVar.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("Interest").innerHTML = "Interest: " + NewInterest;
+
+  var NewInBank = Math.round(InBankVar);
+  NewInBank = InBankVar.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("InBank").innerHTML = "In Bank: " + NewInBank;
+
+}
+
+
+    /* ===========  Saving And Loading  =========== */
+
+function Load() {
+
+  if (localStorage.Interest >= 1) {
+    TimerEnabled = "True";
+    var myVar=setInterval(function(){CollectBonus()},1000);
+  }
+  document.getElementById("Points").innerHTML = "Points: " + localStorage.PointsSaved;
+  document.getElementById("RegularB").innerHTML = localStorage.RegularB;
+  document.getElementById("SawB").innerHTML = localStorage.SawB;
+  document.getElementById("SpikyB").innerHTML = localStorage.SpikyB;
+  document.getElementById("ElectricB").innerHTML = localStorage.ElectricB;
+  document.getElementById("iPadAirB").innerHTML = localStorage.iPadAirB;
+  document.getElementById("CurvedB").innerHTML = localStorage.CurvedB;
+  document.getElementById("SharkB").innerHTML = localStorage.SharkB;
+  document.getElementById("DuckB").innerHTML = localStorage.DuckB;
+  document.getElementById("UltraFancyB").innerHTML = localStorage.UltraFancyB;
+  document.getElementById("LightningB").innerHTML = localStorage.LightningB;
+  document.getElementById("BAWE").innerHTML = localStorage.BAWE;
+  document.getElementById("GoldenB").innerHTML = localStorage.GoldenB;
+  document.getElementById("Interest").innerHTML = "Interest: " + localStorage.Interest;
+  document.getElementById("InBank").innerHTML = "In Bank: " + localStorage.InBank;
+  Commas();
+}
+
+function NewGame() {
+  localStorage.PointsSaved = 0;
+  PointsVar = 0;
+
+  localStorage.RegularB = "Not Unlocked";
+  localStorage.SawB = "Not Unlocked";
+  localStorage.SpikyB = "Not Unlocked";
+  localStorage.ElectricB = "Not Unlocked";
+  localStorage.iPadAirB = "Not Unlocked";
+  localStorage.CurvedB = "Not Unlocked";
+  localStorage.DuckB = "Not Unlocked";
+  localStorage.SharkB = "Not Unlocked";
+  localStorage.UltraFancyB = "Not Unlocked";
+  localStorage.LightningB = "Not Unlocked";
+  localStorage.BAWE = "Not Unlocked";
+  localStorage.GoldenB = "Not Unlocked";
+
+  localStorage.Interest = 0;
+  localStorage.InBank = 0;
+  InterestVar = 0;
+  InBankVar = 0;
+
+  document.getElementById("Points").innerHTML = "Points: " + localStorage.PointsSaved;
+
+  document.getElementById("RegularB").innerHTML = localStorage.RegularB;
+  document.getElementById("SawB").innerHTML = localStorage.SawB;
+  document.getElementById("SpikyB").innerHTML = localStorage.SpikyB;
+  document.getElementById("ElectricB").innerHTML = localStorage.ElectricB;
+  document.getElementById("iPadAirB").innerHTML = localStorage.iPadAirB;
+  document.getElementById("CurvedB").innerHTML = localStorage.CurvedB;
+  document.getElementById("SharkB").innerHTML = localStorage.SharkB;
+  document.getElementById("DuckB").innerHTML = localStorage.DuckB;
+  document.getElementById("UltraFancyB").innerHTML = localStorage.UltraFancyB;
+  document.getElementById("LightningB").innerHTML = localStorage.LightningB;
+  document.getElementById("BAWE").innerHTML = localStorage.BAWE;
+  document.getElementById("GoldenB").innerHTML = localStorage.GoldenB;
+
+  document.getElementById("Interest").innerHTML = "Interest: " + localStorage.Interest;
+  document.getElementById("InBank").innerHTML = "In Bank: " + localStorage.InBank;
+  Commas();
+}
+
+var TimerEnabled = "False";
+    </script>
+  </html>

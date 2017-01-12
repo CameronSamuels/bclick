@@ -1,0 +1,115 @@
+<!--
+    Version 3.3.7 - 8/8/2016 8:45AM
+    
+    New:
+        -Android app!!!!!!! - Badge in the settings - 8/9/2016 4:59PM
+        -Achievements: Play for 1, 3, 5, and 10 hours, and 1 day - 1/2: 8/8/2016 9:17AM - 2/2: Get multiplier of 1 thousand, 1 million, 1 billion and 1 trillion
+        -Achievements have a new look: Circles with the achievement in them. Organized by categories - 8/8/2016 12:43PM
+    
+    Changes:
+        -Unlock button text now just says unlocked instead of share - 8/8/2016 9:24AM
+        
+    Removed:
+        -Commas format inuse
+
+-->
+
+<!DOCTYPE html><html>
+    <head>
+        <title>v3.3.7 - bClick</title>
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5" />
+        <link rel="shortcut icon" type="image/png" href="icon.png" />
+        <link rel="stylesheet" type="text/css" href="bclick.css" />
+
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="apple-touch-icon" href="icon.png" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        
+        <meta name="description" content="bClick - The Amazing b-Click-ing game! Unlock B's, Click them for points, Deposit to gradually earn points, and submit to let everyone see you are the best!" />
+        
+        <meta property="og:url"                content="https://playbclick.com" />
+        <meta property="og:type"               content="game" />
+        <meta property="og:title"              content="bClick - The b-Click-ing Game!" />
+        <meta property="og:description"        content="Unlock B's, Click B's, Deposit Points, Submit Score" />
+        <meta property="og:image"              content="https://playbclick.com/icon.png" />
+    </head>
+    <body id="body">
+        <script>
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId      : '533562463511748',
+              cookie     : true,
+              xfbml      : true,
+              version    : 'v2.6'
+            });
+
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    document.getElementById("fbLogin").style.display = "none";
+                    localStorage.points *= 2;
+                }
+            });
+        };
+
+          (function(d, s, id){
+             var js, fjs = d.getElementsByTagName(s)[0];
+             if (d.getElementById(id)) {return;}
+             js = d.createElement(s); js.id = id;
+             js.src = "//connect.facebook.net/en_US/sdk.js";
+             fjs.parentNode.insertBefore(js, fjs);
+           }(document, 'script', 'facebook-jssdk'));
+        </script>
+        <main>
+            <section id="logSection" class="section">
+                <div class="section-header header">The Log</div>
+                <div id="theLog"></div>
+            </section>
+            <section id="bSection" class="section">
+                <div class="header dashedHeader" id="pointsDiv"><marquee><div id="Points">Points: 0</div></marquee></div>
+                <div id="LeftArrow" class="Arrow button" ontouchend="b.loop.previous()"></div>  
+                <div class="" id="bButton" ontouchend="ClickB('handrawn', 1)"></div>
+                <div id="RightArrow" class="Arrow button" ontouchend="b.loop.next()"></div>
+                <div class="button" id="bUnlock" ontouchend="UnlockB('handrawn', 0)" title="HANDRAWN B">Unlock B For 0 Points</div>
+                <div class="button" id="btnDeposit" ontouchend="bank.deposit(get('points'))">Deposit</div>
+                <div class="header dashedHeader" id="interestDiv"><marquee><div id="Interest">Interest: 0</div></marquee></div>
+            </section>
+            
+            <section id="settingsSection" class="section">
+                <div class="section-header header">The Settings</div> 
+    
+                <div class="divider"></div>
+    
+                <div class="category-header header"><span>New!</span><span id="minimizeNew" class="minimize" ontouchend="Minimize('newDiv', 'minimizeNew')">-</span></div>
+    
+                <div class="settingGroup" id="newDiv">
+                    <div id="FirstPlaceDiv"><iframe id="FirstPlaceIframe" src="https://playbclick.com/pages/win/first.php" style=""></iframe></div>
+                    <div class="button" id="Create" ontouchend="web('https://playbclick.com/create')">Make Games</div>
+                    <div class="button" id="googlePlayBadge" ontouchend="window.open('https://play.google.com/store/apps/details?id=com.playbclick.bclick', '_top')"><br/><br /></div>
+                    <div class="fb-login-button button" id="fbLogin" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
+                </div>
+            
+              <div class="divider"></div>
+
+            <div class="category-header header"><span>General</span><span id="minimizeGeneral" class="minimize" ontouchend="Minimize('generalDiv', 'minimizeGeneral')">-</span></div>
+
+                <div class="settingGroup" id="generalDiv">
+                    <div class="button" ontouchend="ChangeUsername()" id="btnChangeUsername">Change Username</div>
+                    <div class="button" ontouchend="SeeWinners()">See Scores</div>
+                    <div class="divider"></div>
+                    <div class="button" ontouchend="data.reset.reset()">New Game</div>
+                </div>
+
+                <div class="divider"></div>
+    
+                <div id="achievementsGroup" class="category-header header"><span>Achievements</span><span id="minimizeAchievements" class="minimize" ontouchend="Minimize('AchievementsList', 'minimizeAchievements')">-</span></div>
+                    <div id="AchievementsList" style="margin-top: 5px"></div>
+                </div>
+            </section>
+            <div id="logText"></div>
+            <iframe id="winFrame" src=""></iframe><iframe id="statsFrame" src=""></iframe>
+        </main>
+    </body>
+    <script src="bclick.js"></script>
+</html>

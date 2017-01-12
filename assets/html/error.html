@@ -1,0 +1,34 @@
+<!DOCTYPE html><html>
+    <head>
+        <title>bClick - Page not found</title>
+        <style>
+            h1 {
+                text-align: center;
+                color: yellow;
+            }
+            button { width: 100px; margin-left: calc(50% - 50px); }
+            body, html {
+                background: #2a2a2a;
+                width: 100%;
+                height: 100%;
+                margin: 0px;
+                padding: 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <script>var points = 0;</script>
+        <h1 id="msg">bClick - Page not found!</h1>
+        <hr />
+        <h1 id="points">Points: 0</h1>
+        <button onclick="if (points >= 15) { window.location = 'https://playbclick.com'; } else { points++; document.getElementById('points').innerHTML = 'Points: ' + points; }">Click Here</button>
+    </body>
+    <script>
+        var msgs = ['What you looking at?!', 'This doesn\'t exist!', 'Page not found', 'This page is a wanna be!', 'This page was lost gone a long long time ago!', 'This page has passed away!', 'This page is off-duty!', 'This page has retired!'];
+        var text = document.getElementById('msg');
+        function change() {
+            text.innerHTML = msgs[Math.floor(Math.random() * msgs.length)];
+        }
+        setInterval(change, 5000);
+    </script>
+</html>

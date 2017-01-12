@@ -1,0 +1,132 @@
+<!DOCTYPE html><html>
+    <head>
+        <title>bClick</title>
+        <meta name="viewport" content="width = device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <link rel="shortcut icon" type="image/png" href="icon.png">
+        <link rel="stylesheet" type="text/css" href="bclick.css">
+
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="apple-touch-icon" href="icon.png">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+        <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+    </head>
+    <body id="body">
+        <section id="bSection" class="section">
+            <div class="section-header" id="bHeader"><strong>The B's</strong></div>
+            <div class="header" id="Points"><em>Points: 0</em></div>
+            <div class="button" id="bButton" ontouchend="ClickB('lowercase', 1)"></div>
+            <div class="button" id="bUnlock" ontouchend="UnlockB('lowercase', 0)">Unlock B For 0 Points</div>
+           <div class="divider"></div>
+           <div class="header" id="bUnlocked">Unlocked: False</div>
+           <div id="arrowGroup">
+            <div id="LeftArrow" class="Arrow button" ontouchend="b.loop.previous()"></div>
+            <div id="RightArrow" class="Arrow button" ontouchend="b.loop.next()"></div>
+           </div>
+        </section>
+        <section id="bankSection" class="section">
+            <div class="section-header" id="bankHeader"><strong>The Bank</strong></div>
+                <div id="Interest" class="header dashedHeader">Interest: 0</div>
+                <div id="Deposited" class="header dashedHeader">Deposited: 0</div>
+                <div class="divider"></div>
+                <div class="header" style="border: 1px black solid; background-color: #FFF; width: 100%;border-left-width: 0px; border-right-width: 0px"><span>Deposit</span><span id="minimizeDeposit" class="minimize" ontouchend="Minimize('depositDiv', 'minimizeDeposit')">-</span></div>
+                <div id="depositDiv">
+                    <div id="customDeposit">
+                        <input name="Deposit" id="Deposit" style="width: 45%; float: left; border-right-width: 1px;" placeholder="Type here and press Deposit" type="number" pattern="\d+"/>
+                        <div id="btnDeposit" class="button" style="width: 40%; float: right;" ontouchend="bank.deposit(document.getElementById('Deposit').value)">Deposit</div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="button" ontouchend="bank.deposit(get('points'))">Deposit All</div>
+                    <div class="button" ontouchend="bank.deposit(get('points') / 2)">Deposit Half</div>
+                    <div class="button" ontouchend="bank.deposit(get('points') / 4)">Deposit Fourth</div>
+                </div>
+                <div class="divider"></div>
+                <div class="header" style="border: 1px black solid; background-color: #FFF; width: 100%;border-left-width: 0px; border-right-width: 0px"><span>Withdraw</span><span id="minimizeWithdraw" class="minimize" ontouchend="Minimize('withdrawDiv', 'minimizeWithdraw')">-</span></div>
+                <div id="withdrawDiv">
+                    <div class="button" ontouchend="bank.withdraw(get('deposited'))">Withdraw All</div>
+                    <div class="button" ontouchend="bank.withdraw(get('deposited') / 2)">Withdraw Half</div>
+                    <div class="button" ontouchend="bank.withdraw(get('deposited') / 4)">Withdraw Fourth</div>
+                </div>
+        </section>
+        <section id="settingsSection" class="section">
+            <div class="section-header" id="settingsHeader"><strong>The Settings</strong></div> 
+
+            <!-- <div class="settingGroup">
+                <div class="button" ontouchend="web('https://playbclick.com/v/3/2/3/guide.pdf')">Open Guide</div>
+            </div> -->
+
+            <div class="divider"></div>
+
+            <div class="settingGroup"><div id="UsernameLabel">Username: </div><input name="UsernameInput" id="UsernameInput" value="undefined" /><br /><div class="button" ontouchend="ChangeUsername()" id="btnChangeUsername">Change</div></div>
+
+            <div class="divider"></div>
+
+        <div class="header" style="border: 1px black solid; background-color: #FFF; width: 100%;border-left-width: 0px; border-right-width: 0px"><span>Winning</span><span id="minimizeWin" class="minimize" ontouchend="Minimize('winDiv', 'minimizeWin')">-</span></div>
+
+            <div class="settingGroup" id="winDiv">
+                <div class="button" ontouchend="SubmitScore()">Submit Score</div>
+                <div class="button" ontouchend="SeeWinners()">See Winners</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="header" style="border: 1px black solid; background-color: #FFF; width: 100%;border-left-width: 0px; border-right-width: 0px"><span>New Game</span><span id="minimizeReset" class="minimize" ontouchend="Minimize('resetDiv', 'minimizeReset')">-</span></div>
+
+            <div class="settingGroup" id="resetDiv">
+                <div class="button" ontouchend="ConfirmSR()">Soft Reset</div>
+                <div class="button" ontouchend="ConfirmHR()">Hard Reset</div>
+            </div>
+
+            <div class="divider"></div>
+
+           <!--  <div class="settingGroup">
+              <div class="button" ontouchend="full('body');" id="btnFullscreen">Full Screen</div>
+            </div> -->
+
+          <!--   <div class="divider"></div> -->
+            
+            <div class="settingGroup">
+              <div class="button" ontouchend="settings.toggle.spin()" id="btnSpinAnim">Spinning B: ON</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div id="achievementsGroup" style="width: 100%">
+                <div class="header" style="border: 1px black solid; background-color: #FFF; width: 100%;border-left-width: 0px; border-right-width: 0px"><span>Achievements</span><span id="minimizeAchievements" class="minimize" ontouchend="Minimize('AchievementsList', 'minimizeAchievements')">-</span></div>
+                <div id="AchievementsList"></div>
+            </div>
+            
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- PlaybClickAds325 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9778270788893963"
+     data-ad-slot="2347758531"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </section>
+        <div id="message">
+            <h3 id="messageTitle">Message Title</h3>
+            <p id="messageText">Message Text</p>
+        </div>
+    </body>
+    <script src="bclick.js"></script>
+    <script>
+    //   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    //   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    //   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    //   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    //   ga('create', 'UA-50194959-3', 'auto');
+    //   ga('send', 'pageview');
+
+    </script>
+</html>

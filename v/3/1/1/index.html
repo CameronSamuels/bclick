@@ -1,0 +1,223 @@
+<!DOCTYPE html><html>
+    <head>
+        <title>bClick - v3-1.1</title>
+        <meta name="viewport" content="width = device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <link rel="shortcut icon" type="image/png" href="https://gaftop.com/bClick/assets/ico/icon.png">
+        <link rel="stylesheet" type="text/css" href="bclick.css">
+
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="apple-touch-icon" href="https://gaftop.com/bClick/assets/ico/icon.png">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+</head>
+  
+<body onload="Load()" style="width:100%;">
+    <div id="wrapper" style="display:none">
+<div id="Game" style="margin:0px 0px;padding-left:0px">
+
+<div style="background-color:#333;position:fixed;width:100%;display:block;margin:0px 0px;height:67px"><h2 id="Points" class="PointsText">Points: 0</h2></div>
+<main style="width:100%;">
+
+<div id="popup" class="popup popup-start" style="color:#FFF;">
+  <table border="0">
+        <tr>
+            <td>Name: </td>
+            <td id="PopupBName">Regular B</td>
+        </tr>
+        <tr>
+            <td>Cost: </td>
+            <td id="PopupCost">0 Points</td>
+            
+        </tr>
+        <tr>
+            <td>Worth: </td>
+            <td id="PopupWorth">10 Points</td>
+        </tr>
+        <tr>
+            <td>Unlock</td>
+            <td><div onclick='UnlockRegularB()' style="width:80%" id="UnlockButton" class="button">Purchase</div></td>
+        </tr>
+        <tr>
+            <td colspan="2"><div ontouchend="hidePopup('popup');" class="button">Done</div></td>
+        </tr>
+  </table>
+</div>
+
+<div id="LowercaseBDiv"  class="leftborder" style="background-color:White;margin-top:67px">
+<div id="LowercaseBImgDiv" class="left"><img src="https://playbclick.com/assets/b/325/lowercase.png" width="52" height="70" ontouchend="ClickB('LowercaseB', 1);" id="LowercaseBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Lowercase', 0, 1);" style="width:160px">See Details</div>
+<div><h3 id="LowercaseB">Not Unlocked</h3></div>
+</div></div>
+
+<div id="RegularBDiv"  class="leftborder" style="background-color:#BBB;">
+<div id="RegularBImgDiv" class="left"><img src="https://playbclick.com/assets/b/325/regular.png" width="52" height="70" ontouchend="ClickB('RegularB', 10)" id="RegularBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Regular', 50, 10);" style="width:160px">See Details</div>
+<div><h3 id="RegularB">Not Unlocked</h3></div>
+</div></div>
+
+<div id="SawBDiv" class="leftborder"  style="background-color:red;">
+<div id="SawBImgDiv" class="left"><img src="https://playbclick.com/assets/b/325/saw.png" width="52" height="75" ontouchend="ClickB('SawB', 100)" id="SawBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Saw', 300, 100);" style="width:160px">See Details</div>
+<div><h3 id="SawB">Not Unlocked</h3></div>
+</div></div>
+
+<div id="SpikyBDiv" class="leftborder"  style="background-color:#FF0080;">
+<div id="SpikyBImgDiv" class="left"><img src="https://playbclick.com/assets/b/325/spiky.png" width="52" height="75" ontouchend="ClickB('SpikyB', 500)" id="SpikyBImg"></div>
+<div class="left">
+<div><div class="button" ontouchend="UpdatePopup('Spiky', 5000, 500);" style="width:160px">See Details</div></div>
+<div><h3 id="SpikyB">Not Unlocked</h3></div>
+</div></div>
+
+<div id="ElectricBDiv" class="leftborder"  style="background-color:orange;">
+<div id="ElectricBImgDiv" class="left"><img src="https://playbclick.com/assets/b/325/electric.png" width="52" height="75" ontouchend="ClickB('ElectricB', 1000)" id="ElectricBImg"></div>
+<div class="left">
+<div><div class="button" ontouchend="UpdatePopup('Electric', 10000, 1000);" style="width:160px">See Details</div></div>
+<div><h3 id="ElectricB">Not Unlocked</h3></div>
+</div></div>
+
+<div id="ThinBDiv" class="leftborder"  style="background-color:yellow">
+<div id="ThinBImgDiv" class="left"><img src="https://playbclick.com/assets/b/325/thin.png" width="52" height="75" ontouchend="ClickB('ThinB', 5000)" id="ThinBImg"></div>
+<div class="left">
+<div><div class="button" ontouchend="UpdatePopup('Thin', 25000, 5000);" style="width:160px">See Details</div></div>
+<div><h3 id="ThinB">Not Unlocked</h3></div>
+</div></div>
+
+<div id="CurvedBDiv" class="leftborder" style="background-color:#0D0">
+ <div id="CurvedBImgDiv" class="left"><img src="https://playbclick.com/assets/b/325/curved.png" width="52" height="75" ontouchend="ClickB('CurvedB', 10000)" id="CurvedBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Curved', 100000, 10000);" style="width:160px">See Details</div>
+<div><h3 id="CurvedB">Not Unlocked</h3></div>
+</div></div>
+
+<div id="SharkBDiv" class="leftborder"  style="background-color:green">
+<div id="SharkBImgDiv" class="left"><img src="https://playbclick.com/assets/b/325/shark.png" width="52" height="75" ontouchend="ClickB('SharkB', 25000)" id="SharkBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Shark', 500000, 25000);" style="width:160px">See Details</div>
+<div><h3 id="SharkB">Not Unlocked</h3></div>
+</div></div>
+
+<div id="FancyBDiv" class="leftborder" style="background-color:aqua">
+<div id="FancyBImgDiv" class="left"><img src="https://playbclick.com/assets/b/325/fancy.png" width="52" height="75" ontouchend="ClickB('FancyB', 50000)" id="FancyBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Fancy', 1000000, 50000);" style="width:160px">See Details</div class="button" >
+<h3 id="FancyB">Not Unlocked</h3>
+</div></div>
+
+<div id="LightningBDiv" class="leftborder" style="background:navy">
+<div id="LightningBImgDiv" class="left"><img src="https://playbclick.com/assets/b/325/lightning.png" width="52" height="75" ontouchend="ClickB('LightningB', 100000)" id="LightningBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Lightning', 5000000, 100000);" style="width:160px">See Details</div>
+<h3 id="LightningB" style="color:white">Not Unlocked</h3>
+</div></div>
+
+<div id="AwesomeBDiv" class="leftborder" style="background-color:#C0C">
+<div id="AwesomeBImgDiv" class="left"><img src="https://playbclick.com/assets/b/325/awesome.png" width="52" height="75" ontouchend="ClickB('AwesomeB', 1000000)" id="AwesomeBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Awesome', 100000000, 1000000);" style="width:160px">See Details</div>
+<h3 id="AwesomeB">Not Unlocked</h3>
+</div></div>
+
+<div id="GoldenBDiv" class="leftborder" style="background-color:#606">
+<div id="GoldenBImgDiv" class="left"><img src="https://playbclick.com/assets/b/325/golden.png" width="52" height="75" ontouchend="ClickB('GoldenB', 10000000)" id="GoldenBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Golden', 10000000, 10000000);" style="width:160px">See Details</div>
+<h3 id="GoldenB">Not Unlocked</h3>
+</div></div>
+
+<div id="HandrawnBDiv" class="leftborder" style="background-color:black;">
+<div id="HandrawnBImgDiv" class="left"><img src="https://playbclick.com/assets/b/325/handrawn.png" width="52" height="75" ontouchend="ClickB('HandrawnB', 1000000000)" id="HandrawnBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Handrawn', 1000000000, 1000000000);" style="width:160px">See Details</div>
+<h3 id="HandrawnB" style="color:white">Not Unlocked</h3>
+</div></div>
+
+<div id="PatternBDiv" class="leftborder">
+<div id="PatternBImgDiv" class="left"><img src="https://playbclick.com/assets/b/325/RegularB.jpg" width="52" height="75" ontouchend="ClickB('PatternB', 1000000000000)" id="PatternBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Pattern', 1000000000000, 1000000000000);" style="width:160px">See Details</div>
+<h3 id="PatternB" style="color:#000;background-color:#FFF;display:inline-block">Not Unlocked</h3>
+</div></div>
+
+<div id="GradientBDiv" class="leftborder">
+<div id="GradientBImgDiv" class="left"><img src="https://playbclick.com/assets/b/325/regular.png" width="52" height="75" ontouchend="ClickB('GradientB', 1000000000000000)" id="GradientBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Gradient', 1000000000000000, 1000000000000000);" style="width:160px">See Details</div>
+<h3 id="GradientB">Not Unlocked</h3>
+</div></div>
+
+<div id="DiscoBDiv" class="leftborder">
+<div id="DiscoBImgDiv" class="left"><img src="https://playbclick.com/assets/b/325/regular.png" width="52" height="75" ontouchend="ClickB('DiscoB', 1000000000000000000)" id="DiscoBImg"></div>
+<div class="left">
+<div class="button" ontouchend="UpdatePopup('Disco', 1000000000000000000, 1000000000000000000);" style="width:160px">See Details</div>
+<h3 id="DiscoB">Not Unlocked</h3>
+</div></div>
+
+<div class="clear"></div>
+
+<div id="CandyCaneBDiv" class="leftborder" style="background-image:url('https://playbclick.com/assets/img/bg/red-green.png');background-repeat:no-repeat;background-size:100%;margin-top:75px">
+<div id="CandyCaneBImgDiv" class="left"><img src="https://gaftop.com/bClick/assets/b/holiday/candycane.png" width="52" height="75" ontouchend="ClickB('CandyCaneB', InterestVar)" id="CandyCaneBImg"></div>
+<div class="left">
+    <h2 id="CandyCaneB">Not Unlocked</h2>
+</div></div>
+
+<div id="TurkeyBDiv" class="leftborder" style="background-color:#630;">
+<div id="TurkeyBImgDiv" class="left"><img src="https://playbclick.com/assets/b/holiday/turkey.png" width="52" height="75" ontouchend="ClickB('TurkeyB', InterestVar)" id="TurkeyBImg"></div>
+<div class="left">
+    <h2 id="TurkeyB">Not Unlocked</h2>
+</div></div>
+
+<div id="GhostBDiv" class="leftborder" style="background-color:purple;">
+<div id="GhostBImgDiv" class="left"><img src="https://playbclick.com/assets/b/holiday/GhostB.png" width="52" height="75" ontouchend="DrawGhostB()" id="GhostBImg"></div>
+<div class="left">
+<h2 id="GhostB">Not Unlocked</h2>
+</div></div>
+
+</main>
+</div>
+
+<div class="clear"></div>
+
+<div id="BankDiv" style="margin-top:10px">
+    <table border="0" style="width:100%"> 
+        <tr><td><div id="InterestValueDiv" style="margin: 4px"><h3 id="Interest">Interest: 0</h3></div></td></tr>
+            
+        <tr><td>
+            <div id="DepositDiv" style="width:100%;line-height:24px;height:100%">
+                <form name="bank" style="height:100%"><input type="text" name="Deposit" value="0" style="width:30%;border:1px #000 solid;border-radius:0px;height:15px;float:left;padding:2px"></form>
+               <div class="bank-button button" id="BankDepositButton" ontouchend="Deposit()">Deposit</div>
+               <div id="BankDepositAllButton" class="bank-button button" ontouchend="DepositAll()">Deposit All</div>
+            </div>
+        </td></tr>
+    </table>
+</div>
+
+<div class="clear"></div>
+  
+<div id="Footer" style="width:calc(100% - 20px);padding:10px">
+    <div ontouchend="YouWin()" class="footer-button button" id="WinButton">Submit Score</div>
+    <div class="clear"></div>
+    <div ontouchend="openURL('https://gaftop.com/bClick/play/win/leaderboards.php')" class="footer-button button" id="LeaderboardsButton">See Winners</div>
+    <div class="clear"></div>
+    <div ontouchend="ClickNewGame()" class="footer-button button" id="NewGameButton">Start Over</div>
+</div>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- bClickAds -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9778270788893963"
+     data-ad-slot="3190648139"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+</body>
+    <script src="bclick.js"></script>
+  </html>

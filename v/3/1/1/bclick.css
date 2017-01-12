@@ -1,0 +1,191 @@
+.button {
+    border: 1px black solid;
+    background-color: #DDD;
+    color: black;
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: middle;
+    width: 75%;
+    height: 20px;
+    line-height: 20px;
+}
+
+            #DiscoBDiv {
+                background-color: white;
+                -webkit-animation-name: DiscoBAnimation;
+                -webkit-animation-duration: 4s;
+                animation-name: DiscoBAnimation;
+                animation-duration: 4s;
+                animation-iteration-count: infinite;
+            }
+
+            @-webkit-keyframes DiscoBAnimation {
+                0%   {background-color: red;}
+                10%  {background-color: yellow;}            
+                30%  {background-color: green;}
+                55%  {background-color: blue;}
+                85%  {background-color: yellow;}
+                100% {background-color: red;}
+            }
+            
+            @keyframes DiscoBAnimation {
+                0%   {background-color: red;}
+                20%  {background-color: yellow;}        
+                40%  {background-color: green;}
+                60%  {background-color: blue;}
+                80%  {background-color: white;}
+                100% {background-color: red;}
+            }
+            
+            #GradientBDiv {
+                  background: -webkit-linear-gradient(left, red , blue);
+                  background: -o-linear-gradient(right, red, blue);
+                  background: -moz-linear-gradient(right, red, blue);
+                  background: linear-gradient(to right, red , blue);
+            }
+
+            body {
+                margin: 0px 0px;
+                font-family: 'Open Sans', sans-serif;
+            }
+            
+            .PointsText {
+                text-shadow: 1px 1px #00F;
+                text-decoration: underline;
+                
+            }
+
+            .left {
+                float: left;
+                margin: 4px 4px;
+            }
+            
+            .leftborder {
+                float: left;
+                margin: 0px 0px;
+            }
+
+            @media screen and (min-width: 400px) {
+                .leftborder {
+                    width: 50%;
+                }
+                #RegularBDiv {
+                    margin-top: 67px;
+                }
+                
+                #TurkeyBDiv {
+                    margin-top: 75px;
+                }
+            }
+        
+            
+            @media screen and (max-width: 399px) {
+                .leftborder {
+                    width: 100%;
+                }
+            }
+            
+            .clear {
+                clear: both;
+            }
+            
+            #BankDiv {
+                background-color: #666;
+                text-align: center;
+                
+                padding: 20px;
+                
+                width: calc(100% - 40px);
+            }
+            
+            .bank-button {
+                margin-left: 4% !important;
+                
+                float: left !important;
+                
+                height:15px !important;
+                width:25% !important;
+                
+                padding: 2px !important;
+                
+                line-height: 15px !important;
+                
+                font-size: 80% !important;
+            }
+            
+            
+            .footer-button {
+                width: calc(100% - 20px) !important;
+                height: 30px !important;
+                line-height: 30px !important;
+                
+                font-size: 100% !important;
+            }
+   
+            #PatternBDiv {
+                background: url("https://playbclick.com/assets/img/bg/pattern.jpg");
+            }
+          .popup {
+            width:80%;
+            height:80%;
+            position:fixed;
+            top:10%;
+            background-color: #444;
+            border: 1px white solid;
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+            -webkit-animation-fill-mode: forwards;
+          }
+          
+          .popup table tr, .popup table td {
+              border: 1px white solid;
+          }
+          
+          .popup table td {
+              width: 50%;
+              text-align: center;
+          }
+          
+          .popup table {
+              margin: 0 auto;
+              width: 95%;
+              height: 100%;
+              padding: 7.5px;
+          }
+          
+            @-webkit-keyframes slide {
+                100% { left: 10%; }
+            }
+            
+            @keyframes slide {
+                100% { left: 10%; }
+            }
+            
+            .popup-start {
+                display: none;
+                left: -82%;
+            }
+            
+            .slide {
+                display: block;
+                left: -82%;
+                -webkit-animation-name: slide;
+                animation-name: slide;
+            }
+            
+            @-webkit-keyframes slide-2 {
+                100% { left: -82%; }
+            }
+            
+            @keyframes slide-2 {
+                100% { left: -82%; }
+            }
+            
+            .slide-2 {
+                display: block;
+                /*left: 10%;*/
+                -webkit-animation-name: slide-2;
+                animation-name: slide-2;
+
+            }

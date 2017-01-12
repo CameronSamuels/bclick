@@ -1,0 +1,109 @@
+<!DOCTYPE html><html>
+    <head>
+        <title>bClick</title>
+        <meta name="viewport" content="width = device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <link rel="shortcut icon" type="image/png" href="icon.png">
+        <link rel="stylesheet" type="text/css" href="bclick.css">
+
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="apple-touch-icon" href="icon.png">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+
+        <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+    </head>
+    <body id="body">
+        <section id="bSection" class="section">
+            <div class="section-header" id="bHeader"><strong>The B's</strong></div>
+            <div class="header" id="Points"><em>Points: 0</em></div>
+            <div class="button" id="bButton" ontouchend="ClickB('Lowercase', 1);" ontouchstart="bColorChange('start')" onmouseover="bColorChange('hover')" onmouseleave="bColorChange('end')"></div>
+            <div class="button" id="bUnlock" ontouchend="UnlockB('Lowercase', 0)">Unlock B For 0 Points</div>
+            <!-- <div class="button" id="bUpgrade" ontouchend="UpgradeB('Lowercase')">Upgrade B For 10 Points</div> -->
+           <div class="divider"></div>
+           <div class="header" id="bUnlocked">Unlocked: False</div>
+           <div id="arrowGroup">
+            <div id="LeftArrow" class="Arrow button" ontouchend="PreviousB()"></div>
+            <div id="RightArrow" class="Arrow button" ontouchend="NextB()"></div>
+           </div>
+        </section>
+        <section id="bankSection" class="section">
+            <div class="section-header" id="bankHeader"><strong>The Bank</strong></div>
+            <form name="bank" id="bank">
+                <div id="Interest" class="header dashedHeader">Interest: 0</div>
+                <div id="Deposited" class="header dashedHeader">Deposited: 0</div>
+                <div class="divider"></div>
+                <div class="header" style="border: 1px black solid; background-color: #FFF; width: 100%;border-left-width: 0px; border-right-width: 0px"><span>Deposit</span><span id="minimizeDeposit" class="minimize" ontouchend="Minimize('depositDiv', 'minimizeDeposit')">-</span></div>
+                <div id="depositDiv">
+                    <div id="customDeposit">
+                        <input name="Deposit" id="Deposit" style="width: 45%; float: left; border-right-width: 1px;" placeholder="Type here and press Deposit" type="number" pattern="\d+"/>
+                        <div class="button" style="width: 40%; float: right;" ontouchend="DepositCustom()">Deposit</div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="button" ontouchend="DepositAll()">Deposit All</div>
+                    <div class="button" ontouchend="DepositHalf()">Deposit Half</div>
+                    <div class="button" ontouchend="DepositFourth()">Deposit Fourth</div>
+                </div>
+                <div class="divider"></div>
+                <div class="header" style="border: 1px black solid; background-color: #FFF; width: 100%;border-left-width: 0px; border-right-width: 0px"><span>Withdraw</span><span id="minimizeWithdraw" class="minimize" ontouchend="Minimize('withdrawDiv', 'minimizeWithdraw')">-</span></div>
+                <div id="withdrawDiv">
+                    <div class="button" ontouchend="WithdrawAll()">Withdraw All</div>
+                    <div class="button" ontouchend="WithdrawHalf()">Withdraw Half</div>
+                    <div class="button" ontouchend="WithdrawFourth()">Withdraw Fourth</div>
+                </div>
+            </form>
+        </section>
+        <section id="settingsSection" class="section">
+            <div class="section-header" id="settingsHeader"><strong>The Settings</strong></div> 
+
+            <div class="settingGroup">
+                <div class="button" ontouchend="openURL('https://playbclick.com/v/3/2/3/guide.pdf')">Open Guide</div>
+                <!--<div class="button" ontouchend="openURL('https://playbclick.com/')">Open Version Selector</div>-->
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="settingGroup"><div id="UsernameLabel">Username: </div><input name="UsernameInput" id="UsernameInput" value="undefined" /><br /><div class="button" ontouchend="ChangeUsername()">Change</div></div>
+
+            <div class="divider"></div>
+
+            <div class="settingGroup">
+                <div class="button" ontouchend="SubmitScore()">Submit Score</div>
+                <div class="button" ontouchend="SeeWinners()">See Winners</div>
+            </div>
+
+            <div class="divider"></div>
+
+           <!--  <div class="header"><em><strong>Game Saving</em></strong></div> -->
+
+            <div class="settingGroup">
+                <div class="button" ontouchend="ConfirmSR()">Soft Reset</div>
+                <div class="button" ontouchend="ConfirmHR()">Hard Reset</div>
+            </div>
+
+            <div class="divider"></div>
+            
+            <div class="settingGroup">
+              <div class="button" ontouchend="ToggleSpinAnim()" id="btnSpinAnim">Spinning B: ON</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div id="achievementsGroup" style="width: 100%">
+                <div class="header" style="border: 1px black solid; background-color: #FFF; width: 100%;border-left-width: 0px; border-right-width: 0px"><span>Achievements</span><span id="minimizeAchievements" class="minimize" ontouchend="Minimize('AchievementsList', 'minimizeAchievements')">-</span></div>
+                <div id="AchievementsList">
+
+                </div>
+
+            </div>
+
+        </section>
+        <div id="message">
+            <h3 id="messageTitle">Message Title</h3>
+            <p id="messageText">Message Text</p>
+        </div>
+    </body>
+    <script src="bclick.js"></script>
+</html>

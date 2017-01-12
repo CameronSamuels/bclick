@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Day Night Games</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript">
+
+		function updateDisplayCount(elementName, increaseAmount){
+			// get the element that holds the current value
+			var totalSpan = document.getElementById(elementName);
+			// add 1 to the total count and update the display
+			totalSpan.innerHTML = parseInt(totalSpan.innerHTML) + increaseAmount;
+			return totalSpan.innerHTML;
+		}
+
+		function moveImage(imagename){
+			document.getElementById(imagename).style.margin = Math.random() * 100 + "px 0px 0px " + Math.random() * 100 + "px ";
+		}
+
+		function butterflyClick(){
+			updateDisplayCount("totalButterflyClicks", 1);
+			moveImage();
+		}
+
+		function startCatchingStars(){
+			// determine lucky number and set display
+			var luckyNumber = parseInt(document.getElementById("luckyNumber").value);
+			if (luckyNumber>0){
+			document.getElementById("starGameTitle").innerHTML = "You must catch " + luckyNumber + ((luckyNumber == 1) ? " star" : " stars") + " tonight...";
+
+			// hide setup controls
+			document.getElementById("starSetup").style.display = "none";
+
+			// display game controls
+			document.getElementById("starPlay").style.display = "block";
+			}
+			else
+				document.getElementById("starGameTitle").innerHTML = "Sorry. Must be greater than zero."
+		}
+
+		function starClick(){
+			var total = updateDisplayCount("totalStarClicks", 1);
+			var luckyNumber = parseInt(document.getElementById("luckyNumber").value);
+			//alert(total);
+			//alert(luckyNumber);
+			if (total == luckyNumber)
+			{
+				document.getElementById("night").style.backgroundColor = "blue";
+				document.getElementById("nightHeader").innerHTML = "Good Morning!";
+				document.getElementById("starGameTitle").innerHTML = "You have successfully caught " + luckyNumber + ((luckyNumber == 1) ? " star" : " stars") + ". The sun is now rising.";
+			}
+			else
+				moveImage("starimg");
+		}
+
+	</script>
+</head>
+<body>
+	<section id="day" class="day">
+		<div class="header">What a Beautiful Day!</div>
+		<div class="content">I like to chase butterflies.</div>
+		<div>Total Butterflies Caught: <span id="totalButterflyClicks">0</span></div>
+		<div id="butterflyNature">
+			<img id="butterflyimg" src="blue_butterfly.png" onclick="butterflyClick()">
+		</div>
+	</section>
+
+	<section id="night" class="night">
+		<div id="nightHeader" class="header">What a Clear Night!</div>
+		<!--<div class="content">I like to look at the stars.</div>-->
+		<br>
+		<div id="starSetup">What is your Lucky Number? 
+			<input type="number" id="luckyNumber" name="luckyNumber" min="1" max="50">
+			<button onclick="startCatchingStars()">Start Catching Stars</button>
+		</div>
+		<div id="starPlay" style="display: none">
+			<div id="starGameTitle"></div>
+			<div>Total Stars Caught: <span id="totalStarClicks">0</span></div>
+			<img id="starimg" src="star.png" onclick="starClick()">
+		</div>
+	</section>
+</body>
+</html>

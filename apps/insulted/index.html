@@ -1,0 +1,105 @@
+<!DOCTYPE html><html>
+	<head>
+		<title>Insulted?</title>
+		<style>
+			html, body {
+				width: 100%;
+				height: 100%;
+
+				margin: 0px;
+				padding: 0px;
+
+				text-align: center;
+				color: white;
+			}
+			header {
+				width: 100%;
+				height: 75px;
+				background: #3333FF;
+			}
+			main {
+				width: 100%;
+				height: calc(100% - 75px);
+
+				background: #0000FF;
+			}
+			h1, h2 {
+				margin: 0px;
+			}
+			section {
+				width: 100%;
+				height: 50%;
+				margin: 0px;
+			}
+			.answer {
+				height: 50px;
+				width: 90%;
+
+				background: #3333FF;
+				line-height: 50px;
+				font-size: 110%;
+
+				padding: 5px;
+				margin: 5px 5%;
+
+				border-radius: 3px;
+
+				transition: all 0.4s;
+			}
+			.answer:hover {
+				background: white;
+				color: #3333FF;
+				border-radius: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>Have you been insulted by Trump?</h1>
+			<h2 id="q"></h2>
+		</header>
+		<main>
+			<section id="videoDiv"></section>
+			<section id="answerDiv">
+				<div class="answer" onclick="game.answer(true)">Yes</div>
+				<div class="answer" onclick="game.answer(false)"">No</div>
+			</section>
+		</main>
+		<script>
+			function id(id) { return document.getElementById(id) }
+			var q;
+			var game = {
+				q : {},
+				create : function(text, answer, video) { this.q = text; this.a = answer; this.vid = video; },
+				answer : function(answer) {
+					if (answer == true && q.a == true) {
+						alert('Insulted!');
+					} else {
+						alert('Not Insulted!');
+					}
+					game.ask();
+				},
+				ask : function() {
+					q = game.q['_' + Math.floor(Math.random() * 13)];
+					id('q').innerHTML = "Q: " + q.q;
+
+				}
+			};
+
+			game.q._0 = new game.create('Are you a woman?', true, '');
+			game.q._1 = new game.create('Are you a muslum?', true, '');
+			game.q._2 = new game.create('Are you a jew?', true, '');
+			game.q._3 = new game.create('Are you a christian?', false, '');
+			game.q._4 = new game.create('Are you black?', true, '');
+			game.q._5 = new game.create('Are you asian?', true, '');
+			game.q._6 = new game.create('Are you from china?', true, '');
+			game.q._7 = new game.create('Are you male?', false, '');
+			game.q._8 = new game.create('Does your name start with A?', false, '');
+			game.q._9 = new game.create('Are you from germany?', false, '');
+			game.q._10 = new game.create('Are you mexican?', true, '');
+			game.q._11 = new game.create('Are you american?', false, '');
+			game.q._12 = new game.create('Are you blond hair blue eyed?', false, '');
+			game.ask();
+		</script>
+	</body>
+</html>

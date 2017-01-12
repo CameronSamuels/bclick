@@ -1,0 +1,137 @@
+<!--
+    Version 3.4.3 - Start 11/15/2016 3:57PM
+    
+    11/23/2016
+        8:52AM - Changed all high-res B's to 512x512px
+        9:37AM - Changed log text to oustide the main tag to not cover up other elements, Added caption text
+        9:37AM-9:47AM - Cleaned up CSS
+        9:50AM - Added CSS to the caption
+        9:57AM - Added caption function to show different captions each day
+        10:08AM - Changed B values and added onlydate variable when creating B's
+        ~10:10AM-~10:30AM - Turkey B now can only be on Thanksgiving
+        ~10:30AM - If B is unlocked and the B isn't yet released, you can still have it
+        10:52AM - Changed B values
+        6:53PM - Captions won't show on small screens
+        6:57PM - Added default caption
+    11/24/2016
+        ~ Changed turkey B to cost 3 points
+    11/25/2016
+        2:57PM-3:11PM - Fixed turkey B negative date in coming soon bug, and attempted to not reset turkey B
+        6:21PM, 6:24PM, 6:26PM - Added deposit sound
+        ~6:54PM - Added seasons object, added cyber monday
+        7:01 - Added Cyber Monday caption
+    11/27/2016
+        10:19AM, 12:24PM - Fixed not loading cyber monday deals
+    12/1/2016
+        3:08PM - Changed seasons code to a external file - Seasons will be logged in the file
+    12/2/2016
+        4:22PM - Changed loading to a circular loading instead of loading text
+    12/11/2016
+        1:21PM - Fixed auto refresh error with turkey B
+        1:38-1:40PM - Changed backgrounds of B's to make sense.
+    12/16/2016
+        3:43PM - Added tutorial link
+    12/30/2016
+        4:52PM - Styled user select
+        4:55PM - Changed loader to yellow insttead of blue
+    1/5/2017
+        3:16PM - Added QR Code
+        3:26PM - Added Chrome extension ask to add
+        3:39PM - Added Drag to bookmark bar
+-->
+
+<!DOCTYPE html><html>
+    <head>
+        <title>v3.4.3 - bClick</title>
+        <meta name="viewport" content="user-scalable=0, width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+        <link rel="shortcut icon" type="image/png" href="icon.png" />
+        <link rel="stylesheet" type="text/css" href="bclick.css" />
+        <script src="https://playbclick.com/assets/js/coam.js"></script>
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="apple-touch-icon" href="icon.png" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        
+        <meta name="description" content="bClick - The b-Click-ing Game! Unlock, Click, Deposit, Get first place!" />
+        <meta property="og:url" content="https://playbclick.com" />
+        <meta property="og:type" content="game" />
+        <meta property="og:title" content="bClick - The b-Click-ing Game!" />
+        <meta property="og:description" content="bClick - The b-Click-ing Game! Unlock, Click, Deposit, Get first place!" />
+        <meta property="og:image" content="https://playbclick.com/assets/ico/icon-200.png" />
+    </head>
+    <body id="body">
+        <main id="main">
+            <section id="logSection" class="section">
+                <div class="section-header header">The Log</div>
+                <div id="theLog"></div>
+            </section>
+            <section id="bSection" class="section">
+                <div class="header dashedHeader" id="pointsDiv"><marquee><div id="Points">Points: 0</div></marquee></div>
+                <div id="LeftArrow" class="arrow button" ontouchend="b.loop.previous()"></div> 
+                <div class="" id="bButton" ontouchend="ClickB()"></div>
+                <div id="RightArrow" class="arrow button" ontouchend="b.loop.next()"></div>
+                <div class="button" id="bUnlock" ontouchend="UnlockB()"></div>
+                <div id="bName"></div>
+                <div class="button" id="btnDeposit" ontouchend="bank.deposit()">Deposit</div>
+                <div class="header dashedHeader" id="interestDiv"><marquee><div id="Interest">Interest: 0</div></marquee></div>
+            </section>
+            <section id="settingsSection" class="section">
+                <div class="section-header header">The Settings</div> 
+                <div class="divider"></div>
+                <div class="category-header header"><span>General</span><span id="minimizeGeneral" class="minimize" ontouchend="Minimize('generalDiv', 'minimizeGeneral')">-</span></div>
+                <div class="settingGroup" id="generalDiv">
+                    <div class="button" ontouchend="data.reset.reset()">New Game</div>
+                    <div class="divider"></div>
+                    <div class="button" ontouchend="ChangeUsername()" id="btnChangeUsername">Change Username</div>
+                    <div class="button" ontouchend="SeeWinners()">See Scores</div>
+                    <div class="divider"></div>
+                    <div class="button" ontouchend="web('https://www.iorad.com/player/10537/47804/bClick-Tut')">View Tutorial</div>
+                </div>
+                <div class="divider"></div>
+                <div class="category-header header"><span>Social</span><span id="minimizeNew" class="minimize" ontouchend="Minimize('newDiv', 'minimizeNew')">-</span></div>
+                <div class="settingGroup" id="newDiv">
+                    <div class="iframeParent"><iframe id="FirstPlaceIframe" class="iframe" src=""></iframe></div>
+                    <div class="iframeParent"><iframe id="OnlinePlayersIframe" class="iframe" src=""></iframe></div>
+                </div>
+                <div class="divider"></div>
+                <div class="category-header header"><span>Coming Soon</span><span id="minimizeComingSoon" class="minimize" ontouchend="Minimize('comingSoonDiv', 'minimizeComingSoon')">-</span></div>
+                <div class="settingGroup" id="comingSoonDiv"><div id="comingSoonBList"></div></div>
+                <div class="divider"></div>
+                <div id="achievementsGroup" class="category-header header"><span>Achievements</span><span id="minimizeAchievements" class="minimize" ontouchend="Minimize('AchievementsList', 'minimizeAchievements')">-</span></div>
+                    <div id="AchievementsList" style="margin-top: 5px"></div>
+                </div>
+                <div class="divider"></div>
+                <div class="category-header header"><span>Download</span><span id="minimizedownload" class="minimize" ontouchend="Minimize('downloadDiv', 'minimizedownload')">-</span></div>
+                <div class="settingGroup" id="downloadDiv">
+                    <div>
+                        <font size="1" style="text-align: center">Add the page to your home<br />screen to use as an app!</font>
+                        <img src="https://playbclick.com/assets/img/qr.png" width="100" height="100" style="margin: 15px calc(50% - 50px)" title="Get bClick on your mobile device!" />
+                    </div>
+                    <div>
+                        <font size="1" style="text-align: center">Drag this bookmark<br />to your bookmarks bar!</font>
+                        <a href="https://playbclick.com" style="border: 2px black solid;border-radius: 25px;height: 20px;padding:2.5px; color:yellow;background:rgb(100, 100, 100); margin:calc(50% - 53.5px);width:50px !important;">bClick</a>
+                    </div>
+                    <div class="button" id="googlePlayBadge" ontouchend="window.open('https://play.google.com/store/apps/details?id=com.playbclick.bclick', '_top')"><br/><br /></div>
+                    <div class="button" id="chromeStoreBadge" ontouchend="window.open('https://chrome.google.com/webstore/detail/bclick/fccplfmeljdiinmnjbemkgaganpbkghf', '_top')"><br/><br /></div>
+                </div>
+                <div class="divider"></div>
+                <div class="category-header header"><span>Information</span></div>
+                <div class="settingGroup" id="info">
+                    <div>Version 3.4.3</div>
+                    <div class="divider"></div>
+                    <div>Made by<br />&#9733<span class="flicker"><a href="https://playbclick.com/cameron">Cameron Samuels</a></span>&#9733
+                    <div class="divider"></div>With
+                    <a href="https://playbclick.com/team">The B Team</a></div>
+                    <div class="divider"></div>
+                    <div>Copyright &copy<br />2013-<script>var d = new Date(); document.write(d.getFullYear());</script></div>
+                </div>
+            </section>
+            <iframe id="winFrame" src=""></iframe><iframe id="statsFrame" src=""></iframe>
+        </main>
+        <div id="logText" class="flicker"></div>
+        <div id="captionText">Thanks for playing bClick!!! Check out <a href="https://playbclick.com/apps" target="_top">more apps</a></div>
+    </body>
+    <script src="bclick.js"></script>
+    <script src="https://playbclick.com/assets/js/seasons.js"></script>
+    <script>data.load()</script>
+</html>
