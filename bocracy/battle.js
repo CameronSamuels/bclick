@@ -24,7 +24,7 @@
 			dino : ['carnotaurus'],
 			fantasy : ['dovahkinn', 'mage'],
 			horror : ['killer'],
-			aonarchy : ['']
+			aonarchy : ['bentacrabb-1.0', 'b-shuttle', 'f-87-standard-artillery-cannon', 'd-15-heavy-artillery-cannon', 'b-s-94-walking-sharkanator']
 		};
 		if (window.location.hash != '') names.current = window.location.hash.toString().replace('#', '');
 		var game = {
