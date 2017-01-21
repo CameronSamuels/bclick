@@ -106,4 +106,6 @@
 			game.refresh.all();
 		}
 
+		window.addEventListener("orientationchange", function() { location.reload(); }, false);
+
 		load();
