@@ -40,10 +40,7 @@
 				background: #3F51B5;
 			}
 			div:not(#title) {
-				width: 100px;
 				height: 100px;
-				margin: 12.5px;
-				padding: 12.5px;
 				background: #2E40A4;
 				line-height: 100px;
 				vertical-align: middle;
@@ -53,6 +50,9 @@
 				float: left;
 				color: white;
 				text-decoration: none;
+				width: 40%;
+				margin: 2.5%;
+				padding: 2.5%;
 			}
 			a:visited {
 				color: white;
@@ -71,5 +71,14 @@
 		<a href="battle.html#fantasy"><div>Fantasy</div></a>
 		<a href="battle.html#horror"><div>Horror</div></a>
 		<audio loop autoplay><source src="theme.wav" type="audio/wav"></audio>
+		<script>
+			function id(id) { return document.getElementById(id) }
+			for(var i=0;i<document.getElementsByTagName("a").length;i++) {
+			    a[i].onclick=function() {
+			        window.location=this.getAttribute("href");
+			        return false;
+			    }
+			}
+		</script>
 	</body>
 </html>
