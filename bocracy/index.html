@@ -1,11 +1,14 @@
 <!DOCTYPE html><html>
 	<head>
 		<title>bOcracy</title>
-		<meta name="viewport" content="user-scalable=0, width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
 	  	<link rel="shortcut icon" type="image/png" href="icon.png">
 	  	<meta name="apple-mobile-web-app-capable" content="yes">
 	  	<link rel="apple-touch-icon" href="icon.png">
 	  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	  	<link rel="stylesheet" type="text/css" href="index.css">
+
 	  	<meta property="og:url"                content="https://playbclick.com/bocracy" />
         <meta property="og:type"               content="game" />
         <meta property="og:title"              content="bOcracy - The Democracy and Communist b-Fight-ing game!" />
@@ -14,52 +17,6 @@
         <meta property="og:image:width"        content="783" />
         <meta property="og:image:height"       content="783" />
 	    <meta name="description"               content="bOcracy - The Democracy and Communist b-Fight-ing game! Attack, Heal, Conquer, Win!" />
-
-		<style>
-			@import 'https://fonts.googleapis.com/css?family=Syncopate';
-			body, html {
-				width: 100%;
-				height: 100%;
-
-				margin: 0px;
-
-				background: #3F51B5;
-
-				cursor: url(cur.png), default;
-				text-transform: capitalize;
-				text-align: center;
-				font-family: 'Syncopate', sans-serif;
-			}
-			header {
-				width: 100%;
-				height: 25px;
-
-				margin: 20px;
-
-				line-height: 25px;
-				background: #3F51B5;
-			}
-			div:not(#title) {
-				height: 100px;
-				background: #2E40A4;
-				line-height: 100px;
-				vertical-align: middle;
-				text-align: center;
-			}
-			a {
-				float: left;
-				color: white;
-				text-decoration: none;
-				width: 40%;
-				margin: 2.5%;
-				padding: 2.5%;
-			}
-			a:visited {
-				color: white;
-			}
-			.clear { clear: both; }
-			#title { font-size: 30px; }
-		</style>
 	</head>
 	<body id="body">
 		<header id="header"><div id="title"><font size="10">bOcracy</font></div></header>
@@ -71,14 +28,6 @@
 		<a href="battle.html#fantasy"><div>Fantasy</div></a>
 		<a href="battle.html#horror"><div>Horror</div></a>
 		<audio loop autoplay><source src="theme.wav" type="audio/wav"></audio>
-		<script>
-			function id(id) { return document.getElementById(id) }
-			for(var i=0;i<document.getElementsByTagName("a").length;i++) {
-			    a[i].onclick=function() {
-			        window.location=this.getAttribute("href");
-			        return false;
-			    }
-			}
-		</script>
+		<script src="index.js"></script>
 	</body>
 </html>

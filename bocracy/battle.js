@@ -19,7 +19,7 @@
 			speed: 0
 		}, names = {
 			current : 'original',
-			original : ['saw', 'spiky', 'electric', 'shark', 'ghost', 'dragonball', 'giant', 'spear', 'super'],
+			original : ['saw', 'spiky', 'electric', 'shark', 'ghost', 'dragonball', 'giant', 'spear', 'superhero'],
 			bocracy : ['knight', 'archer', 'barbed', 'flower', 'muscle', 'trump'],
 			dino : ['carnotaurus'],
 			fantasy : ['dovahkinn', 'mage'],
