@@ -13,6 +13,8 @@
 				font-family: 'Syncopate', sans-serif;
 			}
 			.clear { clear: both; }
+			red { color: #F00; }
+			green { color: #64DD17; }
 
 			@media screen and (min-height: 351px), screen and (min-width: 620px) {
 				header {
@@ -27,7 +29,7 @@
 					width: 200px !important;
 					margin-left: calc(50% - 100px) !important;
 				}
-				#backButton {width: 30px !important; margin-top: 10px !important;}
+				#backButton, #refreshButton {width: 30px !important; margin-top: 10px !important;}
 				#title { font-size: 30px !important; margin-left: calc(50% - 120px) !important;}
 			}
 
@@ -40,6 +42,7 @@
 				}
 			}
 			#portrait { display: none; }
+			#homescreenTip { display: none; }
 
 			header {
 				width: 100%;
@@ -86,7 +89,6 @@
 
 			#overlay {
 				display: none;
-				font-size: 400%;
 				background: #FFFFFF;
 				opacity: 0.5;
 				width: 100%;
@@ -97,8 +99,12 @@
 			}
 			#overlay div {
 				top: calc(50% - 80px);
+				font-size: 400%;
 				width: 100%;
 				position: absolute;
+			}
+			#overlay p {
+				font-size: 20px;
 			}
 
 			#sword {

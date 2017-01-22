@@ -1,11 +1,11 @@
 <!DOCTYPE html><html>
 	<head>
 		<title>b-Ocracy</title>
-	  	<link rel="shortcut icon" type="image/png" href="icon.png">
+	  	<link rel="shortcut icon" type="image/png" href="icon-battle.png">
 	  	<link rel="stylesheet" type="text/css" href="battle.css" />
 
 	  	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
-	  	<link rel="apple-touch-icon" href="icon.png">
+	  	<link rel="apple-touch-icon" href="icon-battle.png">
 	  	<meta name="apple-mobile-web-app-capable" content="yes">
 	  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	</head>
@@ -27,10 +27,17 @@
 			<div id="aHealth"><div id="aHealthBar"></div></div>
 		</section>
 		<div class="clear"></div>
-		<div id="overlay"><div id="overlayText"></div></div>
+		<div id="overlay" ontouchend="location.reload()"><div id="overlayText"></div><p>(Click anywhere to restart)</p></div>
 		<div id="sword"></div>
-		<div id="portrait"><h3>Click the right image to attack. Click the left one to heal. Drain all the opponents health before your's is drained.</h3><h4 style="color:red">You need to change your device's orientation to landscape!</h4></div>
-		<audio loop autoplay><source src="sound.mp3" type="audio/mp3"></audio>
+		<div id="portrait">
+			<h3>Click the right image to attack. Click the left one to heal. Drain all the opponents health before your's is drained.</h3>
+			<h4 id="homescreenTip"><green>Tip: </green>Adding this page to your homescreen enables better compatibility and quick access to this battle category.</h4>
+			<h4><red>Change your device's orientation to landscape to begin!</red></h4>
+			<!-- <div>
+				<span style="font-size: 1.17em;color: green">Tips</span><br />
+				<span style="font-size: 1.12em"></span>
+			</div> -->
+		<audio id="audio" loop autoplay><source id="sound" src="sound.wav" type="audio/wav"></audio>
 	</body>
 	<script src="battle.js"></script>
 </html>

@@ -49,7 +49,7 @@
 				id('overlayText').innerHTML = 'WINNER: ' + side + '!!!';
 				id('overlay').style.display = "block";
 				game.on = 'false';
-				setTimeout('location.reload()', 2000);
+				if (side == 'a') { id('sound').src = "loss.wav"; id('audio').load(); id('audio').play(); }
 			},
 			attack : function(atk) {
 				if (game.on == 'true') {
@@ -97,6 +97,9 @@
 			a.speed = Math.max(Math.random() * 1000, 450);
 
 			b.name = names[names.current][Math.floor(Math.random() * names[names.current].length)];
+			while (b.name == a.name) {
+				b.name = names[names.current][Math.floor(Math.random() * names[names.current].length)];
+			}
 			b.health = Math.max(Math.random() * 2000, 800);
 			b.orig_health = b.health;
 			b.attack = Math.max(Math.random() * 10, 7);
@@ -107,5 +110,6 @@
 		}
 
 		window.addEventListener("orientationchange", function() { location.reload(); }, false);
+		if (isMobile.any()) id('homescreenTip').style.display = 'block';
 
 		load();
