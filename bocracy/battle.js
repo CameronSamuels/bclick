@@ -21,10 +21,13 @@
 			current : 'original',
 			original : ['saw', 'spiky', 'electric', 'shark', 'ghost', 'dragonball', 'giant', 'spear', 'superhero'],
 			bocracy : ['knight', 'archer', 'barbed', 'flower', 'muscle', 'trump'],
-			dino : ['carnotaurus'],
-			fantasy : ['dovahkinn', 'mage'],
-			horror : ['killer'],
-			aonarchy : ['bentacrabb-1.0', 'b-shuttle', 'f-87-standard-artillery-cannon', 'd-15-heavy-artillery-cannon', 'b-s-94-walking-sharkanator']
+			dino : ['carnotaurus', 'shark'],
+			fantasy : ['dovahkinn', 'mage', 'superhero', 'giant', 'dragonball', 'ghost'],
+			horror : ['killer', 'carnotaurus', 'trump', 'ghost', 'shark'],
+			aonarchy : ['bentacrabb', 'b-shuttle', 'f87-cannon', 'd15-cannon', 'sharkanator'],
+			weaklings : ['regular', 'lowercase', 'handrawn', 'fancy', 'curved', 'thin'],
+			christmas : ['santa', 'candycane'],
+			team : ['cameron', 'faith', 'ethan', 'alwin', 'michael', 'srisha', 'cooper', 'jessica', 'vishwam']
 		};
 		if (window.location.hash != '') names.current = window.location.hash.toString().replace('#', '');
 		var game = {
@@ -57,13 +60,18 @@
 						a.health -= b.attack;
 						a.health = Math.max(0, a.health);
 						a.health = Math.min(a.orig_health, a.health);
-						id('sword').style.display = "block";
-						id('sword').setAttribute('class', 'sword');
-						setTimeout("id('sword').style.display = 'none';id('sword').setAttribute('class', '');", 100);
+						id('bSword').style.display = "block";
+						id('bSword').style.WebkitAnimationName = "bSword";
+						id('bSword').style.animationName = "bSword";
+						setTimeout("id('bSword').style.display = 'none';id('bSword').style.WebkitAnimationName = '';id('bSword').style.animationName = '';", 100);
 					} else if (atk == 'a') {
 						b.health -= a.attack;
 						b.health = Math.max(0, b.health);
 						b.health = Math.min(b.orig_health, b.health);
+						id('aSword').style.display = "block";
+						id('aSword').style.WebkitAnimationName = "aSword";
+						id('aSword').style.animationName = "aSword";
+						setTimeout("id('aSword').style.display = 'none';id('aSword').style.WebkitAnimationName = '';id('aSword').style.animationName = '';", 100);
 					}
 					if (b.health == 0 || a.health == 0) {
 						game.win(atk);
@@ -110,6 +118,7 @@
 		}
 
 		window.addEventListener("orientationchange", function() { location.reload(); }, false);
-		if (isMobile.any()) id('homescreenTip').style.display = 'block';
+		if (!isMobile.any()) id('homescreenTip').style.display = 'none';
+		if (window.navigator.standalone == true) id('homescreenTip').style.display = 'none';
 
 		load();

@@ -7,3 +7,4 @@ var isMobile = {
 };
 
 if (!isMobile.any()) id('homescreenTip').style.display = 'none';
+if (window.navigator.standalone == true) id('homescreenTip').style.display = 'none';

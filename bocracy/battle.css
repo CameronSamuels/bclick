@@ -40,9 +40,11 @@
 				#portrait {
 					display: block !important;
 				}
+				.theSword {
+				    display: none !important;
+				}
 			}
 			#portrait { display: none; }
-			#homescreenTip { display: none; }
 
 			header {
 				width: 100%;
@@ -85,7 +87,7 @@
 				height: 100%;
 				background: #64DD17;
 			}
-			#aName, #bName { font-size: 30px; margin: 5px 0;}
+			#aName, #bName { font-size: 25px; margin: 5px 0;}
 
 			#overlay {
 				display: none;
@@ -107,7 +109,7 @@
 				font-size: 20px;
 			}
 
-			#sword {
+			.theSword {
 				display: none;
 				position: absolute;
 				background-image: url(sword.png);
@@ -116,20 +118,32 @@
 				background-repeat: no-repeat;
 				width: 100px;
 				height: 50px;
-				left: calc(75% - 125px);
-				top: calc(50% - 25px);
-			}
-			.sword {
-				animation: sword;
-				-webkit-animation: sword;
 				animation-duration: 0.1s;
 				-webkit-animation-duration: 0.1s;
 			}
-			@keyframes sword {
-				from { left: calc(25% + 100px); }
-				to { left: calc(75% - 125px); }
+			#bSword {
+			    left: calc(75% - 125px);
+				top: 125px;
+				/*50% - 75px*/
 			}
-			@-webkit-keyframes sword {
-				from { left: calc(25% + 100px); }
-				to { left: calc(75% - 125px); }
+			#aSword {
+			    left: calc(25% + 125px);
+				top: 75px;
+				transform: rotate(180deg);
+			}
+			@keyframes bSword {
+				from { left: calc(50% - 50px); }
+				to { left: calc(50% + 50px); }
+			}
+			@-webkit-keyframes bSword {
+				from { left: calc(50% - 50px); }
+				to { left: calc(50% + 50px); }
+			}
+			@keyframes aSword {
+				from { left: calc(50% + 50px); }
+				to { left: calc(50% - 50px); }
+			}
+			@-webkit-keyframes aSword {
+				from { left: calc(50% + 50px); }
+				to { left: calc(50% - 50px); }
 			}
