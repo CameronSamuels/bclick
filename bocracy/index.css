@@ -32,7 +32,7 @@
 				vertical-align: middle;
 				text-align: center;
 			}
-			a {
+			a:not(.text) {
 				float: left;
 				color: white;
 				text-decoration: none;
