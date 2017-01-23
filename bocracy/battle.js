@@ -17,8 +17,9 @@
 			health: 0,
 			attack: 0,
 			speed: 0
-		}, names = {
-			current : 'original',
+		}, current = 'original',
+		goodNames = {
+			url : 'b',
 			original : ['saw', 'spiky', 'electric', 'shark', 'ghost', 'dragonball', 'giant', 'spear', 'superhero'],
 			bocracy : ['knight', 'archer', 'barbed', 'flower', 'muscle', 'trump'],
 			dino : ['carnotaurus', 'shark'],
@@ -28,20 +29,31 @@
 			weaklings : ['regular', 'lowercase', 'handrawn', 'fancy', 'curved', 'thin'],
 			christmas : ['santa', 'candycane'],
 			team : ['cameron', 'faith', 'ethan', 'alwin', 'michael', 'srisha', 'cooper', 'jessica', 'vishwam']
+		}, badNames = {
+			url : 'a',
+			original : ['saw', 'spiky', 'electric', 'shark', 'ghost', 'dragonball', 'giant', 'spear', 'superhero'],
+			bocracy : ['knight', 'archer', 'barbed', 'flower', 'muscle', 'trump'],
+			dino : ['carnotaurus', 'shark'],
+			fantasy : ['dovahkinn', 'mage', 'superhero', 'giant', 'dragonball', 'ghost'],
+			horror : ['killer', 'carnotaurus', 'trump', 'ghost', 'shark'],
+			aonarchy : ['goblins', 'warrior', 'witchcraft', 'siren', 'guardian', 'jak-o-anterns', 'phantom', 'anonymous', 'archer'],
+			weaklings : ['regular', 'lowercase', 'handrawn', 'fancy', 'curved', 'thin'],
+			christmas : ['santa', 'candycane'],
+			team : ['cameron', 'faith', 'ethan', 'alwin', 'michael', 'srisha', 'cooper', 'jessica', 'vishwam']
 		};
-		if (window.location.hash != '') names.current = window.location.hash.toString().replace('#', '');
+		if (window.location.hash != '') current = window.location.hash.toString().replace('#', '');
 		var game = {
 			on : 'false',
 			refresh : {
 				display : function() {
-					id('bName').innerHTML = b.name + ' B';
-					id('aName').innerHTML = a.name + ' B';
+					id('bName').innerHTML = b.name + ' ' + goodNames.url;
+					id('aName').innerHTML = a.name + ' ' + badNames.url;
 
 					id('bHealthBar').style.width = (b.health / b.orig_health)*100 + '%';
 					id('aHealthBar').style.width = (a.health / a.orig_health)*100 + '%';
 
-					id('bButton').style.backgroundImage = 'url(https://playbclick.com/assets/b/' + b.name + '.png)';
-					id('aButton').style.backgroundImage = 'url(https://playbclick.com/assets/b/' + a.name + '.png)';
+					id('bButton').style.backgroundImage = 'url(https://playbclick.com/assets/' + goodNames.url + '/' + b.name + '.png)';
+					id('aButton').style.backgroundImage = 'url(https://playbclick.com/assets/' + badNames.url + '/' + a.name + '.png)';
 				},
 				all : function() {
 					game.refresh.display();
@@ -98,15 +110,17 @@
 				id('aButton').setAttribute('onclick', 'game.attack("b")');
 			}
 
-			a.name = names[names.current][Math.floor(Math.random() * names[names.current].length)];
+			if (current != "aonarchy") badNames.url = "b";
+
+			a.name = badNames[current][Math.floor(Math.random() * badNames[current].length)];
 			a.health = Math.max(Math.random() * 2000, 1000);
 			a.orig_health = a.health;
 			a.attack = Math.random() * 20;
 			a.speed = Math.max(Math.random() * 1000, 450);
 
-			b.name = names[names.current][Math.floor(Math.random() * names[names.current].length)];
+			b.name = goodNames[current][Math.floor(Math.random() * goodNames[current].length)];
 			while (b.name == a.name) {
-				b.name = names[names.current][Math.floor(Math.random() * names[names.current].length)];
+				b.name = goodNames[current][Math.floor(Math.random() * goodNames[current].length)];
 			}
 			b.health = Math.max(Math.random() * 2000, 800);
 			b.orig_health = b.health;
