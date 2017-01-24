@@ -17,12 +17,12 @@
 			<div class="clear"></div>
 		</header>
 		<section id="bSection">
-			<div id="bButton" ontouchend="game.heal('b')"></div>
+			<div id="bButton" ontouchend="game.heal('green')"></div>
 			<div id="bName"></div>
 			<div id="bHealth"><div id="bHealthBar"></div></div>
 		</section>
 		<section id="aSection">
-			<div id="aButton" ontouchend="game.attack('b')"></div>
+			<div id="aButton" ontouchend="game.attack('green')"></div>
 			<div id="aName"></div>
 			<div id="aHealth"><div id="aHealthBar"></div></div>
 		</section>
@@ -30,14 +30,9 @@
 		<div id="overlay" ontouchend="location.reload()"><div id="overlayText"></div><p>(Click anywhere to restart)</p></div>
 		<div class="theSword" id="bSword"></div><div class="theSword" id="aSword"></div>
 		<div id="portrait">
-			<h3>Click the right image to attack. Click the left one to heal. Drain all the opponent's health before yours is drained.</h3>
-			<h4 id="multiplayer"><a ontouchend="window.location='multiplayer.html'+window.location.hash">Play this battle in multiplayer mode!</a></h4>
-			<h4 id="homescreenTip"><green>Tip: </green>Adding this page to your homescreen enables better compatibility and quick access to this battle category.</h4>
+			<h3>Click the right image to attack. Click the left one to heal. Drain all the red side's health before yours is drained.</h3>
 			<h4><red>Change your device's orientation to landscape to begin!</red></h4>
-			<!-- <div>
-				<span style="font-size: 1.17em;color: green">Tips</span><br />
-				<span style="font-size: 1.12em"></span>
-			</div> -->
+			<h4 id="multiplayer"><a ontouchend="window.location='multiplayer.html'+window.location.hash">Play this battle in multiplayer mode!</a></h4>
 		<audio id="audio" loop autoplay><source id="sound" src="sound.wav" type="audio/wav"></audio>
 	</body>
 	<script src="battle.js"></script>

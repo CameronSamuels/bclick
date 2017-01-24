@@ -34,15 +34,12 @@
 			}
 			a:not(.text) {
 				float: left;
-				color: white;
-				text-decoration: none;
+				text-decoration: none !important;
 				width: 40%;
 				margin: 2.5%;
 				padding: 2.5%;
 			}
-			a:visited {
-				color: white;
-			}
+			a { color: white; text-decoration: underline;}
 			.full {
 			    width: 80% !important;
 				margin: 5% !important;

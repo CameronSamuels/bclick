@@ -15,7 +15,7 @@
 			.clear { clear: both; }
 			red { color: #F00; }
 			green { color: #64DD17; }
-			a { color: #88F; }
+			a { color: white; text-decoration: underline; }
 
 			@media screen and (min-height: 351px), screen and (min-width: 620px) {
 				header {

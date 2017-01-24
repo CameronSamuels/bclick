@@ -19,24 +19,24 @@
 			speed: 0
 		}, current = 'original',
 		goodNames = {
-			url : 'b',
+			url : '',
 			original : ['saw', 'spiky', 'electric', 'shark', 'ghost', 'dragonball', 'giant', 'spear', 'superhero'],
 			bocracy : ['knight', 'archer', 'barbed', 'flower', 'muscle', 'trump'],
 			dino : ['carnotaurus', 'shark'],
 			fantasy : ['dovahkinn', 'mage', 'superhero', 'giant', 'dragonball', 'ghost'],
 			horror : ['killer', 'carnotaurus', 'trump', 'ghost', 'shark'],
-			aonarchy : ['bentacrabb', 'b-shuttle', 'f87-cannon', 'd15-cannon', 'sharkanator'],
+			aonarchy : ['goblin-horde', 'goblin', 'warrior', 'witchcraft', 'siren', 'guardian', 'jak-o-anterns', 'phantom', 'anonymous', 'archer', 'a87-cannon'],
 			weaklings : ['regular', 'lowercase', 'handrawn', 'fancy', 'curved', 'thin'],
 			christmas : ['santa', 'candycane'],
 			team : ['cameron', 'faith', 'ethan', 'alwin', 'michael', 'srisha', 'cooper', 'jessica', 'vishwam']
 		}, badNames = {
-			url : 'a',
+			url : '',
 			original : ['saw', 'spiky', 'electric', 'shark', 'ghost', 'dragonball', 'giant', 'spear', 'superhero'],
 			bocracy : ['knight', 'archer', 'barbed', 'flower', 'muscle', 'trump'],
 			dino : ['carnotaurus', 'shark'],
 			fantasy : ['dovahkinn', 'mage', 'superhero', 'giant', 'dragonball', 'ghost'],
 			horror : ['killer', 'carnotaurus', 'trump', 'ghost', 'shark'],
-			aonarchy : ['goblins', 'warrior', 'witchcraft', 'siren', 'guardian', 'jak-o-anterns', 'phantom', 'anonymous', 'archer'],
+			aonarchy : ['ultacrabb', 'b-shuttle', 'f87-cannon', 'd15-cannon', 'sharkanator', 'batalifor-sentry', 'batalifor-1.0', 'batalifor-2.4', 'batalifor-general', 'b--torv-troops', 'bylo-ken', 'boverr-1.2', 'bentacrabb-2.1', 'scubbars', 'byter', 'b--torv-commander'],
 			weaklings : ['regular', 'lowercase', 'handrawn', 'fancy', 'curved', 'thin'],
 			christmas : ['santa', 'candycane'],
 			team : ['cameron', 'faith', 'ethan', 'alwin', 'michael', 'srisha', 'cooper', 'jessica', 'vishwam']
@@ -46,8 +46,15 @@
 			on : 'false',
 			refresh : {
 				display : function() {
-					id('bName').innerHTML = b.name + ' ' + goodNames.url;
-					id('aName').innerHTML = a.name + ' ' + badNames.url;
+					var bName = b.name.toString().replace('--', '^');
+					bName = bName.replace('-', ' ');
+					bName = bName.replace('^', '-');
+					id('bName').innerHTML = bName + ' ' + goodNames.url;
+
+					var aName = a.name.toString().replace('--', '^');
+					aName = aName.replace('-', ' ');
+					aName = aName.replace('^', '-');
+					id('aName').innerHTML = aName + ' ' + badNames.url;
 
 					id('bHealthBar').style.width = (b.health / b.orig_health)*100 + '%';
 					id('aHealthBar').style.width = (a.health / a.orig_health)*100 + '%';
@@ -64,11 +71,11 @@
 				id('overlayText').innerHTML = 'WINNER: ' + side + '!!!';
 				id('overlay').style.display = "block";
 				game.on = 'false';
-				if (side == 'a') { id('sound').src = "loss.wav"; id('audio').load(); id('audio').play(); }
+				if (side == 'red') { id('sound').src = "loss.wav"; id('audio').load(); id('audio').play(); }
 			},
 			attack : function(atk) {
 				if (game.on == 'true') {
-					if (atk == 'b') {
+					if (atk == 'green') {
 						a.health -= b.attack;
 						a.health = Math.max(0, a.health);
 						a.health = Math.min(a.orig_health, a.health);
@@ -76,7 +83,7 @@
 						id('bSword').style.WebkitAnimationName = "bSword";
 						id('bSword').style.animationName = "bSword";
 						setTimeout("id('bSword').style.display = 'none';id('bSword').style.WebkitAnimationName = '';id('bSword').style.animationName = '';", 100);
-					} else if (atk == 'a') {
+					} else if (atk == 'red') {
 						b.health -= a.attack;
 						b.health = Math.max(0, b.health);
 						b.health = Math.min(b.orig_health, b.health);
@@ -92,12 +99,12 @@
 			},
 			heal : function(side) {
 				if (game.on == 'true') {
-					if (side == 'b') {
+					if (side == 'green') {
 						b.health += b.heal;
 						b.health = Math.max(0, b.health);
 						b.health = Math.min(b.orig_health, b.health);
-					} else if (side == 'a') {
-						a.health += 5;
+					} else if (side == 'red') {
+						a.health += a.heal;
 						a.health = Math.max(0, a.health);
 						a.health = Math.min(a.orig_health, a.health);
 					}
@@ -106,11 +113,21 @@
 		};
 		function load() {
 			if (!isMobile.any()) {
-				id('bButton').setAttribute('onclick', 'game.heal("b")');
-				id('aButton').setAttribute('onclick', 'game.attack("b")');
+				id('bButton').setAttribute('onclick', 'game.heal("green")');
+				id('aButton').setAttribute('onclick', 'game.attack("green")');
+				id('refreshButton').setAttribute('onclick', 'location.reload()');
+				id('backButton').setAttribute('onclick', 'window.location="index.html"');
 			}
 
-			if (current != "aonarchy") badNames.url = "b";
+			switch (current) {
+				case "aonarchy":
+					badNames.url = "b";
+					goodNames.url = "a";
+					break;
+				default:
+					badNames.url = "b";
+					goodNames.url = "b";
+			}
 
 			a.name = badNames[current][Math.floor(Math.random() * badNames[current].length)];
 			a.health = Math.max(Math.random() * 2000, 1000);
@@ -129,12 +146,10 @@
 			b.heal = Math.random() * 15;
 
 			game.on = 'true';
-			setInterval('game.attack("a");game.heal("a")', a.speed);
+			setInterval('game.attack("red");game.heal("red")', a.speed);
 			game.refresh.all();
 		}
 
 		window.addEventListener("orientationchange", function() { location.reload(); }, false);
-		if (!isMobile.any()) id('homescreenTip').style.display = 'none';
-		if (window.navigator.standalone == true) id('homescreenTip').style.display = 'none';
 
 		load();
