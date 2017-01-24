@@ -108,18 +108,17 @@
 			if (current != "aonarchy") badNames.url = "b";
 
 			a.name = badNames[current][Math.floor(Math.random() * badNames[current].length)];
-			a.health = Math.max(Math.random() * 2000, 1000);
+			a.health = Math.max(Math.random() * 4000, 2000);
 			a.orig_health = a.health;
-			a.attack = Math.random() * 20;
-			a.speed = Math.max(Math.random() * 1000, 450);
+			a.attack = Math.random() * 25;
 
 			b.name = goodNames[current][Math.floor(Math.random() * goodNames[current].length)];
 			while (b.name == a.name) {
 				b.name = goodNames[current][Math.floor(Math.random() * goodNames[current].length)];
 			}
-			b.health = Math.max(Math.random() * 2000, 800);
-			b.orig_health = b.health;
-			b.attack = Math.max(Math.random() * 10, 7);
+			b.health = a.health;
+			b.orig_health = a.orig_health;
+			b.attack = a.attack;
 
 			game.on = 'true';
 			game.refresh.all();
