@@ -17,30 +17,13 @@
 			green { color: #64DD17; }
 			a { color: #88F; }
 
-			@media screen and (min-height: 351px), screen and (min-width: 620px) {
-				header {
-					height: 50px !important;
-					line-height: 50px !important;
-				}
-				section {
-					height: calc(100% - 50px);
-				}
-				#bButton, #aButton {
-					height: 200px !important;
-					width: 200px !important;
-					margin-left: calc(50% - 100px) !important;
-				}
-				#backButton, #refreshButton {width: 30px !important; margin-top: 10px !important;}
-				#title { font-size: 30px !important; margin-left: calc(50% - 120px) !important;}
-			}
-
-			@media screen and (orientation: portrait) {
+			@media screen and (orientation: landscape) {
 				#bSection, #aSection, #overlay { display: none; }
-				#portrait { display: block !important; }
+				#landscape { display: block !important; }
 				.theSword { display: none !important; }
 				#overlay { display: none !important; }
 			}
-			#portrait { display: none; }
+			#landscape { display: none; }
 
 			header {
 				width: 100%;
@@ -54,18 +37,18 @@
 			#title { font-size: 15px; float: left; margin-left: calc(50% - 75px);}
 
 			section {
-				width: 50%;
-				height: calc(100% - 30px);
+				width: 100%;
+				height: calc(50% - 15px);
 				float: left;
 			}
-			#bSection { background: #64DD17; }
+			#bSection { background: #64DD17; transform: rotate(180deg);}
 			#aSection { background: #FF0000; }
 
 			#aButton, #bButton {
-				width: 125px;
-				height: 125px;
+				width: 75px;
+				height: 75px;
 				margin-top: 25px;
-				margin-left: calc(50% - 62.5px);
+				margin-left: calc(50% - 37.5px);
 				background: #FFFFFF;
 				background-size: cover;
 				background-position: 100%;
@@ -84,6 +67,25 @@
 				background: #64DD17;
 			}
 			#aName, #bName { font-size: 25px; margin: 5px 0;}
+			#aActions, #bActions {
+				width: 250px;
+				height: 50px;
+				margin: 20px calc(50% - 125px);
+			}
+			#aActions div:not(.clear), #bActions div:not(.clear) {
+				width: 115px;
+				height: 50px;
+
+				background: #3F51B5;
+				border-radius: 80px;
+
+				margin: 0px 5px;
+				float: left;
+
+				line-height: 50px;
+				vertical-align: middle;
+				text-align: center;
+			}
 
 			#overlay {
 				display: none;
@@ -94,6 +96,7 @@
 				position: absolute;
 				top: 0px;
 				left: 0px;
+				transform: rotate(90deg);
 			}
 			#overlay div {
 				top: calc(50% - 80px);
@@ -118,28 +121,29 @@
 				-webkit-animation-duration: 0.1s;
 			}
 			#bSword {
-			    left: calc(75% - 125px);
-				top: 125px;
+			    left: 25px;
+				top: 225px;
+				transform: rotate(90deg);
 				/*50% - 75px*/
 			}
 			#aSword {
-			    left: calc(25% + 125px);
-				top: 75px;
-				transform: rotate(180deg);
+			    right: 25px;
+				bottom: 195px;
+				transform: rotate(-90deg);
 			}
 			@keyframes bSword {
-				from { left: calc(50% - 50px); }
-				to { left: calc(50% + 50px); }
+				from { top: 225px; }
+				to { top: calc(100% - 195px); }
 			}
 			@-webkit-keyframes bSword {
-				from { left: calc(50% - 50px); }
-				to { left: calc(50% + 50px); }
+				from { top: 225px; }
+				to { top: calc(100% - 195px); }
 			}
 			@keyframes aSword {
-				from { left: calc(50% + 50px); }
-				to { left: calc(50% - 50px); }
+				from { bottom: 225px; }
+				to { bottom: calc(100% - 195px); }
 			}
 			@-webkit-keyframes aSword {
-				from { left: calc(50% + 50px); }
-				to { left: calc(50% - 50px); }
+				from { bottom: 225px; }
+				to { bottom: calc(100% - 195px); }
 			}
