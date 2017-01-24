@@ -93,7 +93,7 @@
 			heal : function(side) {
 				if (game.on == 'true') {
 					if (side == 'b') {
-						b.health += 3;
+						b.health += b.heal;
 						b.health = Math.max(0, b.health);
 						b.health = Math.min(b.orig_health, b.health);
 					} else if (side == 'a') {
@@ -117,6 +117,7 @@
 			a.orig_health = a.health;
 			a.attack = Math.random() * 20;
 			a.speed = Math.max(Math.random() * 1000, 450);
+			a.heal = Math.random() * 20;
 
 			b.name = goodNames[current][Math.floor(Math.random() * goodNames[current].length)];
 			while (b.name == a.name) {
@@ -125,6 +126,7 @@
 			b.health = Math.max(Math.random() * 2000, 800);
 			b.orig_health = b.health;
 			b.attack = Math.max(Math.random() * 10, 7);
+			b.heal = Math.random() * 15;
 
 			game.on = 'true';
 			setInterval('game.attack("a");game.heal("a")', a.speed);
