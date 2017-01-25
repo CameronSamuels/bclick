@@ -17,50 +17,41 @@ function id(id) { return document.getElementById(id) }
 			health: 0,
 			attack: 0,
 			speed: 0
-		}, current = 'original',
-		goodNames = {
-			url : '',
-			original : ['saw', 'spiky', 'electric', 'shark', 'ghost', 'dragonball', 'giant', 'spear', 'superhero'],
-			bocracy : ['knight', 'archer', 'barbed', 'flower', 'muscle', 'trump'],
-			dino : ['carnotaurus', 'shark'],
-			fantasy : ['dovahkinn', 'mage', 'superhero', 'giant', 'dragonball', 'ghost'],
-			horror : ['killer', 'carnotaurus', 'trump', 'ghost', 'shark'],
-			aonarchy : ['goblin-horde', 'goblin', 'warrior', 'witchcraft', 'siren', 'guardian', 'jak-o-anterns', 'phantom', 'anonymous', 'archer', 'a87-cannon'],
-			weaklings : ['regular', 'lowercase', 'handrawn', 'fancy', 'curved', 'thin'],
-			christmas : ['santa', 'candycane'],
-			team : ['cameron', 'faith', 'ethan', 'alwin', 'michael', 'srisha', 'cooper', 'jessica', 'vishwam']
-		}, badNames = {
-			url : '',
-			original : ['saw', 'spiky', 'electric', 'shark', 'ghost', 'dragonball', 'giant', 'spear', 'superhero'],
-			bocracy : ['knight', 'archer', 'barbed', 'flower', 'muscle', 'trump'],
-			dino : ['carnotaurus', 'shark'],
-			fantasy : ['dovahkinn', 'mage', 'superhero', 'giant', 'dragonball', 'ghost'],
-			horror : ['killer', 'carnotaurus', 'trump', 'ghost', 'shark'],
-			aonarchy : ['ultacrabb', 'b-shuttle', 'f87-cannon', 'd15-cannon', 'sharkanator', 'batalifor-sentry', 'batalifor-1.0', 'batalifor-2.4', 'batalifor-general', 'b--torv-troops', 'bylo-ken', 'boverr-1.2', 'bentacrabb-2.1', 'scubbars', 'byter', 'b--torv-commander'],
-			weaklings : ['regular', 'lowercase', 'handrawn', 'fancy', 'curved', 'thin'],
-			christmas : ['santa', 'candycane'],
-			team : ['cameron', 'faith', 'ethan', 'alwin', 'michael', 'srisha', 'cooper', 'jessica', 'vishwam']
-		};
+		}, current = 'original';
 		if (window.location.hash != '') current = window.location.hash.toString().replace('#', '');
 		var game = {
 			on : 'false',
 			refresh : {
 				display : function() {
-					var bName = b.name.toString().replace('--', '^');
-					bName = bName.replace('-', ' ');
-					bName = bName.replace('^', '-');
+					var bName = b.name;
+					while (bName.includes('_') || bName.includes('-')) {
+						bName = bName.toString().replace('_', '-');
+						bName = bName.replace('--', '^');
+						bName = bName.replace('-', ' ');
+					}
+					while (bName.includes('^')) {
+						bName = bName.replace('^', '-');
+					}
+					bName = bName.replace('D', '.');
 					id('bName').innerHTML = bName + ' ' + goodNames.url;
 
-					var aName = a.name.toString().replace('--', '^');
-					aName = aName.replace('-', ' ');
-					aName = aName.replace('^', '-');
+					var aName = a.name;
+					while (aName.includes('_') || aName.includes('-')) {
+						aName = aName.toString().replace('_', '-');
+						aName = aName.replace('--', '^');
+						aName = aName.replace('-', ' ');
+					}
+					while (aName.includes('^')) {
+						aName = aName.replace('^', '-');
+					}
+					aName = aName.replace('D', '.');
 					id('aName').innerHTML = aName + ' ' + badNames.url;
 
 					id('bHealthBar').style.width = (b.health / b.orig_health)*100 + '%';
 					id('aHealthBar').style.width = (a.health / a.orig_health)*100 + '%';
 
-					id('bButton').style.backgroundImage = 'url(https://playbclick.com/assets/' + goodNames.url + '/' + b.name + '.png)';
-					id('aButton').style.backgroundImage = 'url(https://playbclick.com/assets/' + badNames.url + '/' + a.name + '.png)';
+					id('bButton').style.backgroundImage = 'url(https://playbclick.com/assets/' + goodNames.url + '/' + b.name.toString().replace('_', '-').replace('_', '-').replace('_', '-').replace('D', '.') + '.png)';
+					id('aButton').style.backgroundImage = 'url(https://playbclick.com/assets/' + badNames.url + '/' + a.name.toString().replace('_', '-').replace('D', '.') + '.png)';
 				},
 				all : function() {
 					game.refresh.display();

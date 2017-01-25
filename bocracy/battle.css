@@ -101,6 +101,7 @@
 				width: 100%;
 				position: absolute;
 			}
+			#overlay h5 { margin: 0px; font-size: 30px; }
 			#overlay p {
 				font-size: 20px;
 			}
