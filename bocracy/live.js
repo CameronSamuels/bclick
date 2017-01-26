@@ -30,6 +30,7 @@ function object(nm, stats, info, other) {
 	this.stats = stats;
 	this.info = info;
 	this.other = other;
+	if (localStorage[nm] == undefined) localStorage[nm] = 'false';
 	if (info[1] == 'true') goodNames[info[0]].push(nm);
 	else badNames[info[0]].push(nm);
 }
@@ -49,26 +50,38 @@ good.a87_cannon = new object('a87_cannon', [60, 2000, 5], ['aonarchy', 'true', 1
 
 bad.sharkanator = new object('sharkanator', [100, 5000, 0], ['aonarchy', 'false', 2500, 'a', 'sharkanator']);
 bad.bentacrabb_2D1 = new object('bentacrabb_2D1', [50, 3200, 5], ['aonarchy', 'false', 1500, 'a', 'bentacrabb_2D1']);
-
 bad.boverr_1D2 = new object('boverr_1D2', [50, 3000, 10], ['aonarchy', 'false', 1000, 'a', 'boverr_1D2']);
 bad.b__torv_commander = new object('b__torv_commander', [50, 3000, 10], ['aonarchy', 'false', 1000, 'a', 'b__torv_commander']);
-
 bad.b_shuttle = new object('b_shuttle', [50, 3000, 10], ['aonarchy', 'false', 1500, 'a', 'b_shuttle']);
-
 bad.bylo_ken = new object('bylo_ken', [35, 1500, 20], ['aonarchy', 'false', 600, 'a', 'bylo_ken']);
 bad.byter = new object('byter', [35, 1500, 20], ['aonarchy', 'false', 600, 'a', 'byter']);
-
-
 bad.batalifor_2D4 = new object('batalifor_2D4', [30, 1000, 20], ['aonarchy', 'false', 450, 'a', 'batalifor_2D4']);
-
 bad.batalifor_1D0 = new object('batalifor_1D0', [15, 2000, 5], ['aonarchy', 'false', 1000, 'a', 'batalifor_1D0']);
-
 bad.f87_cannon = new object('f87_cannon', [40, 1250, 20], ['aonarchy', 'false', 750, 'a', 'f87_cannon']);
 bad.batalifor_general = new object('batalifor_general', [30, 1500, 15], ['aonarchy', 'false', 550, 'a', 'batalifor_general']);
 bad.b__torv_troops = new object('b__torv_troops', [30, 1500, 15], ['aonarchy', 'false', 550, 'a', 'b__torv_troops']);
-
 bad.scubbars = new object('scubbars', [20, 1500, 15], ['aonarchy', 'false', 500, 'a', 'scubbars']);
-
 bad.d15_cannon = new object('d15_cannon', [60, 2000, 5], ['aonarchy', 'false', 1500, 'a', 'd15_cannon']);
 bad.batalifor_sentry = new object('batalifor_sentry', [60, 2000, 5], ['aonarchy', 'false', 1500, 'a', 'batalifor_sentry']);
 bad.ultacrabb = new object('ultacrabb', [60, 2000, 5], ['aonarchy', 'false', 1500, 'a', 'ultacrabb']);
+
+// function unlockPopup(item, url) {
+// 	id('popup').innerHTML = "<h1>You unlocked the " + item + ' ' + url + "</h1><img src='https://playbclick.com/assets/" + url + ".png' /><btn ontouchend='id(\'popup\').style.display = \'none\';'>Close</btn>";
+// 	id('popup').style.display = "block";
+// }
+
+// function unlock(item) {
+// 	if (item.includes('_pack')) {
+// 		switch (item) {
+// 			case 'mystery_pack':
+// 				unlocked = goodNames[current][Math.floor(Math.random() * goodNames.length)];
+// 				while (localStorage[unlocked] == 'true') {
+// 					unlocked = goodNames[current][Math.floor(Math.random() * goodNames.length)];
+// 				}
+// 				localStorage[unlocked] = 'true';
+// 				unlockPopup(unlocked, 'a');
+// 				break;
+// 		}
+// 		return;
+// 	}
+// }

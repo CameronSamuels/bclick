@@ -85,6 +85,17 @@
 			}
 			#aName, #bName { font-size: 25px; margin: 5px 0;}
 
+			#popup {
+				display: none;
+				position: absolute;
+
+				top: calc(50% - 100px);
+				left: calc(50% - 100px);
+
+				width: 200px;
+				height: 200px;
+			}
+
 			#overlay {
 				display: none;
 				background: #FFFFFF;

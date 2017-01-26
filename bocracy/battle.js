@@ -131,7 +131,14 @@
 			}
 
 			a.name = badNames[current][Math.floor(Math.random() * badNames[current].length)];
+
+			// if (localStorage.hasOwnedGood != 'true') { unlock('mystery_pack'); localStorage.hasOwnedGood = 'true'; } 
 			b.name = goodNames[current][Math.floor(Math.random() * goodNames[current].length)];
+			// if (newStats == 'true') {
+			// 	while (localStorage[b.name] != 'true') {
+			// 		b.name = goodNames[current][Math.floor(Math.random() * goodNames[current].length)];
+			// 	}
+			// }
 			while (b.name == a.name) {
 				b.name = goodNames[current][Math.floor(Math.random() * goodNames[current].length)];
 			}

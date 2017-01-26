@@ -24,10 +24,11 @@ caption("Happy Hanukkah!! This is the last day of bClick Hanukkah Special!! So w
 caption("Make sure to light fireworks tonight!! Play tommorow after a sip of coffee for double interest and b values!!", 31);
 
 /* == January == */
-caption("Happy New Year!! Enjoy double interest and b values!!", 1);
-caption("Lets give a round of applause to Morne! One of our superfans!", 5);
-caption("Happy World Religion Day!! Enjoy free price and double value on religious B's!!", 15);
-caption("Happy Martin Luther King Day!! Enjoy free price and double value on B's with a white-black background!! 3 times more value on BW B", 16);
+// caption("Happy New Year!! Enjoy double interest and b values!!", 1);
+// caption("Lets give a round of applause to Morne! One of our superfans!", 5);
+// caption("Happy World Religion Day!! Enjoy free price and double value on religious B's!!", 15);
+// caption("Happy Martin Luther King Day!! Enjoy free price and double value on B's with a white-black background!! 3 times more value on BW B", 16);
+// caption("")
 
 // ===== The B's ===== //
 b.list.b.handrawn = new create('handrawn', 5, 0, "#FFF");
@@ -71,7 +72,7 @@ b.list.b.spear = new create('spear', Math.pow(10, 81), Math.pow(10, 84), "#34343
 b.list.b.superhero = new create('superhero', Math.pow(10, 84), Math.pow(10, 87), "#3333FF", {date: new Date('Sat Nov 12 2016 12:00:00 GMT-0500 (Central Daylight Time)')});
 b.list.b.duck = new create('duck', Math.pow(10, 87), Math.pow(10, 90), "#33EE33", {date: new Date('Sat Nov 19 2016 12:00:00 GMT-0500 (Central Daylight Time)')});
 b.list.b.dragonball = new create('dragonball', Math.pow(10, 90), Math.pow(10, 93), "#FFD700", {date: new Date('Sat Nov 26 2016 12:00:00 GMT-0500 (Central Daylight Time)'), tooltip:'(Made by Harkeertan Singh)'});
-b.list.b.nature = new create('nature', Math.pow(10, 93), Math.pow(10, 96), "#6D3200", {date: new Date('Sat Dec 3 2016 12:00:00 GMT-0500 (Central Daylight Time)')});
+b.list.b.nature = new create('nature', Math.pow(10, 93), Math.pow(10, 96), "#6D3200", {date: new Date('Sat Dec 3 2016 12:00:00 GMT-0500 (Central Daylight Time)'), tooltip:'(Idea By: Arjun Madana)'});
 b.list.b.dovahkinn = new create('dovahkinn', Math.pow(10, 96), Math.pow(10, 99), "#FFFF00", {date: new Date('Sat Dec 10 2016 10:00:00 GMT-0500 (Central Daylight Time)'), tooltip:'(Made By: Ethan Choo)'});
 b.list.b.mage = new create('mage', Math.pow(10, 99), Math.pow(10, 102), "#FF33FF", {date: new Date('Sat Dec 17 2016 14:00:00 GMT-0500 (Central Daylight Time)'), tooltip:'(Made By: Ethan Choo)'});
 b.list.b.carnotaurus = new create('carnotaurus', Math.pow(10, 102), Math.pow(10, 105), "#FF1111", {date: new Date('Thu Dec 22 2016 6:00:00 GMT-0500 (Central Daylight Time)'), tooltip:'(Made By: Ethan Choo)'});
