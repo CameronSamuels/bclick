@@ -23,31 +23,6 @@ var sounds = {
 function web(url) { window.location = url; }
 function id(id) { return document.getElementById(id); }
 
-// function get(what) {
-//     switch (localStorage.saveRelease) {
-//         case "":
-//             return localStorage[what];
-//             break;
-//         case "beta":
-//             return localStorage[what + "_Beta"];
-//             break;
-//         default:
-//             return localStorage[what];
-//     } 
-// }
-// function set(what, value) { 
-//     switch (localStorage.saveRelease) {
-//         case "":
-//             localStorage.setItem(what, value); 
-//             break;
-//         case "beta":
-//             localStorage.setItem(what + "_Beta", value); 
-//             break;
-//         default:
-//             localStorage.setItem(what, value); 
-//     } 
-    
-// }
 function get(what) { return localStorage[what]; }
 function set(what, value) { localStorage.setItem(what, value); }
 
@@ -150,7 +125,7 @@ function ClickB() {
         else { set('clicks', m.add(get('clicks'), 1)); }
         Earn(parseFloat(worth) * get("multiplier"));
         sounds.click.play();
-        stats('clicks', 1);
+        stats('clicks', '1');
     }
     else { log("Unlock the B first!"); }
 }
@@ -165,26 +140,26 @@ function UnlockB() {
             if (get("unlocked") === undefined) { set("unlocked", 1); }
             else { set('unlocked', m.add(get("unlocked"), 1)); } 
             Purchase(cost);
-            theLog('Unlock B: ' + name);
+            // theLog('Unlock B: ' + name);
             sounds.unlock.play();  
-            stats('unlocks', 1);
+            stats('unlocks', '1');
         }
         else { log("Insufficient Points!") }
     }
     else log("Click the B, not the unlock button!");
 }
 
-function theLog(text) {
-    if (get("theLog") == undefined) {
-        set('theLog', '');
-        theLog(text);
-    } else {
-        set('theLog', remove(get("theLog"), '<strong>'));
-        set('theLog', remove(get("theLog"), '</strong>'));
-        set('theLog', '<li><strong>' + text + '</strong></li>' + get("theLog"));
-        id('theLog').innerHTML = '<ul>' + get("theLog") + '</ul>';
-    }
-}
+// function theLog(text) {
+//     if (get("theLog") == undefined) {
+//         set('theLog', '');
+//         theLog(text);
+//     } else {
+//         set('theLog', remove(get("theLog"), '<strong>'));
+//         set('theLog', remove(get("theLog"), '</strong>'));
+//         set('theLog', '<li><strong>' + text + '</strong></li>' + get("theLog"));
+//         id('theLog').innerHTML = '<ul>' + get("theLog") + '</ul>';
+//     }
+// }
 
 // ===== Achievements ===== //
 
@@ -235,8 +210,8 @@ var achievements = {
         set('multiplier', parseFloat(get('multiplier')) * 2);
 		log("Achievement Earned!");
 		log("Multiplier is now " + m.giant(Math.round(get("multiplier"))));
-		theLog('Earned an achievement: ' + achievements.list.spaces[achievements.list.id.indexOf(id)]);
-        stats('achievements', 1);
+// 		theLog('Earned an achievement: ' + achievements.list.spaces[achievements.list.id.indexOf(id)]);
+        stats('achievements', '1');
     },
     check : function() {
         var obj = achievements;
@@ -376,7 +351,7 @@ var data = {
             }
 
             set('played341-925216', true);
-            theLog('New Game Started');
+            // theLog('New Game Started');
             setTimeout('location.reload()', 2000);
         },
         hard : function() {
@@ -387,9 +362,16 @@ var data = {
         },
         update : function() { set('played341-925216', true) },
         reset : function() { if (m.ask("Reset Everything?") === true) data.reset.hard(); },
-        over : function() { SubmitScore(); id('body').style.background = "#FF0000"; id('main').setAttribute('class', 'flicker'); set('username', get("username") + "+"); theLog('Reached the end of the world!'); theLog('Multiplier Multiplied By 2!'); set('multiplier', m.add(get('multiplier'), get("multiplier"))); log('G@Me oV3R!1!!1'); setTimeout('data.reset.hard()', 5000);}
+        over : function() { SubmitScore(); id('body').style.background = "#FF0000"; id('main').setAttribute('class', 'flicker'); set('username', get("username") + "+"); /*theLog('Reached the end of the world!'); theLog('Multiplier Multiplied By 2!');*/ set('multiplier', m.add(get('multiplier'), get("multiplier"))); log('G@Me oV3R!1!!1'); setTimeout('data.reset.hard()', 5000);}
     },
     load : function() {
+        // id('main').style.height = "calc(100% - 20px)";
+        // id('main').style.width = id('main').offsetHeight * 0.53072626 - 20 + 'px';
+        // var sections = ['b', 'settings', 'comingSoon', 'achievements', 'download'];
+        // for (i = 0; i < sections.length; i++) {
+        //     id(sections[i] + 'Section').style.height = id('main').offsetHeight + 'px';
+        //     id(sections[i] + 'Section').style.width = id('main').offsetWidth + 'px';
+        // }
         if (get("points") === undefined) data.reset.hard();
         // else if (get("played341-925216") == undefined) data.reset.update();  
         else if (get("lastPlay") !== undefined) {
@@ -403,34 +385,27 @@ var data = {
 			else if (get("lastPlayDay") > new Date().getDate() && !(get("lastPlayDay") == 31 || get("lastPlayDay") == 30 || get("lastPlayDay") == 29 || get("lastPlayDay") == 28)) { 
 			    set("daysInARow", 1);
 				log("CHEATER!!!!!!!");
-				theLog('Became a cheater');
+				// theLog('Became a cheater');
 			    setTimeout('data.reset.hard()', 1500);
 			}
 			else if (get("lastPlayDay") !== undefined) set("daysInARow", 1);
 			Earn(get("points") * get("daysInARow"));
 			log('Earned ' + get("daysInARow") + ' daily gift(s)');
-			theLog('Earned ' + get("daysInARow") + ' daily gift(s)');
+// 			theLog('Earned ' + get("daysInARow") + ' daily gift(s)');
 		}
-		if (get("theLog") != undefined) id('theLog').innerHTML = '<ul>' + get("theLog") + '</ul>';
+// 		if (get("theLog") != undefined) id('theLog').innerHTML = '<ul>' + get("theLog") + '</ul>';
 		refresh.iframes();
 		setInterval('SubmitScore();refresh.iframes()', 30000);
-        setInterval("stats('visits', 1)", 60000);
+        setInterval("stats('visits', '1')", 60000);
         refresh.all();
         ceiling = get("points");
         setInterval('realEarn()', 1);
         setInterval('ceiling = get("points");bank.collect();depositSpamBlocker()', 1000);
         if (get("username") == 'null' || get("username") == undefined || get("username") == '' || get("username") == ' ') set('username', 'bClicker' + random());
         seasons.load();
-        // Minimize('comingSoonDiv', 'minimizeComingSoon');
-        // Minimize('AchievementsList', 'minimizeAchievements');
-        // Minimize('newDiv', 'minimizeNew');
-        // if (/Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor)) {
-        //     if(get("hasChromeExtension") != 'true') {
-        //         setTimeout(function(){ if (confirm('Would you like to add bClick to chrome?')) {
-        //             window.open('https://chrome.google.com/webstore/detail/bclick/fccplfmeljdiinmnjbemkgaganpbkghf');
-        //             set('hasChromeExtension', 'true');
-        //         }}
-        //     , 60000);}}
+        if (window.location.hash.toString() !== "#bSection") {
+            window.location.hash = "#bSection";
+        }
     }
 }
 
@@ -440,7 +415,7 @@ function ChangeUsername() {
     set('username', m.qstn('Enter your new username'));
     while (!get("username")) set('username', m.qstn('Error! Enter a username'));
     if (get("username") == 'null' || get("username") == undefined || get("username") == '' || get("username") == ' ') set('username', 'bClicker' + random());
-    if (get("username")) { log('Changed Username to ' + get('username')); theLog('Changed Username: ' + get("username")) };
+    if (get("username")) { log('Changed Username to ' + get('username')); /*theLog('Changed Username: ' + get("username"))*/ };
 }
 
 function SubmitScore() {  
@@ -552,8 +527,7 @@ var bank = {
         d = new Date();
         set('lastPlay', new Date().getTime());
         set('lastPlayDay', new Date().getDate());
-        var timePlayed = get("timePlayed");
-        set('timePlayed', timePlayed++);
+        localStorage.timePlayed++;
     },
     deposit : function() {
         if (depositReady == 'true') {
