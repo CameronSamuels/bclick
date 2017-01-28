@@ -32,6 +32,7 @@ main {
     right: 0;
     
     border: 1px black solid;
+    display: none;
 }
 
 main, body, html {
@@ -266,9 +267,7 @@ a:hover { color: #8888ff; }
 
 #settingsSection { left: calc(50% + 94.6666666666666px); }
 
-/*=============
-    Messages
-=============*/
+/*===== Messages =====*/
 
 #captionText {
     left: 0; right: 0;
@@ -335,7 +334,29 @@ a:hover { color: #8888ff; }
     padding-right: .3em;
 }
 
-/*===== Other =====*/
+/* ===== Loading ===== */
+
+#loader {
+    border: 16px solid #2a2a2a;
+    border-radius: 50%;
+    border-top: 16px solid yellow;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    margin-top: calc(25% - 91px);
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ===== Other ===== */
 
 #winFrame, #statsFrame { display: none; }
 

@@ -1,12 +1,9 @@
 /*===========================================
 bClick - The b-Click-ing Game	
+Copyright Cameron Samuels 2013-2017
 =============================================
-	  Copyright Cameron Samuels 2013-2017
-=============================================
-	This code includes:
-		-My own created code
-		-Code from Stack Overflow, W3Schools, MDN, and other sites
-		-And ideas from friends and family
+This code includes a small amount of code that is not mine
+Some code is from StackOverflow, W3Schools and other websites
 ===========================================*/
 
 // ===== Variables ===== //
@@ -114,9 +111,7 @@ function realEarn() {
 	  set('points', parseFloat(get("points")) - parseFloat(increment));
 	  left = parseFloat(get("points")) - parseFloat(ceiling);
     }
-    else {
-        left = 0;
-    }
+    else { left = 0; }
 	if (left <= 0) {
 	    left = get('points');
 	    ceiling = left;
@@ -126,11 +121,10 @@ function realEarn() {
 
 function Earn(amount) {
     if (get("points") < Math.pow(10, 308)) {
-        increment += (parseFloat(amount) / 100); 
         ceiling = parseFloat(ceiling) + parseFloat(amount);
+        increment += (parseFloat(amount) / 100); 
     }
     else { set('points', m.eg(Math.pow(10, 308))); }
-
 	achievements.check();
 }
  
@@ -413,6 +407,8 @@ var data = {
         setInterval('ceiling = get("points");bank.collect();depositSpamBlocker()', 1000);
         if (get("username") == 'null' || get("username") == undefined || get("username") == '' || get("username") == ' ') set('username', 'bClicker' + random());
         seasons.load();
+        id("main").style.display = "block";
+        id('loader').style.display = "none";
     }
 }
 
