@@ -1,14 +1,8 @@
 /*===========================================
-    bClick - The Addicting b-Click-ing Game  
-=============================================
-      Copyright Cameron Samuels 2013-2016
-=============================================
-    This code includes:
-        -My own created code
-        -Code from Stack overflow
-        -Code from random sites
-=============================================
-    Use this code at your own risk!
+bClick - The Addicting b-Click-ing Game
+Copyright Cameron Samuels 2013-2016
+
+This code includes a small portion of code from Stack overflow and other websites
 ===========================================*/
 
 @import url('https://fonts.googleapis.com/css?family=Orbitron');
@@ -45,15 +39,12 @@ main, body, html {
     background-color: #FFF;
 }
 
-@media screen and (max-height: 400px) { body { zoom: 100%; } }
-@media screen and (min-height: 400px) { body { zoom: 125%; } }
-@media screen and (min-height: 500px) { body { zoom: 150%; } }
+@media screen and (max-height: 400px) { body { zoom: 100%; }}
+@media screen and (min-height: 400px) { body { zoom: 125%; }}
+@media screen and (min-height: 500px) { body { zoom: 150%; }}
+@media screen and (max-height: 374px) { #captionText { display: none; }}
 
-@media screen and (max-height: 340px) { #captionText { display: none; }}
-
-/*=============
-    Classes
-=============*/
+/*===== Classes =====*/
 
 .clear { clear: both; }
 
@@ -82,7 +73,6 @@ a:hover { color: #8888ff; }
     text-decoration: none;
     text-align: center;
     width: calc(90% - 30px - 2px);
-    /*transition: all 0.5s ease;*/
     margin: 2.5px 9px !important;
     user-select: none;
     cursor: pointer;
@@ -90,9 +80,6 @@ a:hover { color: #8888ff; }
 
 .button:hover {
   background-color: rgb(120, 120, 120);
-/*  color: #2a2a2a;
-  box-shadow: 5px 5px 15px #2a2a2a;
-  border-radius: 20px;*/
 }
 
 .section {
@@ -121,9 +108,7 @@ a:hover { color: #8888ff; }
     border-bottom: 1px black dashed;
 }
 
-/*=============
-    bSection
-=============*/
+/*===== bSection =====*/
 
 #bButton {
     width: 50px;
@@ -131,7 +116,6 @@ a:hover { color: #8888ff; }
     border: 1px #999 solid;
     border-radius: 3px;
     padding: 25px;
-    /*background-image: none;*/
     background-position: center;
     background-size: cover;
     background-color: white;
@@ -149,10 +133,6 @@ a:hover { color: #8888ff; }
   bottom: 123.1px;
   left: calc(50% - 48.5px);
 }
-
-/*#bButton:hover {
-    box-shadow: 5px 5px 15px #2a2a2a;
-}*/
 
 #bName {
     border-radius: 20px;
@@ -191,14 +171,10 @@ a:hover { color: #8888ff; }
 }
 
 #bUnlock { font-size: 12px; }
-
 #btnDeposit { bottom: 30px; }
-
 #pointsDiv { border-top-width: 0px; }
 
-/*=============
-    Arrows
-=============*/
+/*===== Arrows =====*/
 
 .arrow {
     position: absolute;
@@ -229,9 +205,7 @@ a:hover { color: #8888ff; }
     right: calc(50% - 87.5px);
 }
 
-/*==============
-    Settings
-==============*/
+/*===== Settings =====*/
 
 .settingGroup {
     width: 100%;
@@ -291,15 +265,6 @@ a:hover { color: #8888ff; }
 .minimize:hover { background-color: #888; }
 
 #settingsSection { left: calc(50% + 94.6666666666666px); }
-
-#googlePlayBadge { background-image: url('https://playbclick.com/assets/img/play_badge.png'); }
-#chromeStoreBadge { background-image: url('https://playbclick.com/assets/img/chrome_badge.png'); }
-
-#googlePlayBadge, #chromeStoreBadge {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 100%;
-}
 
 /*=============
     Messages
@@ -370,28 +335,7 @@ a:hover { color: #8888ff; }
     padding-right: .3em;
 }
 
-/*============
-    Other
-============*/
-
-.iframe {
-    padding: 0px; 
-    border-left: 0px; 
-    border-right: 0px;
-    border-bottom: 1px black solid; 
-    border-top: 1px black solid;
-    width: calc(100% - 2px); 
-    height: 20px !important; 
-    display: inline-block;
-    text-decoration: none;
-    text-align: center;
-    overflow-y: hidden !important;
-}
-
-.iframeParent {
-    height: 22px !important;
-    margin: 2px 0;
-}
+/*===== Other =====*/
 
 #winFrame, #statsFrame { display: none; }
 
@@ -406,9 +350,7 @@ a:hover { color: #8888ff; }
   color: #2a2a2a;
 }
 
-/*================
-    Special B's
-================*/
+/*===== Special B's =====*/
 
 .discoB {
     background-color: white;
@@ -442,12 +384,8 @@ a:hover { color: #8888ff; }
       background: linear-gradient(to right, red , blue);
       background-color: none;
 }
-.patternB {
-    background: url('https://playbclick.com/assets/img/pattern.jpg');
-}
-.rubiksB {
-    background: url('https://playbclick.com/assets/img/rubiks.jpg');
-}
+.patternB { background: url('https://playbclick.com/assets/img/pattern.jpg'); }
+.rubiksB { background: url('https://playbclick.com/assets/img/rubiks.jpg'); }
 
 /*=================
     Scrollbars

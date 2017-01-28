@@ -178,6 +178,8 @@ function theLog(text) {
     if (get("theLog") == undefined) {
         set('theLog', '');
         theLog(text);
+    } else if (get("theLog").length >= 4000) {
+        set('theLog', '<li><strong>' + text + '</strong></li>');
     } else {
         set('theLog', remove(get("theLog"), '<strong>'));
         set('theLog', remove(get("theLog"), '</strong>'));
@@ -340,10 +342,6 @@ var refresh = {
             }
         }
     },
-    iframes : function() {
-        id("FirstPlaceIframe").src = "https://playbclick.com/assets/php/firstplace.php";
-        id("OnlinePlayersIframe").src = "https://playbclick.com/assets/php/online.php";
-    },
     all : function() {
         refresh.numbers(); b.refresh(); refresh.achievements(); refresh.events();
         window.requestAnimationFrame(refresh.all);
@@ -367,11 +365,6 @@ var data = {
 
             for (i = 0; i < b.list.list.length; i++) {
                 var item = b.list.list[i];
-                // if (!b.list.b[item].hasOwnProperty("other")) {
-                //     
-                // } else if (!b.list.b[item].other.hasOwnProperty("onlydate")) {
-                //     set(item, false);
-                // }
                 set(item, false);
             }
 
@@ -412,8 +405,7 @@ var data = {
 			theLog('Earned ' + get("daysInARow") + ' daily gift(s)');
 		}
 		if (get("theLog") != undefined) id('theLog').innerHTML = '<ul>' + get("theLog") + '</ul>';
-		refresh.iframes();
-		setInterval('SubmitScore();refresh.iframes()', 30000);
+		setInterval('SubmitScore()', 30000);
         setInterval("stats('visits', 1)", 60000);
         refresh.all();
         ceiling = get("points");
@@ -421,16 +413,6 @@ var data = {
         setInterval('ceiling = get("points");bank.collect();depositSpamBlocker()', 1000);
         if (get("username") == 'null' || get("username") == undefined || get("username") == '' || get("username") == ' ') set('username', 'bClicker' + random());
         seasons.load();
-        // Minimize('comingSoonDiv', 'minimizeComingSoon');
-        // Minimize('AchievementsList', 'minimizeAchievements');
-        // Minimize('newDiv', 'minimizeNew');
-        // if (/Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor)) {
-        //     if(get("hasChromeExtension") != 'true') {
-        //         setTimeout(function(){ if (confirm('Would you like to add bClick to chrome?')) {
-        //             window.open('https://chrome.google.com/webstore/detail/bclick/fccplfmeljdiinmnjbemkgaganpbkghf');
-        //             set('hasChromeExtension', 'true');
-        //         }}
-        //     , 60000);}}
     }
 }
 
