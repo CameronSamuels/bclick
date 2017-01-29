@@ -41,9 +41,12 @@ main, body, html {
 }
 
 @media screen and (max-height: 400px) { body { zoom: 100%; }}
-@media screen and (min-height: 400px) { body { zoom: 125%; }}
-@media screen and (min-height: 500px) { body { zoom: 150%; }}
 @media screen and (max-height: 374px) { #captionText { display: none; }}
+@media screen and (min-height: 400px) { body { zoom: 125%; }}
+@media screen and (min-height: 400px) and (max-height: 450px) { #captionText { display: none; }}
+@media screen and (min-height: 500px) { body { zoom: 150%; }}
+@media screen and (min-height: 500px) and (max-height: 540px) { #captionText { display: none; }}
+
 
 /*===== Classes =====*/
 
