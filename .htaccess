@@ -19,6 +19,8 @@ Redirect 307 /web https://playbclick.com/v/3/4/4/
 
 # Apps #
 Redirect 307 /create https://playbclick.com/apps/create
+Redirect 307 /dice https://playbclick.com/apps/dice
+Redirect 307 /bnoodle https://playbclick.com/apps/bnoodle
 
 # Error Messages #
 ErrorDocument 404 /
