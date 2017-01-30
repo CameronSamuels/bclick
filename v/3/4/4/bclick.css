@@ -40,7 +40,8 @@ main, body, html {
     background-color: #FFF;
 }
 
-@media screen and (max-height: 400px) { body { zoom: 100%; }}
+@media screen and (max-height: 319px) { body { zoom: 75%; } }
+@media screen and (min-height: 320px) { body { zoom: 100%; }}
 @media screen and (max-height: 374px) { #captionText { display: none; }}
 @media screen and (min-height: 400px) { body { zoom: 125%; }}
 @media screen and (min-height: 400px) and (max-height: 450px) { #captionText { display: none; }}

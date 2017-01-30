@@ -14,28 +14,8 @@
         <meta property="og:description"        content="bClick - The b-Click-ing game! Unlock, Click, Deposit Points, Get First Place! Made by Cameron Samuels!" />
         <meta property="og:image"              content="https://playbclick.com/assets/ico/icon-200.png" />
 	    <meta name="description"               content="bClick - The b-Click-ing game! Unlock, Click, Deposit Points, Get First Place! Made by Cameron Samuels!" />
-	
-       <!-- <script type="application/ld+json">
-        // {
-        //   "@context": "http://schema.org/",
-        //   "@type": "Game",
-        //   "name": "bClick",
-        //   "alternateName": "bClick",
-        //   "image": "https://playbclick.com/icon.png",
-        //   "description": "bClick - The b-Click-ing game! Unlock B, Click B, Deposit Points, Get First Place!",
-        //   "url": "https://playbclick.com",
-        //   "publisher": {
-        //     "@type": "Organization",
-        //     "name": "The bClick Team"
-        //   },
-        //   "potentialAction": {
-        //     "@type": "ViewAction",
-        //     "target": "https://playbclick.com/create"
-        //   }
-        // }
-        </script>-->
 		<script> 
-		    if (window.location.protocol != "https:") window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
+		    if (window.location.protocol != "https:" && window.location.protocol != "file:") window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
 		</script>
 		<style>
 			html, body {
@@ -52,6 +32,9 @@
 				border: 0px;
 			}
 			#description { display: none; }
+/*			@media screen and (max-height: 599px) {
+				div[style~resize] { display: none; }
+			}*/
 		</style>
 	</head>
 	<body>
@@ -59,15 +42,11 @@
 		<iframe id="gameFrame" src="https://playbclick.com/web" allowfullscreen></iframe>
 		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5828e6575e1f981a"></script> 
         <script type="text/javascript">
-            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-            (function(){
+            var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();(function(){
             var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true;
-            s1.src='https://embed.tawk.to/583ca48b8a20fc0cac4969d0/default';
-            s1.charset='UTF-8';
-            s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-            })();
+            s1.async=true;s1.src='https://embed.tawk.to/583ca48b8a20fc0cac4969d0/default';
+            s1.charset='UTF-8';s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);})();
         </script>
 	</body>
 </html>
