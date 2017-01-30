@@ -1,22 +1,16 @@
-# README #
+# Information
 
-This file shows how and what to use this repo for.
+This is The bClick Team code repository. I (Cameron Samuels) will make changes to the code and commit & push them into this repo for people to see the code. when I push the code, it also uploads to the [website](https://playbclick.com) for everyone to use. So this is all the code on The bClick Team's website.
 
-### What is this repository for? ###
+## What you will use BitBucket for
 
-* Submit issues (ideas, bugs, suggestions) in the issues tab
+You can go to the Issues tab for submit issues (ideas, bugs, suggestions, etc) for us to view and make changes to the code to fit those needs.
+So, submit all your ideas in the Issues tab. We will never get overwhelmed with these suggestions.
 
-### How do I get set up? ###
+# Get setup
 
-* Click the eye (watch) button to watch this repo to ne a part of it
-* Download CodeBucket in the Apple App Store to quickly access on a phone
-* Watch and fork on overview tab
+* Click the watch (eye) button on the top right of the overview tab to be a part of us
 
-### Contribution guidelines ###
+### Apps and tools to help you do this
 
-* Submit realistic appropriate issues
-
-### Who do I talk to? ###
-
-* Cameron Samuels (thecameron@playbclick.com)
-* The bClick Team (team@playbclick.com)
+[CodeBucket](https://itunes.apple.com/us/app/codebucket-bitbucket-client/id551531422?mt=8) - An iOS app to submit issues and to do almost anything BitBucket does online, but just on your phone.
