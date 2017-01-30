@@ -1,6 +1,6 @@
 # README #
 
-This file shows what to use this repo for.
+This file shows how and what to use this repo for.
 
 ### What is this repository for? ###
 
