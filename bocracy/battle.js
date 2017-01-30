@@ -7,7 +7,7 @@
 		    any: function() { return (isMobile.Android() || isMobile.iOS() || isMobile.Windows()); }
 		};
 
-		var a = {
+		var newStats, a = {
 			name: '',
 			health: 0,
 			attack: 0,
@@ -60,10 +60,15 @@
 			},
 			win : function(side) {
 				if (side == 'green') {
-					var coinsEarned = bad[a.name].info[2] * 0.02;
-					if (localStorage.coins == undefined) localStorage.coins = coinsEarned;
-					else localStorage.coins = parseFloat(localStorage.coins) + coinsEarned;
-					id('overlayText').innerHTML = 'WINNER: ' + side + '!!!<br /><h5>You gained ' + coinsEarned + ' coins!</h5>';
+					if (newStats == 'true') {
+						if (current.includes('+')) { var coinsEarned = bad[a.name].info[2] * 0.05; }
+						else { var coinsEarned = bad[a.name].info[2] * 0.02; }
+						if (localStorage.coins == undefined) localStorage.coins = coinsEarned;
+						else localStorage.coins = parseFloat(localStorage.coins) + coinsEarned;
+						id('overlayText').innerHTML = 'WINNER: ' + side + '!!!<br /><h5>You gained ' + coinsEarned + ' coins!</h5>';
+					} else {
+						id('overlayText').innerHTML = 'WINNER: ' + side + '!!!';
+					}
 				} else {
 					id('overlayText').innerHTML = 'WINNER: ' + side + '!!!';
 				}
@@ -118,7 +123,7 @@
 				id('backButton').setAttribute('onclick', 'window.location="index.html"');
 			}
 
-			switch (current) {
+			switch (current.replace('+', '')) {
 				case "aonarchy":
 					newStats = 'true';
 					badNames.url = "b";
@@ -130,10 +135,10 @@
 					goodNames.url = "b";
 			}
 
-			a.name = badNames[current][Math.floor(Math.random() * badNames[current].length)];
+			a.name = badNames[current.replace('+', '')][Math.floor(Math.random() * badNames[current.replace('+', '')].length)];
 
 			// if (localStorage.hasOwnedGood != 'true') { unlock('mystery_pack'); localStorage.hasOwnedGood = 'true'; } 
-			b.name = goodNames[current][Math.floor(Math.random() * goodNames[current].length)];
+			b.name = goodNames[current.replace('+', '')][Math.floor(Math.random() * goodNames[current.replace('+', '')].length)];
 			// if (newStats == 'true') {
 			// 	while (localStorage[b.name] != 'true') {
 			// 		b.name = goodNames[current][Math.floor(Math.random() * goodNames[current].length)];
@@ -166,7 +171,13 @@
 				b.attack = good[b.name].stats[0];
 				b.heal = good[b.name].stats[2];;
 			}
-			
+			if (current.includes('+')) {
+				var stats = ['attack', 'health', 'speed', 'heal', 'orig_health'];
+				for (i = 0; i < stats.length; i++) {
+					if (stats[i] == 'speed') a.speed / 1.25;
+					else a[stats[i]] *= 1.25;
+				}
+			}
 
 			game.on = 'true';
 			setInterval('game.attack("red");game.heal("red")', a.speed);
