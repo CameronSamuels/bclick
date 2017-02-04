@@ -83,9 +83,7 @@ a:hover { color: #8888ff; }
     cursor: pointer;
 }
 
-.button:hover {
-  background-color: rgb(120, 120, 120);
-}
+.button:hover { background-color: rgb(120, 120, 120); }
 
 .section {
     width: 189px !important;
@@ -227,15 +225,12 @@ a:hover { color: #8888ff; }
     text-align: center;
     vertical-align: middle;
     line-height: 25px;
+    font-size: 8px;
     
     height: 25px;
     width: 25px;
-    
     margin: 2.5px;
     padding: 2.5px;
-    
-    font-size: 8px;
-    
     display: inline-block;
 }
 
@@ -281,23 +276,20 @@ a:hover { color: #8888ff; }
 }
 
 #logText {
-    display: none;
   
     color: yellow;
     background-color: #2a2a2a;
-  
-    width: 300px;
+    text-align: center;
     border-radius: 7.5px;
 
+    display: none;
     position: fixed;
     bottom: 5px;
     left: 0;
     right: 0;
-  
+    width: 300px;
     margin: auto;
     padding: 5px;
-
-    text-align: center;
 }
 
 .flicker {
@@ -318,19 +310,9 @@ a:hover { color: #8888ff; }
     100% { opacity:0; }
 }
 
-#theLog ul, #theLog ul li {
-    margin: 0;
-    padding: 0;
-}
-
-#theLog ul {
-    display: table;
-}
-
-#theLog ul li {
-    display: table-row;
-}
-
+#theLog ul, #theLog ul li { margin: 0; padding: 0; }
+#theLog ul { display: table; }
+#theLog ul li { display: table-row; }
 #theLog ul li::before {
     content: "-";
     display: table-cell;

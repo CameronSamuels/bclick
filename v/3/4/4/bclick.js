@@ -19,32 +19,6 @@ var sounds = {
 
 function web(url) { window.location = url; }
 function id(id) { return document.getElementById(id); }
-
-// function get(what) {
-//     switch (localStorage.saveRelease) {
-//         case "":
-//             return localStorage[what];
-//             break;
-//         case "beta":
-//             return localStorage[what + "_Beta"];
-//             break;
-//         default:
-//             return localStorage[what];
-//     } 
-// }
-// function set(what, value) { 
-//     switch (localStorage.saveRelease) {
-//         case "":
-//             localStorage.setItem(what, value); 
-//             break;
-//         case "beta":
-//             localStorage.setItem(what + "_Beta", value); 
-//             break;
-//         default:
-//             localStorage.setItem(what, value); 
-//     } 
-    
-// }
 function get(what) { return localStorage[what]; }
 function set(what, value) { localStorage.setItem(what, value); }
 
