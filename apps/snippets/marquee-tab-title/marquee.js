@@ -16,7 +16,7 @@ MarqueeTitle.start = function(title, speed, seperator) {
 	title += " " + seperator + " ";
 	MarqueeTitle.chars = title.split('');
 	setInterval("MarqueeTitle.cycle()", speed);
-}
+};
 
 /* This function is called every (speed) milliseconds.
 	This makes the title marquee */
@@ -24,4 +24,4 @@ MarqueeTitle.cycle = function() {
 	MarqueeTitle.chars.push(MarqueeTitle.chars[0]);
 	MarqueeTitle.chars.shift();
 	document.title = MarqueeTitle.chars.join("");
-}
+};

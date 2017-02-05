@@ -1,203 +1,195 @@
-<!--<!DOCTYPE html><html>-->
-<!--	<head>-->
-<!--		<title>The B Team</title>-->
-<!--		<link href="https://fonts.googleapis.com/css?family=Syncopate" rel="stylesheet">-->
-<!--		<meta name="viewport" content="width=device-width, initial-scale=0.9, minimum-scale=0.9, maximum-scale=0.9" />-->
-<!--		<style>-->
-<!--			body, html, main {-->
-<!--				width: 100%;-->
-<!--				height: 100%;-->
+<!DOCTYPE html><html>
+	<head>
+		<title>The B Team</title>
+		<link href="https://fonts.googleapis.com/css?family=Syncopate" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=0.9, minimum-scale=0.9, maximum-scale=0.9" />
+		<style>
+			body, html, main {
+				width: 100%;
+				height: 100%;
 
-<!--				padding: 0px;-->
-<!--				margin: 0px;-->
+				padding: 0px;
+				margin: 0px;
 
-<!--				background: #11CC11;-->
-<!--				font-family: 'Syncopate', sans-serif;-->
-<!--			}-->
-<!--			main {-->
-<!--			    margin-top: 60px;-->
-<!--			}-->
-<!--			header, #title {-->
-<!--				width: 100%;-->
-<!--				height: 50px;-->
-<!--				line-height: 50px;-->
-<!--				text-align: center;-->
-<!--				font-size: 30px;-->
-<!--			}-->
-<!--			header {-->
-<!--				box-shadow: 5px 0px 5px #000000;-->
-<!--				height: 50px;-->
-<!--				top: 0px;-->
-<!--				position: fixed;-->
-<!--				background: #3333FF;-->
-<!--			}-->
-<!--			.personSection {-->
-<!--				width: 350px;-->
-<!--				padding: 5px;-->
-<!--				height: 200px;-->
-<!--				margin: 0px;-->
-<!--				border: 2.5px black solid;-->
-<!--				/*box-shadow: 2.5px 2.5px 5px #000000;*/-->
-<!--				/*border-radius: 3.5px;*/-->
-<!--				background: #FF0000;-->
-<!--				float: left;-->
-<!--			}-->
-<!--			@media screen and (max-width: 559px) { .personSection { width: calc(100% - 15px); } }-->
-<!--			@media screen and (min-width: 560px) { .personSection { width: calc(50% - 15px); } }-->
-<!--			@media screen and (min-width: 780px) { .personSection { width: calc(33% - 15px); } }-->
-<!--			@media screen and (min-width: 1120px) { .personSection { width: calc(25% - 15px); } }-->
-<!--			.personImage, .personInfo {-->
-<!--				float: left;-->
-<!--				width: 50%;-->
-<!--				height: 100%;-->
-<!--			}-->
-<!--			.personImage img {-->
-<!--				width: 160px;-->
-<!--				height: 200px;-->
-<!--			}-->
-<!--			.personName {-->
-<!--				text-align: center;-->
-<!--				width: 100%;-->
-<!--				text-shadow: 2px 2px #3333FF;-->
-<!--				font-size: 20px;-->
-<!--			}-->
-<!--			.personRole {-->
-<!--				text-decoration: bold;-->
-<!--				text-align: center;-->
-<!--				text-transform: uppercase;-->
-<!--				width: 100%;-->
-<!--				font-size: 15px;-->
-<!--			}-->
-<!--			.personInfoText {-->
-<!--				text-align: center;-->
-<!--				width: 100%;-->
-<!--				font-size: 12.5px;-->
-<!--			}-->
-<!--			.hr {-->
-<!--				height: 0px;-->
-<!--				width: 80%;-->
-<!--				margin-left: 10%;-->
-<!--				border-bottom: 2px #C0C0C0 solid;-->
-<!--				border-radius: 2px;-->
-<!--				margin-top: 5px;-->
-<!--				margin-bottom: 5px;-->
-<!--			}-->
-<!--			.personSection:target {-->
-<!--			    height: 630px;-->
-<!--			}-->
-<!--			a:visited {-->
-<!--			    color: black;-->
-<!--			}-->
-<!--			a {-->
-<!--			    color: #333333;-->
-<!--			    text-decoration: none;-->
-<!--			}-->
-<!--		</style>-->
-<!--	</head>-->
-<!--	<body>-->
-<!--		<header>-->
-<!--			<div id="title">The B Team</div>-->
-<!--		</header>-->
-<!--		<main>-->
-<!--			<section class="personSection" id="cameron">-->
-<!--				<div class="personImage"><img src="https://playbclick.com/cameron/profile.png" alt="Cameron Samuels" title="Cameron Samuels | Fall 2016"></div>-->
-<!--				<div class="personInfo">-->
-<!--					<div class="personName">Cameron Samuels</div>-->
-<!--					<div class="personRole">CEO | Dev</div>-->
-<!--					<div class="hr"></div>-->
-<!--					<a href="#cameron" class="personInfoText">Cameron Samuels, the owner of The B Team, who leads the company. He is the main developer, and does graphic work.</a>-->
-<!--				</div>-->
-<!--			</section>-->
-<!--			<div class="clear"></div>-->
-<!--			<section class="personSection" id="ethan">-->
-<!--				<div class="personInfo">-->
-<!--					<div class="personName">Ethan Choo</div>-->
-<!--					<div class="personRole">Head Executive of B Designing</div>-->
-<!--					<div class="hr"></div>-->
-<!--					<a href="#ethan" class="personInfoText">Ethan has done designs including the Carnotaurus, Dovahkinn, and more B's, while adding scematic decoration to the B's.</a>-->
-<!--				</div>-->
-<!--				<div class="personImage"><img src="https://playbclick.com/assets/b/dovahkinn.png" alt="Dovahkinn B" title="Dovahkinn B"></div>-->
-<!--			</section>-->
-<!--			<section class="personSection" id="faith">-->
-<!--			    <div class="personImage"><img src="https://playbclick.com/team/img/faith.png" alt="Faith Tsang" title="Faith Tsang"></div>-->
-<!--				<div class="personInfo">-->
-<!--					<div class="personName">Faith<br />Tsang</div>-->
-<!--					<div class="personRole">Audio</div>-->
-<!--					<div class="hr"></div>-->
-<!--					<a href="#faith" class="personInfoText">Faith Tsang is a 7th grader at Seven Lakes Junior High School. She wants to go to the Air Force ROTC at MIT for college. She wants to be an Air Force pilot after graduation from college. After "retiring" from the military, she wants to go into Forensics and Biomedical Engineering.-->
-<!--                        <br />-->
-<!--                        Faith is a member of the SLJH Science Olympiad team. She has a vast knowledge and love of science. She specializes in forensics, aerodynamics, and medical sciences.-->
-<!--                        <br />-->
-<!--                        Faith is also an accomplished musician. She has been playing piano since she was 4. In 2nd grade, she received the Mozart (Sonatina) Award from getting the highest score in the American Guild Piano Association on the 15 Sonatina Audition. In 5th grade, she aced the American Guild Piano Association College A audition with a perfect score. That test was designed for college students moving on to become professionals. Besides being a pianist, she plays cello.-->
-<!--                        <br />-->
-<!--                        Faith's biggest passion however, is tennis. She is an athlete. She plays tennis and basketball and hopes to make the school track team also, having one of the fastest 100 meter sprint times in the grade.<!--Faith is the audio composer for bOcracy. She has made numerous soundtracks for our upcoming game.--></a>-->
-<!--				</div>-->
-<!--			</section>-->
-<!--			<section class="personSection">-->
-<!--				<div class="personInfo">-->
-<!--					<div class="personName">Michael Kwee-bintoro</div>-->
-<!--					<div class="personRole">Graphics | Dev</div>-->
-<!--					<div class="hr"></div>-->
-<!--					<div class="personInfoText">Michael has made a few of the B's in bClick, as well as several graphics in bOcracy.</div>-->
-<!--				</div>-->
-<!--				<div class="personImage"><img src="https://playbclick.com/assets/b/muscle.png" alt="Muscle B" title="Muscle B"></div>-->
-<!--			</section>-->
-<!--			<section class="personSection">-->
-<!--			    <div class="personImage"><img src="" alt="" title=""></div>-->
-<!--				<div class="personInfo">-->
-<!--					<div class="personName">Cooper Langlois</div>-->
-<!--					<div class="personRole">Graphics</div>-->
-<!--					<div class="hr"></div>-->
-<!--					<div class="personInfoText">Cooper, is doing a great job being a "B Generator" who thinks of more than 10 new B's a week, and brainstorms the look.</div>-->
-<!--				</div>-->
-<!--			</section>-->
-<!--			<section class="personSection">-->
-<!--				<div class="personInfo">-->
-<!--					<div class="personName">Jessica Jason</div>-->
-<!--					<div class="personRole">Graphics</div>-->
-<!--					<div class="hr"></div>-->
-<!--					<div class="personInfoText">Jessica, is also coming up with her design of B's and graphics for bOcracy.</div>-->
-<!--				</div>-->
-<!--				<div class="personImage"><img src="" alt="" title=""></div>-->
-<!--			</section>-->
-<!--			<section class="personSection">-->
-<!--			    <div class="personImage"><img src="" alt="" title=""></div>-->
-<!--				<div class="personInfo">-->
-<!--					<div class="personName">Vishwam Rathod</div>-->
-<!--					<div class="personRole">Graphics</div>-->
-<!--					<div class="hr"></div>-->
-<!--					<div class="personInfoText">Vishwam has mostly been spamming the team chat app to annoy us. While he isn't, he makes drawings of B's for bOcracy.</div>-->
-<!--				</div>-->
-<!--			</section>-->
-<!--			<section class="personSection">-->
-<!--				<div class="personInfo">-->
-<!--					<div class="personName">Harkeertan Singh</div>-->
-<!--					<div class="personRole">B Designer</div>-->
-<!--					<div class="hr"></div>-->
-<!--					<div class="personInfoText">Harkeertan has designed the great Dragonball B (To the left) showing his compassion about Dragon Ball Z&copy</div>-->
-<!--				</div>-->
-<!--				<div class="personImage"><img src="https://playbclick.com/assets/b/dragonball.png" alt="Dragon Ball B" title="Dragon Ball B"></div>-->
-<!--			</section>-->
-<!--			<section class="personSection">-->
-<!--			    <div class="personImage"><img src="https://playbclick.com/assets/b/skater.png" alt="Skater B" title="Skater B"></div>-->
-<!--				<div class="personInfo">-->
-<!--					<div class="personName">Alwin Clase</div>-->
-<!--					<div class="personRole">B Designer</div>-->
-<!--					<div class="hr"></div>-->
-<!--					<div class="personInfoText">Alwin inspired the Skater B and is a deisgner for C's in bOcracy.</div>-->
-<!--				</div>-->
-<!--			</section>-->
-<!--			<section class="personSection">-->
-<!--				<div class="personInfo">-->
-<!--					<div class="personName">Srisha Chakroborty</div>-->
-<!--					<div class="personRole">Anime Graphics</div>-->
-<!--					<div class="hr"></div>-->
-<!--					<div class="personInfoText">Srisha, has been making anime graphics for bOcracy's video clips at the beginning of the game.</div>-->
-<!--				</div>-->
-<!--				<div class="personImage"><img src="" alt="" title=""></div>-->
-<!--			</section>-->
-<!--			<div class="clear"></div>-->
-<!--			<div id="description" style="display: none">bClick - the b-Click-ing game - bClick is a video game made by The B Team in 2013. The B team, or The bClick Team has made many apps, and is run by Cameron Samuels. I repeat, Cameron Samuels. Cameron Samuels has made many apps for The bClick Team, including Delta Cubed,bOcracy, bClick, Google Mod, Dice Thrower, RU Cubing, and many more apps that Cameron Samuels made can be found on Cameron Samuels's page on The bClick Teams Website. Check out Cameron Samuels's apps at https://playbclick.com/apps. Cameron Samuels's bClick apps still stands today and has been through many improvements, and updates in the past few years, while being Cameron Samuels's first app. Cameron Samuels programs in most of his time. The idea of bClick also known as B-Click, bclick, BClick, or bClick (bClick is the most common), came from a clicker game Cameron Samuels played once which is Cookie Clicker, a game made by Orteil. bClick is maintained by the CEO of The B Team, Cameron Samuels. Cameron Samuels is the CEO, Owner, and Leader Programmer for The B Team. bClick can be played at <a href="https://playbclick.com">https://playbclick.com</a>, the official website. bclick bclick. bClick - The b-Click-ing game!! bClick - the b-Click-ing Game. bClick is published for the Web, on Kongregate, Itch.io, and Indie Video Games. bclick bclick. bclick is an android app in the google play store and bclick is an app in mulitple websites by searching bclick. bclick bclick. bclick is on kongregate, itch.io, and multiple bclick bclick searches on websites. bClick shows up first ranking on google with the keyword bClick or bclick. bClick shows up, bClick shows up too again, bClick shows up a third time, and bClick shows up every but two links on google without bClick. bclick bclick. Download the bclick android app in google play by searching up bclick. bclick bclick bclick is a game where you click b. bclick. play bclick today by searching up bclick on google. bclick bclick. Cameron Samuels also solves Rubik's cubes in under 30 seconds and even competes in official WCA competitions worldwide. He has maintained 2 Rubiks cube related YouTube channels (The 2 Cameron Samuels made is Magic Box Bros and Magic Box PROS) while solving Rubik's cubes since 2015. Cameron Samuels has computer programmed since 2014. Cameron Samuels memorized over 90 digits of Pi, learned over 10 programming languages, while JavaScript web apps is his favorite. Thanks for reading this bClick message. Signing off! bClick - The B Team - The bClick Team - <a href="https://playbclick.com">https://playbclick.com</a> - Made by Cameron Samuels and The bClick Team.</div>-->
-<!--		</main>-->
-<!--	</body>-->
-<!--</html>-->
+				background: #11CC11;
+				font-family: 'Syncopate', sans-serif;
+			}
+			main {
+			    margin-top: 60px;
+			}
+			header, #title {
+				width: 100%;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+				font-size: 30px;
+			}
+			header {
+				box-shadow: 5px 0px 5px #000000;
+				height: 50px;
+				top: 0px;
+				position: fixed;
+				background: #3333FF;
+			}
+			.personSection {
+				width: 350px;
+				padding: 5px;
+				height: 200px;
+				margin: 0px;
+				border: 2.5px black solid;
+				background: #FF0000;
+				float: left;
+			}
+			@media screen and (max-width: 559px) { .personSection { width: calc(100% - 15px); } }
+			@media screen and (min-width: 560px) { .personSection { width: calc(50% - 15px); } }
+			@media screen and (min-width: 780px) { .personSection { width: calc(33% - 15px); } }
+			@media screen and (min-width: 1120px) { .personSection { width: calc(25% - 15px); } }
+			.personImage, .personInfo {
+				float: left;
+				width: 50%;
+				height: 100%;
+			}
+			.personImage img {
+				width: 160px;
+				height: 200px;
+			}
+			.personName {
+				text-align: center;
+				width: 100%;
+				text-shadow: 2px 2px #3333FF;
+				font-size: 20px;
+			}
+			.personRole {
+				text-decoration: bold;
+				text-align: center;
+				text-transform: uppercase;
+				width: 100%;
+				font-size: 15px;
+			}
+			.personInfoText {
+				text-align: center;
+				width: 100%;
+				font-size: 12.5px;
+			}
+			.hr {
+				height: 0px;
+				width: 80%;
+				margin-left: 10%;
+				border-bottom: 2px #C0C0C0 solid;
+				border-radius: 2px;
+				margin-top: 5px;
+				margin-bottom: 5px;
+			}
+			/*.personSection:target {
+			    height: 630px;
+			}*/
+			a:visited { color: black; }
+			a {
+			    color: #333333;
+			    text-decoration: none;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div id="title">The bClick Team</div>
+		</header>
+		<main>
+			<section class="personSection" id="cameron">
+				<div class="personImage"><img src="https://playbclick.com/team/img/cameron-web.png" alt="Cameron Samuels" title="Cameron Samuels | Fall 2016"></div>
+				<div class="personInfo">
+					<div class="personName">Cameron Samuels</div>
+					<div class="personRole">CEO | Dev</div>
+					<div class="hr"></div>
+					<a href="#cameron" class="personInfoText">Cameron Samuels, the owner of The B Team, who leads the company. He is the main developer, and does graphic work.</a>
+				</div>
+			</section>
+			<div class="clear"></div>
+			<section class="personSection" id="ethan">
+				<div class="personInfo">
+					<div class="personName">Ethan Choo</div>
+					<div class="personRole">Chief Executive of B Designing</div>
+					<div class="hr"></div>
+					<a href="#ethan" class="personInfoText">Ethan has done designs including the aonarchy B's, and more B's, while adding scenematic decoration to the B's.</a>
+				</div>
+				<div class="personImage"><img src="https://playbclick.com/assets/b/dovahkinn.png" alt="Dovahkinn B" title="Dovahkinn B"></div>
+			</section>
+			<section class="personSection" id="faith">
+			    <div class="personImage"><img src="https://playbclick.com/team/img/faith.png" alt="Faith Tsang" title="Faith Tsang"></div>
+				<div class="personInfo">
+					<div class="personName">Faith<br />Tsang</div>
+					<div class="personRole">Audio</div>
+					<div class="hr"></div>
+					<a href="#faith" class="personInfoText">
+                        <br />
+                        Faith is the audio composer for The B Team. She has made numerous soundtracks for b-Ocracy.</a>
+				</div>
+			</section>
+			<section class="personSection">
+				<div class="personInfo">
+					<div class="personName">Michael Kwee-bintoro</div>
+					<div class="personRole">Graphics | Dev</div>
+					<div class="hr"></div>
+					<div class="personInfoText">Michael has made a few of the B's in bClick, as well as several graphics in bOcracy.</div>
+				</div>
+				<div class="personImage"><img src="https://playbclick.com/assets/b/muscle.png" alt="Muscle B" title="Muscle B"></div>
+			</section>
+			<section class="personSection">
+			    <div class="personImage"><img src="" alt="" title=""></div>
+				<div class="personInfo">
+					<div class="personName">Cooper Langlois</div>
+					<div class="personRole">Graphics</div>
+					<div class="hr"></div>
+					<div class="personInfoText">Cooper, is doing a great job being a "B Generator" who thinks of more than 10 new B's a week, and brainstorms the look.</div>
+				</div>
+			</section>
+			<section class="personSection">
+				<div class="personInfo">
+					<div class="personName">Jessica Jason</div>
+					<div class="personRole">Graphics</div>
+					<div class="hr"></div>
+					<div class="personInfoText">Jessica, is also coming up with her design of B's and graphics for bOcracy.</div>
+				</div>
+				<div class="personImage"><img src="" alt="" title=""></div>
+			</section>
+			<section class="personSection">
+			    <div class="personImage"><img src="" alt="" title=""></div>
+				<div class="personInfo">
+					<div class="personName">Vishwam Rathod</div>
+					<div class="personRole">Graphics</div>
+					<div class="hr"></div>
+					<div class="personInfoText">Vishwam has mostly been spamming the team chat app to annoy us. While he isn't, he makes drawings of B's for bOcracy.</div>
+				</div>
+			</section>
+			<section class="personSection">
+				<div class="personInfo">
+					<div class="personName">Harkeertan Singh</div>
+					<div class="personRole">B Designer</div>
+					<div class="hr"></div>
+					<div class="personInfoText">Harkeertan has designed the great Dragonball B (To the left) showing his compassion about Dragon Ball Z&copy</div>
+				</div>
+				<div class="personImage"><img src="https://playbclick.com/assets/b/dragonball.png" alt="Dragon Ball B" title="Dragon Ball B"></div>
+			</section>
+			<section class="personSection">
+			    <div class="personImage"><img src="https://playbclick.com/assets/b/skater.png" alt="Skater B" title="Skater B"></div>
+				<div class="personInfo">
+					<div class="personName">Alwin Clase</div>
+					<div class="personRole">B Designer</div>
+					<div class="hr"></div>
+					<div class="personInfoText">Alwin inspired the Skater B and is a deisgner for C's in bOcracy.</div>
+				</div>
+			</section>
+			<section class="personSection">
+				<div class="personInfo">
+					<div class="personName">Srisha Chakroborty</div>
+					<div class="personRole">Anime Graphics</div>
+					<div class="hr"></div>
+					<div class="personInfoText">Srisha, has been making anime graphics for bOcracy's video clips at the beginning of the game.</div>
+				</div>
+				<div class="personImage"><img src="" alt="" title=""></div>
+			</section>
+			<div class="clear"></div>
+			<div id="description" style="display: none">bClick - the b-Click-ing game - bClick is a video game made by The B Team in 2013. The B team, or The bClick Team has made many apps, and is run by Cameron Samuels. I repeat, Cameron Samuels. Cameron Samuels has made many apps for The bClick Team, including Delta Cubed,bOcracy, bClick, Google Mod, Dice Thrower, RU Cubing, and many more apps that Cameron Samuels made can be found on Cameron Samuels's page on The bClick Teams Website. Check out Cameron Samuels's apps at https://playbclick.com/apps. Cameron Samuels's bClick apps still stands today and has been through many improvements, and updates in the past few years, while being Cameron Samuels's first app. Cameron Samuels programs in most of his time. The idea of bClick also known as B-Click, bclick, BClick, or bClick (bClick is the most common), came from a clicker game Cameron Samuels played once which is Cookie Clicker, a game made by Orteil. bClick is maintained by the CEO of The B Team, Cameron Samuels. Cameron Samuels is the CEO, Owner, and Leader Programmer for The B Team. bClick can be played at <a href="https://playbclick.com">https://playbclick.com</a>, the official website. bclick bclick. bClick - The b-Click-ing game!! bClick - the b-Click-ing Game. bClick is published for the Web, on Kongregate, Itch.io, and Indie Video Games. bclick bclick. bclick is an android app in the google play store and bclick is an app in mulitple websites by searching bclick. bclick bclick. bclick is on kongregate, itch.io, and multiple bclick bclick searches on websites. bClick shows up first ranking on google with the keyword bClick or bclick. bClick shows up, bClick shows up too again, bClick shows up a third time, and bClick shows up every but two links on google without bClick. bclick bclick. Download the bclick android app in google play by searching up bclick. bclick bclick bclick is a game where you click b. bclick. play bclick today by searching up bclick on google. bclick bclick. Cameron Samuels also solves Rubik's cubes in under 30 seconds and even competes in official WCA competitions worldwide. He has maintained 2 Rubiks cube related YouTube channels (The 2 Cameron Samuels made is Magic Box Bros and Magic Box PROS) while solving Rubik's cubes since 2015. Cameron Samuels has computer programmed since 2014. Cameron Samuels memorized over 90 digits of Pi, learned over 10 programming languages, while JavaScript web apps is his favorite. Thanks for reading this bClick message. Signing off! bClick - The B Team - The bClick Team - <a href="https://playbclick.com">https://playbclick.com</a> - Made by Cameron Samuels and The bClick Team.</div>
+		</main>
+	</body>
+</html>
