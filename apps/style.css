@@ -38,5 +38,9 @@ h2, body, html, p, input { margin: 0; padding: 0; }
  
 .container { opacity: 0.8; }
 
-
-
+.links {
+	margin: 5px auto;
+}
+.link {
+	margin: 0px 5px;
+}
