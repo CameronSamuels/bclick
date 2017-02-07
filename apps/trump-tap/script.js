@@ -3,9 +3,7 @@
 =============*/
 
 function id(id) { return document.getElementById(id); }
-
 function get(variable) { return localStorage[variable]; }
-
 function set(variable, value) { localStorage.setItem(variable, value); }
 
 /*==========
@@ -33,7 +31,7 @@ var score = {
 	refresh : function() {
 		id('myClicks').innerHTML = 'My Clicks: ' + get('my_clicks');
 		id('getPHP').setAttribute('src', 'get_clicks.php');
-		id("totalClicks").innerHTML = "Total Clicks: " + get("total_clicks");
+		id("totalClicks").innerHTML = "Global Clicks: " + get("total_clicks");
 		setTimeout(score.refresh, 500);
 	}
 };
@@ -42,7 +40,7 @@ var changeFace = {
 	list : [
 		'Angry;angry', 'Painted;final', 
 		'Gritter;gritter', 'Toupe;hair', 
-		'Smooch;mouth', 'Nazi;mustache', 
+		'Smooch;mouth', 'Hitler;mustache', 
 		'Horrified;horrified'
 	],
 	random : function() {

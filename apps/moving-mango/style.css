@@ -1,25 +1,19 @@
 .image {
-    width: 300px;
-    height: 300px;
-    background: white url("moving_mango.png") no-repeat;
+    width: 120px;
+    height: 120px;
+    background: white url("mango.png") no-repeat;
+    background-size: cover;
     position: relative;
     
     -webkit-animation-name: moveanim;
     animation-name: moveanim;
     animation-timing-function: linear;
     -webkit-animation-timing-function: linear;
-    animation-delay: 1s;
-    -webkit-animation-delay: 1s;
     animation-iteration-count: infinite;
     -webkit-animation-iteration-count: infinite;
     animation-direction: alternate;
     -webkit-animation-direction: alternate;
-    animation-play-state: running;
-    -webkit-animation-play-state: running;
 }
-
-
-
 
 .Level1 {
     -webkit-animation-duration: 5s;
@@ -51,22 +45,20 @@
     animation-duration: 0.5s;
 }
 
-
-
 @-webkit-keyframes moveanim {
-    0%   {background: url("moving_mango.png"); left:0px; top:0px;}
-    25%  {background: url("moving_mango.png"); left:200px; top:0px;}
-    50%  {background: url("moving_mango.png"); left:200px; top:200px;}
-    75%  {background: url("moving_mango.png"); left:0px; top:200px;}
-    100% {background: url("moving_mango.png"); left:0px; top:0px;}
+    0%   {left:0px; top:0px;}
+    25%  {left:200px; top:0px;}
+    50%  {left:200px; top:200px;}
+    75%  {left:0px; top:200px;}
+    100% {left:0px; top:0px;}
 }
 
 @keyframes moveanim {
-    0%   {background: url("moving_mango.png"); left:0px; top:0px;}
-    25%  {background: url("moving_mango.png"); left:200px; top:0px;}
-    50%  {background: url("moving_mango.png"); left:200px; top:200px;}
-    75%  {background: url("moving_mango.png"); left:0px; top:200px;}
-    100% {background: url("moving_mango.png"); left:0px; top:0px;}
+    0%   {left:0px; top:0px;}
+    25%  {left:200px; top:0px;}
+    50%  {left:200px; top:200px;}
+    75%  {left:0px; top:200px;}
+    100% {left:0px; top:0px;}
 }
 
 /*@-webkit-keyframes moveanim-2 {*/
@@ -80,9 +72,7 @@
 /*}*/
 
 
-.Points {
-    text-shadow: 5px 5px 5px #1111FF;
-}
+.Points { text-shadow: 5px 5px 5px #ff7f26; }
 
 html, body {
     width: 100%;

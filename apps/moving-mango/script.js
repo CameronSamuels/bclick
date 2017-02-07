@@ -20,11 +20,11 @@ function load() {
     if (localStorage.mmmLevel == undefined) localStorage.mmmLevel = 1;
     else {
         var Level = localStorage.mmmLevel;
-        if (Level == 2) id("Mango").setAttribute("class", "Image Level2");
-        if (Level == 3) id("Mango").setAttribute("class", "Image Level3");
-        if (Level == 4) id("Mango").setAttribute("class", "Image Level4");
-        if (Level == 5) id("Mango").setAttribute("class", "Image Level5");
-        if (Level == 6) id("Mango").setAttribute("class", "Image Level6");
+        if (Level == 2) id("Mango").setAttribute("class", "image Level2");
+        if (Level == 3) id("Mango").setAttribute("class", "image Level3");
+        if (Level == 4) id("Mango").setAttribute("class", "image Level4");
+        if (Level == 5) id("Mango").setAttribute("class", "image Level5");
+        if (Level == 6) id("Mango").setAttribute("class", "image Level6");
     }
     if (localStorage.mmmWorth == undefined) localStorage.mmmWorth = 1;
     else Worth = localStorage.mmmWorth;
@@ -95,6 +95,7 @@ function BodyClicked() {
             alert("GAME OVER!! Click to try again!");
             localStorage.mmmLevel = 1;
             localStorage.mmmWorth = 1;
+            location.reload();
         }
     }
     else {

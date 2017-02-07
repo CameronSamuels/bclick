@@ -1,6 +1,7 @@
 <!DOCTYPE html><html>
     <head>
     	<title>User-friendly title marquee example</title>
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
     	<script src="marquee.js"></script>
     	<style>
     	    html, body {
@@ -18,19 +19,21 @@
     	        
     	        border: 1px black solid;
     	        border-radius: 3px;
+                color: #555;
     	    }
     	    .language {
     	        color: #4C4C4C;
     	        text-decoration: underline;
     	    }
+            black { color: black; }
     	</style>
     </head>
         <script>
-            var title = "User-friendly marquee title example"; //set title
-            var speed = 250; //set speed
-            var seperator = "|"; //set seperator for end to beginning. Optional
+            var title = "User-friendly marquee title example";
+            var speed = 250;
+            var seperator = "|";
             
-            MarqueeTitle.start(title, speed, seperator); //call function to start cycle
+            MarqueeTitle.start(title, speed, seperator);
         </script>
     <body>
         <h1>User-friendly marquee title example</h1>
@@ -40,16 +43,16 @@
         <hr />
         <div class="language">HTML</div>
         <div class="code">
-            &lt;script src="marquee.js"&gt;&lt;/script&gt;
+            <black>&lt;script src="marquee.js"&gt;&lt;/script&gt;</black> //Reference the code
         </div>
         <hr />
         <div class="language">JavaScript</div>
         <div class="code">
-            var title = "User-friendly marquee title example"; //set title<br />
-            var speed = 250; //set speed<br />
-            var seperator = "|"; //set seperator for end to beginning. Optional<br />
+            <black>var title = "User-friendly marquee title example";</black> //set title<br />
+            <black>var speed = 250;</black> //set speed<br />
+            <black>var seperator = "|";</black> //set seperator for end to beginning<br />
             
-            MarqueeTitle.start(title, speed, seperator); //call function to start cycle
+            <black>MarqueeTitle.start(title, speed, seperator);</black> //call function to start cycle
         </div>
         <hr />
         <footer id="footer">Copyright &copy; Cameron Samuels</footer>

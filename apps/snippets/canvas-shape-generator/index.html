@@ -1,6 +1,7 @@
 <!DOCTYPE html><html>
     <head>
     	<title>PolyGen: User-friendly Canvas Polygon Generator</title>
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
     	<style>
     	    html, body {
     	        padding: 1px;
@@ -17,11 +18,13 @@
     	        
     	        border: 1px black solid;
     	        border-radius: 3px;
+                color: #555;
     	    }
     	    .language {
     	        color: #4C4C4C;
     	        text-decoration: underline;
     	    }
+            black { color: black; }
     	</style>
     </head>
     <body>
@@ -29,26 +32,31 @@
         <h3>Made by Cameron Samuels</h3>
         <hr />
         <div><a href="polygen.js" download="polygen.js">Download</a> the code</div>
+        <div><a href="polygen.js">View/Reference</a> the code</div>
+        <div><a href="https://playbclick.com/apps/delta-cubed" target="_blank">Video game</a> using PolyGen</div>
         <hr />
         <div class="language">HTML</div>
         <div class="code">
-            &ltscript src="polygen.js"&gt&lt/script&gt
+            <black>&lt;script src="polygen.js"&gt;&lt;/script&gt;<br /></black>
+            <black>&lt;canvas id="canvas" width="4096" height="4096"&gt;&lt;/canvas&gt;</black>
         </div>
         <hr />
         <div class="language">JavaScript</div>
         <div class="code">
-            //Object of canvas. Ex value: document.getElementById('canvasElement');<br />
-            PolyGen.Canvas = null;<br />
-            //Canvas Context. Ex value: Polygen.Context = PolyGen.Canvas.getContext('2d');<br />
-            PolyGen.Context = null;<br />
+            //Canvas object<br />
+            <black>PolyGen.canvas = document.getElementById('canvas');</black><br />
+            //Canvas context<br />
+            <black>PolyGen.context = PolyGen.canvas.getContext('2d');</black><br />
             //Thickness of side lines<br />
-            PolyGen.Thickness = 8;<br />
-            //Color of lines. It can be any color that can be used for strokeStyles in canvases<br />
-            PolyGen.Color ='#000000';<br />
+            <black>PolyGen.thickness = 8;</black><br />
+            //Color of lines. It can be in any CSS color format<br />
+            <black>PolyGen.color ='#000000';</black><br />
             //Size of shape<br />
-            PolyGen.Size = 409.6;<br />
+            <black>PolyGen.size = 409.6;</black><br />
+            //Create by calling this function<br />
+            <black>PolyGen.create(5);</black>
         </div>
         <hr />
-        <footer id="footer">Copyright &copy Cameron Samuels</footer>
+        <footer id="footer">Copyright &copy; Cameron Samuels</footer>
     </body>
 </html>
