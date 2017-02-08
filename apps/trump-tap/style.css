@@ -6,8 +6,8 @@ body, html {
 	margin: 0px;
 
 	background-color: #33C;
-
 	font-family: 'Indie Flower', cursive;
+	user-select: none;
 }
 
 /*==================
@@ -27,7 +27,8 @@ body, html {
 
     border: 8px #6c6c6c solid;
     border-radius: 8px;
-    z-index: 1;
+    /*z-index: 1;*/
+    cursor: pointer;
 }
 
 #face {

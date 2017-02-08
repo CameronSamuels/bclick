@@ -435,12 +435,14 @@ var b = {
 		else {
             b.vars.unlock().innerHTML = "Unlocked!";
         }
-        var color = b.list.b[b.list.list[get("bPosition")]].color;
-        if (color.toString().charAt(0) != " ") {
-            b.vars.section().style.backgroundColor = color;
-            b.vars.section().className = "section";
-        } else {
-            b.vars.section().className = "section " + color;
+        if (new Date().getHours() < 19) {
+            var color = b.list.b[b.list.list[get("bPosition")]].color;
+            if (color.toString().charAt(0) != " ") {
+                b.vars.section().style.backgroundColor = color;
+                b.vars.section().className = "section";
+            } else {
+                b.vars.section().className = "section " + color;
+            }
         }
         for (i = 0; i < b.list.soon.list.length; i++) {
             if (b.list.soon.b[b.list.soon.list[i]].other.date <= new Date()) {
@@ -506,6 +508,8 @@ var bank = {
         set('lastPlayDay', new Date().getDate());
         var timePlayed = get("timePlayed");
         set('timePlayed', timePlayed++);
+        if (new Date().getHours() >= 19) id('body').setAttribute('class', 'night');
+        else id('body').setAttribute('class', '');
     },
     deposit : function() {
         if (depositReady == 'true') {

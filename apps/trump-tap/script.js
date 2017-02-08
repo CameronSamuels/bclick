@@ -21,9 +21,9 @@ var score = {
 		}
 		else {
 			set('my_clicks', parseFloat(get('my_clicks')) + 1);
-			id('trumpPHP').setAttribute('src', 'trump.php');
 			set("clicksLeft", parseFloat(get("clicksLeft")) + 1);
 		}
+		id('trumpPHP').setAttribute('src', 'trump.php');
 		if (get("currentTrump") == "undefined") {
 			set("currentTrump", changeFace.list[0]);
 		}
@@ -39,8 +39,8 @@ var score = {
 var changeFace = {
 	list : [
 		'Angry;angry', 'Painted;final', 
-		'Gritter;gritter', 'Toupe;hair', 
-		'Smooch;mouth', 'Hitler;mustache', 
+		'Gritter;gritter', 'Toupee;hair', 
+		'Smooch;mouth', 'Mustache;mustache', 
 		'Horrified;horrified'
 	],
 	random : function() {

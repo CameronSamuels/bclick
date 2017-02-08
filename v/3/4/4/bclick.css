@@ -40,6 +40,19 @@ main, body, html {
     background-color: #FFF;
 }
 
+.night {
+    background-color: #2a2a2a;
+    color: #CCC !important;
+}
+.night .button {
+    background-color: rgb(100, 100, 100);
+    color: #CCC;
+}
+.night #bName { color: #CCC; }
+.night .section {  background: #2a2a2a; }
+.night .header, .night .minimize { background: rgb(100, 100, 100); }
+.night .comingSoonDate, .night a, .night a:visited, .night a:hover, #captionText, #logText { color: rgb(100, 100, 100) !important; }
+
 @media screen and (max-height: 319px) { body { zoom: 75%; } }
 @media screen and (min-height: 320px) { body { zoom: 100%; }}
 @media screen and (max-height: 374px) { #captionText { display: none; }}
@@ -153,6 +166,7 @@ a:hover { color: #8888ff; }
 #bSection {
     left: calc(50% - 94.5px);
     overflow-y: hidden;
+    user-select: none;
 }
 
 #interestDiv {
@@ -251,9 +265,7 @@ a:hover { color: #8888ff; }
     width: 100%;
 }
 
-#info div, #seasonalDiv div {
-    width: 100%;
-}
+#info div, #seasonalDiv div { width: 100%; }
 
 .minimize {
     float: right;
@@ -276,7 +288,6 @@ a:hover { color: #8888ff; }
 }
 
 #logText {
-  
     color: yellow;
     background-color: #2a2a2a;
     text-align: center;
