@@ -23,7 +23,7 @@ var score = {
 			set('my_clicks', parseFloat(get('my_clicks')) + 1);
 			set("clicksLeft", parseFloat(get("clicksLeft")) + 1);
 		}
-		id('trumpPHP').setAttribute('src', 'trump.php');
+		id('trumpPHP').src = 'trump.php';
 		if (get("currentTrump") == "undefined") {
 			set("currentTrump", changeFace.list[0]);
 		}
