@@ -51,7 +51,7 @@ main, body, html {
 .night #bName { color: #CCC; }
 .night .section {  background: #2a2a2a; }
 .night .header, .night .minimize { background: rgb(100, 100, 100); }
-.night .comingSoonDate, .night a, .night a:visited, .night a:hover, #captionText, #logText { color: rgb(100, 100, 100) !important; }
+.night .comingSoonDate, .night a, .night a:visited, .night a:hover, .night #captionText, .night #logText { color: rgb(100, 100, 100) !important; }
 
 @media screen and (max-height: 319px) { body { zoom: 75%; } }
 @media screen and (min-height: 320px) { body { zoom: 100%; }}
