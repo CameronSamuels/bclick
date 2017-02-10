@@ -1,0 +1,58 @@
+html, body, main {
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	height: 100%;
+    transition: background-color 1s;
+}
+#jax {
+	height: 250px;
+	width: 250px;
+
+	position: absolute;
+	left: calc(50% - 125px);
+	top:  calc(50% - 125px);
+	
+    user-select: none;
+}
+.anim {
+    animation-name: anim;
+    animation-duration: 0.5s;
+    -webkit-animation-name: anim;
+    -webkit-animation-duration: 0.5s;
+    animation-iteration-count: 1;
+}
+@keyframes anim {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+@-webkit-keyframes anim {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+body {
+    background-color: blue;
+    -webkit-animation-name: disco;
+    -webkit-animation-duration: 4s;
+    animation-name: disco;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes disco {
+    0%   {background-color: red;}
+    20%  {background-color: yellow;}        
+    40%  {background-color: green;}
+    60%  {background-color: blue;}
+    80%  {background-color: yellow;}
+    100% {background-color: red;}
+}
+
+@keyframes disco {
+    0%   {background-color: red;}
+    20%  {background-color: yellow;}        
+    40%  {background-color: green;}
+    60%  {background-color: blue;}
+    80%  {background-color: yellow;}
+    100% {background-color: red;}
+}

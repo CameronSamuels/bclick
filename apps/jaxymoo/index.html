@@ -1,0 +1,19 @@
+<!DOCTYPE html><html>
+	<head>
+		<title>Jaxy Moo</title>
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+		<link rel="shortcut icon" type="image/png" href="jax.png" />
+		
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link rel="apple-touch-icon" type="image/png" href="icon.png" />
+        
+        <meta name="description" content="Jaxy Moo - The app made for a fellow named Jax who randomly makes moos and meows!" />
+        <link rel="stylesheet" type="text/css" href="jax.css" />
+        <script type="text/javascript" src="https://cdn.rawgit.com/alexgibson/shake.js/master/shake.js"></script>
+        <script src="jax.js"></script>
+	</head>
+	<body id="body" ontouchend="document.getElementById('jax').setAttribute('class', 'anim');snd.currentTime=0;snd.play();setTimeout('document.getElementById(\'jax\').setAttribute(\'class\', \'\')', 500)">
+		<main id="main"><img id="jax" src="jax.png" width="250" height="250" /></main>
+	</body>
+</html>
