@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Orbitron');
+		body, html {
+			margin: 0px;
+			width: 100%;
+			height: 20px;
+			text-align: center;
+			font-family: 'Orbitron', sans-serif;
+			font-size: 18px;
+			line-height: 20px;
+			vertical-align: middle;
+		}
+	</style>
+</head>
+<body></body>
+	<script>
+	function neatTime(seconds) {
+	    var d = Math.floor((seconds % 31536000) / 86400); 
+	    var h = Math.floor(((seconds % 31536000) % 86400) / 3600);
+	    var m = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
+	    var s = Math.floor(((seconds % 31536000) % 86400) % 3600) % 60;
+	    time = "";
+	    if (d >= 1) { time = d + ' day(s) ' }
+		if (h >= 1) { time += h + ' hour(s) ' }
+		if (m >= 1) { time += m + ' min(s) ' }
+		time += s + ' sec(s)';
+		return time;
+	}
+	var b = document.getElementsByTagName('body')[0];
+	function update() {
+		var date = new Date();
+		var start = new Date(Date.UTC(2017, 5, 22, 12, 0, 0));
+		if (date < start && date >= new Date(Date.UTC(2017, 5, 21, 0, 0, 0))) {
+			b.innerHTML = "The tournament will begin in " + neatTime((start - date) / 1000);
+		} else if (date < start) {
+			b.innerHTML = "The tournament will begin on June 22nd at 12:00AM UTC";
+		} else if ((date - start) > 0 && (date - start) < new Date(Date.UTC(2017, 5, 22, 16, 0, 0))) {
+			b.innerHTML = "The started " + neatTime((date - start) / 1000) + ' ago! You gotta B clicking';
+		} else {
+			b.innerHTML = "We are expecting technical difficulties at the moment. Please B on watch for Bees!"
+		}
+		window.requestAnimationFrame(update);
+	}
+	update();
+	</script>
+</html>

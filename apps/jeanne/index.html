@@ -1,0 +1,23 @@
+<!DOCTYPE html><html>
+	<head>
+		<title>Jeanne Samuels</title>
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+		<link rel="shortcut icon" type="image/png" href="img.png" />
+		
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link rel="apple-touch-icon" type="image/png" href="icon.png" />
+        
+        <meta name="description" content="Made for my very special great grandmother Jeanne who is so awesome! This app will make her feel better after she broke her knee in January 2017. I love you Grandma Jeanne!" />
+        <link rel="stylesheet" type="text/css" href="jeanne.css" />
+        <script type="text/javascript" src="https://cdn.rawgit.com/alexgibson/shake.js/master/shake.js"></script>
+        <script>
+        	var allSnd = [new Audio('1.m4a'), new Audio('2.m4a'), 
+			new Audio('3.m4a'), new Audio('4.m4a'), new Audio('5.m4a')];
+			var snd = allSnd.slice();
+        </script>
+	</head>
+	<body id="body" ontouchend="document.getElementById('jeanne').setAttribute('class', 'anim');var random = Math.floor(Math.random() * snd.length);snd[random].currentTime=0;snd[random].play();snd.splice(random, 1);if (snd.length == 0){snd = allSnd}setTimeout('document.getElementById(\'jeanne\').setAttribute(\'class\', \'\')', 500)">
+		<main id="main"><img id="jeanne" src="img.png" width="250" height="250" /></main>
+	</body>
+</html>
