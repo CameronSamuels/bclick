@@ -32,19 +32,6 @@ function random() {
     return randomness;
 }
 
-function neatTime(seconds) {
-    var d = Math.floor((seconds % 31536000) / 86400); 
-    var h = Math.floor(((seconds % 31536000) % 86400) / 3600);
-    var m = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
-    var s = Math.floor(((seconds % 31536000) % 86400) % 3600) % 60;
-    time = "";
-    if (d >= 1) { time = d + ' day(s) ' }
-	if (h >= 1) { time += h + ' hour(s) ' }
-	if (m >= 1) { time += m + ' min(s) ' }
-	time += s + ' sec(s)';
-	return time;
-}
-
 var isMobile = {
     Android: function() { return navigator.userAgent.match(/Android/i); },
     iOS: function() { return navigator.userAgent.match(/iPhone|iPad|iPod/i); },
@@ -133,7 +120,7 @@ function theLog(text) {
     if (get("theLog") == undefined) {
         set('theLog', '');
         theLog(text);
-    } else if (get("theLog").length >= 4000) {
+    } else if (get("theLog").length >= 1000) {
         set('theLog', '<li><strong>' + text + '</strong></li>');
     } else {
         set('theLog', remove(get("theLog"), '<strong>'));
@@ -230,11 +217,11 @@ for (i = 0; i < achievements.list.spaces.length; i++) {
         amount += achievements.list.spaces[i].toString().split(' ')[2].charAt(0);
     }
     if (type.toString().charAt(0) == achievements.list.id[i].charAt(0)) {
-        text.innerHTML += "<div class='achieveItem' id='" + achievements.list.id[i] + "'>" + amount + "</div>";
+        text.innerHTML += "<div title='" + achievements.list.spaces[i] + "' class='achieveItem' id='" + achievements.list.id[i] + "'>" + amount + "</div>";
     } else {
         typeNum++;
         type = achievements.list.type[typeNum];
-        text.innerHTML += "<div class='achieveCategory'>" + type + "</div><div class='achieveItem' id='" + achievements.list.id[i] + "'>" + amount + "</div>";
+        text.innerHTML += "<div class='achieveCategory'>" + type + "</div><div title='" + achievements.list.spaces[i] + "' class='achieveItem' id='" + achievements.list.id[i] + "'>" + amount + "</div>";
     }
 }
 
@@ -316,7 +303,7 @@ var data = {
 			else set('multiplier', 1);
 			data.reset.soft();
         },
-        update : function() { set('played341-925216', true) },
+        update : function() { set('playedT1', true) },
         reset : function() { if (m.ask("Reset Everything?") === true) data.reset.hard(); },
         over : function() { SubmitScore(); id('body').style.background = "#FF0000"; id('main').setAttribute('class', 'flicker'); set('username', get("username") + "+"); theLog('Reached the end of the world!'); theLog('Multiplier Multiplied By 2!'); set('multiplier', m.add(get('multiplier'), get("multiplier"))); log('G@Me oV3R!1!!1'); setTimeout('data.reset.hard()', 5000);}
     },
@@ -389,13 +376,6 @@ var b = {
                 b.vars.section().className = "section";
             } else {
                 b.vars.section().className = "section " + color;
-            }
-        }
-        for (i = 0; i < b.list.soon.list.length; i++) {
-            if (b.list.soon.b[b.list.soon.list[i]].other.date <= new Date()) {
-                location.reload();
-            } else {
-                id('comingSoonDate' + b.list.soon.list[i]).innerHTML = neatTime((b.list.soon.b[b.list.soon.list[i]].other.date - new Date()) / 1000);
             }
         }
     },

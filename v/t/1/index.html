@@ -11,10 +11,6 @@
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <link rel="apple-touch-icon" href="icon.png" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-
-<!--         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <script src="../../../assets/js/tipped.js"></script>
-        <link rel="stylesheet" type="text/css" href="../../../assets/js/tipped.css"> -->
     </head>
     <body id="body">
         <div id="loader"></div>
@@ -38,10 +34,9 @@
                 <div class="divider"></div>
                 <div class="category-header header"><span>General</span><span id="minimizeGeneral" class="minimize" ontouchend="Minimize('generalDiv', 'minimizeGeneral')">-</span></div>
                 <div class="settingGroup" id="generalDiv">
-                    <div class="button" ontouchend="data.reset.reset()">New Game</div>
                     <div class="button" ontouchend="ChangeUsername()" id="btnChangeUsername">Change Username</div>
                     <div class="divider"></div>
-                    <iframe id="scores"></iframe>
+                    <iframe src="scores.php" id="scores"></iframe>
                 </div>
                 <div class="divider"></div>
                 <div id="achievementsGroup" class="category-header header"><span>Achievements</span><span id="minimizeAchievements" class="minimize" ontouchend="Minimize('AchievementsList', 'minimizeAchievements')">-</span></div>
@@ -50,8 +45,6 @@
                 <div class="divider"></div>
                 <div class="category-header header"><span>Information</span></div>
                 <div class="settingGroup" id="info">
-                    <div>bClick Tournament 2017</div>
-                    <div class="divider"></div>
                     <div>Made by<br />&#9733;<a href="https://facebook.com/CameronJSamuels" target="_blank">Cameron Samuels</a>&#9733;</div>
                     <div class="divider"></div>
                     <div>Copyright &copy;<br />2013-2017</script></div>
