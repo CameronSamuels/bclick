@@ -295,7 +295,8 @@ var data = {
 
             set('playedT1', true);
             theLog('New Game Started');
-            setTimeout('location.reload()', 2000);
+
+            changeInfo();
         },
         hard : function() {
             for (i = 0; i < achievements.list.id.length; i++) { localStorage.removeItem(achievements.list.id[i]) };
@@ -303,19 +304,18 @@ var data = {
 			else set('multiplier', 1);
 			data.reset.soft();
         },
-        update : function() { set('playedT1', true) },
         reset : function() { if (m.ask("Reset Everything?") === true) data.reset.hard(); },
-        over : function() { SubmitScore(); id('body').style.background = "#FF0000"; id('main').setAttribute('class', 'flicker'); set('username', get("username") + "+"); theLog('Reached the end of the world!'); theLog('Multiplier Multiplied By 2!'); set('multiplier', m.add(get('multiplier'), get("multiplier"))); log('G@Me oV3R!1!!1'); setTimeout('data.reset.hard()', 5000);}
+        over : function() { submitScore(); id('body').style.background = "#FF0000"; id('main').setAttribute('class', 'flicker'); set('username', get("username") + "+"); theLog('Reached the end of the world!'); theLog('Multiplier Multiplied By 2!'); set('multiplier', m.add(get('multiplier'), get("multiplier"))); log('G@Me oV3R!1!!1'); setTimeout('data.reset.hard()', 5000);}
     },
     load : function() {
         if (get("points") === undefined) data.reset.hard();
 		if (get("theLog") != undefined) id('theLog').innerHTML = '<ul>' + get("theLog") + '</ul>';
-		setInterval('SubmitScore()', 5000);
+		setInterval('submitScore()', 5000);
         refresh.all();
         ceiling = get("points");
         setInterval('realEarn()', 1);
         setInterval('ceiling = get("points");bank.collect();depositSpamBlocker()', 1000);
-        if (get("username") == 'null' || get("username") == undefined || get("username") == '' || get("username") == ' ') set('username', 'bClicker' + random());
+        if (!get("username")) set('username', 'bClicker' + random());
         // if (new Date < new Date('June 22 2017')) {
             // id('preview').style.display = "block";
         // }  else {
@@ -327,19 +327,31 @@ var data = {
 
 // ===== Submission ===== //
 
-function ChangeUsername() {
-    set('username', m.qstn('Enter your new username'));
-    while (!get("username")) set('username', m.qstn('Error! Enter a username'));
-    if (get("username") == 'null' || get("username") == undefined || get("username") == '' || get("username") == ' ') set('username', 'bClicker' + random());
-    if (get("username")) { log('Changed Username to ' + get('username')); theLog('Changed Username: ' + get("username")) };
+function changeInfo() {
+    id('infoPopup').style.display = "block";
+    id('infoOverlay').style.display = "block";
 }
 
-function SubmitScore() {  
-    if (!get("username")) ChangeUsername();
-    else {
-        if (get("username"))
-			id('winFrame').setAttribute('src', "submit.php?username=" + get("username") + "&points=" + m.dcml(get('points')));
-        else ChangeUsername();
+function submitScore() {
+	id('winFrame').setAttribute('src', "submit.php?username=" + get("username") + "&points=" + Math.round(m.dcml(get('points'))));
+}
+
+function submitForm() {
+    var f = document.getElementById('infoChange');
+    if (f.checkValidity()) {
+        f.submit();
+        set('username', f.username.value || f.name.value);
+        id('infoPopup').style.display = "none";
+        id('infoOverlay').style.display = "none";
+        log('Changed Username to ' + get('username'));
+    }
+    else if (!f.name.value) {
+        f.name.style.border = "1px red solid";
+        f.email.style.border = "1px #2a2a2a solid";
+    }
+    else if (!f.email.value || !f.email.value.includes('@') || !f.email.value.includes('.') || !f.email.value.includes(' ')) {
+        f.email.style.border = "1px red solid";
+        f.name.style.border = "1px #2a2a2a solid";
     }
 }
 

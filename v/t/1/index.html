@@ -34,7 +34,7 @@
                 <div class="divider"></div>
                 <div class="category-header header"><span>General</span><span id="minimizeGeneral" class="minimize" ontouchend="Minimize('generalDiv', 'minimizeGeneral')">-</span></div>
                 <div class="settingGroup" id="generalDiv">
-                    <div class="button" ontouchend="ChangeUsername()" id="btnChangeUsername">Change Username</div>
+                    <div class="button" ontouchend="changeInfo()" id="btnChangeUsername">Change Info</div>
                     <div class="divider"></div>
                     <iframe src="scores.php" id="scores"></iframe>
                 </div>
@@ -55,6 +55,24 @@
         <div id="preview"></div>
         <div id="logText" class="flicker"></div>
         <iframe id="captionText" src="caption.html"></iframe>
+        <div id="infoPopup">
+            <h2>Change bClick Info</h2><div class="divider"></div>
+            <form name="infoChange" id="infoChange">
+                <h3>Full Name<red>*</red></h3>
+                <input type="text" name="name" placeholder="Cameron Samuels" required/>
+                <h3>Email<red>*</red></h3>
+                <input name="email" type="email" placeholder="team@playbclick.com" required/>
+                <h3>Username<grey> - optional</grey></h3>
+                <input name="username" type="text" placeholder="bClick3000" />
+                <footer>
+                    <h4>This info is for contacting you if you win. Please put your real info if you want credit.</h4>
+                    <div class="divider"></div>
+                    <div id="infoSubmitBtn" class="button" onclick="submitForm()">Submit</div>
+                </footer>
+            </form>
+            <iframe name="infoSubmit" id="infoSubmit"></iframe>
+        </div>
+        <div id="infoOverlay"></div>
     </body>
     <script src="bclick.js"></script>
 </html>
