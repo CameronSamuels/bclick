@@ -382,7 +382,7 @@ grey { color: grey; }
     display: none;
 }
 
-#mobileBrowser { display: none; text-align: center; }
+/*#mobileBrowser { display: none; text-align: center; }*/
 
 ::selection {
   background: yellow;
