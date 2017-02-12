@@ -389,7 +389,7 @@ var data = {
         seasons.load();
         id("main").style.display = "block";
         id('loader').style.display = "none";
-        if (isMobile.any() && !window.matchMedia('(display-mode: standalone)').matches) {
+        if (isMobile.any() && !window.navigator.standalone) {
             id('mobileBrowser').style.display = "block";
             id('main').style.display = "none";
         } else if (get("playedTutorial") == undefined) playTutorial();
