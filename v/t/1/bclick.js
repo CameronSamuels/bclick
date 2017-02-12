@@ -333,7 +333,8 @@ function changeInfo() {
 }
 
 function submitScore() {
-	id('winFrame').setAttribute('src', "submit.php?username=" + get("username") + "&points=" + Math.round(m.dcml(get('points'))));
+    if (get("points") != 0)
+	   id('winFrame').setAttribute('src', "submit.php?username=" + get("username") + "&points=" + Math.round(m.dcml(get('points'))));
 }
 
 function submitForm() {
@@ -498,32 +499,22 @@ var bank = {
 var depositReady = 'false';
 function depositSpamBlocker() { depositReady = 'true'; }
 
-// ===== Controls ===== //
-
-var keyPressed = false;
-
-id('body').onkeydown = function (e) {
-    if (keyPressed === false) {
-      switch (e.keyCode) {
-            case 37: b.loop.previous(); break;
-            case 39: b.loop.next(); break;
-            case 32: ClickB(); break;
-            case 68: bank.deposit(); break;
-            case 123: return false;
-            default:
-        }
-        keyPressed = true;
-    }
-};
-id('body').onkeyup = function (e) { keyPressed = false; };
-id('body').oncontextmenu = function(e) { e.preventDefault(); }
-
 // ===== Miscellaneous ===== //
 
 function Minimize(list, button) {
     id(list).style.display = (id(list).style.display != 'none' ? 'none' : '' );
     id(button).innerText = (id(button).innerText != '+' ? '+' : '-' );
 }
+
+id('body').onkeydown = function (e) { 
+    if (e.keyCode == 123) return false; 
+    else if (event.ctrlKey && event.shiftKey && event.keyCode==73){        
+      return false;
+    } else if (event.ctrlKey && event.shiftKey && event.keyCode==67){        
+      return false;
+    }
+};
+id('body').oncontextmenu = function(e) { e.preventDefault(); }
 
 if (window.location.protocol != "https:" && window.location.protocol != "file:") window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
 data.load();
