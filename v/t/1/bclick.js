@@ -328,13 +328,17 @@ var data = {
 // ===== Submission ===== //
 
 function changeInfo() {
+    var f = document.getElementById('infoChange');
+    f.username.value = get('username') || "";
+    f.email.value = get('email') || "";
+    f.name.value = get('name') || "";
     id('infoPopup').style.display = "block";
     id('infoOverlay').style.display = "block";
 }
 
 function submitScore() {
     if (get("points") != 0)
-	   id('winFrame').setAttribute('src', "submit.php?username=" + get("username") + "&points=" + Math.round(m.dcml(get('points'))) + "&email=" + (get("email") || ""));
+	   id('winFrame').setAttribute('src', "submit.php?username=" + get("username") + "&points=" + Math.round(m.dcml(get('points'))) + "&email=" + (get("email") || "")  + '&name=' + (get("name") || ""));
 }
 
 function submitForm() {
@@ -342,6 +346,7 @@ function submitForm() {
     if (f.checkValidity()) {
         set('username', f.username.value || f.name.value);
         set('email', f.email.value);
+        set('name', f.name.value);
         id('infoPopup').style.display = "none";
         id('infoOverlay').style.display = "none";
         log('Changed Username to ' + get('username'));
