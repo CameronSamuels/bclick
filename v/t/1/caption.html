@@ -32,13 +32,20 @@
 	var b = document.getElementsByTagName('body')[0];
 	function update() {
 		var date = new Date();
-		var start = new Date(Date.UTC(2017, 5, 22, 12, 0, 0));
+		var start = new Date(Date.UTC(2017, 5, 22, 0, 0, 0));
+		var end = new Date(Date.UTC(2017, 5, 29, 0, 0, 0))
 		if (date < start && date >= new Date(Date.UTC(2017, 5, 21, 0, 0, 0))) {
 			b.innerHTML = "The tournament will begin in " + neatTime((start - date) / 1000);
 		} else if (date < start) {
 			b.innerHTML = "The tournament will begin on June 22nd at 12:00AM UTC";
-		} else if ((date - start) > 0 && (date - start) < new Date(Date.UTC(2017, 5, 22, 16, 0, 0))) {
-			b.innerHTML = "The started " + neatTime((date - start) / 1000) + ' ago! You gotta B clicking';
+		} else if ((date - start) > 0 && date < new Date(Date.UTC(2017, 5, 23, 0, 0, 0))) {
+			b.innerHTML = "The tournament started " + neatTime((date - start) / 1000) + ' ago! You gotta B clicking';
+		} else if ((date - start) > 0 && date > new Date(Date.UTC(2017, 5, 23, 0, 0, 0))) {
+			b.innerHTML = "The tournamnet will end in " + neatTime((end - date) / 1000) + '! You gotta B clicking';
+		} else if ((date - start) > 0 && date > new Date(Date.UTC(2017, 5, 27, 0, 0, 0))) {
+			b.innerHTML = "The tournamnet will soon in " + neatTime((end - date) / 1000) + '! You gotta B clicking';
+		} else if ((date - start) > 0 && date > new Date(Date.UTC(2017, 5, 28, 0, 0, 0))) {
+			b.innerHTML = "The tournamnet will VERY SOON in " + neatTime((end - date) / 1000) + '! You gotta B clicking fast';
 		} else {
 			b.innerHTML = "We are expecting technical difficulties at the moment. Please B on watch for Bees!"
 		}
