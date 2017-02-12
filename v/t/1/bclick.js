@@ -340,7 +340,6 @@ function submitScore() {
 function submitForm() {
     var f = document.getElementById('infoChange');
     if (f.checkValidity()) {
-        f.submit();
         set('username', f.username.value || f.name.value);
         set('email', f.email.value);
         id('infoPopup').style.display = "none";
