@@ -11,6 +11,8 @@
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <link rel="apple-touch-icon" href="icon.png" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+        <link rel="stylesheet" type="text/css" href="https://playbclick.com/assets/js/introjs.css">
     </head>
     <body id="body">
         <div id="loader"></div>
@@ -22,11 +24,11 @@
             <section id="bSection" class="section">
                 <div class="header dashedHeader" id="pointsDiv"><marquee><div id="Points"></div></marquee></div>
                 <div id="LeftArrow" class="arrow button" ontouchend="b.loop.previous()"></div> 
-                <div id="bButton" ontouchend="ClickB()"></div>
+                <div id="bButton" ontouchend="ClickB()" data-intro="Next, you click on the picture of the B. Click it many times to get more points." data-step="2" data-position="left"></div>
                 <div id="RightArrow" class="arrow button" ontouchend="b.loop.next()"></div>
-                <div class="button" id="bUnlock" ontouchend="UnlockB()"></div>
+                <div class="button" id="bUnlock" ontouchend="UnlockB()" data-intro="The first step to play bClick is to unlock the B. B's give you points when you click them, but they must be unlocked." data-step="1" data-position="bottom"></div>
                 <div id="bName"></div>
-                <div class="button" id="btnDeposit" ontouchend="bank.deposit()">Deposit</div>
+                <div class="button" id="btnDeposit" ontouchend="bank.deposit()" data-intro="If this seems like a lot of clicking, then deposit points in the bank. You will get 10% interest of how much points you deposit. Every second, you will earn points from your interest." data-position="top">Deposit</div>
                 <div class="header dashedHeader" id="interestDiv"><marquee><div id="Interest"></div></marquee></div>
             </section>
             <section id="settingsSection" class="section">
@@ -36,8 +38,8 @@
                 <div class="settingGroup" id="generalDiv">
                     <div class="button" ontouchend="data.reset.reset()">New Game</div>
                     <div class="divider"></div>
-                    <div class="button" ontouchend="ChangeUsername()" id="btnChangeUsername">Change Username</div>
-                    <div class="button" ontouchend="SeeWinners()">See Scores</div>
+                    <div class="button" ontouchend="changeInfo()" id="btnChangeUsername">Change Info</div>
+                    <div class="button" ontouchend="SeeWinners()" data-intro="The first priority of bClick is to get enough points to be able to become first place. This is the scores. It will show all the people with their scores in order of ranking." data-step="4" data-position="left">See Scores</div>
                 </div>
                 <div class="divider"></div>
                 <div class="category-header header"><span>Coming Soon</span><span id="minimizeComingSoon" class="minimize" ontouchend="Minimize('comingSoonDiv', 'minimizeComingSoon')">-</span></div>
@@ -60,8 +62,28 @@
         </main>
         <div id="logText" class="flicker"></div>
         <div id="captionText">Thanks for playing bClick!!! Check out <a href="https://playbclick.com/apps" target="_blank">more apps</a></div>
+        <div id="infoPopup">
+            <h2>Change bClick Info</h2><div class="divider"></div>
+            <form name="infoChange" id="infoChange">
+                <h3>Full Name<red>*</red></h3>
+                <input type="text" name="name" placeholder="Cameron Samuels" required/>
+                <h3>Email<red>*</red></h3>
+                <input name="email" type="email" placeholder="team@playbclick.com" required/>
+                <h3>Username<grey> - optional</grey></h3>
+                <input name="username" type="text" placeholder="bClick3000" />
+                <footer>
+                    <div class="divider"></div>
+                    <div id="infoSubmitBtn" class="button" onclick="submitForm()">Submit</div>
+                </footer>
+            </form>
+        </div>
+        <div id="infoOverlay"></div>
+        <div id="mobileBrowser">
+            <h1>Make sure<br />to add<br />this page<br />to your<br/>homescreen!</h1>
+        </div>
     </body>
     <script src="bclick.js"></script>
     <script src="https://playbclick.com/assets/js/seasons.js"></script>
+    <script type="text/javascript" src="https://playbclick.com/assets/js/intro.js"></script>
     <script>data.load()</script>
 </html>

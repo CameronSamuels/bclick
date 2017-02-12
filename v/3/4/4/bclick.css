@@ -364,6 +364,35 @@ a:hover { color: #555; text-decoration: underline; }
   color: #2a2a2a;
 }
 
+#infoPopup {
+    height: 300px;
+    width: 250px;
+    position: absolute;
+    top: calc(50% - 150px);
+    left: calc(50% - 125px);
+
+    background-color: #FFF;
+    box-shadow: 1px 1px 1px;
+    border-radius: 25px;
+    z-index: 1;
+    text-align: center;
+    display: none;
+}
+#infoPopup h3 { margin: 2.5px; }
+#infoPopup h4 { margin: 0px; }
+#infoPopup footer { position: absolute; bottom: 5px; width: 100%; }
+#infoPopup input { outline: none; border: 1px #2a2a2a solid; }
+#infoPopup input:focus { box-shadow: 0 0 10px #ff0; border: 1px #ff0 solid; }
+#infoOverlay {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.25;
+    display: none;
+}
+
+#mobileBrowser { display: none; text-align: center; }
+
 /*===== Special B's =====*/
 
 .discoB {

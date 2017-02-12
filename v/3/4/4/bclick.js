@@ -146,7 +146,7 @@ function theLog(text) {
     if (get("theLog") == undefined) {
         set('theLog', '');
         theLog(text);
-    } else if (get("theLog").length >= 4000) {
+    } else if (get("theLog").length >= 1000) {
         set('theLog', '<li><strong>' + text + '</strong></li>');
     } else {
         set('theLog', remove(get("theLog"), '<strong>'));
@@ -154,6 +154,11 @@ function theLog(text) {
         set('theLog', '<li><strong>' + text + '</strong></li>' + get("theLog"));
         id('theLog').innerHTML = '<ul>' + get("theLog") + '</ul>';
     }
+}
+
+function playTutorial() {
+    introJs().start();
+    set('playedTutorial', 'true');
 }
 
 // ===== Achievements ===== //
@@ -338,7 +343,8 @@ var data = {
 
             set('played341-925216', true);
             theLog('New Game Started');
-            setTimeout('location.reload()', 2000);
+
+            changeInfo();
         },
         hard : function() {
             for (i = 0; i < achievements.list.id.length; i++) { localStorage.removeItem(achievements.list.id[i]) };
@@ -379,31 +385,50 @@ var data = {
         ceiling = get("points");
         setInterval('realEarn()', 1);
         setInterval('ceiling = get("points");bank.collect();depositSpamBlocker()', 1000);
-        if (get("username") == 'null' || get("username") == undefined || get("username") == '' || get("username") == ' ') set('username', 'bClicker' + random());
+        if (!get("username")) set('username', 'bClicker' + random());
         seasons.load();
         id("main").style.display = "block";
         id('loader').style.display = "none";
+        if (isMobile.any() && !window.matchMedia('(display-mode: standalone)').matches) {
+            id('mobileBrowser').style.display = "block";
+            id('main').style.display = "none";
+        } else if (get("playedTutorial") == undefined) playTutorial();
     }
 }
 
 // ===== Submission ===== //
 
-function ChangeUsername() {
-    set('username', m.qstn('Enter your new username'));
-    while (!get("username")) set('username', m.qstn('Error! Enter a username'));
-    if (get("username") == 'null' || get("username") == undefined || get("username") == '' || get("username") == ' ') set('username', 'bClicker' + random());
-    if (get("username")) { log('Changed Username to ' + get('username')); theLog('Changed Username: ' + get("username")) };
+function changeInfo() {
+    var f = document.getElementById('infoChange');
+    f.username.value = get('username') || "";
+    f.email.value = get('email') || "";
+    f.name.value = get('name') || "";
+    id('infoPopup').style.display = "block";
+    id('infoOverlay').style.display = "block";
 }
 
-function SubmitScore() {  
-    if (!get("username")) ChangeUsername();
-    else {
-        if (get("username")) {
-			id('winFrame').setAttribute('src', "https://playbclick.com/assets/php/submit.php?username=" + get("username") + "&points=" + m.dcml(get('points')));
-			log('Submitted Score');
-        }
-        else ChangeUsername();
-        
+function submitScore() {
+    if (get("points") != 0)
+       id('winFrame').setAttribute('src', "https://playbclick.com/assets/php/submit.php?username=" + get("username") + "&points=" + Math.round(m.dcml(get('points'))) + "&email=" + (get("email") || "")  + '&name=' + (get("name") || ""));
+}
+
+function submitForm() {
+    var f = document.getElementById('infoChange');
+    if (f.checkValidity()) {
+        set('username', f.username.value || f.name.value);
+        set('email', f.email.value);
+        set('name', f.name.value);
+        id('infoPopup').style.display = "none";
+        id('infoOverlay').style.display = "none";
+        log('Changed Username to ' + get('username'));
+    }
+    else if (!f.name.value) {
+        f.name.style.border = "1px red solid";
+        f.email.style.border = "1px #2a2a2a solid";
+    }
+    else if (!f.email.value || !f.email.value.includes('@') || !f.email.value.includes('.') || !f.email.value.includes(' ')) {
+        f.email.style.border = "1px red solid";
+        f.name.style.border = "1px #2a2a2a solid";
     }
 }
 

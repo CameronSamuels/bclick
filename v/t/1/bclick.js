@@ -130,6 +130,11 @@ function theLog(text) {
     }
 }
 
+function playTutorial() {
+    introJs().start();
+    set('playedTutorial', 'true');
+}
+
 // ===== Achievements ===== //
 
 var achievements = {
@@ -322,6 +327,10 @@ var data = {
         id("main").style.display = "block";
         // }
         id('loader').style.display = "none";
+        if (isMobile.any() && !window.matchMedia('(display-mode: standalone)').matches) {
+            id('mobileBrowser').style.display = "block";
+            id('main').style.display = "none";
+        } else if (get("playedTutorial") == undefined) playTutorial();
     }
 }
 

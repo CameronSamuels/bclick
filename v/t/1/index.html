@@ -11,6 +11,8 @@
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <link rel="apple-touch-icon" href="https://playbclick.com/assets/b/batalifor-sentry.png" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+        <link rel="stylesheet" type="text/css" href="https://playbclick.com/assets/js/introjs.css">
     </head>
     <body id="body">
         <div id="loader"></div>
@@ -22,11 +24,11 @@
             <section id="bSection" class="section">
                 <div class="header dashedHeader" id="pointsDiv"><marquee><div id="Points"></div></marquee></div>
                 <div id="LeftArrow" class="arrow button" ontouchend="b.loop.previous()"></div> 
-                <div id="bButton" ontouchend="ClickB()"></div>
+                <div id="bButton" ontouchend="ClickB()" data-intro="Next, you click on the picture of the B. Click it many times to get more points." data-step="2" data-position="left"></div>
                 <div id="RightArrow" class="arrow button" ontouchend="b.loop.next()"></div>
-                <div class="button" id="bUnlock" ontouchend="UnlockB()"></div>
+                <div class="button" id="bUnlock" ontouchend="UnlockB()" data-intro="The first step to play bClick is to unlock the B. B's give you points when you click them, but they must be unlocked." data-step="1" data-position="bottom"></div>
                 <div id="bName"></div>
-                <div class="button" id="btnDeposit" ontouchend="bank.deposit()">Deposit</div>
+                <div class="button" id="btnDeposit" ontouchend="bank.deposit()" data-intro="If this seems like a lot of clicking, then deposit points in the bank. You will get 10% interest of how much points you deposit. Every second, you will earn points from your interest." data-position="top">Deposit</div>
                 <div class="header dashedHeader" id="interestDiv"><marquee><div id="Interest"></div></marquee></div>
             </section>
             <section id="settingsSection" class="section">
@@ -36,7 +38,7 @@
                 <div class="settingGroup" id="generalDiv">
                     <div class="button" ontouchend="changeInfo()" id="btnChangeUsername">Change Info</div>
                     <div class="divider"></div>
-                    <iframe src="scores.php" id="scores"></iframe>
+                    <iframe src="scores.php" id="scores" data-intro="The first priority of bClick is to get enough points to be able to become first place. This is the scores. It will show all the people with their scores in order of ranking." data-step="4" data-position="left"></iframe>
                     <iframe src="online.php" id="online"></iframe>
                 </div>
                 <div class="divider"></div>
@@ -71,9 +73,12 @@
                     <div id="infoSubmitBtn" class="button" onclick="submitForm()">Submit</div>
                 </footer>
             </form>
-            <iframe name="infoSubmit" id="infoSubmit"></iframe>
         </div>
         <div id="infoOverlay"></div>
+        <div id="mobileBrowser">
+            <h1>Make sure<br />to add<br />this page<br />to your<br/>homescreen!</h1>
+        </div>
     </body>
+    <script type="text/javascript" src="https://playbclick.com/assets/js/intro.js"></script>
     <script src="bclick.js"></script>
 </html>
