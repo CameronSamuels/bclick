@@ -354,6 +354,8 @@ grey { color: grey; }
 #online {
     border: 1px black solid;
     width: 100%;
+    border-left: 0px;
+    border-right: 0px;
     height: 20px;
 }
 
