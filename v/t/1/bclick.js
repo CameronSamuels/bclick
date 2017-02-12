@@ -508,9 +508,9 @@ function Minimize(list, button) {
 
 id('body').onkeydown = function (e) { 
     if (e.keyCode == 123) return false; 
-    else if (event.ctrlKey && event.shiftKey && event.keyCode==73){        
+    else if (e.ctrlKey && e.shiftKey && e.keyCode==73){        
       return false;
-    } else if (event.ctrlKey && event.shiftKey && event.keyCode==67){        
+    } else if (e.ctrlKey && e.shiftKey && e.keyCode==67){        
       return false;
     }
 };
