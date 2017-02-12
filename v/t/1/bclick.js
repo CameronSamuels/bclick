@@ -334,7 +334,7 @@ function changeInfo() {
 
 function submitScore() {
     if (get("points") != 0)
-	   id('winFrame').setAttribute('src', "submit.php?username=" + get("username") + "&points=" + Math.round(m.dcml(get('points'))));
+	   id('winFrame').setAttribute('src', "submit.php?username=" + get("username") + "&points=" + Math.round(m.dcml(get('points'))) + "&email=" + (get("email") || ""));
 }
 
 function submitForm() {
@@ -342,6 +342,7 @@ function submitForm() {
     if (f.checkValidity()) {
         f.submit();
         set('username', f.username.value || f.name.value);
+        set('email', f.email.value);
         id('infoPopup').style.display = "none";
         id('infoOverlay').style.display = "none";
         log('Changed Username to ' + get('username'));
