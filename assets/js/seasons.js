@@ -28,7 +28,9 @@ caption("Make sure to light fireworks tonight!! Play tommorow after a sip of cof
 // caption("Lets give a round of applause to Morne! One of our superfans!", 5);
 // caption("Happy World Religion Day!! Enjoy free price and double value on religious B's!!", 15);
 // caption("Happy Martin Luther King Day!! Enjoy free price and double value on B's with a white-black background!! 3 times more value on BW B", 16);
-// caption("")
+
+/* == Febraury == */
+caption("Happy Valentines Day! Enjoy triple daily gifts and double points on many B's!", 14);
 
 // ===== The B's ===== //
 b.list.b.handrawn = new create('handrawn', 5, 0, "#FFF");
@@ -153,6 +155,40 @@ var seasons = {
         b.list.b.spear.cost = 0;
         b.list.b.spear.worth *= 2;
     },
+    valentines : function() {
+        log('Happy Valentines Day!');
+        if (get("valentinesDay") == undefined) {
+            Earn(get("points") * get("daysInARow") * 2);
+            theLog('Earned ' + (get("points") * get("daysInARow") * 2) + ' from your valentine!');
+            set('valentinesDay', 'true');
+        }
+        b.list.b.shark.worth *= 2;
+        b.list.b.knight.worth *= 2;
+        b.list.b.archer.worth *= 2;
+        b.list.b.flower.worth *= 2;
+        b.list.b.muscle.worth *= 2;
+        b.list.b.ghost.worth *= 2;
+        b.list.b.giant.worth *= 2;
+        b.list.b.superhero.worth *= 2;
+        b.list.b.duck.worth *= 2;
+        b.list.b.dragonball.worth *= 2;
+        b.list.b.dovahkinn.worth *= 2;
+        b.list.b.mage.worth *= 2;
+        b.list.b.carnotaurus.worth *= 2;
+        b.list.b.business.worth *= 2;
+        b.list.b.killer.worth *= 2;
+        b.list.b.santa.worth *= 2;
+        b.list.b.skater.worth *= 2;
+    },
+    mardiGras : function() {
+        log('Happy Mardi Gras!');
+        if (get("mardiGras") == undefined) {
+            Earn(get("points") * get("daysInARow"));
+            theLog('Earned ' + (get("points") * get("daysInARow")) + ' from Endymion!');
+            set('mardiGras', 'true');
+        }
+        setInterval('bank.collect()', 1000);
+    },
     load : function() {
         if (new Date().getDate() == 28 && new Date().getMonth() == 10 && new Date().getFullYear() == 2016) seasons.cyberMonday();
         if (new Date().getMonth() == 11) {
@@ -163,6 +199,10 @@ var seasons = {
             if (new Date().getDate() == 1) seasons.newYear();
             if (new Date().getDate() == 15) seasons.religion();
             if (new Date().getDate() == 16) seasons.mlk();
+        }
+        if (new Date().getMonth() == 1) {
+            if (new Date().getDate() == 14) seasons.valentines();
+            if (new Date().getDate() == 28) seasons.mardiGras();
         }
         if (new Date().getDate() == 25 && new Date().getMonth() == 3) seasons.rubiks();
     }

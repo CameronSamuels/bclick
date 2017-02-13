@@ -166,70 +166,69 @@ function playTutorial() {
 var achievements = {
     list : {
         spaces : [
-            "Earn 1 Thousand Points",
-            "Earn 1 Million Points",
-            "Earn 1 Billion Points",
-            "Earn 1 Trillion Points",
-            "Earn 1 Quadrillion Points",
-            "Unlock 3 B's",
-            "Unlock 5 B's",
+            "Earn 1 Quintillion Points",
+            "Earn 1 Decillion Points",
+            "Earn 1 Quindecillion Points",
+            "Earn 1 Vigintillion Points",
+            "Earn 1 Quinquavigintillion Points",
             "Unlock 10 B's",
-            "Unlock 16 B's",
-            "Unlock 21 B's",
-            "Click 50 Times",
+            "Unlock 20 B's",
+            "Unlock 30 B's",
+            "Unlock 40 B's",
+            "Unlock 50 B's",
             "Click 500 Times",
-            "Click 1,500  Times",
-            "Click 2,500  Times",
-            "Click 5,000  Times",
-            "Have 1 Thousand Interest",
-            "Have 1 Million Interest",
-            "Have 1 Billion Interest",
-            "Have 1 Trillion Interest",
-            "Have 1 Quadrillion Interest",
-            "Play 1 Hour",
+            "Click 1 Thousand Times",
+            "Click 5 Thousand  Times",
+            "Click 10 Thousand  Times",
+            "Click 20 Thousand Times",
+            "Have 1 Quintillion Interest",
+            "Have 1 Decillion Interest",
+            "Have 1 Quindecillion Interest",
+            "Have 1 Vigintillion Interest",
+            "Have 1 Quinquavigintillion Interest",
             "Play 3 Hours",
-            "Play 5 Hours",
-            "Play 10 Hours",
-            "Play 1 Day",
-            "Get 1 Thousand Multiplier",
-            "Get 1 Million Multiplier",
-            "Get 1 Billion Multiplier",
-            "Get 1 Trillion Multiplier",
-            "Get 1 Quadrillion Multiplier",
+            "Play 6 Hours",
+            "Play 12 Hours",
+            "Play 24 Hours",
+            "Play 2 Days",
+            "Get 1 Quintillion Multiplier",
+            "Get 1 Decillion Multiplier",
+            "Get 1 Quindecillion Multiplier",
+            "Get 1 Vigintillion Multiplier",
+            "Get 1 Quinquavigintillion Multiplier",
             "Maintain 2 Day Streak",
-            "Maintain 3 Day Streak",
             "Maintain 5 Day Streak",
-            "Maintain 1 Week Streak",
+            "Maintain 7 Day Streak",
+            "Maintain 2 Week Streak",
             "Maintain 1 Month Streak"
         ],
         id : [],
-        type : ['Earn Points', 'Unlock B\'s', 'Click B\'s', 'Have Interest', 'Play For Hours', 'Get Multiplier', 'Maintain streaks']
+        type : ['Earn Points', 'Unlock B\'s', 'Click B\'s', 'Have Interest', 'Playing Time', 'Get Multiplier', 'Maintain streaks']
     },
     achieve : function(id) {
         set(id, true);
-        set('multiplier', parseFloat(get('multiplier')) * 2);
-		log("Achievement Earned!");
-		log("Multiplier is now " + m.giant(Math.round(get("multiplier"))));
-		theLog('Earned an achievement: ' + achievements.list.spaces[achievements.list.id.indexOf(id)]);
-        stats('achievements', 1);
+        set('multiplier', parseFloat(get('multiplier')) * 1.5);
+        log("Achievement Earned!");
+        log("Multiplier is now " + m.giant(Math.round(get("multiplier"))));
+        theLog('Achievement: ' + achievements.list.spaces[achievements.list.id.indexOf(id)]);
     },
     check : function() {
         var obj = achievements;
         for (i = 0; i < obj.list.spaces.length; i++) {
-            var amount = obj.list.spaces[i].toString().replace(',', '').split(' ')[1];
-            if (amount == '1') {
-                switch (obj.list.spaces[i].toString().split(' ')[2]) {
-                    case "Thousand" : amount = 1000; break;
-                    case "Million" : amount = Math.pow(10, 6); break;
-                    case "Billion" : amount = Math.pow(10, 9); break;
-                    case "Trillion" : amount = Math.pow(10, 12); break;
-                    case "Quadrillion" : amount = Math.pow(10, 15); break;
-                    case "Day" : amount = 86400; break;
-                    case "Hour" : amount = 3600; break;
-                    case "Week" : amount = 7; break;
-                    case "Month" : amount = 30; break;
-                    default:
-                }
+            switch (obj.list.spaces[i].toString().split(' ')[2]) {
+                case "Thousand" : amount = 1000 * obj.list.spaces[i].toString().split(' ')[1]; break;
+                case "Quintillion" : amount = Math.pow(10, 18); break;
+                case "Decillion" : amount = Math.pow(10, 33); break;
+                case "Quindecillion" : amount = Math.pow(10, 48); break;
+                case "Vigintillion" : amount = Math.pow(10,63); break;
+                case "Quinquavigintillion" : amount = Math.pow(10,78); break;
+                case "Day" : amount = obj.list.spaces[i].toString().split(' ')[1]; break;
+                case "Days" : amount = 86400 * 2; break;
+                case 'Hours' : amount = 3600 * obj.list.spaces[i].toString().split(' ')[1]; break;
+                case "Week" : amount = 7 * obj.list.spaces[i].toString().split(' ')[1]; break;
+                case "Month" : amount = 30 * obj.list.spaces[i].toString().split(' ')[1]; break;
+                default:
+                    amount = obj.list.spaces[i].toString().split(' ')[1];
             }
             var type = "";
             switch (obj.list.spaces[i].charAt(0)) {
@@ -242,9 +241,6 @@ var achievements = {
                 case "M" : type = "daysInARow"; break;
                 default:
             }
-            if (type == "timePlayed" && amount < 3600) {
-                amount *= 3600;
-            }
             if (parseFloat(get(type)) >= parseFloat(amount) && get(obj.list.id[i]) != "true") {
                 achievements.achieve(obj.list.id[i]);
             }  
@@ -253,23 +249,22 @@ var achievements = {
 }
 
 for (i = 0; i < achievements.list.spaces.length; i++) {
-    var string = remove(achievements.list.spaces[i], "'"); string = remove(string, ","); string = remove(string, " ");
+    var string = remove(achievements.list.spaces[i], "'"); string = remove(string, " ");
     achievements.list.id.push(string);
 }
 var text = id("AchievementsList");
 var type = "";
 var typeNum = -1;
 for (i = 0; i < achievements.list.spaces.length; i++) {
-    var amount = achievements.list.spaces[i].toString().replace(',', '').split(' ')[1];
-    if (amount == 1) {
-        amount += achievements.list.spaces[i].toString().replace(',', '').split(' ')[2].charAt(0);
-    }
+    var amount = achievements.list.spaces[i].toString().split(' ')[1];
+    if (!type.includes('Unlock')) amount += achievements.list.spaces[i].toString().split(' ')[2].charAt(0);
+    // else if (type.includes(''))
     if (type.toString().charAt(0) == achievements.list.id[i].charAt(0)) {
-        text.innerHTML += "<div class='achieveItem' id='" + achievements.list.id[i] + "'>" + amount + "</div>";
+        text.innerHTML += "<div title='" + achievements.list.spaces[i] + "' class='achieveItem' id='" + achievements.list.id[i] + "'>" + amount + "</div>";
     } else {
         typeNum++;
         type = achievements.list.type[typeNum];
-        text.innerHTML += "<div class='achieveCategory'>" + type + "</div><div class='achieveItem' id='" + achievements.list.id[i] + "'>" + amount + "</div>";
+        text.innerHTML += "<div class='achieveCategory'>" + type + "</div><div title='" + achievements.list.spaces[i] + "' class='achieveItem' id='" + achievements.list.id[i] + "'>" + amount + "</div>";
     }
 }
 
@@ -354,7 +349,7 @@ var data = {
         },
         update : function() { set('played341-925216', true) },
         reset : function() { if (m.ask("Reset Everything?") === true) data.reset.hard(); },
-        over : function() { SubmitScore(); id('body').style.background = "#FF0000"; id('main').setAttribute('class', 'flicker'); set('username', get("username") + "+"); theLog('Reached the end of the world!'); theLog('Multiplier Multiplied By 2!'); set('multiplier', m.add(get('multiplier'), get("multiplier"))); log('G@Me oV3R!1!!1'); setTimeout('data.reset.hard()', 5000);}
+        over : function() { submitScore(); id('body').style.background = "#FF0000"; id('main').setAttribute('class', 'flicker'); set('username', get("username") + "+"); theLog('Reached the end of the world!'); theLog('Multiplier Multiplied By 2!'); set('multiplier', m.add(get('multiplier'), get("multiplier"))); log('G@Me oV3R!1!!1'); setTimeout('data.reset.hard()', 5000);}
     },
     load : function() {
         if (get("points") === undefined) data.reset.hard();
@@ -379,7 +374,7 @@ var data = {
 			theLog('Earned ' + get("daysInARow") + ' daily gift(s)');
 		}
 		if (get("theLog") != undefined) id('theLog').innerHTML = '<ul>' + get("theLog") + '</ul>';
-		setInterval('SubmitScore()', 30000);
+		setInterval('submitScore()', 15000);
         setInterval("stats('visits', 1)", 60000);
         refresh.all();
         ceiling = get("points");
@@ -553,25 +548,6 @@ var bank = {
 
 var depositReady = 'false';
 function depositSpamBlocker() { depositReady = 'true'; }
-
-// ===== Controls ===== //
-
-var keyPressed = false;
-
-id('body').onkeydown = function (e) {
-    if (keyPressed === false) {
-      switch (e.keyCode) {
-            case 37: b.loop.previous(); break;
-            case 39: b.loop.next(); break;
-            case 32: ClickB(); break;
-            case 68: bank.deposit(); break;
-            default:
-        }
-        keyPressed = true;
-    }
-};
-
-id('body').onkeyup = function (e) { keyPressed = false; };
 
 // ===== Miscellaneous ===== //
 
