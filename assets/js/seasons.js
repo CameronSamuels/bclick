@@ -159,7 +159,7 @@ var seasons = {
         log('Happy Valentines Day!');
         if (get("valentinesDay") == undefined) {
             Earn(get("points") * get("daysInARow") * 2);
-            theLog('Earned ' + (get("points") * get("daysInARow") * 2) + ' from your valentine!');
+            theLog('Earned ' + (get("daysInARow") * 2) + ' gifts from your valentine!');
             set('valentinesDay', 'true');
         }
         b.list.b.shark.worth *= 2;
@@ -189,6 +189,11 @@ var seasons = {
         }
         setInterval('bank.collect()', 1000);
     },
+    aprilFools : function() {
+        log("It's just a normal day!");
+        b.list.b[b.list.list[b.list.list.length - 2]].worth = (get("points") * -0.125);
+        b.list.b.badboi.cost *= 5;  
+    },
     load : function() {
         if (new Date().getDate() == 28 && new Date().getMonth() == 10 && new Date().getFullYear() == 2016) seasons.cyberMonday();
         if (new Date().getMonth() == 11) {
@@ -204,6 +209,9 @@ var seasons = {
             if (new Date().getDate() == 14) seasons.valentines();
             if (new Date().getDate() == 28) seasons.mardiGras();
         }
-        if (new Date().getDate() == 25 && new Date().getMonth() == 3) seasons.rubiks();
+        if (new Date().getMonth() == 3) {
+            if (new Date().getDate() == 1) seasons.aprilFools();
+            if (new Date().getDate() == 25) seasons.rubiks();
+        }
     }
 };

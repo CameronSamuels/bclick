@@ -5,7 +5,7 @@ Copyright Cameron Samuels 2013-2016
 This code includes a small portion of code from Stack overflow and other websites
 ===========================================*/
 
-@import url('https://fonts.googleapis.com/css?family=Orbitron');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 
 body, html {
     padding: 0px;
@@ -17,7 +17,7 @@ body, html {
     word-wrap: break-word;
     text-transform: capitalize;
     font-size:  90%;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Roboto Mono', monospace;
 }
 
 main {
@@ -31,13 +31,14 @@ main {
     left: 0;
     right: 0;
     
-    border: 1px black solid;
+    border: 1px #2a2a2a solid;
     display: none;
 }
 
 main, body, html {
     overflow: hidden;
     background-color: #FFF;
+    color: #2a2a2a;
 }
 
 .night {
@@ -54,7 +55,7 @@ main, body, html {
 .night .comingSoonDate, .night a, .night a:visited, .night a:hover, .night #captionText, .night #logText { color: rgb(100, 100, 100) !important; }
 
 @media screen and (max-height: 319px) { body { zoom: 75%; } }
-@media screen and (min-height: 320px) { body { zoom: 100%; }}
+@media screen and (min-height: 320px) { body { zoom: 100%; } #infoPopup { zoom: 80%; } }
 @media screen and (max-height: 374px) { #captionText { display: none; }}
 @media screen and (min-height: 400px) { body { zoom: 125%; }}
 @media screen and (min-height: 400px) and (max-height: 450px) { #captionText { display: none; }}
@@ -69,16 +70,16 @@ main, body, html {
 .divider {
     display: block !important;
     margin: 5px 0px;
-    border-top: 2px black dashed;
+    border-top: 2px #2a2a2a dashed;
     height: 0px;
 }
 
-a, a:visited { text-decoration: none; color: #333; }
-a:hover { color: #555; text-decoration: underline; }
+a, a:visited { text-decoration: none; color: rgb(100, 100, 100); }
+a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
 
 .button {
     background-color: rgb(100,100,100);
-    border: #0a0a0a solid 1px;
+    border: #2a2a2a solid 1px;
     border-radius: 3px;
     color: yellow;
     display: inline-block;
@@ -97,14 +98,16 @@ a:hover { color: #555; text-decoration: underline; }
 .section {
     width: 189px !important;
     height: 320px; 
-    border: 1px black solid;
+    border: 1px #2a2a2a solid;
+    border-left: 0px;
+    border-top: 0px;
     overflow-y: auto;
     position: absolute;
 }
 
 .header {
-    border-bottom: 1px black solid;
-    border-top: 1px black solid;
+    border-bottom: 1px #2a2a2a solid;
+    border-top: 1px #2a2a2a solid;
     text-align: center;
     vertical-align: middle;
     line-height: 20px;   
@@ -114,10 +117,11 @@ a:hover { color: #555; text-decoration: underline; }
 }
 
 .category-header, .section-header { background-color: yellow; }
+.section-header { border-top: 0px; }
 
 .dashedHeader {
-    border-top: 1px black dashed;
-    border-bottom: 1px black dashed;
+    border-top: 1px #2a2a2a dashed;
+    border-bottom: 1px #2a2a2a dashed;
 }
 
 /*===== bSection =====*/
@@ -125,21 +129,19 @@ a:hover { color: #555; text-decoration: underline; }
 #bButton {
     width: 50px;
     height: 50px;
-    border: 1px #999 solid;
+    border: 1px rgb(100, 100, 100) solid;
     border-radius: 3px;
     padding: 25px;
     background-position: center;
     background-size: cover;
     background-color: white;
-    user-select: none; 
-    transition: box-shadow 0.5s;
+    user-select: none;
     position: absolute;
     bottom: 120.6px;
     left: calc(50% - 51px);
 }
 
 #bButton:active {
-  background-color: #AAA;
   width: 45px;
   height: 45px;
   bottom: 123.1px;
@@ -148,7 +150,8 @@ a:hover { color: #555; text-decoration: underline; }
 
 #bName {
     border-radius: 20px;
-    background-color: rgba(100,100,100,0.8);
+    border: 1px #2a2a2a solid;
+    background-color: rgba(80, 80, 80, 0.9);
     color: yellow;
     font-size: 12px;
     padding: 8px 15px;
@@ -202,7 +205,7 @@ a:hover { color: #555; text-decoration: underline; }
     background-position: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    background-color: #DDD;
+    /*background-color: rgb(120, 120, 120);*/
   
     top: calc(50% - 12.5px);
     bottom: calc(50% - 12.5px);
@@ -223,6 +226,7 @@ a:hover { color: #555; text-decoration: underline; }
 .settingGroup {
     width: 100%;
     text-align: left;
+    border-right: 0px;
 }
 
 .settingGroup .button { display: block; }
@@ -250,7 +254,9 @@ a:hover { color: #555; text-decoration: underline; }
 }
 
 .comingSoonDate {
-    color: red;
+    color: yellow;
+    font-weight: 600;
+    text-shadow: -1px 0px #2a2a2a, 0 1px #2a2a2a, 1px 0px #2a2a2a, 0 -1px #2a2a2a;
     font-size: 75%;
 }
 
@@ -268,9 +274,10 @@ a:hover { color: #555; text-decoration: underline; }
     width: 20px;
     height: 20px;
     line-height: 20px;
-    background-color: #DDD;
+    background-color: yellow;
+    color: #2a2a2a;
 }
-.minimize:hover { background-color: #888; }
+.minimize:hover { background-color: rgb(120, 120, 120); color: yellow; }
 
 #settingsSection { left: calc(50% + 94.6666666666666px); }
 
@@ -336,7 +343,7 @@ a:hover { color: #555; text-decoration: underline; }
     width: 150px;
     height: 150px;
     margin: 0 auto;
-    margin-top: calc(25% - 91px);
+    margin-top: calc(50% - 91px);
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
 }
@@ -353,11 +360,7 @@ a:hover { color: #555; text-decoration: underline; }
 
 #winFrame, #statsFrame { display: none; }
 
-.red {
-    color: red;
-    font-size: x-small;
-    text-transform: lowercase;
-}
+red { color: red; }
 
 ::selection {
   background: yellow;
@@ -372,7 +375,7 @@ a:hover { color: #555; text-decoration: underline; }
     left: calc(50% - 125px);
 
     background-color: #FFF;
-    box-shadow: 1px 1px 1px;
+    box-shadow: 1px 1px 1px #2a2a2a;
     border-radius: 25px;
     z-index: 1;
     text-align: center;
@@ -386,7 +389,7 @@ a:hover { color: #555; text-decoration: underline; }
 #infoOverlay {
     width: 100%;
     height: 100%;
-    background: #000;
+    background: #2a2a2a;
     opacity: 0.25;
     display: none;
 }
@@ -436,14 +439,14 @@ a:hover { color: #555; text-decoration: underline; }
 
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(100,100,100,0.3); 
+    -webkit-box-shadow: inset 0 0 6px rgb(100,100,100); 
     -webkit-border-radius: 10px;
     border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb {
     -webkit-border-radius: 10px;
     border-radius: 10px;
-    background: rgba(100,100,100,0.8); 
-    -webkit-box-shadow: inset 0 0 6px rgba(100,100,100,0.5); 
+    background: rgb(100,100,100); 
+    -webkit-box-shadow: inset 0 0 6px rgb(100,100,100); 
 }
-::-webkit-scrollbar-thumb:window-inactive { background: rgba(50,50,50,0.4); }
+::-webkit-scrollbar-thumb:window-inactive { background: rgb(120,120,120); }

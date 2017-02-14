@@ -349,7 +349,7 @@ var data = {
         },
         update : function() { set('played341-925216', true) },
         reset : function() { if (m.ask("Reset Everything?") === true) data.reset.hard(); },
-        over : function() { submitScore(); id('body').style.background = "#FF0000"; id('main').setAttribute('class', 'flicker'); set('username', get("username") + "+"); theLog('Reached the end of the world!'); theLog('Multiplier Multiplied By 2!'); set('multiplier', m.add(get('multiplier'), get("multiplier"))); log('G@Me oV3R!1!!1'); setTimeout('data.reset.hard()', 5000);}
+        over : function() { submitScore(); id('body').style.background = "#FF0000"; id('main').setAttribute('class', 'flicker'); set('username', get("username") + "+"); theLog('Multiplier Multiplied By 2!'); set('multiplier', m.add(get('multiplier'), get("multiplier"))); log('G@Me oV3R!1!!1'); setTimeout('data.reset.hard()', 5000);}
     },
     load : function() {
         if (get("points") === undefined) data.reset.hard();
@@ -417,6 +417,7 @@ function submitForm() {
         id('infoPopup').style.display = "none";
         id('infoOverlay').style.display = "none";
         log('Changed Username to ' + get('username'));
+        location.reload();
     }
     else if (!f.name.value) {
         f.name.style.border = "1px red solid";
