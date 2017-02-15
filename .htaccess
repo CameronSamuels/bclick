@@ -18,7 +18,7 @@ Redirect 307 /chrome https://chrome.google.com/webstore/detail/bclick/fccplfmelj
 Redirect 307 /web https://playbclick.com/v/3/4/4/?14
 
 # Apps #
-Redirect 307 /bocracy/index.html https://playbclick.com/bocracy/index.html?26
+#Redirect 307 /bocracy/index.html/ https://playbclick.com/bocracy/index.html?26
 Redirect 307 /create https://playbclick.com/apps/create
 Redirect 307 /dice https://playbclick.com/apps/dice
 Redirect 307 /bnoodle https://playbclick.com/apps/bnoodle
