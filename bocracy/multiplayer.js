@@ -23,6 +23,13 @@ function id(id) { return document.getElementById(id) }
 			on : 'false',
 			refresh : {
 				display : function() {
+					if (!isMobile.any()) {
+						var clickables = document.querySelectorAll('[ontouchend]');
+						for (i = 0; i < clickables.length; i++) {
+							clickables[i].setAttribute('onclick', clickables[i].getAttribute('ontouchend'));
+						}
+					}
+
 					var bName = b.name;
 					while (bName.includes('_') || bName.includes('-')) {
 						bName = bName.toString().replace('_', '-');
@@ -50,8 +57,8 @@ function id(id) { return document.getElementById(id) }
 					id('bHealthBar').style.width = (b.health / b.orig_health)*100 + '%';
 					id('aHealthBar').style.width = (a.health / a.orig_health)*100 + '%';
 
-					id('bButton').style.backgroundImage = 'url(https://playbclick.com/assets/' + goodNames.url + '/' + b.name.toString().replace('_', '-').replace('_', '-').replace('_', '-').replace('D', '.') + '.png)';
-					id('aButton').style.backgroundImage = 'url(https://playbclick.com/assets/' + badNames.url + '/' + a.name.toString().replace('_', '-').replace('_', '-').replace('_', '-').replace('D', '.') + '.png)';
+					id('bButton').style.backgroundImage = 'url(https://playbclick.com/assets/' + goodNames.url + '/' + b.name.toString().replace('_', '-').replace('_', '-').replace('_', '-').replace('D', '.').replace('Boss', '') + '.png)';
+					id('aButton').style.backgroundImage = 'url(https://playbclick.com/assets/' + badNames.url + '/' + a.name.toString().replace('_', '-').replace('_', '-').replace('_', '-').replace('D', '.').replace('Boss', '') + '.png)';
 				},
 				all : function() {
 					game.refresh.display();
@@ -103,12 +110,13 @@ function id(id) { return document.getElementById(id) }
 			}
 		};
 		function load() {
-			if (!isMobile.any()) {
-				id('refreshButton').setAttribute('onclick', 'location.reload()');
-				id('backButton').setAttribute('onclick', 'window.location="index.html"');
+			if (!isMobile.any()) id('computer').style.display = "block";
+			else {
+				id('rotate').style.display = "block";
+				id('rotateInstructions').style.display = "block";
 			}
 
-			switch (current) {
+			switch (current.replace('+', '')) {
 				case "aonarchy":
 					badNames.url = "b";
 					goodNames.url = "a";
@@ -118,15 +126,15 @@ function id(id) { return document.getElementById(id) }
 					goodNames.url = "b";
 			}
 
-			a.name = badNames[current][Math.floor(Math.random() * badNames[current].length)];
+			a.name = badNames[current.replace('+', 'Boss')][Math.floor(Math.random() * badNames[current.replace('+', 'Boss')].length)];
 			a.health = Math.max(Math.random() * 3000, 2000);
 			a.orig_health = a.health;
 			a.attack = Math.random() * 25;
 			a.heal = Math.random() * 15;
 
-			b.name = goodNames[current][Math.floor(Math.random() * goodNames[current].length)];
+			b.name = goodNames[current.replace('+', 'Boss')][Math.floor(Math.random() * goodNames[current.replace('+', 'Boss')].length)];
 			while (b.name == a.name) {
-				b.name = goodNames[current][Math.floor(Math.random() * goodNames[current].length)];
+				b.name = goodNames[current.replace('+', 'Boss')][Math.floor(Math.random() * goodNames[current.replace('+', 'Boss')].length)];
 			}
 			b.health = a.health;
 			b.orig_health = a.orig_health;

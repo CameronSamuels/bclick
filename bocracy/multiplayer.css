@@ -148,3 +148,11 @@
 				from { bottom: 225px; }
 				to { bottom: calc(100% - 195px); }
 			}
+			#rotate {
+				height: 100px;
+				width: 89px;
+				left: calc(50% - 44.5px);
+				position: absolute;
+				display: none;
+			}
+			#computer, #rotateInstructions { display: none; }

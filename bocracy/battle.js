@@ -23,6 +23,13 @@
 			on : 'false',
 			refresh : {
 				display : function() {
+					if (!isMobile.any()) {
+						var clickables = document.querySelectorAll('[ontouchend]');
+						for (i = 0; i < clickables.length; i++) {
+							clickables[i].setAttribute('onclick', clickables[i].getAttribute('ontouchend'));
+						}
+					}
+
 					var bName = b.name;
 					while (bName.includes('_') || bName.includes('-')) {
 						bName = bName.toString().replace('_', '-');
@@ -50,8 +57,8 @@
 					id('bHealthBar').style.width = (b.health / b.orig_health)*100 + '%';
 					id('aHealthBar').style.width = (a.health / a.orig_health)*100 + '%';
 
-					id('bButton').style.backgroundImage = 'url(https://playbclick.com/assets/' + goodNames.url + '/' + b.name.toString().replace('_', '-').replace('_', '-').replace('_', '-').replace('D', '.') + '.png)';
-					id('aButton').style.backgroundImage = 'url(https://playbclick.com/assets/' + badNames.url + '/' + a.name.toString().replace('_', '-').replace('_', '-').replace('_', '-').replace('D', '.') + '.png)';
+					id('bButton').style.backgroundImage = 'url(https://playbclick.com/assets/' + goodNames.url + '/' + b.name.toString().replace('_', '-').replace('_', '-').replace('_', '-').replace('D', '.').replace('Boss', '') + '.png)';
+					id('aButton').style.backgroundImage = 'url(https://playbclick.com/assets/' + badNames.url + '/' + a.name.toString().replace('_', '-').replace('_', '-').replace('_', '-').replace('D', '.').replace('Boss', '') + '.png)';
 				},
 				all : function() {
 					game.refresh.display();
@@ -116,13 +123,6 @@
 			}
 		};
 		function load() {
-			if (!isMobile.any()) {
-				id('bButton').setAttribute('onclick', 'game.heal("green")');
-				id('aButton').setAttribute('onclick', 'game.attack("green")');
-				id('refreshButton').setAttribute('onclick', 'location.reload()');
-				id('backButton').setAttribute('onclick', 'window.location="index.html"');
-			}
-
 			switch (current.replace('+', '')) {
 				case "aonarchy":
 					newStats = 'true';
@@ -135,20 +135,20 @@
 					goodNames.url = "b";
 			}
 
-			a.name = badNames[current.replace('+', '')][Math.floor(Math.random() * badNames[current.replace('+', '')].length)];
+			a.name = badNames[current.replace('+', 'Boss')][Math.floor(Math.random() * badNames[current.replace('+', 'Boss')].length)];
 
 			// if (localStorage.hasOwnedGood != 'true') { unlock('mystery_pack'); localStorage.hasOwnedGood = 'true'; } 
-			b.name = goodNames[current.replace('+', '')][Math.floor(Math.random() * goodNames[current.replace('+', '')].length)];
+			b.name = goodNames[current.replace('+', 'Boss')][Math.floor(Math.random() * goodNames[current.replace('+', 'Boss')].length)];
 			// if (newStats == 'true') {
 			// 	while (localStorage[b.name] != 'true') {
 			// 		b.name = goodNames[current][Math.floor(Math.random() * goodNames[current].length)];
 			// 	}
 			// }
-			while (b.name == a.name) {
-				b.name = goodNames[current][Math.floor(Math.random() * goodNames[current].length)];
-			}
 
 			if (newStats == 'false') {
+				while (b.name == a.name) {
+					b.name = goodNames[current][Math.floor(Math.random() * goodNames[current.replace('+', 'Boss')].length)];
+				}
 				a.health = Math.max(Math.random() * 2000, 1000);
 				a.orig_health = a.health;
 				a.attack = Math.random() * 20;

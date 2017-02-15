@@ -6,6 +6,7 @@ var goodNames = {
 			fantasy : ['dovahkinn', 'mage', 'superhero', 'giant', 'dragonball', 'ghost'],
 			horror : ['killer', 'carnotaurus', 'trump', 'ghost', 'shark'],
 			aonarchy : [],
+			aonarchyBoss : [],
 			weaklings : ['regular', 'lowercase', 'handrawn', 'fancy', 'curved', 'thin'],
 			christmas : ['santa', 'candycane'],
 			team : ['cameron', 'faith', 'ethan', 'alwin', 'michael', 'srisha', 'cooper', 'jessica', 'vishwam']
@@ -17,6 +18,7 @@ var goodNames = {
 			fantasy : ['dovahkinn', 'mage', 'superhero', 'giant', 'dragonball', 'ghost'],
 			horror : ['killer', 'carnotaurus', 'trump', 'ghost', 'shark'],
 			aonarchy : [],
+			aonarchyBoss : [],
 			weaklings : ['regular', 'lowercase', 'handrawn', 'fancy', 'curved', 'thin'],
 			christmas : ['santa', 'candycane', 'reindeer'],
 			team : ['cameron', 'faith', 'ethan', 'alwin', 'michael', 'srisha', 'cooper', 'jessica', 'vishwam']
@@ -31,8 +33,9 @@ function object(nm, stats, info, other) {
 	this.info = info;
 	this.other = other;
 	if (localStorage[nm] == undefined) localStorage[nm] = 'false';
-	if (info[1] == 'true') goodNames[info[0]].push(nm);
-	else badNames[info[0]].push(nm);
+	if (info[1] == 'true') goodNames[info[0].replace('+', 'Boss')].push(nm);
+	else badNames[info[0].replace('+', 'Boss')].push(nm);
+	if (goodNames[info[0] + 'Boss'] != undefined && info[1] == 'true') goodNames[info[0] + 'Boss'].push(nm);
 }
 good.goblin_horde = new object('goblin_horde', [50, 3200, 5], ['aonarchy', 'true', 1500, 'a', 'goblin_horde']);
 good.goblin = new object('goblin', [15, 1000, 10], ['aonarchy', 'true', 250, 'a', 'goblin']);
@@ -64,6 +67,16 @@ bad.scubbars = new object('scubbars', [20, 1500, 15], ['aonarchy', 'false', 500,
 bad.d15_cannon = new object('d15_cannon', [60, 2000, 5], ['aonarchy', 'false', 1500, 'a', 'd15_cannon']);
 bad.batalifor_sentry = new object('batalifor_sentry', [60, 2000, 5], ['aonarchy', 'false', 1500, 'a', 'batalifor_sentry']);
 bad.ultacrabb = new object('ultacrabb', [60, 2000, 5], ['aonarchy', 'false', 1500, 'a', 'ultacrabb']);
+
+bad.sharkanatorBoss = new object('sharkanatorBoss', [100, 5000, 0], ['aonarchy+', 'false', 2500, 'a', 'sharkanatorBoss']);
+bad.bentacrabb_2D1Boss = new object('bentacrabb_2D1Boss', [50, 3200, 5], ['aonarchy+', 'false', 1500, 'a', 'bentacrabb_2D1Boss']);
+bad.b_shuttleBoss = new object('b_shuttleBoss', [50, 3000, 10], ['aonarchy+', 'false', 1500, 'a', 'b_shuttleBoss']);
+bad.bylo_kenBoss = new object('bylo_kenBoss', [35, 1500, 20], ['aonarchy+', 'false', 600, 'a', 'bylo_kenBoss']);
+bad.f87_cannonBoss = new object('f87_cannonBoss', [40, 1250, 20], ['aonarchy+', 'false', 750, 'a', 'f87_cannonBoss']);
+bad.d15_cannonBoss = new object('d15_cannonBoss', [60, 2000, 5], ['aonarchy+', 'false', 1500, 'a', 'd15_cannonBoss']);
+bad.batalifor_sentryBoss = new object('batalifor_sentryBoss', [60, 2000, 5], ['aonarchy+', 'false', 1500, 'a', 'batalifor_sentryBoss']);
+bad.ultacrabbBoss = new object('ultacrabbBoss', [60, 2000, 5], ['aonarchy+', 'false', 1500, 'a', 'ultacrabbBoss']);
+
 
 // function unlockPopup(item, url) {
 // 	id('popup').innerHTML = "<h1>You unlocked the " + item + ' ' + url + "</h1><img src='https://playbclick.com/assets/" + url + ".png' /><btn ontouchend='id(\'popup\').style.display = \'none\';'>Close</btn>";

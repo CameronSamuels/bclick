@@ -265,6 +265,7 @@ a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
 #info, #comingSoonDiv {
     text-align: center;
     width: 100%;
+    font-size: 85%;
 }
 
 #info div, #seasonalDiv div { width: 100%; }
@@ -343,7 +344,8 @@ a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
     width: 150px;
     height: 150px;
     margin: 0 auto;
-    margin-top: calc(50% - 91px);
+    position: absolute;
+    top: calc(50% - 91px);
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
 }

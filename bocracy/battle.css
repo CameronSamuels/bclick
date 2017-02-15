@@ -155,3 +155,8 @@
 				from { left: calc(50% + 50px); }
 				to { left: calc(50% - 50px); }
 			}
+			#rotate {
+				height: 200px;
+				width: 178px;
+				left: calc(50% - 89px);
+			}
