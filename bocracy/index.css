@@ -26,9 +26,9 @@
 				background: #3F51B5;
 			}
 			div:not(#title):not(.clear) {
-				height: 100px;
+				/*height: 100px;*/
 				background: #2E40A4;
-				line-height: 100px;
+				/*line-height: 100px;*/
 				vertical-align: middle;
 				text-align: center;
 				font-size: 80%;
@@ -36,9 +36,9 @@
 			a:not(.text) {
 				float: left;
 				text-decoration: none !important;
-				width: 40%;
-				margin: 2.5%;
-				padding: 2.5%;
+				width: 43%;
+				margin: 1%;
+				padding: 0px 2.5%;
 			}
 			a { color: white; text-decoration: underline;}
 			.full {
