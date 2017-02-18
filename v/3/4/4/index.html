@@ -5,7 +5,7 @@
         <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 
         <link rel="shortcut icon" type="image/png" href="icon.png" />
-        <link rel="stylesheet" type="text/css" href="bclick.css?16" />
+        <link rel="stylesheet" type="text/css" href="bclick.css?17" />
         <script src="https://playbclick.com/assets/js/coam.js"></script>
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,7 +50,7 @@
                 <div class="divider"></div>
                 <div class="category-header header"><span>Information</span></div>
                 <div class="settingGroup" id="info">
-                    <div>Version 3.4.4.16</div>
+                    <div>Version 3.4.4.17</div>
                     <div class="divider"></div>
                     <div>Made by<br />&#9733;<a href="https://fb.me/CameronJSamuels" target="_blank">Cameron Samuels</a>&#9733;</div>
                     <div class="divider"></div>
@@ -72,14 +72,23 @@
                 <input name="username" type="text" placeholder="bClicker3000" />
                 <footer>
                     <div class="divider"></div>
-                    <div id="infoSubmitBtn" class="button" onclick="submitForm()">Submit</div>
+                    <div id="infoSubmitBtn" class="button" ontouchend="submitForm()">Submit</div>
                 </footer>
             </form>
         </div>
-        <div id="infoOverlay"></div>
+        <div id="confirmPopup">
+            <h2>Are you sure?</h2><div class="divider"></div>
+            <h3 id="confirmText"></h3>
+            <footer>
+                <div class="divider"></div>
+                <div id="confirmYesBtn" class="button">Yes</div>
+                <div id="confirmNoBtn" class="button">No</div>
+            </footer>
+        </div>
+        <div id="popupOverlay"></div>
     </body>
-    <script src="bclick.js?16"></script>
-    <script src="https://playbclick.com/assets/js/seasons.js?16"></script>
+    <script src="bclick.js?17"></script>
+    <script src="https://playbclick.com/assets/js/seasons.js?17"></script>
     <script type="text/javascript" src="https://playbclick.com/assets/js/intro.js"></script>
     <script>data.load()</script>
 </html>

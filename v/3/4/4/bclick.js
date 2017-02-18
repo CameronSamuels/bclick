@@ -348,7 +348,7 @@ var data = {
 			data.reset.soft();
         },
         update : function() { set('played341-925216', true) },
-        reset : function() { if (m.ask("Reset Everything?") === true) data.reset.hard(); },
+        reset : function() { showConfirm("Reset Everything?", "data.reset.hard()", ""); },
         over : function() { submitScore(); id('body').style.background = "#FF0000"; id('main').setAttribute('class', 'flicker'); set('username', get("username") + "+"); theLog('Multiplier Multiplied By 2!'); set('multiplier', m.add(get('multiplier'), get("multiplier"))); log('G@Me oV3R!1!!1'); setTimeout('data.reset.hard()', 5000);}
     },
     load : function() {
@@ -396,7 +396,7 @@ function changeInfo() {
     f.email.value = get('email') || "";
     f.name.value = get('name') || "";
     id('infoPopup').style.display = "block";
-    id('infoOverlay').style.display = "block";
+    id('popupOverlay').style.display = "block";
 }
 
 function submitScore() {
@@ -411,7 +411,7 @@ function submitForm() {
         set('email', f.email.value);
         set('name', f.name.value);
         id('infoPopup').style.display = "none";
-        id('infoOverlay').style.display = "none";
+        id('popupOverlay').style.display = "none";
         log('Changed Username to ' + get('username'));
         location.reload();
     }
@@ -426,6 +426,14 @@ function submitForm() {
 }
 
 function SeeWinners() { web("https://playbclick.com/assets/php/leaderboards.php") }
+
+function showConfirm(text, yes, no) {
+    id('confirmText').innerHTML = text;
+    id('confirmYesBtn').setAttribute('ontouchend', "eval(" + yes + "); document.getElementById('confirmPopup').style.display = 'none'; document.getElementById('popupOverlay').style.display = 'none';");
+    id('confirmNoBtn').setAttribute('ontouchend', "eval(" + no + "); document.getElementById('confirmPopup').style.display = 'none'; document.getElementById('popupOverlay').style.display = 'none';");
+    id('confirmPopup').style.display = "block";
+    id('popupOverlay').style.display = "block";
+}
 
 // ===== The B's ===== //
 
