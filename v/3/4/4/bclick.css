@@ -355,6 +355,9 @@ a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
 
 /* ===== Other ===== */
 
+.ads { max-width:187px; max-height:187px; }
+.ads p { margin: 0px auto; }
+
 #winFrame, #statsFrame { display: none; }
 
 red { color: red; }

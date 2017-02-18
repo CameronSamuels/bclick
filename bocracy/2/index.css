@@ -48,3 +48,5 @@
 			}
 			.clear { clear: both; }
 			#title { font-size: 30px; }
+
+			.ads p { margin: 0px auto; }

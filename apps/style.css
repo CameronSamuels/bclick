@@ -36,6 +36,5 @@ h2, body, html, p, input { margin: 0; padding: 0; }
 
 .links { margin: 5px auto; width: 100%; }
 .link { margin: 0px 5px; width: 254px; height: 75px;}
-/*@media screen and (max-width: 384px) { .link { width: calc(100% - 10px); } }
-@media screen and (min-width: 385px) and (max-width: 768px) { .link { width: calc(50% - 10px); } }
-@media screen and (min-width: 769px) { .link { width: 254px; height: 75px; } }*/
+
+.ads p { margin: 0px auto; }
