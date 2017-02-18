@@ -220,6 +220,7 @@ var seasons = {
         }
         if (new Date().getMonth() == 1) {
             if (new Date().getDate() == 14) seasons.valentines();
+            if (new Date().getDate() == 20) seasons.presidentsDay();
             if (new Date().getDate() == 28) seasons.mardiGras();
         }
         if (new Date().getMonth() == 3) {
