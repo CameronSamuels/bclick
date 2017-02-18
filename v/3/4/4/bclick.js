@@ -207,7 +207,7 @@ var achievements = {
     },
     achieve : function(id) {
         set(id, true);
-        set('multiplier', parseFloat(get('multiplier')) * 1.5);
+        set('multiplier', Math.min(parseFloat(get('multiplier')) * 1.25, 1000000000));
         log("Achievement Earned!");
         log("Multiplier is now " + m.giant(Math.round(get("multiplier"))));
         theLog('Achievement: ' + achievements.list.spaces[achievements.list.id.indexOf(id)]);
