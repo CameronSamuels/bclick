@@ -191,11 +191,6 @@ var achievements = {
             "Play 12 Hours",
             "Play 24 Hours",
             "Play 2 Days",
-            "Get 1 Quintillion Multiplier",
-            "Get 1 Decillion Multiplier",
-            "Get 1 Quindecillion Multiplier",
-            "Get 1 Vigintillion Multiplier",
-            "Get 1 Quinquavigintillion Multiplier",
             "Maintain 2 Day Streak",
             "Maintain 5 Day Streak",
             "Maintain 7 Day Streak",
@@ -203,7 +198,7 @@ var achievements = {
             "Maintain 1 Month Streak"
         ],
         id : [],
-        type : ['Earn Points', 'Unlock B\'s', 'Click B\'s', 'Have Interest', 'Playing Time', 'Get Multiplier', 'Maintain streaks']
+        type : ['Earn Points', 'Unlock B\'s', 'Click B\'s', 'Have Interest', 'Playing Time', 'Maintain streaks']
     },
     achieve : function(id) {
         set(id, true);
@@ -237,7 +232,6 @@ var achievements = {
                 case "C" : type = "clicks"; break;
                 case "H" : type = "interest"; break;
                 case "P" : type = "timePlayed"; break;
-                case "G" : type = "multiplier"; break;
                 case "M" : type = "daysInARow"; break;
                 default:
             }
@@ -258,7 +252,6 @@ var typeNum = -1;
 for (i = 0; i < achievements.list.spaces.length; i++) {
     var amount = achievements.list.spaces[i].toString().split(' ')[1];
     if (!type.includes('Unlock')) amount += achievements.list.spaces[i].toString().split(' ')[2].charAt(0);
-    // else if (type.includes(''))
     if (type.toString().charAt(0) == achievements.list.id[i].charAt(0)) {
         text.innerHTML += "<div title='" + achievements.list.spaces[i] + "' class='achieveItem' id='" + achievements.list.id[i] + "'>" + amount + "</div>";
     } else {
