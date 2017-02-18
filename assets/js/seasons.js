@@ -30,7 +30,9 @@ caption("Make sure to light fireworks tonight!! Play tommorow after a sip of cof
 // caption("Happy Martin Luther King Day!! Enjoy free price and double value on B's with a white-black background!! 3 times more value on BW B", 16);
 
 /* == Febraury == */
-caption("Happy Valentines Day! Enjoy triple daily gifts and double points on many B's!", 14);
+// caption("Happy Valentines Day! Enjoy triple daily gifts and double points on many B's!", 14);
+caption("President's Day is tommorow! Play then to enjoy double daily gifts and double points on the Trump B!", 19);
+caption("Happy President's Day! Enjoy double daily gifts and double points on the Trump B!", 20);
 
 // ===== The B's ===== //
 b.list.b.handrawn = new create('handrawn', 5, 0, "#FFF");
@@ -179,6 +181,17 @@ var seasons = {
         b.list.b.killer.worth *= 2;
         b.list.b.santa.worth *= 2;
         b.list.b.skater.worth *= 2;
+    },
+    presidentsDay : function() {
+        log("Happy President's Day!");
+        b.list.b["trump"].worth *= 2;
+        if (get("presidentsDay") == undefined) {
+            Earn(get("points") * get("daysInARow"));
+            theLog('Earned ' + (get("points") * get("daysInARow")) + ' from Hillary!');
+            Purchase(1000000);
+            theLog('Lost 1 Million points due to taxes from Trump!');
+            set('presidentsDay', 'true');
+        }
     },
     mardiGras : function() {
         log('Happy Mardi Gras!');

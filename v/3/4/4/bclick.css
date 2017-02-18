@@ -201,7 +201,6 @@ a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
     background-position: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    /*background-color: rgb(120, 120, 120);*/
   
     top: calc(50% - 12.5px);
     bottom: calc(50% - 12.5px);
@@ -391,8 +390,6 @@ red { color: red; }
     opacity: 0.25;
     display: none;
 }
-
-/*#mobileBrowser { display: none; text-align: center; }*/
 
 /*===== Special B's =====*/
 

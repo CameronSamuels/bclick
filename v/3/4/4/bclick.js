@@ -369,7 +369,7 @@ var data = {
 			    setTimeout('data.reset.hard()', 1500);
 			}
 			else if (get("lastPlayDay") !== undefined) set("daysInARow", 1);
-			Earn(get("points") * get("daysInARow"));
+			Earn((get("points") - earned) * get("daysInARow"));
 			log('Earned ' + get("daysInARow") + ' daily gift(s)');
 			theLog('Earned ' + get("daysInARow") + ' daily gift(s)');
 		}
@@ -384,10 +384,6 @@ var data = {
         seasons.load();
         id("main").style.display = "block";
         id('loader').style.display = "none";
-        // if (isMobile.any() && !window.navigator.standalone) {
-        //     id('mobileBrowser').style.display = "block";
-        //     id('main').style.display = "none";
-        // } else
         if (get("playedTutorial") == undefined) playTutorial();
     }
 }
