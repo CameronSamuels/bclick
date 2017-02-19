@@ -263,7 +263,7 @@ a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
     font-size: 85%;
 }
 
-#info div, #seasonalDiv div { width: 100%; }
+#info div, #seasonalDiv div, .ads { width: 100%; }
 
 .minimize {
     float: right;
