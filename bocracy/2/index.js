@@ -17,7 +17,7 @@ function indexOfMax(arr) {
     } return max;
 }
 function dynamicDivSize() {
-	var a = document.querySelectorAll('div:not(#title):not(.clear)');
+	var a = document.querySelectorAll('div:not(#title):not(.clear):not(.ads)');
 	for (i = 0; i < a.length; i++) {
 		a[i].style.padding = "0px";
 	}
