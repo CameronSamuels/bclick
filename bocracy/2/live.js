@@ -91,25 +91,77 @@ bad.batalifor_sentryBoss = new object('batalifor_sentryBoss', [60, 2000, 5], ['a
 bad.ultacrabbBoss = new object('ultacrabbBoss', [60, 2000, 5], ['aonarchy+', 'false', 1500, 'a', 'ultacrabbBoss']);
 bad.dark_knightBoss = new object('dark_knightBoss', [60, 2000, 5], ['aonarchy+', 'false', 1500, 'a', 'dark_knightBoss']);
 
-// function unlockPopup(item, url) {
-// 	id('popup').innerHTML = "<h1>You unlocked the " + item + ' ' + url + "</h1><img src='https://playbclick.com/assets/" + url + ".png' /><btn ontouchend='id(\'popup\').style.display = \'none\';'>Close</btn>";
-// 	id('popup').style.display = "block";
-// }
+function showConfirm(text, yes, no) {
+    id('confirmText').innerHTML = text;
+    id('confirmYesBtn').setAttribute('onclick', "eval(" + yes + "); document.getElementById('confirmPopup').style.display = 'none'; document.getElementById('popupOverlay').style.display = 'none';");
+    id('confirmNoBtn').setAttribute('onclick', "eval(" + no + "); document.getElementById('confirmPopup').style.display = 'none'; document.getElementById('popupOverlay').style.display = 'none';");
+    id('confirmPopup').style.display = "block";
+    id('popupOverlay').style.display = "block";
+}
+function showAlert(text) {
+    id('unlockedPopupText').innerHTML = text;
+    id('youGotMail').style.display = "none";
+    id('unlockedPopupImg').style.display = "none";
+    id('unlockedPopup').style.display = "block";
+    id('popupOverlay').style.display = "block";
+    id('unlockedPopupBtn').setAttribute('onclick', "document.getElementById('unlockedPopup').style.display = 'none'; document.getElementById('popupOverlay').style.display = 'none';");	
+}
 
-// function unlock(item) {
-// 	if (item.includes('_pack')) {
-// 		switch (item) {
-// 			case 'mystery_pack':
-// 				unlocked = goodNames[current][Math.floor(Math.random() * goodNames.length)];
-// 				while (localStorage[unlocked] == 'true') {
-// 					unlocked = goodNames[current][Math.floor(Math.random() * goodNames.length)];
-// 				}
-// 				localStorage[unlocked] = 'true';
-// 				unlockPopup(unlocked, 'a');
-// 				break;
-// 		}
-// 		return;
-// 	}
-// }
+function unlockConfirmed(item) {
+	if (localStorage.coins >= 500) {
+		unlock(item);
+		localStorage.coins -= 500;
+	} else {
+		showAlert('Not enough coins!');
+		id('unlockedPopupBtn').setAttribute('onclick', id('unlockedPopupBtn').getAttribute('onclick') + "window.location='index.html'");
+	}
+}
+
+function purchase(item) {
+	showConfirm("Buy a character from " + item + " for 500 coins?", "unlockConfirmed('" + item + "')", "window.location='index.html'");
+}
+
+function unlock(item) {
+	switch (item) {
+		case 'aonarchy':
+			for (i = 0; i < goodNames["aonarchy"].length; i++) {
+				if (localStorage[goodNames["aonarchy"][i]] == "false") {
+					break;
+				} else if (i == (goodNames["aonarchy"].length) - 1) {
+					showAlert("You have unlocked all the characters in Aonarchy! Wait for more characters to release!");
+					id('unlockedPopupBtn').setAttribute('onclick', id('unlockedPopupBtn').getAttribute('onclick') + "window.location='index.html'");
+					return;
+				}
+			}
+			var unlocked = goodNames["aonarchy"][Math.floor(Math.random() * goodNames["aonarchy"].length)];
+			while (localStorage[unlocked] == 'true') {
+				unlocked = goodNames["aonarchy"][Math.floor(Math.random() * goodNames["aonarchy"].length)];
+			}
+			localStorage[unlocked] = 'true';
+			var characterName = unlocked;
+			while (characterName.includes('_') || characterName.includes('-')) {
+				characterName = characterName.toString().replace('_', '-');
+				characterName = characterName.replace('--', '^');
+				characterName = characterName.replace('-', ' ');
+			}
+			while (characterName.includes('^')) {
+				characterName = characterName.replace('^', '-');
+			}
+			characterName = characterName.replace('D', '.');
+			id('unlockedPopupText').innerHTML = "You unlocked the " + characterName + " A";
+			id('youGotMail').style.display = "block";
+			id('unlockedPopupImg').style.display = "block";
+			id('unlockedPopupImg').src = 'https://playbclick.com/assets/a/' + unlocked.toString().replace('_', '-').replace('_', '-').replace('_', '-').replace('D', '.').replace('Boss', '') + ".png";
+			id('unlockedPopupBtn').setAttribute('onclick', "document.getElementById('unlockedPopup').style.display = 'none'; document.getElementById('popupOverlay').style.display = 'none';window.location='index.html'");
+			id('unlockedPopup').style.display = "block";
+			id('popupOverlay').style.display = "block";
+			break;
+		default:
+	}
+}
+if (localStorage.playedBOcracy110 == undefined) {
+	unlock("aonarchy");
+	localStorage.playedBOcracy110 = "true";
+}
 
 id('body').oncontextmenu = function(e) { e.preventDefault(); }

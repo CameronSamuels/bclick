@@ -7,7 +7,7 @@
 	  	<meta name="apple-mobile-web-app-capable" content="yes">
 	  	<link rel="apple-touch-icon" href="icon.png">
 	  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	  	<link rel="stylesheet" type="text/css" href="index.css?28">
+	  	<link rel="stylesheet" type="text/css" href="index.css?29">
 
 	  	<meta property="og:url"                content="https://playbclick.com/bocracy" />
         <meta property="og:type"               content="game" />
@@ -22,14 +22,16 @@
 		<header id="header"><div id="title" onclick="location.reload()"><font size="9">b-Ocracy</font></div></header>
 		<h3>Select a category to begin</h3>
 		<h5 id="homescreenTip"><green>Add to homescreen for best results!</green></h5>
-		<a onclick="window.location = 'battle.html#aonarchy'"><div><green>Featured: </green>Aonarchy</div></a>
-		<a onclick="window.location = 'battle.html#aonarchy+'"><div>Aonarchy <red>Bosses</red></div></a>
-		<a onclick="window.location = 'battle.html#bictatorship'"><div><green>New: </green>Bictatorship</div></a>
-		<a onclick="window.location = 'battle.html#bocracy'"><div>bOcracy</div></a>
-		<a onclick="window.location = 'battle.html#dinotera'"><div>Dinotera</div></a>
-		<a onclick="window.location = 'battle.html#original'"><div>bVille</div></a>
+		<main>
+			<a onclick="showConfirm('Open the store first?', 'window.location = \'store.html#aonarchy\'', 'window.location = \'battle.html#aonarchy\'')"><div><green>Featured: </green>Aonarchy</div></a>
+			<a onclick="showConfirm('Open the store first?', 'window.location = \'store.html#aonarchy\'', 'window.location = \'battle.html#aonarchy+\'')"><div>Aonarchy <red>Bosses</red></div></a>
+			<a onclick="window.location = 'battle.html#bictatorship'"><div><green>New: </green>Bictatorship</div></a>
+			<a onclick="window.location = 'battle.html#bocracy'"><div>bOcracy</div></a>
+			<a onclick="window.location = 'battle.html#dinotera'"><div>Dinotera</div></a>
+			<a onclick="window.location = 'battle.html#original'"><div>bVille</div></a>
+		</main>
 		<div class="clear"></div>
-		<a class="text" onclick="window.location='credits.html?28'"><h4>Check out the credits</h4></a>
+		<a class="text" onclick="window.location='credits.html?29'"><h4>Check out the credits</h4></a>
 		<h4><red>B-Ocracy is curently in beta</red></h4>
 		<div class="ads"><p>
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -38,6 +40,17 @@
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </p></div>
 		<audio loop autoplay><source src="theme.wav" type="audio/wav"></audio>
-		<script src="index.js?28"></script>
+		<div id="confirmPopup">
+            <h2>Are you sure?</h2><div class="divider"></div>
+            <h3 id="confirmText"></h3>
+            <footer>
+                <div class="divider"></div>
+                <div id="confirmYesBtn" class="button">Yes</div>
+                <div id="confirmNoBtn" class="button">No</div>
+            </footer>
+        </div>
+        <div id="popupOverlay"></div>
+		<script src="live.js?29"></script>
+		<script src="index.js?29"></script>
 	</body>
 </html>
