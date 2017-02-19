@@ -1,3 +1,12 @@
+function id(id) { return document.getElementById(id) }
+
+var isMobile = {
+	Android: function() { return navigator.userAgent.match(/Android/i); },
+	iOS: function() { return navigator.userAgent.match(/iPhone|iPad|iPod/i); },
+	Windows: function() { return navigator.userAgent.match(/IEMobile/i); },
+   	any: function() { return (isMobile.Android() || isMobile.iOS() || isMobile.Windows()); }
+};
+
 var goodNames = {
 			url : '',
 			original : ['santa', 'skater', 'saw', 'spiky', 'electric', 'shark', 'ghost', 'dragonball', 'giant', 'spear', 'superhero'],
@@ -102,3 +111,5 @@ bad.dark_knightBoss = new object('dark_knightBoss', [60, 2000, 5], ['aonarchy+',
 // 		return;
 // 	}
 // }
+
+id('body').oncontextmenu = function(e) { e.preventDefault(); }
