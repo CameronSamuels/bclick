@@ -418,7 +418,7 @@ function submitForm() {
     }
 }
 
-function SeeWinners() { web("https://playbclick.com/assets/php/leaderboards.php?build=22") }
+function SeeWinners() { web("https://playbclick.com/assets/php/leaderboards.php?build=23") }
 
 function showConfirm(text, yes, no) {
     id('confirmText').innerHTML = text;
