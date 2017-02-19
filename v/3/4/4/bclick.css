@@ -355,7 +355,7 @@ a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
 
 /* ===== Other ===== */
 
-.ads, .ads p { max-width:187px; max-height:187px;}
+.ads, .ads p { max-width:187px; max-height:187px; overflow: hidden; width: 187px; height: 200px;}
 .ads p {
     vertical-align: middle;
     text-align: center;
