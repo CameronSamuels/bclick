@@ -2,7 +2,7 @@ var goodNames = {
 			url : '',
 			original : ['santa', 'skater', 'saw', 'spiky', 'electric', 'shark', 'ghost', 'dragonball', 'giant', 'spear', 'superhero'],
 			bocracy : ['knight', 'archer', 'barbed', 'flower', 'muscle', 'trump'],
-			dinotera : ['apatosaurus', 'carnotaurus', 'shark'],
+			dinotera : ['triceratops', 't--rex', 'mosasaur', 'apatosaurus', 'carnotaurus', 'shark'],
 			fantasy : ['dovahkinn', 'mage', 'superhero', 'giant', 'dragonball', 'ghost'],
 			horror : ['killer', 'carnotaurus', 'trump', 'ghost', 'shark'],
 			aonarchy : [],
