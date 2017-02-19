@@ -15,7 +15,7 @@ Redirect 307 /play/live/index.html https://playbclick.com/web
 # Downloading Versions #
 Redirect 307 /android https://play.google.com/store/apps/details?id=com.playbclick.bclick
 Redirect 307 /chrome https://chrome.google.com/webstore/detail/bclick/fccplfmeljdiinmnjbemkgaganpbkghf
-Redirect 307 /web https://playbclick.com/v/3/4/4/?24
+Redirect 307 /web https://playbclick.com/v/3/4/4/?25
 
 # Apps #
 #Redirect 307 /bocracy/index.html/ https://playbclick.com/bocracy/index.html?26

@@ -99,6 +99,7 @@ a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
     border-top: 0px;
     overflow-y: auto;
     position: absolute;
+    overflow-x: hidden;
 }
 
 .header {
@@ -275,7 +276,7 @@ a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
 }
 .minimize:hover { background-color: rgb(120, 120, 120); color: yellow; }
 
-#settingsSection { left: calc(50% + 94.6666666666666px); }
+#settingsSection { left: calc(50% + 94.6666666666666px);}
 
 /*===== Messages =====*/
 
@@ -320,7 +321,7 @@ a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
     100% { opacity:0; }
 }
 
-#theLog ul, #theLog ul li { margin: 0; padding: 0; }
+#theLog ul, #theLog ul li { margin: 0; padding: 0; word-wrap: break-word;}
 #theLog ul { display: table; }
 #theLog ul li { display: table-row; }
 #theLog ul li::before {
