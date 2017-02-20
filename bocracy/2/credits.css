@@ -1,0 +1,40 @@
+			@import 'https://fonts.googleapis.com/css?family=Syncopate';
+			body, html {
+				width: 100%;
+				height: 100%;
+
+				margin: 0px;
+
+				background: #3F51B5;
+
+				text-transform: capitalize;
+				text-align: center;
+				font-family: 'Syncopate', sans-serif;
+			}
+
+			red { color: #F00; }
+			green { color: #64DD17; }
+
+			header {
+				width: 100%;
+				height: 25px;
+
+				margin: 20px 0px;
+
+				line-height: 25px;
+				background: #3F51B5;
+			}
+			div:not(#title):not(.clear) {
+				background: #2E40A4;
+				line-height:25px;
+				vertical-align: middle;
+				text-align: center;
+				float: left;
+				color: white;
+				width: 80%;
+				margin: 30px 5%;
+				padding: 2.5% 5%;
+			}
+			a  { color: white; }
+			.clear { clear: both; }
+			#title { font-size: 30px; }
