@@ -159,9 +159,5 @@ function unlock(item) {
 		default:
 	}
 }
-if (localStorage.playedBOcracy110 == undefined) {
-	unlock("aonarchy");
-	localStorage.playedBOcracy110 = "true";
-}
 
 id('body').oncontextmenu = function(e) { e.preventDefault(); }

@@ -20,3 +20,8 @@ function dynamicDivSize() {
 }
 window.addEventListener('orientationchange', dynamicDivSize);
 dynamicDivSize();
+
+if (localStorage.playedBOcracy110 == undefined) {
+	localStorage.playedBOcracy110 = "true";
+	window.location = "store.html#aonarchy";
+}
