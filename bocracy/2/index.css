@@ -105,7 +105,7 @@ a { color: white; text-decoration: underline; cursor: pointer;}
 }
 #story, #story marquee {
     background: #3F51B5;
-    font-size: 50px;
+    font-size: 40px;
     display: block;
     cursor: pointer;
     z-index: 3;
