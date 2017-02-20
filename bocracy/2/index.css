@@ -52,14 +52,14 @@ a:not(.text) {
 	margin: 1%;
 	padding: 0px 2.5%;
 }
-a { color: white; text-decoration: underline;}
+a { color: white; text-decoration: underline; cursor: pointer;}
 .full {
     width: 80% !important;
 	margin: 5% !important;
 	padding: 2.5% 5% !important;
 }
 .clear { clear: both; }
-#title { font-size: 30px; }
+#title { font-size: 30px; cursor: pointer;}
 
 .ads p {
 	margin: 0px auto;
@@ -91,13 +91,23 @@ a { color: white; text-decoration: underline;}
     width: calc(42.5% - 30px) !important;
     margin: 1px calc(1% - 0.5px) !important;
 }
-#popupOverlay {
-    width: 100%;
+#story, #story marquee, #popupOverlay {
+	width: 100%;
     height: 100%;
-    background: #2a2a2a;
-    opacity: 0.25;
-    display: none;
-    position: absolute;
+   	position: fixed;
     top: 0px;
     left: 0px;
+    display: none;
+}
+#popupOverlay {
+    background: #2a2a2a;
+    opacity: 0.25;
+}
+#story, #story marquee {
+    background: #3F51B5;
+    font-size: 50px;
+    display: block;
+    cursor: pointer;
+    z-index: 3;
+    text-align: center;
 }

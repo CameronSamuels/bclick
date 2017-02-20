@@ -19,18 +19,26 @@ function dynamicDivSize() {
 	}
 }
 window.addEventListener('orientationchange', dynamicDivSize);
-dynamicDivSize();
-
-if (localStorage.playedBOcracy110_0 == undefined) {
-	if (localStorage.hasAonarchy == undefined) {
-		localStorage.hasAonarchy = 'true';
-		localStorage.coins = 500;
-		window.location = "store.html#aonarchy";
-	} else if (localStorage.hasCortofa == undefined) {
-		localStorage.hasCortofa = 'true';
-		localStorage.coins = parseFloat(localStorage.coins) + 500;
-		window.location = "store.html#cortofa";
+function load() {
+	dynamicDivSize();
+	if (localStorage.watchedStory == undefined) {
+		localStorage.watchedStory = 'true';
+		return "";
 	} else {
-		localStorage.playedBOcracy110_0 = "true";
+		id('story').style.display = "none";
+	}
+	if (localStorage.playedBOcracy110_1 == undefined) {
+		if (localStorage.hasAonarchy == undefined) {
+			localStorage.hasAonarchy = 'true';
+			localStorage.coins = 500;
+			window.location = "store.html#aonarchy";
+		} else if (localStorage.hasCortofa == undefined) {
+			localStorage.hasCortofa = 'true';
+			localStorage.coins = parseFloat(localStorage.coins) + 500;
+			window.location = "store.html#cortofa";
+		} else {
+			localStorage.playedBOcracy110_0 = "true";
+		}
 	}
 }
+load();
