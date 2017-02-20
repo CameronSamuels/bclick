@@ -348,7 +348,7 @@ var data = {
         if (get("points") === undefined) data.reset.hard();
         // else if (get("played341-925216") == undefined) data.reset.update();  
         else if (get("lastPlay") !== undefined) {
-            var earned = Math.min(get('points'), ((get('interest') * 0.05) * m.ts(get('lastPlay'))));
+            var earned = Math.min(get('points'), ((get('interest') * 0.05) * m.ts(get('lastPlay')) / 1000));
             set('points', m.add(get("points"), earned));
             log('Earned ' + m.giant(earned) + ' points offline');
         }
@@ -369,11 +369,11 @@ var data = {
 		if (get("theLog") != undefined) id('theLog').innerHTML = '<ul>' + get("theLog") + '</ul>';
 		setInterval('submitScore()', 15000);
         setInterval("stats('visits', 1)", 60000);
+        if (!get("username")) set('username', 'bClicker' + random());
         refresh.all();
         ceiling = get("points");
         setInterval('realEarn()', 1);
         setInterval('ceiling = get("points");bank.collect();depositSpamBlocker()', 1000);
-        if (!get("username")) set('username', 'bClicker' + random());
         seasons.load();
         id("main").style.display = "block";
         id('loader').style.display = "none";
