@@ -6,9 +6,13 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="apple-touch-icon" href="icon.png">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <link rel="stylesheet" type="text/css" href="store.css?29">
+        <link rel="stylesheet" type="text/css" href="store.css?30">
     </head>
     <body id="body">
+        <header id="header">
+            <div id="coinImg"><img src="gold.png" height="18" width="39" /></div>
+            <div id="coins"></div>
+        </header>
         <div id="confirmPopup">
             <h2>Are you sure?</h2><div class="divider"></div>
             <h3 id="confirmText"></h3>
@@ -28,7 +32,8 @@
             </footer>
         </div>
         <div id="popupOverlay"></div>
-        <script src="live.js?29"></script>
-        <script src="store.js?29"></script>
+        <audio id="audio" loop autoplay><source id="sound" src="store.wav" type="audio/wav"></audio>
+        <script src="live.js?30"></script>
+        <script src="store.js?30"></script>
     </body>
 </html>

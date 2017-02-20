@@ -125,7 +125,6 @@ function showAlert(text) {
 function unlockConfirmed(item) {
 	if (localStorage.coins >= 500) {
 		unlock(item);
-		localStorage.coins -= 500;
 	} else {
 		showAlert('Not enough coins!');
 		id('unlockedPopupBtn').setAttribute('onclick', id('unlockedPopupBtn').getAttribute('onclick') + "window.location='index.html'");
@@ -170,6 +169,7 @@ function unlock(item) {
 			id('unlockedPopupBtn').setAttribute('onclick', "document.getElementById('unlockedPopup').style.display = 'none'; document.getElementById('popupOverlay').style.display = 'none';window.location='index.html'");
 			id('unlockedPopup').style.display = "block";
 			id('popupOverlay').style.display = "block";
+			localStorage.coins -= 500;
 			break;
 		case 'cortofa':
 			for (i = 0; i < goodNames["cortofa"].length; i++) {
@@ -203,6 +203,7 @@ function unlock(item) {
 			id('unlockedPopupBtn').setAttribute('onclick', "document.getElementById('unlockedPopup').style.display = 'none'; document.getElementById('popupOverlay').style.display = 'none';window.location='index.html'");
 			id('unlockedPopup').style.display = "block";
 			id('popupOverlay').style.display = "block";
+			localStorage.coins -= 500;
 			break;
 		default:
 	}
