@@ -65,7 +65,7 @@ var lines = [];
 function refresh() {
 	if (paused == 'false') {
 		var landscapeOrientation = window.innerWidth/window.innerHeight > 1;
-		if ( landscapeOrientation) {
+		if (landscapeOrientation) {
 			vx = vx + ay;
 			vy = vy + ax;
 		} else {
@@ -85,6 +85,7 @@ function refresh() {
         // }
 
 		ctx.beginPath();
+		ctx.strokeStyle = "#f00";
 		ctx.moveTo((prev.x + 22), (prev.y + 52));
 		ctx.lineTo((coord.x + 22), (coord.y + 52));
 		ctx.stroke();
@@ -98,10 +99,10 @@ function refresh() {
 		pencil.style.top = coord.y + 'px';
 		pencil.style.left = coord.x + 'px';
 		
-		if (localStorage.PenDriveHighScore == undefined || localStorage.PenDriveHighScore <= sec) {
-		    localStorage.PenDriveHighScore = sec;
+		if (localStorage.DoodleDareHighScore == undefined || localStorage.DoodleDareHighScore <= sec) {
+		    localStorage.DoodleDareHighScore = sec;
 		}
-		id('Best').innerHTML = "Best: " + localStorage.PenDriveHighScore;
+		id('Best').innerHTML = "Best: " + localStorage.DoodleDareHighScore;
 	}
 	window.requestAnimationFrame(refresh);
 }
@@ -165,4 +166,9 @@ var isMobile = {
     any: function() { return (isMobile.Android() || isMobile.iOS() || isMobile.Windows()); }
 };
 
-if (!isMobile.any()) alert("Not Supported on computers which don't have an accelerometer");
+if (!isMobile.any()) {
+	paused = 'true';
+	id('msgTitle').innerHTML = 'Not supported!';
+	id('msgText').innerHTML = 'Doodle Dare isn\'t supported on desktop';
+	id('msg').style.display = 'block';
+}
