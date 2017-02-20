@@ -136,6 +136,10 @@
 			// 	}
 			// }
 
+			while (localStorage[b.name] == 'false') {
+				b.name = goodNames[current.replace('+', 'Boss')][Math.floor(Math.random() * goodNames[current.replace('+', 'Boss')].length)];
+			}
+
 			if (newStats == 'false') {
 				while (b.name == a.name) {
 					b.name = goodNames[current][Math.floor(Math.random() * goodNames[current.replace('+', 'Boss')].length)];
