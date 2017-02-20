@@ -28,7 +28,7 @@ if (localStorage.playedBOcracy110_0 == undefined) {
 		window.location = "store.html#aonarchy";
 	} else if (localStorage.hasCortofa == undefined) {
 		localStorage.hasCortofa = 'true';
-		localStorage.coins += 500;
+		localStorage.coins = parseFloat(localStorage.coins) + 500;
 		window.location = "store.html#cortofa";
 	} else {
 		localStorage.playedBOcracy110_0 = "true";
