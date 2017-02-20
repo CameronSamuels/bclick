@@ -262,10 +262,10 @@ for (i = 0; i < achievements.list.spaces.length; i++) {
 }
 
 // ===== Refreshing ===== //
-
+var askedToReset = 'false';
 var refresh = {
     numbers : function() {
-        if (get('points') >= Math.pow(10, 306)) { set('points', m.eg(Math.pow(10, 307))); id('Points').innerHTML = "Points: Infinity"; if (id('main').getAttribute('class') != "flicker") data.reset.over(); try { parent.document.title = "Infinity Points - bClick"; } catch (ex) {}}
+        if (get('points') >= Math.pow(10, 306)) { set('points', m.eg(Math.pow(10, 307))); id('Points').innerHTML = "Points: Infinity"; if (askedToReset != 'true') { showConfirm("Reset to earn prestige?", 'data.reset.over()', ""); askedToReset = 'true';}try { parent.document.title = "Infinity Points - bClick"; } catch (ex) {}}
         else { id('Points').innerHTML = 'Points: ' + m.giant(get('points')); try { parent.document.title = m.giant(get('points')) + " Points - bClick";} catch (ex) {}}
 
         if (get('interest') >= Math.pow(10, 307)) { set('interest', m.eg(Math.pow(10, 308))); id('Interest').innerHTML = "Interest: Infinity"; } 
@@ -341,8 +341,8 @@ var data = {
 			data.reset.soft();
         },
         update : function() { set('played341-925216', true) },
-        reset : function() { showConfirm("Reset Everything?", "data.reset.hard()", ""); },
-        over : function() { submitScore(); id('body').style.background = "#FF0000"; id('main').setAttribute('class', 'flicker'); set('username', get("username") + "+"); theLog('Multiplier Multiplied By 2!'); set('multiplier', m.add(get('multiplier'), get("multiplier"))); log('G@Me oV3R!1!!1'); setTimeout('data.reset.hard()', 5000);}
+        reset : function() { showConfirm("Reset Everything?", "data.reset.hard()", "''"); },
+        over : function() { submitScore(); id('body').style.background = "#FF0000"; id('main').setAttribute('class', 'flicker'); set('username', get("username") + "+"); theLog('Multiplier Multiplied By 2!'); set('multiplier', m.add(get('multiplier'), get("multiplier"))); log('G@Me oV3R!1!!1'); setTimeout('data.reset.hard()', 5000);setTimeout('location.reload()', 7000)}
     },
     load : function() {
         if (get("points") === undefined) data.reset.hard();
