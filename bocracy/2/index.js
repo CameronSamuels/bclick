@@ -23,5 +23,6 @@ dynamicDivSize();
 
 if (localStorage.playedBOcracy110 == undefined) {
 	localStorage.playedBOcracy110 = "true";
+	localStorage.coins = 500;
 	window.location = "store.html#aonarchy";
 }
