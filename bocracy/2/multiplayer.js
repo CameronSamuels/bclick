@@ -112,6 +112,11 @@
 					badNames.url = "b";
 					goodNames.url = "a";
 					break;
+				case "cortofa":
+					newStats = 'true';
+					badNames.url = "b";
+					goodNames.url = "c";
+					break;
 				default:
 					badNames.url = "b";
 					goodNames.url = "b";
