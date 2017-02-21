@@ -14,13 +14,6 @@
 			on : 'false',
 			refresh : {
 				display : function() {
-					if (!isMobile.any()) {
-						var clickables = document.querySelectorAll('[ontouchend]');
-						for (i = 0; i < clickables.length; i++) {
-							clickables[i].setAttribute('onclick', clickables[i].getAttribute('ontouchend'));
-						}
-					}
-
 					var bName = b.name;
 					while (bName.includes('_') || bName.includes('-')) {
 						bName = bName.toString().replace('_', '-');

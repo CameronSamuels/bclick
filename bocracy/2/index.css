@@ -91,7 +91,7 @@ a { color: white; text-decoration: underline; cursor: pointer;}
     width: calc(42.5% - 30px) !important;
     margin: 1px calc(1% - 0.5px) !important;
 }
-#story, #story marquee, #popupOverlay {
+#story, #story marquee, #popupOverlay, #mapDiv {
 	width: 100%;
     height: 100%;
    	position: fixed;
@@ -110,4 +110,15 @@ a { color: white; text-decoration: underline; cursor: pointer;}
     cursor: pointer;
     z-index: 3;
     text-align: center;
+}
+#mapDiv {
+	background: #3F51B5;
+	zoom: 60%;
+}
+#mapDiv img {
+	position: absolute;
+	left: calc(50% - 256px);
+	top: calc(50% - 256px);
+	width: 512px;
+	height: 512px;
 }

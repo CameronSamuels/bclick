@@ -208,5 +208,18 @@ function unlock(item) {
 		default:
 	}
 }
+function convertClick() {
+	if (!isMobile.any()) {
+		var clickables = document.querySelectorAll('[ontouchend]');
+		for (i = 0; i < clickables.length; i++) {
+			clickables[i].setAttribute('onclick', clickables[i].getAttribute('ontouchend'));
+		}
+		requestAnimationFrame(convertClick);
+	}
+}
 
-id('body').oncontextmenu = function(e) { e.preventDefault(); }
+function loadLive() {
+	id('body').oncontextmenu = function(e) { e.preventDefault(); }
+	convertClick();
+}
+document.addEventListener('DOMContentLoaded', loadLive, false);

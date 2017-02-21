@@ -1,6 +1,3 @@
-if (!isMobile.any()) id('homescreenTip').style.display = 'none';
-if (window.navigator.standalone == true) id('homescreenTip').style.display = 'none';
-
 function indexOfMax(arr) {
     if (arr.length === 0) return -1;
     var max = arr[0]; var maxIndex = 0;
@@ -20,6 +17,9 @@ function dynamicDivSize() {
 }
 window.addEventListener('orientationchange', dynamicDivSize);
 function load() {
+	// id('map').style.height = id('map').offsetWidth;
+	id('aonarchyA').setAttribute('onclick', "document.getElementById('map').src='aonarchy.png';document.getElementById('mapDiv').style.display = 'block';document.getElementById('map').useMap = '#aonarchyMap'");
+	id('cortofaA').setAttribute('onclick', "document.getElementById('map').src='cortofa.png';document.getElementById('mapDiv').style.display = 'block';document.getElementById('map').useMap = '#cortofaMap'");
 	dynamicDivSize();
 	if (localStorage.watchedStory == undefined) {
 		localStorage.watchedStory = 'true';
@@ -41,4 +41,3 @@ function load() {
 		}
 	}
 }
-load();
