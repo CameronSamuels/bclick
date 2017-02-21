@@ -51,15 +51,16 @@
 			},
 			win : function(side) {
 				if (side == 'green') {
-					if (newStats == 'true') {
-						if (current.includes('+')) { var coinsEarned = bad[a.name].info[2] * 0.05; }
-						else { var coinsEarned = bad[a.name].info[2] * 0.02; }
-						if (localStorage.coins == undefined) localStorage.coins = coinsEarned;
-						else localStorage.coins = parseFloat(localStorage.coins) + coinsEarned;
-						id('overlayText').innerHTML = 'WINNER: ' + side + '!!!<br /><h5>You gained ' + coinsEarned + ' coins!</h5>';
-					} else {
-						id('overlayText').innerHTML = 'WINNER: ' + side + '!!!';
-					}
+					if (current.includes('+')) { var coinsEarned = bad[a.name].info[2] * 0.05; }
+					else if (newStats == true) { var coinsEarned = bad[a.name].info[2] * 0.02; }
+					else { var coinsEarned = 20; }
+					if (localStorage.coins == undefined) localStorage.coins = coinsEarned;
+					else localStorage.coins = parseFloat(localStorage.coins) + coinsEarned;
+					// if (newStats == 'true') {
+					id('overlayText').innerHTML = 'WINNER: ' + side + '!!!<br /><h5>You gained ' + coinsEarned + ' coins!</h5>';
+					// } else {
+						// id('overlayText').innerHTML = 'WINNER: ' + side + '!!!';
+					// }
 				} else {
 					id('overlayText').innerHTML = 'WINNER: ' + side + '!!!';
 				}
@@ -134,10 +135,6 @@
 			// 	}
 			// }
 
-			while (localStorage[b.name] == 'false') {
-				b.name = goodNames[current.replace('+', 'Boss')][Math.floor(Math.random() * goodNames[current.replace('+', 'Boss')].length)];
-			}
-
 			if (newStats == 'false') {
 				while (b.name == a.name) {
 					b.name = goodNames[current][Math.floor(Math.random() * goodNames[current.replace('+', 'Boss')].length)];
@@ -153,6 +150,9 @@
 				b.attack = Math.max(Math.random() * 10, 7);
 				b.heal = Math.random() * 15;
 			} else if (newStats == 'true') {
+				while (localStorage[b.name] == 'false') {
+					b.name = goodNames[current.replace('+', 'Boss')][Math.floor(Math.random() * goodNames[current.replace('+', 'Boss')].length)];
+				}
 				a.health = bad[a.name].stats[1];
 				a.orig_health = a.health;
 				a.attack = bad[a.name].stats[0];

@@ -17,9 +17,6 @@ function dynamicDivSize() {
 }
 window.addEventListener('orientationchange', dynamicDivSize);
 function load() {
-	// id('map').style.height = id('map').offsetWidth;
-	id('aonarchyA').setAttribute('onclick', "document.getElementById('map').src='aonarchy.png';document.getElementById('mapDiv').style.display = 'block';document.getElementById('map').useMap = '#aonarchyMap'");
-	id('cortofaA').setAttribute('onclick', "document.getElementById('map').src='cortofa.png';document.getElementById('mapDiv').style.display = 'block';document.getElementById('map').useMap = '#cortofaMap'");
 	dynamicDivSize();
 	if (localStorage.watchedStory == undefined) {
 		localStorage.watchedStory = 'true';
@@ -27,17 +24,15 @@ function load() {
 	} else {
 		id('story').style.display = "none";
 	}
-	if (localStorage.playedBOcracy110_1 == undefined) {
+	if (localStorage.playedBOcracy110_2 == undefined) {
 		if (localStorage.hasAonarchy == undefined) {
 			localStorage.hasAonarchy = 'true';
-			localStorage.coins = 500;
-			window.location = "store.html#aonarchy";
+			window.location = "store.html#firstTimeaonarchy";
 		} else if (localStorage.hasCortofa == undefined) {
 			localStorage.hasCortofa = 'true';
-			localStorage.coins = parseFloat(localStorage.coins) + 500;
-			window.location = "store.html#cortofa";
+			window.location = "store.html#firstTimecortofa";
 		} else {
-			localStorage.playedBOcracy110_0 = "true";
+			localStorage.playedBOcracy110_2 = "true";
 		}
 	}
 }
