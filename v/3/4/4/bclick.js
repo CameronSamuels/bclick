@@ -408,11 +408,11 @@ function submitForm() {
         log('Changed Username to ' + get('username'));
         location.reload();
     }
-    else if (!f.name.value) {
-        f.name.style.border = "1px red solid";
-        f.email.style.border = "1px #2a2a2a solid";
+    else if (!f.username.value) {
+        f.username.style.border = "1px red solid";
+        f.useremail.style.border = "1px #2a2a2a solid";
     }
-    else if (!f.email.value || !f.email.value.includes('@') || !f.email.value.includes('.') || !f.email.value.includes(' ')) {
+    else if (!f.email.value.includes('@') || !f.email.value.includes('.') || !f.email.value.includes(' ')) {
         f.email.style.border = "1px red solid";
         f.name.style.border = "1px #2a2a2a solid";
     }
