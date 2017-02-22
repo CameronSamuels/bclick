@@ -17,6 +17,7 @@ var goodNames = {
 			aonarchy : [],
 			aonarchyBoss : [],
 			cortofa : [],
+			cortofaBoss : [],
 			bictatorship : ['worldwar', 'superhero', 'giant', 'barbed', 'muscle', 'electric', 'trump'],
 			weaklings : ['regular', 'lowercase', 'handrawn', 'fancy', 'curved', 'thin'],
 			christmas : ['santa', 'candycane'],
@@ -31,6 +32,7 @@ var goodNames = {
 			aonarchy : [],
 			aonarchyBoss : [],
 			cortofa : [],
+			cortofaBoss : [],
 			bictatorship : ['worldwar', 'superhero', 'giant', 'barbed', 'muscle', 'electric', 'trump'],
 			weaklings : ['regular', 'lowercase', 'handrawn', 'fancy', 'curved', 'thin'],
 			christmas : ['santa', 'candycane', 'reindeer'],
@@ -97,14 +99,13 @@ good.night = new object('night', [25, 1250, 20], ['cortofa', 'true', 750, 'c', '
 good.light_warrior = new object('light_warrior', [60, 2250, 15], ['cortofa', 'true', 1500, 'c', 'light_warrior']);
 
 bad.ultacrabb = new object('ultacrabb', [60, 2000, 5], ['cortofa', 'false', 1500, 'a', 'ultacrabb']);
-// bad.byter = new object('byter', [35, 1500, 20], ['cortofa', 'false', 600, 'a', 'byter']);
-// bad.batalifor_2D4 = new object('batalifor_2D4', [30, 1000, 20], ['cortofa', 'false', 450, 'a', 'batalifor_2D4']);
 bad.batalifor_1D0 = new object('batalifor_1D0', [15, 2000, 5], ['cortofa', 'false', 1000, 'a', 'batalifor_1D0']);
 bad.f87_cannon = new object('f87_cannon', [40, 1250, 20], ['cortofa', 'false', 750, 'a', 'f87_cannon']);
 bad.batalifor_general = new object('batalifor_general', [30, 1500, 15], ['cortofa', 'false', 550, 'a', 'batalifor_general']);
-// bad.b__torv_troops = new object('b__torv_troops', [30, 1500, 15], ['cortofa', 'false', 550, 'a', 'b__torv_troops']);
 bad.scubbars = new object('scubbars', [20, 1500, 15], ['cortofa', 'false', 500, 'a', 'scubbars']);
-// bad.d15_cannon = new object('d15_cannon', [60, 2000, 5], ['cortofa', 'false', 1500, 'a', 'd15_cannon']);
+
+bad.f87_cannonBoss = new object('f87_cannonBoss', [40, 1250, 20], ['cortofa+', 'false', 750, 'a', 'f87_cannonBoss']);
+bad.ultacrabbBoss = new object('ultacrabbBoss', [60, 2000, 5], ['cortofa+', 'false', 1500, 'a', 'ultacrabbBoss']);
 
 
 function showConfirm(text, yes, no) {

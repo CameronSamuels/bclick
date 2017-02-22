@@ -20,7 +20,7 @@ Redirect 307 /web https://playbclick.com/v/3/4/4/?29
 # Apps #
 Redirect 307 /bo/live https://playbclick.com/bocracy/?26
 Redirect 307 /bo/beta https://playbclick.com/bocracy/?26
-Redirect 307 /bo/alpha https://playbclick.com/bocracy/2/?35
+Redirect 307 /bo/alpha https://playbclick.com/bocracy/2/?36
 Redirect 307 /create https://playbclick.com/apps/create
 Redirect 307 /dice https://playbclick.com/apps/dice
 Redirect 307 /bnoodle https://playbclick.com/apps/bnoodle
