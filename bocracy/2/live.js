@@ -17,7 +17,7 @@ var goodNames = {
 			aonarchy : [],
 			aonarchyBoss : [],
 			cortofa : [],
-			bictatorship : ['superhero', 'giant', 'barbed', 'muscle', 'electric', 'trump'],
+			bictatorship : ['worldwar', 'superhero', 'giant', 'barbed', 'muscle', 'electric', 'trump'],
 			weaklings : ['regular', 'lowercase', 'handrawn', 'fancy', 'curved', 'thin'],
 			christmas : ['santa', 'candycane'],
 			team : ['cameron', 'faith', 'ethan', 'alwin', 'michael', 'srisha', 'cooper', 'jessica', 'vishwam']
@@ -31,7 +31,7 @@ var goodNames = {
 			aonarchy : [],
 			aonarchyBoss : [],
 			cortofa : [],
-			bictatorship : ['superhero', 'giant', 'barbed', 'muscle', 'electric', 'trump'],
+			bictatorship : ['worldwar', 'superhero', 'giant', 'barbed', 'muscle', 'electric', 'trump'],
 			weaklings : ['regular', 'lowercase', 'handrawn', 'fancy', 'curved', 'thin'],
 			christmas : ['santa', 'candycane', 'reindeer'],
 			team : ['cameron', 'faith', 'ethan', 'alwin', 'michael', 'srisha', 'cooper', 'jessica', 'vishwam']
@@ -94,6 +94,7 @@ good.paramedics = new object('paramedics', [20, 1250, 30], ['cortofa', 'true', 7
 good.overlapping = new object('overlapping', [40, 3200, 10], ['cortofa', 'true', 1300, 'c', 'overlapping']);
 good.triple_odd = new object('triple_odd', [40, 2500, 20], ['cortofa', 'true', 1000, 'c', 'triple_odd']);
 good.night = new object('night', [25, 1250, 20], ['cortofa', 'true', 750, 'c', 'night']);
+good.light_warrior = new object('light_warrior', [60, 2250, 15], ['cortofa', 'true', 1500, 'c', 'light_warrior']);
 
 bad.ultacrabb = new object('ultacrabb', [60, 2000, 5], ['cortofa', 'false', 1500, 'a', 'ultacrabb']);
 // bad.byter = new object('byter', [35, 1500, 20], ['cortofa', 'false', 600, 'a', 'byter']);

@@ -31,8 +31,11 @@ caption("Make sure to light fireworks tonight!! Play tommorow after a sip of cof
 
 /* == Febraury == */
 // caption("Happy Valentines Day! Enjoy triple daily gifts and double points on many B's!", 14);
-caption("President's Day is tommorow! Play then to enjoy double daily gifts and double points on the Trump B!", 19);
-caption("Happy President's Day! Enjoy double daily gifts and double points on the Trump B!", 20);
+// caption("President's Day is tommorow! Play then to enjoy double daily gifts and double points on the Trump B!", 19);
+// caption("Happy President's Day! Enjoy double daily gifts and double points on the Trump B!", 20);
+
+/* == March == */
+caption("Don't forget to unlock the Burger B today after noon!", 4);
 
 // ===== The B's ===== //
 b.list.b.handrawn = new create('handrawn', 5, 0, "#FFF");
@@ -87,7 +90,9 @@ b.list.b.year3 = new create('year3', Math.pow(10, 108), Math.pow(10, 111), "#FFF
 b.list.b.santa = new create('santa', Math.pow(10, 108), Math.pow(10, 111), "#FF0000", {date: new Date('Sun Dec 25 2016 12:00:00 GMT-0500 (Central Daylight Time)'), tooltip:'(Christmas 2016)'});
 b.list.b.skater = new create('skater', Math.pow(10, 111), Math.pow(10, 114), "#6D3200", {date: new Date('Sat Jan 7 2017 12:00:00 GMT-0500 (Central Daylight Time)'), tooltip:'(Idea By: Alwin Clase)'});
 b.list.b.orchestral = new create('orchestral', Math.pow(10, 114), Math.pow(10, 117), "#6D3200", {date: new Date('Sat Jan 14 2017 12:00:00 GMT-0500 (Central Daylight Time)'), tooltip:'(Made By: Ethan Choo)'});
-b.list.b.phone = new create('phone', Math.pow(10, 117), Math.pow(10, 120), "#000000", {date: new Date('Sat Apr 1 2017 12:00:00 GMT-0500 (Central Daylight Time)'), tooltip:'(Apple Aniversary)'});
+b.list.b.worldwar = new create('worldwar', Math.pow(10, 117), Math.pow(10, 120), "#6D3200", {date: new Date('Sat Mar 11 2017 12:00:00 GMT-0500 (Central Daylight Time)'), tooltip:'(Britain Blockade)'});
+b.list.b.phone = new create('phone', Math.pow(10, 120), Math.pow(10, 123), "#000000", {date: new Date('Sat Apr 1 2017 12:00:00 GMT-0500 (Central Daylight Time)'), tooltip:'(Apple Aniversary)'});
+b.list.b.burger = new create('burger', Math.pow(10, 123), Math.pow(10, 126), "#6D3200", {date: new Date('Sat May 6 2017 12:00:00 GMT-0500 (Central Daylight Time)')});
 // b.list.b.turkey = new create('turkey', 25, 3, "#6D3200", {onlydate: new Date('Thu Nov 23 2017 4:00:00 GMT-0500 (Central Daylight Time)'), tooltip:'(Thanksgiving 2017)'});
 
 // ===== Seasonal Code ===== //
