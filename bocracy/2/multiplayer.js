@@ -53,7 +53,7 @@
 				id('overlayText').innerHTML = 'WINNER: ' + side + '!!!';
 				id('overlay').style.display = "block";
 				game.on = 'false';
-				if (side == 'red') { id('sound').src = "loss.wav"; id('audio').load(); id('audio').play(); }
+				if (side == 'red') { id('sound').src = "snd/loss.wav"; id('audio').load(); id('audio').play(); }
 			},
 			attack : function(atk) {
 				if (game.on == 'true') {

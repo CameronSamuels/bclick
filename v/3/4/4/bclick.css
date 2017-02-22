@@ -163,6 +163,7 @@ a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
     left: calc(50% - 94.5px);
     overflow-y: hidden;
     user-select: none;
+    -webkit-user-select: none;
 }
 
 #interestDiv {

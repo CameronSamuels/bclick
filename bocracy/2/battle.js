@@ -56,18 +56,14 @@
 					else { var coinsEarned = 20; }
 					if (localStorage.coins == undefined) localStorage.coins = coinsEarned;
 					else localStorage.coins = parseFloat(localStorage.coins) + coinsEarned;
-					// if (newStats == 'true') {
 					id('overlayText').innerHTML = 'WINNER: ' + side + '!!!<br /><h5>You gained ' + coinsEarned + ' coins!</h5>';
-					// } else {
-						// id('overlayText').innerHTML = 'WINNER: ' + side + '!!!';
-					// }
 				} else {
+					id('sound').src = "snd/loss.wav";
+					id('audio').load(); id('audio').play();
 					id('overlayText').innerHTML = 'WINNER: ' + side + '!!!';
 				}
-				
 				id('overlay').style.display = "block";
 				game.on = 'false';
-				if (side == 'red') { id('sound').src = "loss.wav"; id('audio').load(); id('audio').play(); }
 			},
 			attack : function(atk) {
 				if (game.on == 'true') {
