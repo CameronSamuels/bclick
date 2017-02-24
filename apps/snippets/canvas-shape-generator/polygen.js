@@ -1,11 +1,11 @@
 /*=========
-    -Copyright 2016 Cameron Samuels
-    -Leave this liscense header intact or else (-:
+    -Copyright 2017 Cameron Samuels
+    -Leave this license header intact or else (-:
     -You may change this code, but not sell this code
         for any value of anything
     -You may use this for commercial use or distributing
         use but may not  use as if it were yours.
-    -This liscense violates if you remove this copyright header
+    -This license violates if you remove this copyright header
 =========*/
 
 var PolyGen = {};

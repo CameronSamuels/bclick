@@ -310,20 +310,18 @@ var refresh = {
 }; 
 
 // ===== Saving Data ===== //
-
 var data = {
     reset : {
         soft : function() {
             sounds.restart.play();
+            increment = 0;
+            ceiling = 0;
             set('points', 0);
             set('interest', 0);
             set('deposited', 0);
-            increment = 0;
-            ceiling = 0;
             set('clicks', 0);
             set('unlocked', 0);
             set('timePlayed', 0);
-
             for (i = 0; i < b.list.list.length; i++) {
                 var item = b.list.list[i];
                 set(item, false);
@@ -360,20 +358,24 @@ var data = {
         ceiling = get("points");
         setInterval('realEarn()', 1);
         setInterval('ceiling = get("points");bank.collect();depositSpamBlocker()', 1000);
-        if (get("lastPlayDay") !== undefined && get("lastPlayDay") != new Date().getDate()) {
-            if (get("daysInARow") === undefined) set('daysInARow', 1);
-            else if (get("lastPlayDay") == new Date().getDate() - 1) set("daysInARow", m.add(get("daysInARow"), 1));
-            else if (get("lastPlayDay") > new Date().getDate() && !(get("lastPlayDay") == 31 || get("lastPlayDay") == 30 || get("lastPlayDay") == 29 || get("lastPlayDay") == 28)) { 
-                set("daysInARow", 1);
-                log("CHEATER!!!!!!!");
-                theLog('Became a cheater');
-                setTimeout('data.reset.hard()', 1500);
-            }
-            else if (get("lastPlayDay") !== undefined) set("daysInARow", 1);
-            Earn((get("points") - earned) * get("daysInARow"));
-            log('Earned ' + get("daysInARow") + ' daily gift(s)');
-            theLog('Earned ' + get("daysInARow") + ' daily gift(s)');
-        }
+        // if (get("lastPlayDay") !== undefined && get("lastPlayDay") != new Date().getDate()) {
+        //     if (get("daysInARow") === undefined) set('daysInARow', 1);
+        //     else if (get("lastPlayDay") == new Date().getDate() - 1) set("daysInARow", m.add(get("daysInARow"), 1));
+        //     else if (get("lastPlayDay") > new Date().getDate() && !(get("lastPlayDay") == 31 || get("lastPlayDay") == 30 || get("lastPlayDay") == 29 || get("lastPlayDay") == 28)) { 
+        //         set("daysInARow", 1);
+        //         log("CHEATER!!!!!!!");
+        //         theLog('Became a cheater');
+        //         setTimeout('data.reset.hard()', 1500);
+        //     }
+        //     else if (get("lastPlayDay") !== undefined) set("daysInARow", 1);
+        //     console.log(get("daysInARow"));
+        //     console.log(get("points"));
+        //     console.log(earned);
+        //     set('points', m.add(get("points"), parseFloat((get("points") - earned)) * parseFloat(get("daysInARow"))));
+        //     console.log(get("points"));
+        //     log('Earned ' + get("daysInARow") + ' daily gift(s)');
+        //     theLog('Earned ' + get("daysInARow") + ' daily gift(s)');
+        // }
         seasons.load();
         id("main").style.display = "block";
         id('loader').style.display = "none";

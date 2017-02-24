@@ -7,5 +7,5 @@
 # RewriteCond %{REQUEST_URI} !^3/4/3($|/)
 # RewriteRule ^(.*)$ https://playbclick.com [R=301,L]
 
-RewriteEngine on
-RewriteRule !^3/4/4($|/) https://playbclick.com [L,R=301]
+# RewriteEngine on
+# RewriteRule !^3/4/4($|/) https://playbclick.com [L,R=301]
