@@ -52,9 +52,6 @@ var isMobile = {
 };
 
 // ===== Core Functions ===== //
-
-function stats(name, value) { id("statsFrame").src = "https://playbclick.com/assets/php/stats.php?name=" + name + "&value=" + value; }
-
 function log(text) {
     if (id("logText").style.display == "inline-block") {
         setTimeout(function(){log(text)}, 1500);
@@ -110,7 +107,6 @@ function ClickB() {
         else { set('clicks', m.add(get('clicks'), 1)); }
         Earn(parseFloat(worth) * get("multiplier"));
         sounds.click.play();
-        stats('clicks', 1);
     }
     else { log("Unlock the B first!"); }
 }
@@ -124,8 +120,7 @@ function UnlockB() {
             if (get("unlocked") === undefined) { set("unlocked", 1); }
             else { set('unlocked', m.add(get("unlocked"), 1)); } 
             Purchase(cost);
-            sounds.unlock.play();  
-            stats('unlocks', 1);
+            sounds.unlock.play();
         }
         else { log("Insufficient Points!") }
     }
@@ -322,7 +317,6 @@ var data = {
             log('Earned ' + m.giant(earned) + ' points offline');
         }
 		setInterval('submitScore()', 15000);
-        setInterval("stats('visits', 1)", 60000);
         if (!get("username")) set('username', 'bClicker' + random());
         refresh.all();
         ceiling = get("points");

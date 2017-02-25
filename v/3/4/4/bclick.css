@@ -342,7 +342,7 @@ a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
     margin: 0px;
 }
 
-#winFrame, #statsFrame { display: none; }
+#winFrame { display: none; }
 
 red { color: red; }
 
