@@ -132,20 +132,6 @@ function UnlockB() {
     else log("Click the B, not the unlock button!");
 }
 
-// function theLog(text) {
-//     if (get("theLog") == undefined) {
-//         set('theLog', '');
-//         theLog(text);
-//     } else if (get("theLog").length >= 1000) {
-//         set('theLog', '<li><strong>' + text + '</strong></li>');
-//     } else {
-//         set('theLog', remove(get("theLog"), '<strong>'));
-//         set('theLog', remove(get("theLog"), '</strong>'));
-//         set('theLog', '<li><strong>' + text + '</strong></li>' + get("theLog"));
-//         id('theLog').innerHTML = '<ul>' + get("theLog") + '</ul>';
-//     }
-// }
-
 function playTutorial() {
     introJs().start();
     set('playedTutorial', 'true');
@@ -195,7 +181,6 @@ var achievements = {
         set('multiplier', Math.min(parseFloat(get('multiplier')) * 1.25, 1000000000));
         log("Achievement Earned!");
         log("Multiplier is now " + m.giant(Math.round(get("multiplier"))));
-        // theLog('Achievement: ' + achievements.list.spaces[achievements.list.id.indexOf(id)]);
     },
     check : function() {
         var obj = achievements;
@@ -316,10 +301,7 @@ var data = {
                 var item = b.list.list[i];
                 set(item, false);
             }
-
             set('played341-925216', true);
-            // theLog('New Game Started');
-
             changeInfo();
         },
         hard : function() {
@@ -334,13 +316,11 @@ var data = {
     },
     load : function() {
         if (get("points") === undefined) data.reset.hard();
-        // else if (get("played341-925216") == undefined) data.reset.update();  
         else if (get("lastPlay") !== undefined) {
             var earned = Math.min(get('points'), ((get('interest') * 0.05) * m.ts(get('lastPlay')) / 1000));
             set('points', m.add(get("points"), earned));
             log('Earned ' + m.giant(earned) + ' points offline');
         }
-		// if (get("theLog") != undefined) id('theLog').innerHTML = '<ul>' + get("theLog") + '</ul>';
 		setInterval('submitScore()', 15000);
         setInterval("stats('visits', 1)", 60000);
         if (!get("username")) set('username', 'bClicker' + random());
@@ -348,24 +328,6 @@ var data = {
         ceiling = get("points");
         setInterval('realEarn()', 1);
         setInterval('ceiling = get("points");bank.collect();depositSpamBlocker()', 1000);
-        // if (get("lastPlayDay") !== undefined && get("lastPlayDay") != new Date().getDate()) {
-        //     if (get("daysInARow") === undefined) set('daysInARow', 1);
-        //     else if (get("lastPlayDay") == new Date().getDate() - 1) set("daysInARow", m.add(get("daysInARow"), 1));
-        //     else if (get("lastPlayDay") > new Date().getDate() && !(get("lastPlayDay") == 31 || get("lastPlayDay") == 30 || get("lastPlayDay") == 29 || get("lastPlayDay") == 28)) { 
-        //         set("daysInARow", 1);
-        //         log("CHEATER!!!!!!!");
-        //         theLog('Became a cheater');
-        //         setTimeout('data.reset.hard()', 1500);
-        //     }
-        //     else if (get("lastPlayDay") !== undefined) set("daysInARow", 1);
-        //     console.log(get("daysInARow"));
-        //     console.log(get("points"));
-        //     console.log(earned);
-        //     set('points', m.add(get("points"), parseFloat((get("points") - earned)) * parseFloat(get("daysInARow"))));
-        //     console.log(get("points"));
-        //     log('Earned ' + get("daysInARow") + ' daily gift(s)');
-        //     theLog('Earned ' + get("daysInARow") + ' daily gift(s)');
-        // }
         seasons.load();
         id("main").style.display = "block";
         id('loader').style.display = "none";
@@ -385,8 +347,7 @@ function changeInfo() {
 }
 
 function submitScore() {
-    if (get("points") != 0)
-       id('winFrame').setAttribute('src', "https://playbclick.com/assets/php/submit.php?username=" + get("username") + "&points=" + Math.round(m.dcml(get('points'))) + "&email=" + (get("email") || "")  + '&name=' + (get("name") || ""));
+    if (get("points") != 0) id('winFrame').setAttribute('src', "https://playbclick.com/assets/php/submit.php?username=" + get("username") + "&points=" + Math.round(m.dcml(get('points'))) + "&email=" + (get("email") || "")  + '&name=' + (get("name") || ""));
 }
 
 function submitForm() {

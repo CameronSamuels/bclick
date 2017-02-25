@@ -10,27 +10,27 @@ ExpiresDefault "access plus 12 hours"
 </IfModule>
 
 # Versions #
-Redirect 307 /play/live/index.html https://playbclick.com/web
+Redirect 301 /play/live/index.html https://playbclick.com/web
 
 # Downloading Versions #
-Redirect 307 /android https://play.google.com/store/apps/details?id=com.playbclick.bclick
-Redirect 307 /chrome https://chrome.google.com/webstore/detail/bclick/fccplfmeljdiinmnjbemkgaganpbkghf
-Redirect 307 /web https://playbclick.com/v/3/4/4/?32
+Redirect 301 /android https://play.google.com/store/apps/details?id=com.playbclick.bclick
+Redirect 301 /chrome https://chrome.google.com/webstore/detail/bclick/fccplfmeljdiinmnjbemkgaganpbkghf
+Redirect 301 /web https://playbclick.com/v/3/4/4/?33
 
 # bOcracy #
 Redirect 301 /bocracy https://bocracy.com
-Redirect 301 /bocracy/2 https://bocracy.com/a
 Redirect 301 /bo https://bocracy.com
 
 # Apps #
-Redirect 307 /create https://playbclick.com/apps/create
-Redirect 307 /dice https://playbclick.com/apps/dice
-Redirect 307 /bnoodle https://playbclick.com/apps/bnoodle
+Redirect 301 /repo https://bitbucket.org/CameronSamuels/playbclick.com
+Redirect 301 /create https://playbclick.com/apps/create
+Redirect 301 /dice https://playbclick.com/apps/dice
+Redirect 301 /bnoodle https://playbclick.com/apps/bnoodle
 
 # Error Messages #
 ErrorDocument 404 /
 
 # User Feedback #
-Redirect 307 /feedback mailto:team@playbclick.com
-Redirect 307 /contact mailto:team@playbclick.com
-Redirect 307 /support mailto:team@playbclick.com
+Redirect 301 /feedback mailto:team@playbclick.com
+Redirect 301 /contact mailto:team@playbclick.com
+Redirect 301 /support mailto:team@playbclick.com
