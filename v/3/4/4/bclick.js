@@ -1,11 +1,3 @@
-/*===========================================
-bClick - The b-Click-ing Game	
-Copyright Cameron Samuels 2013-2017
-=============================================
-This code includes a small amount of code that is not mine
-Some code is from StackOverflow, W3Schools and other websites
-===========================================*/
-
 // ===== Variables ===== //
 
 var sounds = {
@@ -129,11 +121,9 @@ function UnlockB() {
     if (get(name) == 'false') {  
         if (get("points") >= cost) {
             set(name, true);
-            log("Unlocked B!");
             if (get("unlocked") === undefined) { set("unlocked", 1); }
             else { set('unlocked', m.add(get("unlocked"), 1)); } 
             Purchase(cost);
-            theLog('Unlock B: ' + name);
             sounds.unlock.play();  
             stats('unlocks', 1);
         }
@@ -142,19 +132,19 @@ function UnlockB() {
     else log("Click the B, not the unlock button!");
 }
 
-function theLog(text) {
-    if (get("theLog") == undefined) {
-        set('theLog', '');
-        theLog(text);
-    } else if (get("theLog").length >= 1000) {
-        set('theLog', '<li><strong>' + text + '</strong></li>');
-    } else {
-        set('theLog', remove(get("theLog"), '<strong>'));
-        set('theLog', remove(get("theLog"), '</strong>'));
-        set('theLog', '<li><strong>' + text + '</strong></li>' + get("theLog"));
-        id('theLog').innerHTML = '<ul>' + get("theLog") + '</ul>';
-    }
-}
+// function theLog(text) {
+//     if (get("theLog") == undefined) {
+//         set('theLog', '');
+//         theLog(text);
+//     } else if (get("theLog").length >= 1000) {
+//         set('theLog', '<li><strong>' + text + '</strong></li>');
+//     } else {
+//         set('theLog', remove(get("theLog"), '<strong>'));
+//         set('theLog', remove(get("theLog"), '</strong>'));
+//         set('theLog', '<li><strong>' + text + '</strong></li>' + get("theLog"));
+//         id('theLog').innerHTML = '<ul>' + get("theLog") + '</ul>';
+//     }
+// }
 
 function playTutorial() {
     introJs().start();
@@ -205,7 +195,7 @@ var achievements = {
         set('multiplier', Math.min(parseFloat(get('multiplier')) * 1.25, 1000000000));
         log("Achievement Earned!");
         log("Multiplier is now " + m.giant(Math.round(get("multiplier"))));
-        theLog('Achievement: ' + achievements.list.spaces[achievements.list.id.indexOf(id)]);
+        // theLog('Achievement: ' + achievements.list.spaces[achievements.list.id.indexOf(id)]);
     },
     check : function() {
         var obj = achievements;
@@ -328,7 +318,7 @@ var data = {
             }
 
             set('played341-925216', true);
-            theLog('New Game Started');
+            // theLog('New Game Started');
 
             changeInfo();
         },
@@ -340,7 +330,7 @@ var data = {
         },
         update : function() { set('played341-925216', true) },
         reset : function() { showConfirm("Reset Everything?", "data.reset.hard()", "''"); },
-        over : function() { submitScore(); id('body').style.background = "#FF0000"; id('main').setAttribute('class', 'flicker'); set('username', get("username") + "+"); theLog('Multiplier Multiplied By 2!'); set('multiplier', m.add(get('multiplier'), get("multiplier"))); log('G@Me oV3R!1!!1'); setTimeout('data.reset.hard()', 5000);setTimeout('location.reload()', 7000)}
+        over : function() { submitScore(); id('body').style.background = "#FF0000"; id('main').setAttribute('class', 'flicker'); set('username', get("username") + "+"); /*theLog('Multiplier Multiplied By 2!');*/ set('multiplier', m.add(get('multiplier'), get("multiplier"))); setTimeout('data.reset.hard()', 5000);setTimeout('location.reload()', 7000)}
     },
     load : function() {
         if (get("points") === undefined) data.reset.hard();
@@ -350,7 +340,7 @@ var data = {
             set('points', m.add(get("points"), earned));
             log('Earned ' + m.giant(earned) + ' points offline');
         }
-		if (get("theLog") != undefined) id('theLog').innerHTML = '<ul>' + get("theLog") + '</ul>';
+		// if (get("theLog") != undefined) id('theLog').innerHTML = '<ul>' + get("theLog") + '</ul>';
 		setInterval('submitScore()', 15000);
         setInterval("stats('visits', 1)", 60000);
         if (!get("username")) set('username', 'bClicker' + random());
@@ -407,7 +397,6 @@ function submitForm() {
         set('name', f.name.value);
         id('infoPopup').style.display = "none";
         id('popupOverlay').style.display = "none";
-        log('Changed Username to ' + get('username'));
         location.reload();
     }
     else if (!f.username.value) {

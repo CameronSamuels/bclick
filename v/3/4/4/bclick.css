@@ -1,10 +1,3 @@
-/*===========================================
-bClick - The Addicting b-Click-ing Game
-Copyright Cameron Samuels 2013-2016
-
-This code includes a small portion of code from Stack overflow and other websites
-===========================================*/
-
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 
 body, html {
@@ -15,7 +8,6 @@ body, html {
     height: 100%;
     
     word-wrap: break-word;
-    text-transform: capitalize;
     font-size:  90%;
     font-family: 'Roboto Mono', monospace;
 }
@@ -23,13 +15,10 @@ body, html {
 main {
     height: 320px;
     width: 569px;
-
     position: absolute;
     margin: auto;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
     
     border: 1px #2a2a2a solid;
     display: none;
@@ -62,14 +51,12 @@ main, body, html {
 /*===== Classes =====*/
 
 .clear { clear: both; }
-
 .divider {
     display: block !important;
     margin: 5px 0px;
     border-top: 2px #2a2a2a dashed;
     height: 0px;
 }
-
 a, a:visited { text-decoration: none; color: rgb(100, 100, 100); }
 a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
 
@@ -81,7 +68,6 @@ a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
     display: inline-block;
     font-size: 12px;
     padding: 8px 15px;
-    text-decoration: none;
     text-align: center;
     width: calc(90% - 30px - 2px);
     margin: 2.5px 9px !important;
@@ -257,7 +243,7 @@ a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
     font-size: 75%;
 }
 
-.comingSoonB { font-size: 110%; }
+.comingSoonB { font-size: 110%; text-transform: capitalize;}
 
 #info, #comingSoonDiv {
     text-align: center;
@@ -322,7 +308,7 @@ a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
     100% { opacity:0; }
 }
 
-#theLog ul, #theLog ul li { margin: 0; padding: 0; word-wrap: break-word;}
+/*#theLog ul, #theLog ul li { margin: 0; padding: 0; word-wrap: break-word;}
 #theLog ul { display: table; }
 #theLog ul li { display: table-row; }
 #theLog ul li::before {
@@ -330,7 +316,7 @@ a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
     display: table-cell;
     text-align: right;
     padding-right: .3em;
-}
+}*/
 
 /* ===== Loading ===== */
 
