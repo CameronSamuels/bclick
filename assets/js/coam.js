@@ -4,6 +4,7 @@ return x;}
 m.rdble=function(num){var newNum=Math.round(num);newNum=newNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");return newNum;}
 m.eg=function(num){num=m.dcml(parseFloat(num));var length=num.toString().length;length=length-1;var string="1";m.fl(function(){string=string+"0"},length);return string;}
 m.giant=function(num){num=Math.round(num);var EG=m.eg(num);var length=EG.toString().length-1;var groups=(length / 3);if(groups.toString().indexOf(".666")!=-1||groups.toString().indexOf(".333")!=-1)groups=Math.floor(groups);EG="1";m.fl(function(){EG+="000"},groups);if(EG=="1"||m.nums[groups]===undefined)return num;else if(m.nums[groups]!==undefined&&EG!="1")return(num / EG).toFixed(1)+" "+m.nums[groups];}
-m.add=function(what,amount){return parseFloat(what)+parseFloat(amount);}m.sub=function(what,amount){return parseFloat(what)-parseFloat(amount);}
+m.add=function(what,amount){return parseFloat(what)+parseFloat(amount);}
+m.sub=function(what,amount){return parseFloat(what)-parseFloat(amount);}
 m.tgl=function(current,first,second){return current==first?second:first;}
 m.ts=function(date){return(m.sub(new Date().getTime(),date)/ 1000);}
