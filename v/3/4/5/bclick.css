@@ -1,0 +1,443 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
+body, html {
+    padding: 0px;
+    margin: 0px;
+    
+    width: 100%;
+    height: 100%;
+    
+    word-wrap: break-word;
+    font-size:  90%;
+    font-family: 'Roboto Mono', monospace;
+}
+
+main {
+    height: 320px;
+    width: 569px;
+    position: absolute;
+    margin: auto;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+    
+    border: 1px #2a2a2a solid;
+    display: none;
+}
+
+main, body, html {
+    overflow: hidden;
+    background-color: #FFF;
+    color: #2a2a2a;
+}
+
+.night {
+    background-color: #2a2a2a;
+    color: #CCC !important;
+}
+.night main { border: 1px rgb(100, 100, 100) solid; }
+.night #bName, .night .button, .night #main, .night a { color: #CCC; }
+.night .section {  background: #2a2a2a; }
+.night .header, .night .minimize { background: rgb(100, 100, 100); }
+.night .comingSoonDate, .night #captionText, .night #logText { color: rgb(100, 100, 100) !important; }
+
+@media screen and (max-height: 319px) { body { zoom: 75%; } }
+@media screen and (min-height: 320px) { body { zoom: 100%; } #infoPopup { zoom: 80%; } #confirmPopup { zoom: 80%; } }
+@media screen and (max-height: 374px) { #captionText { display: none; }}
+@media screen and (min-height: 400px) { body { zoom: 125%; }}
+@media screen and (min-height: 400px) and (max-height: 450px) { #captionText { display: none; }}
+@media screen and (min-height: 500px) { body { zoom: 150%; }}
+@media screen and (min-height: 500px) and (max-height: 540px) { #captionText { display: none; }}
+
+
+/*===== Classes =====*/
+
+.clear { clear: both; }
+.divider {
+    display: block !important;
+    margin: 5px 0px;
+    border-top: 2px #2a2a2a dashed;
+    height: 0px;
+}
+a, a:visited { text-decoration: none; color: rgb(100, 100, 100); }
+a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
+
+.button {
+    background-color: rgb(100,100,100);
+    border: #2a2a2a solid 1px;
+    border-radius: 3px;
+    color: yellow;
+    display: inline-block;
+    font-size: 12px;
+    padding: 8px 15px;
+    text-align: center;
+    width: calc(90% - 30px - 2px);
+    margin: 2.5px 9px !important;
+    user-select: none;
+    cursor: pointer;
+}
+
+.button:hover { background-color: rgb(120, 120, 120); }
+
+.section {
+    width: 189px !important;
+    height: 320px; 
+    border: 1px #2a2a2a solid;
+    border-left: 0px;
+    border-top: 0px;
+    overflow-y: auto;
+    position: absolute;
+    overflow-x: hidden;
+}
+
+.header {
+    border-bottom: 1px #2a2a2a solid;
+    border-top: 1px #2a2a2a solid;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 20px;   
+    width: 100%; 
+    margin-bottom: 5px;
+    background-color: #FFF;
+}
+
+.category-header, .section-header { background-color: yellow; }
+.section-header { border-top: 0px; }
+
+.dashedHeader {
+    border-top: 1px #2a2a2a dashed;
+    border-bottom: 1px #2a2a2a dashed;
+}
+
+/*===== bSection =====*/
+
+#bButton {
+    width: 50px;
+    height: 50px;
+    border: 1px rgb(100, 100, 100) solid;
+    border-radius: 3px;
+    padding: 25px;
+    background-position: center;
+    background-size: cover;
+    background-color: white;
+    user-select: none;
+    position: absolute;
+    bottom: 120.6px;
+    left: calc(50% - 51px);
+}
+
+#bButton:active {
+  width: 45px;
+  height: 45px;
+  bottom: 123.1px;
+  left: calc(50% - 48.5px);
+}
+
+#bName {
+    border-radius: 20px;
+    border: 1px #2a2a2a solid;
+    background-color: rgba(80, 80, 80, 0.9);
+    color: yellow;
+    font-size: 12px;
+    padding: 8px 15px;
+    text-align: center;
+    width: calc(90% - 30px - 2px);
+    position: absolute;
+    bottom: 70.6px;
+    left: 9px;
+}
+
+#bSection {
+    left: calc(50% - 94.5px);
+    overflow-y: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+#interestDiv {
+    position: absolute;
+    bottom: 0px;
+    margin-bottom: 0px;
+    border-bottom-width: 0px;
+}
+
+#interestDiv, #pointsDiv {
+    word-wrap: normal;
+    white-space: nowrap;
+}
+
+#btnDeposit, #bUnlock {
+    position: absolute;
+    left: 9px;
+    margin: 2.5px 0px !important;
+}
+
+#bUnlock { font-size: 12px; }
+#btnDeposit { bottom: 30px; }
+#pointsDiv { border-top-width: 0px; }
+
+/*===== Arrows =====*/
+
+.arrow {
+    position: absolute;
+    border-radius: 25px;
+    
+    padding: 5px;
+    margin: 0 !important;
+    
+    width: 20px;
+    height: 20px;
+
+    background-position: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  
+    top: calc(50% - 12.5px);
+    bottom: calc(50% - 12.5px);
+}
+
+#LeftArrow {
+    background-image: url("https://playbclick.com/assets/img/left-arrow.png");
+    left: calc(50% - 87.5px);
+}
+
+#RightArrow {
+    background-image: url("https://playbclick.com/assets/img/right-arrow.png");
+    right: calc(50% - 87.5px);
+}
+
+/*===== Settings =====*/
+
+.settingGroup {
+    width: 100%;
+    text-align: left;
+    border-right: 0px;
+}
+
+.settingGroup .button { display: block; }
+
+.achieveItem {
+    background-color: #F00;
+    color: #FFF;
+    border-radius: 15px;
+    
+    text-align: center;
+    vertical-align: middle;
+    line-height: 25px;
+    font-size: 8px;
+    
+    height: 25px;
+    width: 25px;
+    margin: 2.5px;
+    padding: 2.5px;
+    display: inline-block;
+}
+
+.achieveCategory {
+    margin: 2px;
+    text-align: center;
+}
+
+.comingSoonDate {
+    color: yellow;
+    font-weight: 600;
+    text-shadow: -1px 0px #2a2a2a, 0 1px #2a2a2a, 1px 0px #2a2a2a, 0 -1px #2a2a2a;
+    font-size: 75%;
+}
+
+.comingSoonB { font-size: 110%; text-transform: capitalize;}
+
+#info, #comingSoonDiv {
+    text-align: center;
+    width: 100%;
+    font-size: 85%;
+}
+
+#info div, #seasonalDiv div, .ads { width: 100%; }
+
+.minimize {
+    float: right;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    background-color: yellow;
+    color: #2a2a2a;
+}
+.minimize:hover { background-color: rgb(120, 120, 120); color: yellow; }
+
+#settingsSection { left: calc(50% + 94.6666666666666px);}
+
+/*===== Messages =====*/
+
+#captionText {
+    left: 0; right: 0;
+    top: 5px;
+    position: fixed;
+    text-align: center;
+}
+
+#logText {
+    color: yellow;
+    background-color: #2a2a2a;
+    text-align: center;
+    border-radius: 7.5px;
+
+    display: none;
+    position: fixed;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    width: 300px;
+    margin: auto;
+    padding: 5px;
+}
+
+.flicker {
+    -webkit-animation: flickerAnimation 1.5s infinite;
+    animation: flickerAnimation 1.5s infinite;
+}
+
+@keyframes flickerAnimation {
+    0%   { opacity:0; }
+    25%  { opacity:1; }
+    75%  { opacity:1; }
+    100% { opacity:0; }
+}
+@-webkit-keyframes flickerAnimation{
+    0%   { opacity:0; }
+    25%  { opacity:1; }
+    75%  { opacity:1; }
+    100% { opacity:0; }
+}
+
+/* ===== Loading ===== */
+
+#loader {
+    border: 16px solid #2a2a2a;
+    border-radius: 50%;
+    border-top: 16px solid yellow;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    left: calc(50% - 91px);
+    top: calc(50% - 91px);
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ===== Other ===== */
+
+.ads, .ads p { max-width:187px; max-height:187px; overflow: hidden; width: 187px; height: 200px;}
+.ads p {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 80%;
+    margin: 0px;
+}
+
+#winFrame { display: none; }
+
+red { color: red; }
+
+::selection {
+  background: yellow;
+  color: #2a2a2a;
+}
+
+#infoPopup, #confirmPopup {
+    background-color: #FFF;
+    box-shadow: 1px 1px 1px #2a2a2a;
+    border-radius: 25px;
+    z-index: 1;
+    text-align: center;
+    display: none;
+    position: absolute;
+}
+#infoPopup {
+    height: 300px;
+    width: 250px;
+    top: calc(50% - 150px);
+    left: calc(50% - 125px);
+}
+#infoPopup h3 { margin: 2.5px; }
+#infoPopup footer, #confirmPopup footer { position: absolute; bottom: 5px; width: 100%; }
+#infoPopup input { outline: none; border: 1px #2a2a2a solid; }
+#infoPopup input:focus { box-shadow: 0 0 10px #ff0; border: 1px #ff0 solid; }
+#confirmPopup {
+    height: 160px;
+    width: 250px;
+    top: calc(50% - 80px);
+    left: calc(50% - 125px);
+}
+#confirmPopup h3 { margin: 0px; }
+#confirmYesBtn, #confirmNoBtn {
+    width: calc(42.5% - 30px);
+    margin: 1px calc(1% - 0.5px) !important;
+}
+#popupOverlay {
+    width: 100%;
+    height: 100%;
+    background: #2a2a2a;
+    opacity: 0.25;
+    display: none;
+}
+
+/*===== Special B's =====*/
+
+.discoB {
+    background-color: white;
+    -webkit-animation-name: DiscoBAnimation;
+    -webkit-animation-duration: 4s;
+    animation-name: DiscoBAnimation;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes DiscoBAnimation {
+    0%   {background-color: red;}
+    10%  {background-color: yellow;}            
+    30%  {background-color: green;}
+    55%  {background-color: blue;}
+    85%  {background-color: yellow;}
+    100% {background-color: red;}
+}
+
+@keyframes DiscoBAnimation {
+    0%   {background-color: red;}
+    20%  {background-color: yellow;}        
+    40%  {background-color: green;}
+    60%  {background-color: blue;}
+    80%  {background-color: white;}
+    100% {background-color: red;}
+}
+
+.gradientB {
+      background: -webkit-linear-gradient(left, red , blue);
+      background: linear-gradient(to right, red , blue);
+      background-color: none;
+}
+.patternB { background: url('https://playbclick.com/assets/img/pattern.jpg'); }
+.rubiksB { background: url('https://playbclick.com/assets/img/rubiks.jpg'); }
+
+/* ===== Scrollbars =====*/
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgb(100,100,100); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgb(100,100,100); 
+    -webkit-box-shadow: inset 0 0 6px rgb(100,100,100); 
+}
+::-webkit-scrollbar-thumb:window-inactive { background: rgb(120,120,120); }

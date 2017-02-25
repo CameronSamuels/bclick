@@ -15,7 +15,7 @@ Redirect 301 /play/live/index.html https://playbclick.com/web
 # Downloading Versions #
 Redirect 301 /android https://play.google.com/store/apps/details?id=com.playbclick.bclick
 Redirect 301 /chrome https://chrome.google.com/webstore/detail/bclick/fccplfmeljdiinmnjbemkgaganpbkghf
-Redirect 301 /web https://playbclick.com/v/3/4/4/?33
+Redirect 301 /web https://playbclick.com/v/3/4/5/?0
 
 # bOcracy #
 Redirect 301 /bocracy https://bocracy.com
@@ -28,7 +28,7 @@ Redirect 301 /dice https://playbclick.com/apps/dice
 Redirect 301 /bnoodle https://playbclick.com/apps/bnoodle
 
 # Error Messages #
-ErrorDocument 404 /
+ErrorDocument 404 /assets/html/error.html
 
 # User Feedback #
 Redirect 301 /feedback mailto:team@playbclick.com
