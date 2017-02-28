@@ -205,7 +205,6 @@ var seasons = {
         log('Happy Mardi Gras!');
         if (get("mardiGras") == undefined) {
             Earn(get("points") * get("daysInARow"));
-            //theLog('Earned ' + (get("points") * get("daysInARow")) + ' from Endymion!');
             set('mardiGras', 'true');
         }
         setInterval('bank.collect()', 1000);
