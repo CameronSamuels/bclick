@@ -248,10 +248,10 @@ var refresh = {
     marquee : function(ele, div) {
         var mode;
         if (id(ele).innerHTML.toString().length < 22) {  mode = "<div id='" + ele + "'></div>" }
-        else { mode = "<marquee><div id='" + ele + "'></div></marquee>"; }  
-        if (id(div).innerHTML.toString().includes("<marquee>") && !mode.includes("<marquee>")) {
+        else { mode = "<marquee scrollamount='3' onmouseover='this.stop()' onmouseout='this.start()'><div id='" + ele + "'></div></marquee>"; }  
+        if (id(div).innerHTML.toString().includes("<marquee scrollamount='3' onmouseover='this.stop()' onmouseout='this.start()'>") && !mode.includes("<marquee scrollamount='3' onmouseover='this.stop()' onmouseout='this.start()'>")) {
             id(div).innerHTML = mode;
-        } else if (!id(div).innerHTML.toString().includes("<marquee>") && mode.includes("<marquee>")) {
+        } else if (!id(div).innerHTML.toString().includes("<marquee scrollamount='3' onmouseover='this.stop()' onmouseout='this.start()'>") && mode.includes("<marquee scrollamount='3' onmouseover='this.stop()' onmouseout='this.start()'>")) {
             id(div).innerHTML = mode;
         }  
     },

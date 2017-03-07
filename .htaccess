@@ -15,7 +15,7 @@ Redirect 301 /play/live/index.html https://playbclick.com/web
 # Downloading Versions #
 Redirect 301 /android https://play.google.com/store/apps/details?id=com.playbclick.bclick
 Redirect 301 /chrome https://chrome.google.com/webstore/detail/bclick/fccplfmeljdiinmnjbemkgaganpbkghf
-Redirect 301 /web https://playbclick.com/v/3/4/5/?0
+Redirect 301 /web https://playbclick.com/v/3/4/5/?1
 
 # bOcracy #
 Redirect 301 /bocracy https://bocracy.com
