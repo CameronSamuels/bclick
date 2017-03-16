@@ -35,7 +35,7 @@ caption("Make sure to light fireworks tonight!! Play tommorow after a sip of cof
 // caption("Happy President's Day! Enjoy double daily gifts and double points on the Trump B!", 20);
 
 /* == March == */
-caption("Don't forget to unlock the World War B today after noon! Thanks Andrew L!", 11);
+// caption("Don't forget to unlock the World War B today after noon! Thanks Andrew L!", 11);
 
 /* == May == */
 // caption("Don't forget to unlock the Burger B today after noon! Thanks Benz Le!", 4);
@@ -212,7 +212,7 @@ var seasons = {
     aprilFools : function() {
         log("It's just a normal day!");
         b.list.b[b.list.list[b.list.list.length - 2]].worth = (get("points") * -0.125);
-        b.list.b.badboi.cost *= 5;  
+        // b.list.b.badboi.cost *= 5;  
     },
     load : function() {
         if (new Date().getDate() == 28 && new Date().getMonth() == 10 && new Date().getFullYear() == 2016) seasons.cyberMonday();

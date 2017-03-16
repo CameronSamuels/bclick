@@ -58,6 +58,7 @@ main, body, html {
     border-top: 2px #2a2a2a dashed;
     height: 0px;
 }
+a { cursor: pointer; }
 a, a:visited { text-decoration: none; color: rgb(100, 100, 100); }
 a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
 
