@@ -239,23 +239,9 @@ var refresh = {
     numbers : function() {
         if (get('points') >= Math.pow(10, 306)) { set('points', m.eg(Math.pow(10, 307))); id('Points').innerHTML = "Points: Infinity"; if (askedToReset != 'true') { showConfirm("Reset to earn prestige?", 'data.reset.over()', ""); askedToReset = 'true';}}
         else { id('Points').innerHTML = 'Points: ' + m.giant(get('points'));}
-
         if (get('interest') >= Math.pow(10, 307)) { set('interest', m.eg(Math.pow(10, 308))); id('Interest').innerHTML = "Interest: Infinity"; } 
         else { id('Interest').innerHTML = 'Interest: ' + m.giant(get('interest')); }
-        
-        refresh.marquee('Points', 'pointsDiv');
-        refresh.marquee('Interest', 'interestDiv');
 
-    },
-    marquee : function(ele, div) {
-        var mode;
-        if (id(ele).innerHTML.toString().length < 22) {  mode = "<div id='" + ele + "'></div>" }
-        else { mode = "<marquee scrollamount='3' onmouseover='this.stop()' onmouseout='this.start()'><div id='" + ele + "'></div></marquee>"; }  
-        if (id(div).innerHTML.toString().includes("<marquee scrollamount='3' onmouseover='this.stop()' onmouseout='this.start()'>") && !mode.includes("<marquee scrollamount='3' onmouseover='this.stop()' onmouseout='this.start()'>")) {
-            id(div).innerHTML = mode;
-        } else if (!id(div).innerHTML.toString().includes("<marquee scrollamount='3' onmouseover='this.stop()' onmouseout='this.start()'>") && mode.includes("<marquee scrollamount='3' onmouseover='this.stop()' onmouseout='this.start()'>")) {
-            id(div).innerHTML = mode;
-        }  
     },
     achievements : function() {
         achievements.check();
@@ -385,24 +371,11 @@ var b = {
         id('bName').innerHTML = b.list.list[get("bPosition")].toString().toUpperCase() + ' B ' + b.list.b[b.list.list[get("bPosition")]].tooltip;
         b.vars.button().style.backgroundImage = "url('https://playbclick.com/assets/b/" + b.list.list[get("bPosition")] + ".png')";
         if (get(b.list.list[get("bPosition")]) == 'false') b.vars.unlock().innerHTML = "Unlock<br />(" + m.giant(b.list.b[b.list.list[get("bPosition")]].cost) + ")";
-		else {
-            b.vars.unlock().innerHTML = "Unlocked!";
-        }
-        if (new Date().getHours() < 19) {
-            var color = b.list.b[b.list.list[get("bPosition")]].color;
-            if (color.toString().charAt(0) != " ") {
-                b.vars.section().style.backgroundColor = color;
-                b.vars.section().className = "section";
-            } else {
-                b.vars.section().className = "section " + color;
-            }
-        }
+		else b.vars.unlock().innerHTML = "Unlocked!";
+        if (new Date().getHours() < 19) b.vars.section().style.backgroundColor = b.list.b[b.list.list[get("bPosition")]].color;
         for (i = 0; i < b.list.soon.list.length; i++) {
-            if (b.list.soon.b[b.list.soon.list[i]].other.date <= new Date()) {
-                location.reload();
-            } else {
-                id('comingSoonDate' + b.list.soon.list[i]).innerHTML = neatTime((b.list.soon.b[b.list.soon.list[i]].other.date - new Date()) / 1000);
-            }
+            if (b.list.soon.b[b.list.soon.list[i]].other.date <= new Date()) location.reload();
+            else id('comingSoonDate' + b.list.soon.list[i]).innerHTML = neatTime((b.list.soon.b[b.list.soon.list[i]].other.date - new Date()) / 1000);
         }
     },
     loop : {

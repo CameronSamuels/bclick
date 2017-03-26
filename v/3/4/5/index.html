@@ -5,7 +5,7 @@
         <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 
         <link rel="shortcut icon" type="image/png" href="icon.png" />
-        <link rel="stylesheet" type="text/css" href="bclick.css?3" />
+        <link rel="stylesheet" type="text/css" href="bclick.css?4" />
         <script src="https://playbclick.com/assets/js/coam.js"></script>
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -28,14 +28,14 @@
                 </div>
             </section>
             <section id="bSection" class="section">
-                <div class="header dashedHeader" id="pointsDiv"><marquee scrollamount='3' onmouseover='this.stop()' onmouseout='this.start()'><div id="Points"></div></marquee></div>
+                <div class="header dashedHeader" id="pointsDiv"><div id="Points"></div></div>
                 <div id="LeftArrow" class="arrow button" ontouchend="b.loop.previous()"></div> 
                 <div id="bButton" ontouchend="ClickB()" data-intro="Next, you click on the picture of the B. Click it many times to get more points." data-step="2" data-position="left"></div>
                 <div id="RightArrow" class="arrow button" ontouchend="b.loop.next()"></div>
                 <div class="button" id="bUnlock" ontouchend="UnlockB()" data-intro="The first step to play bClick is to unlock the B. B's give you points when you click them, but they must be unlocked." data-step="1" data-position="bottom"></div>
                 <div id="bName"></div>
                 <div class="button" id="btnDeposit" ontouchend="bank.deposit()" data-intro="If this seems like a lot of clicking, then deposit points in the bank. You will get 10% interest of how much points you deposit. Every second, you will earn points from your interest." data-position="top">Deposit</div>
-                <div class="header dashedHeader" id="interestDiv"><marquee scrollamount='3' onmouseover='this.stop()' onmouseout='this.start()'><div id="Interest"></div></marquee></div>
+                <div class="header dashedHeader" id="interestDiv"><div id="Interest"></div></div>
             </section>
             <section id="settingsSection" class="section">
                 <div class="section-header header">The Settings</div> 
@@ -60,7 +60,7 @@
                 </p></div><div class="divider"></div> -->
                 <div class="category-header header"><span>Information</span></div>
                 <div class="settingGroup" id="info">
-                    <div>Version 3.4.5.3</div>
+                    <div>Version 3.4.5.4</div>
                     <div class="divider"></div>
                     <div>Made by<br />&#9733;<a href="http://cameronsamuels.com" target="_blank">Cameron Samuels</a>&#9733;</div>
                     <div class="divider"></div>
@@ -70,7 +70,7 @@
             <iframe id="winFrame"></iframe>
         </main>
         <div id="logText" class="flicker"></div>
-        <marquee scrollamount='3' onmouseover='this.stop()' onmouseout='this.start()' id="captionText">b-Ocracy Update 2 has now released at <a ontouchend="window.location='https://bocracy.com'">https://bocracy.com</a>!!</marquee>
+        <marquee scrollamount='3' onmouseover='this.stop()' onmouseout='this.start()' id="captionText">b-Ocracy Update 2 has now released at <a ontouchend="window.location='https://bocracy.com'">bocracy.com</a>!!</marquee>
         <div id="infoPopup">
             <h2>Change Username</h2><div class="divider"></div>
             <input id="usernameInput" placeholder="bClicker123" />
@@ -90,8 +90,8 @@
         </div>
         <div id="popupOverlay"></div>
     </body>
-    <script src="bclick.js?3"></script>
-    <script src="https://playbclick.com/assets/js/seasons.js?3"></script>
+    <script src="bclick.js?4"></script>
+    <script src="https://playbclick.com/assets/js/seasons.js?4"></script>
     <script type="text/javascript" src="https://playbclick.com/assets/js/intro.js"></script>
     <script>data.load()</script>
 </html>
