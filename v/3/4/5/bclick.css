@@ -1,5 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
-
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Mono'), local('RobotoMono-Regular'), url(font.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
 body, html {
     padding: 0px;
     margin: 0px;
@@ -29,16 +34,6 @@ main, body, html {
     background-color: #FFF;
     color: #2a2a2a;
 }
-
-.night {
-    background-color: #2a2a2a;
-    color: #CCC !important;
-}
-.night main { border: 1px rgb(100, 100, 100) solid; }
-.night #bName, .night .button, .night #main, .night a { color: #CCC !important; }
-.night .section {  background: #2a2a2a; }
-.night .header, .night .minimize { background: rgb(100, 100, 100); }
-.night .comingSoonDate, .night #captionText, .night #logText { color: rgb(100, 100, 100) !important; }
 
 @media screen and (max-height: 319px) { body { zoom: 75%; } }
 @media screen and (min-height: 320px) { body { zoom: 100%; } #infoPopup { zoom: 80%; } #confirmPopup { zoom: 80%; } }
@@ -255,16 +250,6 @@ a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
 
 #info div, #seasonalDiv div, .ads { width: 100%; }
 
-.minimize {
-    float: right;
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
-    background-color: yellow;
-    color: #2a2a2a;
-}
-.minimize:hover { background-color: rgb(120, 120, 120); color: yellow; }
-
 #settingsSection { left: calc(50% + 94.6666666666666px);}
 
 /*===== Messages =====*/
@@ -353,24 +338,23 @@ red { color: red; }
 }
 
 #infoPopup, #confirmPopup {
-    background-color: #FFF;
+    background-color: #ff0;
     box-shadow: 1px 1px 1px #2a2a2a;
     border-radius: 25px;
     z-index: 1;
     text-align: center;
     display: none;
-    position: absolute;
+    position: fixed;
 }
 #infoPopup {
-    height: 300px;
+    height: 150px;
     width: 250px;
-    top: calc(50% - 150px);
+    top: calc(50% - 75px);
     left: calc(50% - 125px);
 }
-#infoPopup h3 { margin: 2.5px; }
 #infoPopup footer, #confirmPopup footer { position: absolute; bottom: 5px; width: 100%; }
-#infoPopup input { outline: none; border: 1px #2a2a2a solid; }
-#infoPopup input:focus { box-shadow: 0 0 10px #ff0; border: 1px #ff0 solid; }
+#infoPopup input { outline: none; border: 1px #2a2a2a solid; width: 90% }
+#infoPopup input:focus { border: 1px rgb(100, 100, 100) solid; }
 #confirmPopup {
     height: 160px;
     width: 250px;
@@ -431,7 +415,6 @@ red { color: red; }
 
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgb(100,100,100); 
     -webkit-border-radius: 10px;
     border-radius: 10px;
 }
@@ -439,6 +422,4 @@ red { color: red; }
     -webkit-border-radius: 10px;
     border-radius: 10px;
     background: rgb(100,100,100); 
-    -webkit-box-shadow: inset 0 0 6px rgb(100,100,100); 
 }
-::-webkit-scrollbar-thumb:window-inactive { background: rgb(120,120,120); }

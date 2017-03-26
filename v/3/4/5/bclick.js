@@ -52,9 +52,12 @@ var isMobile = {
 };
 
 // ===== Core Functions ===== //
+var logs = 0;
 function log(text) {
+    if (logs >= 2) return;
     if (id("logText").style.display == "inline-block") {
-        setTimeout(function(){log(text)}, 1500);
+        logs++;
+        setTimeout(function(){logs--;log(text)}, 1500);
         return;
     }
     id("logText").innerHTML = text;
@@ -124,7 +127,7 @@ function UnlockB() {
         }
         else { log("Insufficient Points!") }
     }
-    else log("Click the B, not the unlock button!");
+    else log("Click the B");
 }
 
 function playTutorial() {
@@ -174,7 +177,6 @@ var achievements = {
     achieve : function(id) {
         set(id, true);
         set('multiplier', Math.min(parseFloat(get('multiplier')) * 1.25, 1000000000));
-        log("Achievement Earned!");
         log("Multiplier is now " + m.giant(Math.round(get("multiplier"))));
     },
     check : function() {
@@ -235,8 +237,8 @@ for (i = 0; i < achievements.list.spaces.length; i++) {
 var askedToReset = 'false';
 var refresh = {
     numbers : function() {
-        if (get('points') >= Math.pow(10, 306)) { set('points', m.eg(Math.pow(10, 307))); id('Points').innerHTML = "Points: Infinity"; if (askedToReset != 'true') { showConfirm("Reset to earn prestige?", 'data.reset.over()', ""); askedToReset = 'true';}try { parent.document.title = "Infinity Points - bClick"; } catch (ex) {}}
-        else { id('Points').innerHTML = 'Points: ' + m.giant(get('points')); try { parent.document.title = m.giant(get('points')) + " Points - bClick";} catch (ex) {}}
+        if (get('points') >= Math.pow(10, 306)) { set('points', m.eg(Math.pow(10, 307))); id('Points').innerHTML = "Points: Infinity"; if (askedToReset != 'true') { showConfirm("Reset to earn prestige?", 'data.reset.over()', ""); askedToReset = 'true';}}
+        else { id('Points').innerHTML = 'Points: ' + m.giant(get('points'));}
 
         if (get('interest') >= Math.pow(10, 307)) { set('interest', m.eg(Math.pow(10, 308))); id('Interest').innerHTML = "Interest: Infinity"; } 
         else { id('Interest').innerHTML = 'Interest: ' + m.giant(get('interest')); }
@@ -296,8 +298,9 @@ var data = {
                 var item = b.list.list[i];
                 set(item, false);
             }
+            set('handrawn', true);
             set('played341-925216', true);
-            changeInfo();
+            location.reload();
         },
         hard : function() {
             for (i = 0; i < achievements.list.id.length; i++) { localStorage.removeItem(achievements.list.id[i]) };
@@ -307,12 +310,12 @@ var data = {
         },
         update : function() { set('played341-925216', true) },
         reset : function() { showConfirm("Reset Everything?", "data.reset.hard()", "''"); },
-        over : function() { submitScore(); id('body').style.background = "#FF0000"; id('main').setAttribute('class', 'flicker'); set('username', get("username") + "+"); /*theLog('Multiplier Multiplied By 2!');*/ set('multiplier', m.add(get('multiplier'), get("multiplier"))); setTimeout('data.reset.hard()', 5000);setTimeout('location.reload()', 7000)}
+        over : function() { submitScore(); id('body').style.background = "#FF0000"; id('main').setAttribute('class', 'flicker'); set('username', get("username") + "+"); set('multiplier', m.add(get('multiplier'), get("multiplier"))); setTimeout('data.reset.hard()', 5000)}
     },
     load : function() {
         if (get("points") === undefined) data.reset.hard();
         else if (get("lastPlay") !== undefined) {
-            var earned = Math.min(get('points'), ((get('interest') * 0.05) * m.ts(get('lastPlay')) / 1000));
+            var earned = Math.min(get('points'), ((get('interest') * 0.05) * Math.min(m.ts(get('lastPlay')), new Date().getTime() - 3600000) / 2500));
             set('points', m.add(get("points"), earned));
             log('Earned ' + m.giant(earned) + ' points offline');
         }
@@ -321,7 +324,8 @@ var data = {
         refresh.all();
         ceiling = get("points");
         setInterval('realEarn()', 1);
-        setInterval('ceiling = get("points");bank.collect();depositSpamBlocker()', 1000);
+        setInterval('ceiling = get("points");depositSpamBlocker()', 1000);
+        setInterval('bank.collect()', 2500);
         seasons.load();
         id("main").style.display = "block";
         id('loader').style.display = "none";
@@ -332,10 +336,7 @@ var data = {
 // ===== Submission ===== //
 
 function changeInfo() {
-    var f = document.getElementById('infoChange');
-    f.username.value = get('username') || "";
-    f.email.value = get('email') || "";
-    f.name.value = get('name') || "";
+    id('usernameInput').value = get('username') || "";
     id('infoPopup').style.display = "block";
     id('popupOverlay').style.display = "block";
 }
@@ -345,23 +346,10 @@ function submitScore() {
 }
 
 function submitForm() {
-    var f = document.getElementById('infoChange');
-    if (f.checkValidity()) {
-        set('username', f.username.value || f.name.value);
-        set('email', f.email.value);
-        set('name', f.name.value);
-        id('infoPopup').style.display = "none";
-        id('popupOverlay').style.display = "none";
-        location.reload();
-    }
-    else if (!f.username.value) {
-        f.username.style.border = "1px red solid";
-        f.useremail.style.border = "1px #2a2a2a solid";
-    }
-    else if (!f.email.value.includes('@') || !f.email.value.includes('.') || !f.email.value.includes(' ')) {
-        f.email.style.border = "1px red solid";
-        f.name.style.border = "1px #2a2a2a solid";
-    }
+    set('username', id('usernameInput').value || "");
+    id('infoPopup').style.display = "none";
+    id('popupOverlay').style.display = "none";
+    location.reload();
 }
 
 function SeeWinners() { web("https://playbclick.com/assets/php/leaderboards.php?build=23") }
@@ -473,8 +461,6 @@ var bank = {
         set('lastPlayDay', new Date().getDate());
         var timePlayed = get("timePlayed");
         set('timePlayed', timePlayed++);
-        if (new Date().getHours() >= 19) id('body').setAttribute('class', 'night');
-        else id('body').setAttribute('class', '');
     },
     deposit : function() {
         if (depositReady == 'true') {
@@ -485,7 +471,7 @@ var bank = {
             depositReady = 'false';
             sounds.deposit.play();
         } else {
-            log("Don't spam the bank!");
+            log("Wait for the deposit cooldown");
         }
     }
 }
@@ -494,10 +480,5 @@ var depositReady = 'false';
 function depositSpamBlocker() { depositReady = 'true'; }
 
 // ===== Miscellaneous ===== //
-
-function Minimize(list, button) {
-    id(list).style.display = (id(list).style.display != 'none' ? 'none' : '' );
-    id(button).innerText = (id(button).innerText != '+' ? '+' : '-' );
-}
 
 if (window.location.protocol != "https:" && window.location.protocol != "file:") window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);

@@ -1,42 +1,6 @@
 /* ===== Captions ===== */
 function caption(text, date) { if (date == new Date().getDate()) id('captionText').innerHTML = text; }
 
-/* == November == /*
-caption("Don't forget to play tommorow for the exclusive Turkey B!!", 23);
-caption("Happy Thanksgiving!! Unlock the turkey B today and only today!!", 24);
-caption("Hope you had a great Thanksgiving! Did you unlock the Turkey B yesterday? Maybe next year.", 25);
-caption("Today a new B releases! Unlock it at noon or later!", 26);
-caption("Tommorow is Cyber Monday!! Don't forget to get good deals, even in bClick!!", 27);
-caption("Today is Cyber Monday!! Enjoy half priced B's and double interest!!", 28);
-
-/* == December == /*
-caption("Try out <a href='https://www.ecosia.org/' target='_blank' ontouchend='Earn(Math.pow(10, 9));log(\'Thanks for helping! Have a million points!!\')'>ecosia.com</a> to help plant trees along with the Nature B!", 3);
-caption("Sorry for any rapid refreshing the past few days. Our team has fixed that problem. We are very sorry.", 11);
-caption("Sorry for any rapid refreshing the past few days. Our team has fixed that problem. We are very sorry.", 12);
-caption("Sorry for any rapid refreshing the past few days. Our team has fixed that problem. We are very sorry.", 13);
-caption("Happy Birthday Cameron!! Wait, I just told myself Happy Birthday!!", 22);
-caption("Tommorow is Christmas!! Play for discounted christmas B's and double interest!!", 24);
-caption("Merry Christmas and Happy 3rd Aniversary of bClick!! Enjoy double value of christmas B's and double interest!!", 25);
-caption("Happy Hanukkah!! For today and the next 3 days, enjoy doubling your interest each day!!", 26);
-caption("Happy Hanukkah!! For today and the next 2 days, enjoy doubling your interest each day!!", 27);
-caption("Happy Hanukkah!! We doubled your interest, and play tommorow for the same!!", 28);
-caption("Happy Hanukkah!! This is the last day of bClick Hanukkah Special!! So we doubled your interest!!", 29);
-caption("Make sure to light fireworks tonight!! Play tommorow after a sip of coffee for double interest and b values!!", 31);
-
-/* == January == */
-// caption("Happy New Year!! Enjoy double interest and b values!!", 1);
-// caption("Lets give a round of applause to Morne! One of our superfans!", 5);
-// caption("Happy World Religion Day!! Enjoy free price and double value on religious B's!!", 15);
-// caption("Happy Martin Luther King Day!! Enjoy free price and double value on B's with a white-black background!! 3 times more value on BW B", 16);
-
-/* == Febraury == */
-// caption("Happy Valentines Day! Enjoy triple daily gifts and double points on many B's!", 14);
-// caption("President's Day is tommorow! Play then to enjoy double daily gifts and double points on the Trump B!", 19);
-// caption("Happy President's Day! Enjoy double daily gifts and double points on the Trump B!", 20);
-
-/* == March == */
-// caption("Don't forget to unlock the World War B today after noon! Thanks Andrew L!", 11);
-
 /* == May == */
 // caption("Don't forget to unlock the Burger B today after noon! Thanks Benz Le!", 4);
 
@@ -96,7 +60,6 @@ b.list.b.orchestral = new create('orchestral', Math.pow(10, 114), Math.pow(10, 1
 b.list.b.worldwar = new create('worldwar', Math.pow(10, 117), Math.pow(10, 120), "#6D3200", {date: new Date('Sat Mar 11 2017 12:00:00 GMT-0500 (Central Daylight Time)'), tooltip:'(Made By: Andrew L)'});
 b.list.b.phone = new create('phone', Math.pow(10, 120), Math.pow(10, 123), "#000000", {date: new Date('Sat Apr 1 2017 12:00:00 GMT-0500 (Central Daylight Time)'), tooltip:'(Apple Aniversary)'});
 b.list.b.burger = new create('burger', Math.pow(10, 123), Math.pow(10, 126), "#6D3200", {date: new Date('Sat May 6 2017 12:00:00 GMT-0500 (Central Daylight Time)'), tooltip:'(Made By: Benz Le)'});
-// b.list.b.turkey = new create('turkey', 25, 3, "#6D3200", {onlydate: new Date('Thu Nov 23 2017 4:00:00 GMT-0500 (Central Daylight Time)'), tooltip:'(Thanksgiving 2017)'});
 
 // ===== Seasonal Code ===== //
 var seasons = {
@@ -169,7 +132,6 @@ var seasons = {
         log('Happy Valentines Day!');
         if (get("valentinesDay") == undefined) {
             Earn(get("points") * get("daysInARow") * 2);
-            theLog('Earned ' + (get("daysInARow") * 2) + ' gifts from your valentine!');
             set('valentinesDay', 'true');
         }
         b.list.b.shark.worth *= 2;
@@ -212,13 +174,10 @@ var seasons = {
     aprilFools : function() {
         log("It's just a normal day!");
         b.list.b[b.list.list[b.list.list.length - 2]].worth = (get("points") * -0.125);
-        // b.list.b.badboi.cost *= 5;  
     },
     load : function() {
-        if (new Date().getDate() == 28 && new Date().getMonth() == 10 && new Date().getFullYear() == 2016) seasons.cyberMonday();
         if (new Date().getMonth() == 11) {
             if (new Date().getDate() == 25) seasons.christmas();
-            if (new Date().getDate() == 26 || new Date().getDate() == 27 || new Date().getDate() == 28 || new Date().getDate() == 29) seasons.hanukkah();
         }
         if (new Date().getMonth() == 0) {
             if (new Date().getDate() == 1) seasons.newYear();
@@ -228,7 +187,6 @@ var seasons = {
         if (new Date().getMonth() == 1) {
             if (new Date().getDate() == 14) seasons.valentines();
             if (new Date().getDate() == 20) seasons.presidentsDay();
-            if (new Date().getDate() == 28) seasons.mardiGras();
         }
         if (new Date().getMonth() == 3) {
             if (new Date().getDate() == 1) seasons.aprilFools();
