@@ -341,7 +341,7 @@ function submitForm() {
     location.reload();
 }
 
-function SeeWinners() { window.parent.location = "https://playbclick.com/assets/php/leaderboards.php?build=23" }
+function SeeWinners() { window.parent.location = "https://playbclick.com/assets/php/leaderboards.php" }
 
 function showConfirm(text, yes, no) {
     id('confirmText').innerHTML = text;
@@ -364,22 +364,14 @@ var b = {
     },
     list : {
         list : [],
-        b : {},
-        soon : {
-            list : [],
-            b : {}
-        }
+        b : {}
     },
     refresh : function() {
-        id('bName').innerHTML = b.list.list[get("bPosition")].toString().toUpperCase() + ' B ' + b.list.b[b.list.list[get("bPosition")]].tooltip;
+        id('bName').innerHTML = b.list.list[get("bPosition")].toString().toUpperCase() + ' B ' + b.list.b[b.list.list[get("bPosition")]].other.tooltip;
         b.vars.button().style.backgroundImage = "url('https://playbclick.com/assets/b/" + b.list.list[get("bPosition")] + ".png')";
-        if (get(b.list.list[get("bPosition")]) == 'false') b.vars.unlock().innerHTML = "Unlock<br />(" + giant(b.list.b[b.list.list[get("bPosition")]].cost) + ")";
+        if (get(b.list.list[get("bPosition")]) == 'false') b.vars.unlock().innerHTML = "Unlock<br />($" + giant(b.list.b[b.list.list[get("bPosition")]].cost) + ")";
 		else b.vars.unlock().innerHTML = "Unlocked!";
         if (new Date().getHours() < 19) b.vars.section().style.backgroundColor = b.list.b[b.list.list[get("bPosition")]].color;
-        for (i = 0; i < b.list.soon.list.length; i++) {
-            if (b.list.soon.b[b.list.soon.list[i]].other.date <= new Date()) location.reload();
-            else id('comingSoonDate' + b.list.soon.list[i]).innerHTML = neatTime((b.list.soon.b[b.list.soon.list[i]].other.date - new Date()) / 1000);
-        }
     },
     loop : {
         next : function() {
@@ -400,20 +392,8 @@ function create(name, worth, cost, color, other) {
     this.cost = cost;
     this.color = color;
     this.name = name;
-    this.other = other;
-    if (get(name) == undefined) { set(name, false); }
-    if (other != undefined) {
-        if (other.tooltip != undefined) { this.tooltip = other.tooltip; } else {this.tooltip = ''}
-        if (get(name) == 'false') {
-            if (other.date != undefined && other.date > new Date()) {
-                this.date = other.date;
-                b.list.soon.list.push(name);
-                b.list.soon.b[name] = { name, worth, cost, color, other };
-                id('comingSoonBList').innerHTML += '<div class="comingSoonB" id="comingSoon' + name + '">' + name + ' B</div><div class="comingSoonDate" id="comingSoonDate' + name + '">' + (other.date - new Date()) + '</div>';
-                return;
-            }
-        }
-    } else {this.tooltip = ''}
+    this.other = other || {tooltip:''};
+    if (get(name) == undefined) set(name, false);
     b.list.list.push(name);
     set('bAmount', add(get('bAmount'), 1));
 }

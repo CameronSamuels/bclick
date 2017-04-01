@@ -235,22 +235,13 @@ a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
     text-align: center;
 }
 
-.comingSoonDate {
-    color: yellow;
-    font-weight: 600;
-    text-shadow: -1px 0px #2a2a2a, 0 1px #2a2a2a, 1px 0px #2a2a2a, 0 -1px #2a2a2a;
-    font-size: 75%;
-}
-
-.comingSoonB { font-size: 110%; text-transform: capitalize;}
-
-#info, #comingSoonDiv {
+#info {
     text-align: center;
     width: 100%;
     font-size: 85%;
 }
 
-#info div, #seasonalDiv div, .ads { width: 100%; }
+#info div { width: 100%; }
 
 #settingsSection { left: calc(50% + 94.6666666666666px);}
 
@@ -331,8 +322,6 @@ a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
 }
 
 #winFrame { display: none; }
-
-red { color: red; }
 
 ::selection {
   background: yellow;
