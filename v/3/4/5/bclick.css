@@ -378,7 +378,7 @@ red { color: red; }
 
 /* ===== Scrollbars =====*/
 
-::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track {
     -webkit-border-radius: 10px;
     border-radius: 10px;

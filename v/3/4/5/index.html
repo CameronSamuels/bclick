@@ -5,8 +5,7 @@
         <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 
         <link rel="shortcut icon" type="image/png" href="icon.png" />
-        <link rel="stylesheet" type="text/css" href="bclick.css?4" />
-        <script src="https://playbclick.com/assets/js/coam.js"></script>
+        <link rel="stylesheet" type="text/css" href="bclick.css" />
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <link rel="apple-touch-icon" href="icon.png" />
@@ -21,7 +20,7 @@
         <main id="main">
             <section id="leftSection" class="section">
                 <div class="category-header header">Coming Soon</div>
-                <div class="settingGroup" id="comingSoonDiv"><div class="divider"></div>Beta test <a href="https://bocracy.com" target="_blank">b-Ocracy!!</a><div class="divider"></div><div id="comingSoonBList"></div></div>
+                <div class="settingGroup" id="comingSoonDiv"><div class="divider"></div>Beta test <a href="https://bocracy.com" target="_blank">b-Ocracy</a><div class="divider"></div><div id="comingSoonBList"></div></div>
                 <div class="divider"></div>
                 <div id="achievementsGroup" class="category-header header">Achievements</div>
                     <div id="AchievementsList" style="margin-top: 5px"></div>
@@ -30,37 +29,25 @@
             <section id="bSection" class="section">
                 <div class="header dashedHeader" id="pointsDiv"><div id="Points"></div></div>
                 <div id="LeftArrow" class="arrow button" ontouchend="b.loop.previous()"></div> 
-                <div id="bButton" ontouchend="ClickB()" data-intro="Next, you click on the picture of the B. Click it many times to get more points." data-step="2" data-position="left"></div>
+                <div id="bButton" ontouchend="ClickB()" data-intro="Then click on the picture of it to get points." data-step="2" data-position="left"></div>
                 <div id="RightArrow" class="arrow button" ontouchend="b.loop.next()"></div>
-                <div class="button" id="bUnlock" ontouchend="UnlockB()" data-intro="The first step to play bClick is to unlock the B. B's give you points when you click them, but they must be unlocked." data-step="1" data-position="bottom"></div>
+                <div class="button" id="bUnlock" ontouchend="UnlockB()" data-intro="Unlock the B to own it." data-step="1" data-position="bottom"></div>
                 <div id="bName"></div>
-                <div class="button" id="btnDeposit" ontouchend="bank.deposit()" data-intro="If this seems like a lot of clicking, then deposit points in the bank. You will get 10% interest of how much points you deposit. Every second, you will earn points from your interest." data-position="top">Deposit</div>
+                <div class="button" id="btnDeposit" ontouchend="bank.deposit()" data-intro="If this seems like a lot of clicking, then deposit points and get 10% interest. Every few seconds you will earn points." data-position="top">Deposit</div>
                 <div class="header dashedHeader" id="interestDiv"><div id="Interest"></div></div>
             </section>
             <section id="settingsSection" class="section">
-                <div class="section-header header">The Settings</div> 
-                <div class="divider"></div>
+                <div class="section-header header">Settings</div> 
                 <div class="settingGroup" id="generalDiv">
                     <div class="button" ontouchend="data.reset.reset()">New Game</div>
                     <div class="divider"></div>
-                    <div class="button" ontouchend="changeInfo()" id="btnChangeUsername">Change Info</div>
-                    <div class="button" ontouchend="SeeWinners()" data-intro="The first priority of bClick is to get enough points to be able to become first place. This is the scores. It will show all the people with their scores in order of ranking." data-step="4" data-position="left">See Scores</div>
+                    <div class="button" ontouchend="changeInfo()" id="btnChangeUsername">Change Name</div>
+                    <div class="button" ontouchend="SeeWinners()" data-intro="The goal of bClick is to get points to become first place. This will show all the people and their scores." data-step="4" data-position="left">See Scores</div>
                 </div>
                 <div class="divider"></div>
-                <!-- <div class="ads"><p>
-                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                        <ins class="adsbygoogle"
-                             style="display:block"
-                             data-ad-client="ca-pub-9778270788893963"
-                             data-ad-slot="2347758531"
-                             data-ad-format="auto"></ins>
-                        <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
-                </p></div><div class="divider"></div> -->
                 <div class="category-header header"><span>Information</span></div>
                 <div class="settingGroup" id="info">
-                    <div>Version 3.4.5.4</div>
+                    <div>Version 3.4.5.5</div>
                     <div class="divider"></div>
                     <div>Made by<br />&#9733;<a href="http://cameronsamuels.com" target="_blank">Cameron Samuels</a>&#9733;</div>
                     <div class="divider"></div>
@@ -70,13 +57,13 @@
             <iframe id="winFrame"></iframe>
         </main>
         <div id="logText" class="flicker"></div>
-        <marquee scrollamount='3' onmouseover='this.stop()' onmouseout='this.start()' id="captionText">b-Ocracy Update 2 has now released at <a ontouchend="window.location='https://bocracy.com'">bocracy.com</a>!!</marquee>
+        <marquee scrollamount='3' onmouseover='this.stop()' onmouseout='this.start()' id="captionText">Play b-Ocracy at <a href="https://bocracy.com" target="_blank">bocracy.com</a></marquee>
         <div id="infoPopup">
             <h2>Change Username</h2><div class="divider"></div>
             <input id="usernameInput" placeholder="bClicker123" />
             <footer>
                 <div class="divider"></div>
-                <div id="infoSubmitBtn" class="button" ontouchend="submitForm()">Submit</div>
+                <div id="infoSubmitBtn" class="button" ontouchend="submitForm()">Change</div>
             </footer>
         </div>
         <div id="confirmPopup">
@@ -90,8 +77,8 @@
         </div>
         <div id="popupOverlay"></div>
     </body>
-    <script src="bclick.js?4"></script>
-    <script src="https://playbclick.com/assets/js/seasons.js?4"></script>
+    <script src="bclick.js"></script>
+    <script src="https://playbclick.com/assets/js/seasons.js"></script>
     <script type="text/javascript" src="https://playbclick.com/assets/js/intro.js"></script>
     <script>data.load()</script>
 </html>

@@ -1,18 +1,41 @@
-// ===== Variables ===== //
-
-var sounds = {
-    click : new Audio('https://playbclick.com/assets/wav/click.wav'),
-    unlock : new Audio('https://playbclick.com/assets/wav/unlock.wav'),
-    restart : new Audio('https://playbclick.com/assets/wav/restart.wav'),
-    deposit : new Audio('https://playbclick.com/assets/wav/deposit.wav')
-}
+var clickSound = new Audio('https://playbclick.com/assets/wav/click.wav');
 
 // ===== Helper Functions ===== //
 
-function web(url) { window.location = url; }
-function id(id) { return document.getElementById(id); }
-function get(what) { return localStorage[what]; }
-function set(what, value) { localStorage.setItem(what, value); }
+function web(url) { window.location = url }
+function id(id) { return document.getElementById(id) }
+function get(what) { return localStorage[what] }
+function set(what, value) { localStorage.setItem(what, value) }
+function add(what, amount) { return parseFloat(what) + parseFloat(amount) }
+function sub(what, amount) { return parseFloat(what) - parseFloat(amount) }
+function fl(code, count) { for (i = 0; i < count; i++) { code() } }
+function ts(date) { return(sub(new Date().getTime(),date) / 1000) }
+var nums = ["", "Thousand", "Million", "Billion", "Trillion", "Quadrillion",
+"Quintillion", "Sextillion", "Septillion", "Octillion", "Nonillion", "Decillion",
+"Undecillion", "Duodecillion", "Tredecillion", "Quattuordecillion", "Quindecillion", "Sexdecillion",
+"Septendecillion", "Octodecillion", "Novemdecillion", "Vigintillion", "Unvigintillion",
+"Duovigintillion", "Tresvigintillion", "Quattuorvigintillion", "Quinquavigintillion", "Sesvigintillion",
+"Septemvigintillion", "Octovigintillion", "Novemvigintillion", "Trigintillion", "Centillion"];
+function dcml(x) {
+    var e;if(Math.abs(x) < 1.0) { e = parseInt(x.toString().split('e-')[1]);
+    if (e) {x*=Math.pow(10,e-1);x='0.'+(new Array(e)).join('0')+x.toString().substring(2);}}
+    else{e=parseInt(x.toString().split('+')[1]);if(e>20){e-=20;x /=Math.pow(10,e);
+    x+=(new Array(e+1)).join('0');}}return x;
+}
+function eg(num) {
+    num=dcml(parseFloat(num));var length=num.toString().length;length=length-1;var string="1";
+    fl(function(){string=string+"0"},length);return string;
+}
+function giant(num) {
+    num = Math.round(num);
+    var EG = eg(num);
+    var length = EG.toString().length - 1;
+    var groups = (length / 3);
+    if (groups.toString().indexOf(".666") != -1 || groups.toString().indexOf(".333") != -1) groups = Math.floor(groups);
+    EG = "1"; fl(function(){EG+="000"}, groups);
+    if (EG == "1" || nums[groups] === undefined) return num;
+    else if (nums[groups] !== undefined && EG != "1") return(num / EG).toFixed(1) + " " + nums[groups];
+}
 
 function remove(string, what) {
     var reg = new RegExp(what, 'g');
@@ -90,7 +113,7 @@ function Earn(amount) {
         ceiling = parseFloat(ceiling) + parseFloat(amount);
         increment += (parseFloat(amount) / 100); 
     }
-    else { set('points', m.eg(Math.pow(10, 308))); }
+    else { set('points', eg(Math.pow(10, 308))); }
 	achievements.check();
 }
  
@@ -99,7 +122,7 @@ function Purchase(amount) {
         increment += (parseFloat(amount) / 100);
         ceiling = parseFloat(ceiling) - parseFloat(amount);
     }
-    else { set('points', m.eg(Math.pow(10, 308))); }
+    else { set('points', eg(Math.pow(10, 308))); }
 }
 
 function ClickB() {
@@ -107,9 +130,9 @@ function ClickB() {
 	worth = b.list.b[b.list.list[get("bPosition")]].worth;
     if (get(name) == 'true') {
         if (get('clicks') === undefined) { set('clicks', 0); }
-        else { set('clicks', m.add(get('clicks'), 1)); }
+        else { set('clicks', add(get('clicks'), 1)); }
         Earn(parseFloat(worth) * get("multiplier"));
-        sounds.click.play();
+        clickSound.play();
     }
     else { log("Unlock the B first!"); }
 }
@@ -121,9 +144,8 @@ function UnlockB() {
         if (get("points") >= cost) {
             set(name, true);
             if (get("unlocked") === undefined) { set("unlocked", 1); }
-            else { set('unlocked', m.add(get("unlocked"), 1)); } 
+            else { set('unlocked', add(get("unlocked"), 1)); } 
             Purchase(cost);
-            sounds.unlock.play();
         }
         else { log("Insufficient Points!") }
     }
@@ -149,7 +171,7 @@ var achievements = {
             "Unlock 20 B's",
             "Unlock 30 B's",
             "Unlock 40 B's",
-            "Unlock 50 B's",
+            "Unlock 45 B's",
             "Click 500 Times",
             "Click 1 Thousand Times",
             "Click 5 Thousand  Times",
@@ -160,24 +182,14 @@ var achievements = {
             "Have 1 Quindecillion Interest",
             "Have 1 Vigintillion Interest",
             "Have 1 Quinquavigintillion Interest",
-            "Play 3 Hours",
-            "Play 6 Hours",
-            "Play 12 Hours",
-            "Play 24 Hours",
-            "Play 2 Days",
-            "Maintain 2 Day Streak",
-            "Maintain 5 Day Streak",
-            "Maintain 7 Day Streak",
-            "Maintain 2 Week Streak",
-            "Maintain 1 Month Streak"
         ],
         id : [],
-        type : ['Earn Points', 'Unlock B\'s', 'Click B\'s', 'Have Interest', 'Playing Time', 'Maintain streaks']
+        type : ['Earn Points', 'Unlock B\'s', 'Click B\'s', 'Have Interest']
     },
     achieve : function(id) {
         set(id, true);
         set('multiplier', Math.min(parseFloat(get('multiplier')) * 1.25, 1000000000));
-        log("Multiplier is now " + m.giant(Math.round(get("multiplier"))));
+        log("Multiplier is now " + giant(Math.round(get("multiplier"))));
     },
     check : function() {
         var obj = achievements;
@@ -189,11 +201,6 @@ var achievements = {
                 case "Quindecillion" : amount = Math.pow(10, 48); break;
                 case "Vigintillion" : amount = Math.pow(10,63); break;
                 case "Quinquavigintillion" : amount = Math.pow(10,78); break;
-                case "Day" : amount = obj.list.spaces[i].toString().split(' ')[1]; break;
-                case "Days" : amount = 86400 * 2; break;
-                case 'Hours' : amount = 3600 * obj.list.spaces[i].toString().split(' ')[1]; break;
-                case "Week" : amount = 7 * obj.list.spaces[i].toString().split(' ')[1]; break;
-                case "Month" : amount = 30 * obj.list.spaces[i].toString().split(' ')[1]; break;
                 default:
                     amount = obj.list.spaces[i].toString().split(' ')[1];
             }
@@ -203,8 +210,6 @@ var achievements = {
                 case "U" : type = "unlocked"; break;
                 case "C" : type = "clicks"; break;
                 case "H" : type = "interest"; break;
-                case "P" : type = "timePlayed"; break;
-                case "M" : type = "daysInARow"; break;
                 default:
             }
             if (parseFloat(get(type)) >= parseFloat(amount) && get(obj.list.id[i]) != "true") {
@@ -237,10 +242,10 @@ for (i = 0; i < achievements.list.spaces.length; i++) {
 var askedToReset = 'false';
 var refresh = {
     numbers : function() {
-        if (get('points') >= Math.pow(10, 306)) { set('points', m.eg(Math.pow(10, 307))); id('Points').innerHTML = "Points: Infinity"; if (askedToReset != 'true') { showConfirm("Reset to earn prestige?", 'data.reset.over()', ""); askedToReset = 'true';}}
-        else { id('Points').innerHTML = 'Points: ' + m.giant(get('points'));}
-        if (get('interest') >= Math.pow(10, 307)) { set('interest', m.eg(Math.pow(10, 308))); id('Interest').innerHTML = "Interest: Infinity"; } 
-        else { id('Interest').innerHTML = 'Interest: ' + m.giant(get('interest')); }
+        if (get('points') >= Math.pow(10, 306)) { set('points', eg(Math.pow(10, 307))); id('Points').innerHTML = "Points: Infinity"; if (askedToReset != 'true') { showConfirm("Reset to earn prestige?", 'data.reset.over()', ""); askedToReset = 'true';}}
+        else { id('Points').innerHTML = 'Points: ' + giant(get('points'));}
+        if (get('interest') >= Math.pow(10, 307)) { set('interest', eg(Math.pow(10, 308))); id('Interest').innerHTML = "Interest: Infinity"; } 
+        else { id('Interest').innerHTML = 'Interest: ' + giant(get('interest')); }
 
     },
     achievements : function() {
@@ -271,7 +276,6 @@ var refresh = {
 var data = {
     reset : {
         soft : function() {
-            sounds.restart.play();
             increment = 0;
             ceiling = 0;
             set('points', 0);
@@ -279,7 +283,6 @@ var data = {
             set('deposited', 0);
             set('clicks', 0);
             set('unlocked', 0);
-            set('timePlayed', 0);
             for (i = 0; i < b.list.list.length; i++) {
                 var item = b.list.list[i];
                 set(item, false);
@@ -296,14 +299,14 @@ var data = {
         },
         update : function() { set('played341-925216', true) },
         reset : function() { showConfirm("Reset Everything?", "data.reset.hard()", "''"); },
-        over : function() { submitScore(); id('body').style.background = "#FF0000"; id('main').setAttribute('class', 'flicker'); set('username', get("username") + "+"); set('multiplier', m.add(get('multiplier'), get("multiplier"))); setTimeout('data.reset.hard()', 5000)}
+        over : function() { submitScore(); id('body').style.background = "#FF0000"; id('main').setAttribute('class', 'flicker'); set('username', get("username") + "+"); set('multiplier', add(get('multiplier'), get("multiplier"))); setTimeout('data.reset.hard()', 5000)}
     },
     load : function() {
         if (get("points") === undefined) data.reset.hard();
         else if (get("lastPlay") !== undefined) {
-            var earned = Math.min(get('points'), ((get('interest') * 0.05) * Math.min(m.ts(get('lastPlay')), new Date().getTime() - 3600000) / 2500));
-            set('points', m.add(get("points"), earned));
-            log('Earned ' + m.giant(earned) + ' points offline');
+            var earned = Math.min(get('points'), ((get('interest') * 0.05) * Math.min(ts(get('lastPlay')), new Date().getTime() - 3600000) / 2500));
+            set('points', add(get("points"), earned));
+            log('Earned ' + giant(earned) + ' points offline');
         }
 		setInterval('submitScore()', 15000);
         if (!get("username")) set('username', 'bClicker' + random());
@@ -328,7 +331,7 @@ function changeInfo() {
 }
 
 function submitScore() {
-    if (get("points") != 0) id('winFrame').setAttribute('src', "https://playbclick.com/assets/php/submit.php?username=" + get("username") + "&points=" + Math.round(m.dcml(get('points'))) + "&email=" + (get("email") || "")  + '&name=' + (get("name") || ""));
+    if (get("points") != 0) id('winFrame').setAttribute('src', "https://playbclick.com/assets/php/submit.php?username=" + get("username") + "&points=" + Math.round(dcml(get('points'))) + "&email=" + (get("email") || "")  + '&name=' + (get("name") || ""));
 }
 
 function submitForm() {
@@ -338,7 +341,7 @@ function submitForm() {
     location.reload();
 }
 
-function SeeWinners() { web("https://playbclick.com/assets/php/leaderboards.php?build=23") }
+function SeeWinners() { window.parent.location = "https://playbclick.com/assets/php/leaderboards.php?build=23" }
 
 function showConfirm(text, yes, no) {
     id('confirmText').innerHTML = text;
@@ -370,7 +373,7 @@ var b = {
     refresh : function() {
         id('bName').innerHTML = b.list.list[get("bPosition")].toString().toUpperCase() + ' B ' + b.list.b[b.list.list[get("bPosition")]].tooltip;
         b.vars.button().style.backgroundImage = "url('https://playbclick.com/assets/b/" + b.list.list[get("bPosition")] + ".png')";
-        if (get(b.list.list[get("bPosition")]) == 'false') b.vars.unlock().innerHTML = "Unlock<br />(" + m.giant(b.list.b[b.list.list[get("bPosition")]].cost) + ")";
+        if (get(b.list.list[get("bPosition")]) == 'false') b.vars.unlock().innerHTML = "Unlock<br />(" + giant(b.list.b[b.list.list[get("bPosition")]].cost) + ")";
 		else b.vars.unlock().innerHTML = "Unlocked!";
         if (new Date().getHours() < 19) b.vars.section().style.backgroundColor = b.list.b[b.list.list[get("bPosition")]].color;
         for (i = 0; i < b.list.soon.list.length; i++) {
@@ -381,12 +384,12 @@ var b = {
     loop : {
         next : function() {
             if (get("bPosition") == (get("bAmount") - 1)) set("bPosition", 0);
-            else set("bPosition", m.add(get("bPosition"), 1));
+            else set("bPosition", add(get("bPosition"), 1));
             b.refresh();
         },
         previous : function() {
             if (get("bPosition") == 0) set("bPosition", (get("bAmount") - 1));
-            else set("bPosition", m.sub(get("bPosition"), 1));
+            else set("bPosition", sub(get("bPosition"), 1));
             b.refresh();
         }
     }
@@ -409,20 +412,10 @@ function create(name, worth, cost, color, other) {
                 id('comingSoonBList').innerHTML += '<div class="comingSoonB" id="comingSoon' + name + '">' + name + ' B</div><div class="comingSoonDate" id="comingSoonDate' + name + '">' + (other.date - new Date()) + '</div>';
                 return;
             }
-            if (other.onlydate != undefined && (other.onlydate.getDate() != new Date().getDate() || other.onlydate.getMonth() != new Date().getMonth() || other.onlydate.getFullYear() != new Date().getFullYear())) {
-                this.onlydate = other.onlydate;
-                this.other.date = other.onlydate;
-                if (!(other.onlydate.getDate() < new Date().getDate())) {
-                    b.list.soon.list.push(name);
-                    b.list.soon.b[name] = { name, worth, cost, color, other };
-                    id('comingSoonBList').innerHTML += '<div class="comingSoonB" id="comingSoon' + name + '">' + name + ' B</div><div class="comingSoonDate" id="comingSoonDate' + name + '">' + (other.onlydate - new Date()) + '</div>';
-                }
-                return;
-            }
         }
     } else {this.tooltip = ''}
     b.list.list.push(name);
-    set('bAmount', m.add(get('bAmount'), 1));
+    set('bAmount', add(get('bAmount'), 1));
 }
 // ===== The Bank ===== //
 
@@ -431,18 +424,14 @@ var bank = {
         Earn(get('interest'));
         d = new Date();
         set('lastPlay', new Date().getTime());
-        set('lastPlayDay', new Date().getDate());
-        var timePlayed = get("timePlayed");
-        set('timePlayed', timePlayed++);
     },
     deposit : function() {
         if (depositReady == 'true') {
             var amount = parseFloat(get('points'));
-            set('deposited', m.add(get('deposited'), amount));
+            set('deposited', add(get('deposited'), amount));
             set('interest', parseFloat(get("deposited")) * 0.1);
             Purchase(amount); 
             depositReady = 'false';
-            sounds.deposit.play();
         } else {
             log("Wait for the deposit cooldown");
         }
