@@ -51,7 +51,7 @@ var changeFace = {
 		id("trumpName").innerHTML = trump.current.name() + " Donald";
 	},
 	up : function() {
-		id('face').setAttribute('src', 'faces/smile.jpg');
+		id('face').setAttribute('src', 'faces/smile.png');
 	}
 };
 

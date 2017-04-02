@@ -126,39 +126,6 @@ function boundingBoxCheck(){
 
 }
 
-// function Shuffle(o) {
-// 	for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-// 	return o;
-// };
-
-// var collection = [];
-// var loadedIndex = 0;
-
-// function init(audios) {
-//   for(var i=0;i<audios.length;i++) {
-//     var audio = new Audio(audios[i]);
-//     collection.push(audio);
-//     buffer(audio);
-//   }
-// }
-// function buffer(audio) {
-//   if(audio.readyState==4)return loaded();
-//   setTimeout(function(){buffer(audio)},100);
-// }
-// function loaded() {
-//   loadedIndex++;
-//   if(collection.length==loadedIndex)playLooped();
-// }
-// function playLooped() {
-//   var audio=Math.floor(Math.random() * (collection.length));
-//   audio=collection[audio];
-//   audio.play();
-//   setTimeout(playLooped,audio.duration*1000);
-// }
-
-// var music = ['music/0.mp3', 'music/1.mp3', 'music/2.mp3', 'music/3.mp3', 'music/4.mp3', 'music/5.mp3', 'music/6.mp3'];
-// init(Shuffle(music));
-
 var isMobile = {
     Android: function() { return navigator.userAgent.match(/Android/i); },
     iOS: function() { return navigator.userAgent.match(/iPhone|iPad|iPod/i); },

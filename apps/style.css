@@ -1,18 +1,15 @@
 h2, body, html, p, input { margin: 0; padding: 0; }
- html { height: 100%; }
- body { width: 100%; height: 100%; background: #fff; color: #333; letter-spacing: 0.05em; font-family: 'Source Sans Pro', sans-serif; font-size: 16px; font-weight: 400; line-height: 29px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+ html, body { width: 100%; height: 100%; color: #333; }
  a, a:visited { color: #22a7f0; text-decoration: none; }
  a:hover { color: #24dff2; }
 
 
  h2 { padding: 0 0 15px; color: #333; font-size: 25px; font-weight: 400; line-height: 40px; text-align: center; }
-
- .wrapper { position: relative; }
  .container { width: 960px; margin: 0 auto; }
  
  .content { position: relative; top: 0; left: 0; z-index: 1; overflow-x: hidden; width: 100%; min-height: 100vh; margin: 0; background-attachment: fixed !important; background-position: center center; background-size: cover; -webkit-overflow-scrolling: touch; box-sizing: border-box; -webkit-transition: all 300ms ease-in-out;  transition: all 300ms ease-in-out; }
  .content:before { position: absolute; top: 0; left: 0; display: block; width: 100%; height: 100%; background: rgba(51,51,51,0.3); content: ' '; }
- .content .content-wrap { margin: 40px auto; padding: 40px; background: #fff; box-sizing: border-box;}
+ .content .content-wrap { padding: 40px; background: #fff; box-sizing: border-box;}
  .content .content-wrap .main-wrap .paragraph { letter-spacing: 0.05em; }
  
  .no-header-page .header {padding-bottom: 10px; }
@@ -24,7 +21,6 @@ h2, body, html, p, input { margin: 0; padding: 0; }
 
  }
  @media screen and (max-width: 767px) {
- body { font-size: 14px; line-height: 24px; }
  .container { width: 100%; }
  .content .content-wrap { width: 100%; padding: 20px 0; margin: 40px auto; }
  .content .content-wrap .main-wrap { padding: 0 20px; }
