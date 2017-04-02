@@ -310,7 +310,6 @@ var data = {
         setInterval('ceiling = get("points");depositSpamBlocker()', 1000);
         setInterval('bank.collect()', 2500);
         seasons.load();
-        window.scrollTo(284, 0);
         id("main").style.display = "block";
         id('loader').style.display = "none";
     }
