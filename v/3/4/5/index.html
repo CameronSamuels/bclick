@@ -19,18 +19,18 @@
         <div id="loader"></div>
         <main id="main">
             <section id="leftSection" class="section">
-                <div id="achievementsGroup" class="category-header header">Achievements</div>
+                <div id="achievementsGroup" class="section-header header">Achievements</div>
                     <div id="AchievementsList"></div>
                 </div>
             </section>
             <section id="bSection" class="section">
                 <div class="header dashedHeader" id="pointsDiv"><div id="Points"></div></div>
                 <div id="LeftArrow" class="arrow button" ontouchend="b.loop.previous()"></div> 
-                <div id="bButton" ontouchend="ClickB()" data-intro="Then click on the picture of it to get points." data-step="2" data-position="left"></div>
+                <div id="bButton" ontouchend="ClickB()" data-intro="Click on the picture to get points" data-step="2" data-position="left"></div>
                 <div id="RightArrow" class="arrow button" ontouchend="b.loop.next()"></div>
-                <div class="button" id="bUnlock" ontouchend="UnlockB()" data-intro="Unlock the B to own it." data-step="1" data-position="bottom"></div>
+                <div class="button" id="bUnlock" ontouchend="UnlockB()" data-intro="Unlock the B first" data-step="1" data-position="bottom"></div>
                 <div id="bName"></div>
-                <div class="button" id="btnDeposit" ontouchend="bank.deposit()" data-intro="If this seems like a lot of clicking, then deposit points and get 10% interest. Every few seconds you will earn points." data-position="top">Deposit</div>
+                <div class="button" id="btnDeposit" ontouchend="bank.deposit()" data-intro="Deposit points and get 10% interest to earn points every few seconds" data-position="top">Deposit</div>
                 <div class="header dashedHeader" id="interestDiv"><div id="Interest"></div></div>
             </section>
             <section id="settingsSection" class="section">
@@ -39,12 +39,12 @@
                     <div class="button" ontouchend="data.reset.reset()">New Game</div>
                     <div class="divider"></div>
                     <div class="button" ontouchend="changeInfo()" id="btnChangeUsername">Change Name</div>
-                    <div class="button" ontouchend="SeeWinners()" data-intro="The goal of bClick is to get points to become first place. This will show all the people and their scores." data-step="4" data-position="left">See Scores</div>
+                    <div class="button" ontouchend="SeeWinners()" data-intro="The goal is to get points and become first place. This will show all the scores." data-step="4" data-position="left">See Scores</div>
                 </div>
                 <div class="divider"></div>
                 <div class="category-header header"><span>Information</span></div>
                 <div class="settingGroup" id="info">
-                    <div>Version 3.4.5.5</div>
+                    <div>Version 3.4.5.6</div>
                     <div class="divider"></div>
                     <div>Made by<br />&#9733;<a href="http://cameronsamuels.com" target="_blank">Cameron Samuels</a>&#9733;</div>
                     <div class="divider"></div>

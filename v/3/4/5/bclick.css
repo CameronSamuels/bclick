@@ -178,29 +178,23 @@ a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
 .arrow {
     position: absolute;
     border-radius: 25px;
-    
     padding: 5px;
     margin: 0 !important;
-    
     width: 20px;
     height: 20px;
-
     background-position: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-  
     top: calc(50% - 12.5px);
     bottom: calc(50% - 12.5px);
+    background-image: url("https://playbclick.com/assets/img/left-arrow.png");
 }
 
-#LeftArrow {
-    background-image: url("https://playbclick.com/assets/img/left-arrow.png");
-    left: calc(50% - 87.5px);
-}
+#LeftArrow { left: calc(50% - 87.5px) }
 
 #RightArrow {
-    background-image: url("https://playbclick.com/assets/img/right-arrow.png");
     right: calc(50% - 87.5px);
+    transform: rotate(180deg);
 }
 
 /*===== Settings =====*/
@@ -243,15 +237,17 @@ a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
 
 #info div { width: 100%; }
 
-#settingsSection { left: calc(50% + 94.6666666666666px);}
+#settingsSection {
+    left: calc(50% + 95px);
+    border-right: 0px;
+}
 
 /*===== Messages =====*/
 
 #captionText {
-    left: 0; right: 0;
+    left: 0px;
     top: 5px;
     position: fixed;
-    text-align: center;
 }
 
 #logText {
