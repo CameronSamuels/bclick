@@ -1,22 +1,10 @@
 Options +Indexes
-
-# SET INDEX OPTIONS
 IndexOptions IgnoreCase FancyIndexing FoldersFirst NameWidth=* DescriptionWidth=* SuppressHTMLPreamble IconHeight=16 IconWidth=16 IconsAreLinks
-
-# SET DISPLAY ORDER
 IndexOrderDefault Ascending Name
-
-# SPECIFY HEADER AND FOOTER FILE
 HeaderName /apps/htaccess/header.html
-# ReadmeName htaccess/footer.html
-
-# IGNORE FILES
 IndexIgnore /apps/htaccess
-
-# ICONS
 DefaultIcon https://playbclick.com/apps/htaccess/file.png
 AddIcon https://playbclick.com/apps/htaccess/folder.png ^^DIRECTORY^^
-
 Redirect 307 /apps/bclick https://playbclick.com
 Redirect 307 /apps/bocracy https://playbclick.com/bocracy
 Redirect 307 /apps/googol-mod https://chrome.google.com/webstore/detail/googol-modifier/mnedfeboinfpifmnladopdammkcoeejc

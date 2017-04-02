@@ -1,8 +1,4 @@
-var clickSound = new Audio('https://playbclick.com/assets/wav/click.wav');
-
 // ===== Helper Functions ===== //
-
-function web(url) { window.location = url }
 function id(id) { return document.getElementById(id) }
 function get(what) { return localStorage[what] }
 function set(what, value) { localStorage.setItem(what, value) }
@@ -17,7 +13,9 @@ var nums = ["", "Thousand", "Million", "Billion", "Trillion", "Quadrillion",
 "Duovigintillion", "Tresvigintillion", "Quattuorvigintillion", "Quinquavigintillion", "Sesvigintillion",
 "Septemvigintillion", "Octovigintillion", "Novemvigintillion", "Trigintillion", "Untrigintillion",
 "Duotrigintillion", "Tretrigintillion", "Quattuortrigintillion", "Quintrigintillion", "Sextrigintillion",
-"Septentrigintillion", "Octotrigintillion", "Novemtrigintillion", "Quadragintillion"];
+"Septentrigintillion", "Octotrigintillion", "Novemtrigintillion", "Quadragintillion", "Unquadragintillion",
+"Duoquadragintillion", "Trequadragintillion", "Quattuorquadragintillion", "Quinquadragintillion", "Sexquadragintillion",
+"Septenquadragintillion", "Octoquadragintillion", "Novemquadragintillion", "Quinquagintillion"];
 function dcml(x) {
     var e;if(Math.abs(x) < 1.0) { e = parseInt(x.toString().split('e-')[1]);
     if (e) {x*=Math.pow(10,e-1);x='0.'+(new Array(e)).join('0')+x.toString().substring(2);}}
@@ -134,7 +132,6 @@ function ClickB() {
         if (get('clicks') === undefined) { set('clicks', 0); }
         else { set('clicks', add(get('clicks'), 1)); }
         Earn(parseFloat(worth) * get("multiplier"));
-        clickSound.play();
     }
     else { log("Unlock the B first!"); }
 }
@@ -152,11 +149,6 @@ function UnlockB() {
         else { log("Insufficient Points!") }
     }
     else log("Click the B");
-}
-
-function playTutorial() {
-    introJs().start();
-    set('playedTutorial', 'true');
 }
 
 // ===== Achievements ===== //
@@ -318,9 +310,9 @@ var data = {
         setInterval('ceiling = get("points");depositSpamBlocker()', 1000);
         setInterval('bank.collect()', 2500);
         seasons.load();
+        window.scrollTo(284, 0);
         id("main").style.display = "block";
         id('loader').style.display = "none";
-        if (get("playedTutorial") == undefined) playTutorial();
     }
 }
 
@@ -337,10 +329,9 @@ function submitScore() {
 }
 
 function submitForm() {
-    set('username', id('usernameInput').value || "");
+    set('username', id('usernameInput').value || 'bClicker' + random());
     id('infoPopup').style.display = "none";
     id('popupOverlay').style.display = "none";
-    location.reload();
 }
 
 function SeeWinners() { window.parent.location = "https://playbclick.com/assets/php/leaderboards.php" }
