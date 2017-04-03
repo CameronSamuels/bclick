@@ -345,7 +345,7 @@ function showConfirm(text, yes, no) {
 
 // ===== The B's ===== //
 
-set("bPosition", 0);
+if (get("bPosition") == undefined) set("bPosition", 0);
 set('bAmount', 0);
 
 var b = {

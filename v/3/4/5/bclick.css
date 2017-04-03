@@ -12,7 +12,7 @@ body, html {
     word-wrap: break-word;
     font-size:  90%;
     font-family: 'Roboto Mono', monospace;
-    overflow: auto;
+    overflow-x: auto;
     user-select: none;
     -webkit-user-select: none;
 }
@@ -177,20 +177,14 @@ a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
     margin: 0 !important;
     width: 20px;
     height: 20px;
-    background-position: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
     top: calc(50% - 12.5px);
-    bottom: calc(50% - 12.5px);
-    background-image: url("https://playbclick.com/assets/img/left-arrow.png");
+    font-size: 20px;
+    line-height: 20px;
 }
 
 #LeftArrow { left: calc(50% - 87.5px) }
 
-#RightArrow {
-    right: calc(50% - 87.5px);
-    transform: rotate(180deg);
-}
+#RightArrow { right: calc(50% - 87.5px); }
 
 /*===== Settings =====*/
 
@@ -241,6 +235,7 @@ a:hover { color: rgb(120, 120, 120); text-decoration: underline; }
 #captionText {
     left: 0px;
     top: 5px;
+    width: 100%;
     position: fixed;
 }
 
