@@ -1,9 +1,0 @@
-var settingsSection = m.id('settingsSection');
-settingsSection.innerHTML += '<div class="category-header header"><span>Cheats</span><span id="minimizeCheat" class="minimize" ' + 
-'ontouchend="Minimize(\'cheatGroup\', \'minimizeCheat\')">-</span></div>' + 
-'<div class="settingGroup" id="cheatGroup"></div>';
-var newDiv = m.id('cheatGroup');
-newDiv.innerHTML += '<div class="button" id="btnDoublePoints" ontouchend="localStorage.points *= 2">Double Points</div>';
-newDiv.innerHTML += '<div class="button" id="btnDoubleInterest" ontouchend="localStorage.interest *= 2">Double Interest</div>';
-newDiv.innerHTML += '<div class="button" id="btnAddBankTimer" ontouchend="setInterval(\'bank.collect()\', 1000)">Add Bank Timer</div>';
-newDiv.innerHTML += '<div class="button" id="btnAddPoints" ontouchend="localStorage.points += prompt(\'Type an amount of points\')">Earn Points</div>';
