@@ -16,7 +16,7 @@ body, html {
     user-select: none;
     -webkit-user-select: none;
 }
-
+@media screen and (orientation: landscape) { body, html { overflow: hidden !important; } }
 main {
     height: 318px;
     width: 566px;
