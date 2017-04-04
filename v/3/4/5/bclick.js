@@ -133,7 +133,7 @@ function ClickB() {
         else { set('clicks', add(get('clicks'), 1)); }
         Earn(parseFloat(worth) * get("multiplier"));
     }
-    else { log("Unlock the B first!"); }
+    else { log("Unlock the B first"); }
 }
 
 function UnlockB() {
@@ -277,6 +277,7 @@ var data = {
             set('deposited', 0);
             set('clicks', 0);
             set('unlocked', 0);
+            set('bPosition', 0);
             for (i = 0; i < b.list.list.length; i++) {
                 var item = b.list.list[i];
                 set(item, false);
@@ -345,7 +346,6 @@ function showConfirm(text, yes, no) {
 
 // ===== The B's ===== //
 
-if (get("bPosition") == undefined) set("bPosition", 0);
 set('bAmount', 0);
 
 var b = {
