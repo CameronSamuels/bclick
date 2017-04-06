@@ -6,7 +6,9 @@ IndexIgnore /apps/htaccess
 DefaultIcon https://playbclick.com/apps/htaccess/file.png
 AddIcon https://playbclick.com/apps/htaccess/folder.png ^^DIRECTORY^^
 Redirect 307 /apps/bclick https://playbclick.com
-Redirect 307 /apps/bocracy https://playbclick.com/bocracy
+Redirect 307 /apps/bocracy https://bocracy.com
 Redirect 307 /apps/googol-mod https://chrome.google.com/webstore/detail/googol-modifier/mnedfeboinfpifmnladopdammkcoeejc
 Redirect 307 /apps/bnoodle https://play.google.com/store/apps/details?id=com.playbclick.bnoodle
 Redirect 307 /apps/dice https://chrome.google.com/webstore/detail/dice-thrower/gandnjjljgomdonoidfcjjockjngkjcc
+Redirect 307 /apps/ru-cubing http://rucubing.bitballoon.com
+Redirect 307 /apps/word-maker http://wordmaker.bitballoon.com
