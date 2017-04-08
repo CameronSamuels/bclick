@@ -1,0 +1,301 @@
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Mono'), local('RobotoMono-Regular'), url(font.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+body, html {
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    word-wrap: break-word;
+    font-size: 90%;
+    font-family: 'Roboto Mono', monospace;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    overflow-y: hidden;
+    color: #2a2a2a
+}
+main {
+    height: 318px;
+    width: 566px;
+    position: absolute;
+    margin: auto;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+    border: 1px #2a2a2a solid;
+    display: none;
+}
+
+@media screen and (max-height: 319px) { body { zoom: 75%; } }
+@media screen and (min-height: 320px) { body { zoom: 100%; } #infoPopup { zoom: 80%; } #confirmPopup { zoom: 80%; } }
+@media screen and (min-height: 400px) { body { zoom: 125%; }}
+@media screen and (min-height: 500px) { body { zoom: 150%; }}
+
+/*===== Classes =====*/
+.divider {
+    margin: 5px 0px;
+    border-top: 2px #2a2a2a dashed;
+    height: 0px;
+}
+
+.button {
+    background-color: rgb(100,100,100);
+    border: #2a2a2a solid 1px;
+    border-radius: 3px;
+    color: yellow;
+    display: inline-block;
+    font-size: 12px;
+    padding: 8px 15px;
+    text-align: center;
+    width: calc(90% - 30px - 2px);
+    margin: 2.5px 9px;
+    cursor: pointer;
+}
+.button:hover { background-color: rgb(120, 120, 120); }
+
+.section {
+    width: 187.66666px !important;
+    height: 318px; 
+    border: 1px #2a2a2a solid;
+    border-left: 0px;
+    border-top: 0px;
+    overflow: hidden;
+    position: absolute;
+}
+
+.header {
+    border-bottom: 1px #2a2a2a solid;
+    border-top: 1px #2a2a2a solid;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 20px;   
+    width: 100%; 
+    margin-bottom: 5px;
+    background-color: #FFF;
+}
+
+.category-header, .section-header { background-color: yellow; }
+.section-header { border-top: 0px; }
+
+.dashedHeader {
+    border-top: 1px #2a2a2a dashed;
+    border-bottom: 1px #2a2a2a dashed;
+}
+
+/*===== bSection =====*/
+
+#bButton {
+    width: 50px;
+    height: 50px;
+    border: 1px rgb(100, 100, 100) solid;
+    border-radius: 3px;
+    padding: 25px;
+    background-position: center;
+    background-size: cover;
+    background-color: white;
+    position: absolute;
+    bottom: 120.6px;
+    left: calc(50% - 51px);
+    cursor: pointer;
+}
+
+#bButton:active {
+  width: 45px;
+  height: 45px;
+  bottom: 123.1px;
+  left: calc(50% - 48.5px);
+}
+
+#bName {
+    border-radius: 20px;
+    border: 1px #2a2a2a solid;
+    background-color: rgba(80, 80, 80, 0.9);
+    color: yellow;
+    font-size: 10px;
+    padding: 8px 15px;
+    text-align: center;
+    width: calc(90% - 30px - 2px);
+    position: absolute;
+    bottom: 70.6px;
+    left: 9px;
+}
+
+#bSection { left: calc(50% - 94.5px) }
+
+#interestDiv {
+    position: absolute;
+    bottom: 0px;
+    margin-bottom: 0px;
+    border-bottom-width: 0px;
+}
+
+#interestDiv, #pointsDiv {
+    word-wrap: normal;
+    white-space: nowrap;
+    font-size: 9px;
+}
+
+#btnDeposit, #bUnlock {
+    position: absolute;
+    left: 9px;
+    margin: 2.5px 0px;
+}
+#btnDeposit:active {
+    padding: 6px 12px;
+    margin: 4.5px 0px;
+    left: 12px;
+}
+
+#bUnlock { font-size: 8px; }
+#btnDeposit { bottom: 30px; }
+#pointsDiv { border-top-width: 0px; }
+
+/*===== Arrows =====*/
+
+.arrow {
+    position: absolute;
+    border-radius: 25px;
+    padding: 5px;
+    margin: 0 !important;
+    width: 20px;
+    height: 20px;
+    top: calc(50% - 12.5px);
+    font-size: 20px;
+    vertical-align: middle;
+    line-height: 20px;
+}
+
+#LeftArrow { left: calc(50% - 87.5px) }
+#RightArrow { right: calc(50% - 87.5px); }
+
+/*===== Settings =====*/
+
+.settingGroup {
+    width: 100%;
+    border-right: 0px;
+}
+.settingGroup .button { display: block; }
+
+.achieveItem {
+    background-color: #F00;
+    color: #FFF;
+    border-radius: 15px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 25px;
+    font-size: 8px;
+    width: calc(15% - 5px);
+    padding: calc(7.5% - 13px) 2.5%;
+    margin: 2.5px;
+    display: inline-block;
+}
+
+.achieveCategory {
+    margin: 2px 0px;
+    text-align: center;
+    width: 100%;
+}
+
+#info {
+    text-align: center;
+    width: 100%;
+    font-size: 85%;
+}
+
+#info div { width: 100%; }
+
+#settingsSection {
+    left: calc(66.5%);
+    border-right: 0px;
+    width: 189.6666px !important;
+}
+
+/*===== Messages =====*/
+#logText {
+    color: yellow;
+    background-color: #2a2a2a;
+    text-align: center;
+    border-radius: 7.5px;
+    display: none;
+    position: fixed;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    width: 300px;
+    margin: auto;
+    padding: 5px;
+}
+@media screen and (max-width: 500px) { #logText { zoom: 70%; width: 250px; }}
+
+.flicker { animation: flickerAnimation 1.5s infinite }
+
+@keyframes flickerAnimation {
+    0%   { opacity:0; }
+    25%  { opacity:1; }
+    75%  { opacity:1; }
+    100% { opacity:0; }
+}
+
+/* ===== Loading ===== */
+
+#loader {
+    border: 16px solid #2a2a2a;
+    border-radius: 50%;
+    border-top: 16px solid yellow;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    left: calc(50% - 91px);
+    top: calc(50% - 91px);
+    animation: spin 2s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ===== Other ===== */
+
+#winFrame { display: none; }
+
+#infoPopup, #confirmPopup {
+    background-color: #ff0;
+    box-shadow: 1px 1px 1px #2a2a2a;
+    border-radius: 25px;
+    z-index: 1;
+    text-align: center;
+    display: none;
+    position: fixed;
+}
+#infoPopup {
+    height: 150px;
+    width: 250px;
+    top: calc(50% - 75px);
+    left: calc(50% - 125px);
+}
+#infoPopup footer, #confirmPopup footer { position: absolute; bottom: 5px; width: 100%; }
+#infoPopup input { outline: none; border: 1px #2a2a2a solid; width: 90%;height:25px;text-align: center; }
+#confirmPopup {
+    height: 160px;
+    width: 250px;
+    top: calc(50% - 80px);
+    left: calc(50% - 125px);
+}
+#confirmPopup h3 { margin: 0px; }
+#confirmYesBtn, #confirmNoBtn {
+    width: calc(42.5% - 30px);
+    margin: 1px calc(1% - 0.5px) !important;
+}
+#popupOverlay {
+    width: 100%;
+    height: 100%;
+    background: #2a2a2a;
+    opacity: 0.25;
+    display: none;
+    left: 0px;
+    top: 0px;
+    position: fixed;
+}
