@@ -31,15 +31,14 @@
                     <div class="button" ontouchend="changeInfo()" id="btnChangeUsername">Change Username</div>
                     <div class="button" ontouchend="SeeWinners()">Leaderboards</div>
                 </div>
-                <div class="divider"></div>
-                <div class="category-header header"><span>Information</span></div>
-                <div class="settingGroup" id="info">
-                    <div>Version 3.4.6</div>
+                <div id="infoDiv" class="settingGroup"><div class="category-header header"><span>Information</span></div>
+                <div id="info">
+                    <div>Version 3.4.6.1</div>
                     <div class="divider"></div>
                     <div>Made by Cameron Samuels</div>
                     <div class="divider"></div>
                     <div>Copyright &copy; 2013-<script>document.write(new Date().getFullYear())</script></div>
-                </div>
+                </div></div>
             </section>
             <iframe id="winFrame"></iframe>
         </main>
@@ -51,7 +50,7 @@
         </div>
         <div id="confirmPopup">
             <h1 id="confirmText"></h1>
-            <footer><div class="divider"></div><div id="confirmYesBtn" class="button">Yes</div><div id="confirmNoBtn" class="button">No</div></footer>
+            <footer><div class="divider"></div><div id="softResetBtn" class="button" ontouchend="data.reset.soft()">Keep Achievements</div><div id="confirmYesBtn" class="button">Yes</div><div id="confirmNoBtn" class="button">No</div></footer>
         </div>
         <div id="popupOverlay"></div>
     </body>

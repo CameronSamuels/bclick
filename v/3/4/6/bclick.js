@@ -102,11 +102,11 @@ function Earn(amount) {
 }
  
 function Purchase(amount) { 
-    if (get("points") < Math.pow(10, 308)) {
+    if (get("points") < Math.pow(10, 308) && (ceiling - amount) >= 0) {
         increment += (parseFloat(amount) / 100);
         ceiling = parseFloat(ceiling) - parseFloat(amount);
     }
-    else { set('points', eg(Math.pow(10, 308))); }
+    else if (get("points") >= Math.pow(10, 308)) { set('points', eg(Math.pow(10, 308))); }
 }
 
 function ClickB() {
@@ -140,11 +140,16 @@ function UnlockB() {
 var achievements = {
     list : {
         spaces : [
+            "Earn 1 Thousand Points",
+            "Earn 1 Billion Points",
             "Earn 1 Quintillion Points",
+            "Earn 1 Septillion Points",
             "Earn 1 Decillion Points",
             "Earn 1 Quindecillion Points",
             "Earn 1 Vigintillion Points",
             "Earn 1 Quinquavigintillion Points",
+            "Earn 1 Trigintillion Points",
+            "Earn 1 Quinquagintillion Points",
             "Unlock 10 B's",
             "Unlock 20 B's",
             "Unlock 30 B's",
@@ -155,11 +160,16 @@ var achievements = {
             "Click 5 Thousand  Times",
             "Click 10 Thousand  Times",
             "Click 20 Thousand Times",
+            "Have 1 Thousand Interest",
+            "Have 1 Billion Interest",
             "Have 1 Quintillion Interest",
+            "Have 1 Septillion Interest",
             "Have 1 Decillion Interest",
             "Have 1 Quindecillion Interest",
             "Have 1 Vigintillion Interest",
             "Have 1 Quinquavigintillion Interest",
+            "Have 1 Trigintillion Interest",
+            "Have 1 Quinquagintillion Interest",
         ],
         id : [],
         type : ['Earn Points', 'Unlock B\'s', 'Click B\'s', 'Have Interest']
@@ -174,11 +184,15 @@ var achievements = {
         for (i = 0; i < obj.list.spaces.length; i++) {
             switch (obj.list.spaces[i].toString().split(' ')[2]) {
                 case "Thousand" : amount = 1000 * obj.list.spaces[i].toString().split(' ')[1]; break;
+                case "Billion" : amount = Math.pow(10, 9); break;
                 case "Quintillion" : amount = Math.pow(10, 18); break;
+                case "Septillion" : amount = Math.pow(10, 24); break;
                 case "Decillion" : amount = Math.pow(10, 33); break;
                 case "Quindecillion" : amount = Math.pow(10, 48); break;
                 case "Vigintillion" : amount = Math.pow(10,63); break;
                 case "Quinquavigintillion" : amount = Math.pow(10,78); break;
+                case "Trigintillion" : amount = Math.pow(10,93); break;
+                case "Quinquagintillion" : amount = Math.pow(10,153); break;
                 default:
                     amount = obj.list.spaces[i].toString().split(' ')[1];
             }
