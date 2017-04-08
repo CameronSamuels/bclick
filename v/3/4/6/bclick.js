@@ -193,8 +193,7 @@ var achievements = {
                 case "Quinquavigintillion" : amount = Math.pow(10,78); break;
                 case "Trigintillion" : amount = Math.pow(10,93); break;
                 case "Quinquagintillion" : amount = Math.pow(10,153); break;
-                default:
-                    amount = obj.list.spaces[i].toString().split(' ')[1];
+                default: amount = obj.list.spaces[i].toString().split(' ')[1];
             }
             var type = "";
             switch (obj.list.spaces[i].charAt(0)) {
