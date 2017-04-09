@@ -217,10 +217,10 @@ var achievements = {
 }
 
 // ===== Refreshing ===== //
-var askedToReset = 'false';
+var askedToReset = 'false', desktop = !navigator.userAgent.match(/iPhone|iPad|iPod/i) && !navigator.userAgent.match(/Android/i);
 var refresh = {
     numbers : function() {
-        if (get('points') >= Math.pow(10, 306)) { set('points', eg(Math.pow(10, 307))); id('Points').innerHTML = "Points: Infinity"; if (askedToReset != 'true') { showConfirm("Reset to earn prestige?", 'data.reset.over()', ""); askedToReset = 'true';}}
+        if (get('points') >= Math.pow(10, 306)) { set('points', eg(Math.pow(10, 307))); id('Points').innerHTML = "Points: Infinity"; if (askedToReset != 'true') { showConfirm("Earn prestige?", 'data.reset.over()', ""); askedToReset = 'true';}}
         else if (get('points') < 0) { set('points', 0); id('Points').innerHTML = 'Points: ' + giant(get('points')); }
         else id('Points').innerHTML = 'Points: ' + giant(get('points'));
         if (get('interest') >= Math.pow(10, 307)) { set('interest', eg(Math.pow(10, 308))); id('Interest').innerHTML = "Interest: Infinity"; } 
@@ -237,7 +237,7 @@ var refresh = {
         }
     },
     events : function() {
-        if (!navigator.userAgent.match(/iPhone|iPad|iPod/i) && !navigator.userAgent.match(/Android/i)) {
+        if (desktop) {
             var all = document.querySelectorAll('[ontouchend]');
             for (i = 0; i < all.length; i++) {
                 var ontouchend = all[i].getAttribute('ontouchend');
@@ -279,8 +279,8 @@ var data = {
 			else set('multiplier', 1);
 			data.reset.soft();
         },
-        reset : function() { showConfirm("Reset Everything?", "data.reset.hard()", "''"); },
-        over : function() { submitScore(); set('username', get("username") + "+"); set('multiplier', get('multiplier') * 25); setTimeout('data.reset.hard()', 5000)}
+        reset : function() { showConfirm("Reset Game?", "data.reset.hard()", "''"); },
+        over : function() { submitScore(); set('username', get("username") + "+"); set('multiplier', get('multiplier') * 25);data.reset.hard()}
     },
     load : function() {
         if (get("points") === undefined) data.reset.hard();
