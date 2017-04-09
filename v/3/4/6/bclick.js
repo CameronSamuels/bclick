@@ -207,25 +207,25 @@ var achievements = {
                 achievements.achieve(obj.list.id[i]);
             }  
         }
-    }
-}
-
-for (i = 0; i < achievements.list.spaces.length; i++) {
-    var string = remove(achievements.list.spaces[i], "'"); string = remove(string, " ");
-    achievements.list.id.push(string);
-}
-var text = id("AchievementsList");
-var type = "";
-var typeNum = -1;
-for (i = 0; i < achievements.list.spaces.length; i++) {
-    var amount = achievements.list.spaces[i].toString().split(' ')[1];
-    if (!type.includes('Unlock')) amount += achievements.list.spaces[i].toString().split(' ')[2].charAt(0);
-    if (type.toString().charAt(0) == achievements.list.id[i].charAt(0)) {
-        text.innerHTML += "<div title='" + achievements.list.spaces[i] + "' class='achieveItem' id='" + achievements.list.id[i] + "'>" + amount + "</div>";
-    } else {
-        typeNum++;
-        type = achievements.list.type[typeNum];
-        text.innerHTML += "<div class='achieveCategory'>" + type + "</div><div title='" + achievements.list.spaces[i] + "' class='achieveItem' id='" + achievements.list.id[i] + "'>" + amount + "</div>";
+    }, refresh : function() {
+        for (i = 0; i < achievements.list.spaces.length; i++) {
+            var string = remove(achievements.list.spaces[i], "'"); string = remove(string, " ");
+            achievements.list.id.push(string);
+        }
+        var text = id("AchievementsList");
+        var type = "";
+        var typeNum = -1;
+        for (i = 0; i < achievements.list.spaces.length; i++) {
+            var amount = achievements.list.spaces[i].toString().split(' ')[1];
+            if (!type.includes('Unlock')) amount += achievements.list.spaces[i].toString().split(' ')[2].charAt(0);
+            if (type.toString().charAt(0) == achievements.list.id[i].charAt(0)) {
+                text.innerHTML += "<div title='" + achievements.list.spaces[i] + "' class='achieveItem' id='" + achievements.list.id[i] + "'>" + amount + "</div>";
+            } else {
+                typeNum++;
+                type = achievements.list.type[typeNum];
+                text.innerHTML += "<div class='achieveCategory'>" + type + "</div><div title='" + achievements.list.spaces[i] + "' class='achieveItem' id='" + achievements.list.id[i] + "'>" + amount + "</div>";
+            }
+        }
     }
 }
 
@@ -234,9 +234,10 @@ var askedToReset = 'false';
 var refresh = {
     numbers : function() {
         if (get('points') >= Math.pow(10, 306)) { set('points', eg(Math.pow(10, 307))); id('Points').innerHTML = "Points: Infinity"; if (askedToReset != 'true') { showConfirm("Reset to earn prestige?", 'data.reset.over()', ""); askedToReset = 'true';}}
-        else { id('Points').innerHTML = 'Points: ' + giant(get('points'));}
+        else if (get('points') < 0) id('Points').innerHTML = 'Points: 0';
+        else id('Points').innerHTML = 'Points: ' + giant(get('points'));
         if (get('interest') >= Math.pow(10, 307)) { set('interest', eg(Math.pow(10, 308))); id('Interest').innerHTML = "Interest: Infinity"; } 
-        else { id('Interest').innerHTML = 'Interest: ' + giant(get('interest')); }
+        else id('Interest').innerHTML = 'Interest: ' + giant(get('interest'));
 
     },
     achievements : function() {
@@ -280,8 +281,10 @@ var data = {
                 set(item, false);
             }
             set('handrawn', true);
-            set('played341-925216', true);
-            location.reload();
+            id('AchievementsList').innerHTML = '';
+            achievements.refresh();
+            id('confirmPopup').style.display = 'none';
+            id('popupOverlay').style.display = 'none';
         },
         hard : function() {
             for (i = 0; i < achievements.list.id.length; i++) { localStorage.removeItem(achievements.list.id[i]) };
@@ -290,7 +293,7 @@ var data = {
 			data.reset.soft();
         },
         reset : function() { showConfirm("Reset Everything?", "data.reset.hard()", "''"); },
-        over : function() { submitScore(); id('body').style.background = "#FF0000"; id('main').setAttribute('class', 'flicker'); set('username', get("username") + "+"); set('multiplier', add(get('multiplier'), get("multiplier"))); setTimeout('data.reset.hard()', 5000)}
+        over : function() { submitScore(); set('username', get("username") + "+"); set('multiplier', get('multiplier') * 25); setTimeout('data.reset.hard()', 5000)}
     },
     load : function() {
         if (get("points") === undefined) data.reset.hard();
@@ -301,10 +304,10 @@ var data = {
         }
 		setInterval('submitScore()', 15000);
         if (!get("username")) set('username', 'bClicker' + random());
+        achievements.refresh();
         refresh.all();
         ceiling = get("points");
         setInterval('realEarn()', 1);
-        setInterval('ceiling = get("points")', 1000);
         setInterval('bank.collect()', 2500);
         id("main").style.display = "block";
         id('loader').style.display = "none";
@@ -333,8 +336,8 @@ function SeeWinners() { window.parent.location = "https://playbclick.com/assets/
 
 function showConfirm(text, yes, no) {
     id('confirmText').innerHTML = text;
-    id('confirmYesBtn').setAttribute('ontouchend', "eval(" + yes + "); document.getElementById('confirmPopup').style.display = 'none'; document.getElementById('popupOverlay').style.display = 'none';");
-    id('confirmNoBtn').setAttribute('ontouchend', "eval(" + no + "); document.getElementById('confirmPopup').style.display = 'none'; document.getElementById('popupOverlay').style.display = 'none';");
+    id('confirmYesBtn').setAttribute('ontouchend', "eval(" + yes + ")");
+    id('confirmNoBtn').setAttribute('ontouchend', "eval(" + no + ");document.getElementById('confirmPopup').style.display = 'none'; document.getElementById('popupOverlay').style.display = 'none'");
     id('confirmPopup').style.display = "block";
     id('popupOverlay').style.display = "block";
 }
