@@ -1,23 +1,29 @@
-html, body { margin: 0px; width: 100%; height: 100%; color: #333; }
+html, body { margin: 0px;color: #333; }
 a, a:visited { color: #22a7f0; text-decoration: none; }
 
-h2 { padding: 0 0 15px; font-size: 25px; line-height: 40px; text-align: center; }
+h2, h1 { text-align: center; }
 .container { width: 960px; margin: 0 auto; }
  
-.content { position: relative; top: 0; left: 0; z-index: 1; overflow-x: hidden; width: 100%; min-height: 100vh; margin: 0; background-attachment: fixed !important; background-position: center center; background-size: cover; -webkit-overflow-scrolling: touch; box-sizing: border-box; -webkit-transition: all 300ms ease-in-out;  transition: all 300ms ease-in-out; }
+.content { position: relative; z-index: 1;  width: 100%; min-height: 100vh;background-size: cover; box-sizing: border-box }
 .content:before { position: absolute; top: 0; left: 0; display: block; width: 100%; height: 100%; background: rgba(51,51,51,0.3); content: ' '; }
 .content .content-wrap { padding: 40px; background: #fff; box-sizing: border-box;}
 .paragraph { text-align: justify; }
 
 @media screen and (max-width: 992px) {
- .container { width: 768px; }
- .content .content-wrap { margin: 40px auto; padding: 35px; }
+ .container { width: 768px }
+ .content .content-wrap { padding: 35px }
 }
 @media screen and (max-width: 767px) {
  .container { width: 100%; }
- .content .content-wrap { width: 100%; padding: 20px 0; margin: 40px auto; }
+ .content .content-wrap { width: 100%; padding: 20px 0 }
  .content .content-wrap .main-wrap { padding: 0 20px; }
 }
+@media screen and (max-width: 600px) {
+	.link {width: calc(50% - 20px) !important}
+}
+@media screen and (max-width: 450px) {
+	.link {width: calc(100% - 10px) !important}
+}
 .container { opacity: 0.8; }
-.links { margin: 5px auto; width: 100%; }
-.link { margin: 0px 5px; width: 254px; height: 75px;}
+.links { width: 100%; }
+.link { margin: 0px 5px;width:calc(33.3333% - 15px)}
