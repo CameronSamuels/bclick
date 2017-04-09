@@ -236,7 +236,7 @@ main, #bButton, .section, .arrow, #btnDeposit, #bUnlock, #bName, #interestDiv, #
     left: calc(50% - 125px);
 }
 #infoPopup footer, #confirmPopup footer { bottom: 5px }
-#infoPopup input { outline: none; border: 1px #2a2a2a solid; width: 90%;height:25px }
+#infoPopup input { outline: none; border: 1px #2a2a2a solid; width: 90%;height:30px;box-sizing:border-box; }
 #confirmPopup {
     height: 160px;
     width: 250px;
