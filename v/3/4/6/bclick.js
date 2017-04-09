@@ -436,7 +436,4 @@ var bank = {
 }
 // ===== Miscellaneous ===== //
 document.body.oncontextmenu = function(e){e.preventDefault()};
-window.onscroll = function(ev) {
-    if ((window.innerHeight + window.scrollY) == document.body.offsetHeight || window.scrollY == 0) e.preventDefault();
-};
 data.load();
