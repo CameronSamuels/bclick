@@ -87,7 +87,7 @@ function Earn(amount) {
         ceiling = parseFloat(ceiling) + parseFloat(amount);
         increment += (parseFloat(amount) / 100); 
     }
-    else { set('points', eg(Math.pow(10, 308))); }
+    else set('points', eg(Math.pow(10, 308)));
 	achievements.check();
 }
  
@@ -96,7 +96,7 @@ function Purchase(amount) {
         increment += (parseFloat(amount) / 100);
         ceiling = parseFloat(ceiling) - parseFloat(amount);
     }
-    else if (get("points") >= Math.pow(10, 308)) { set('points', eg(Math.pow(10, 308))); }
+    else if (get("points") >= Math.pow(10, 308)) set('points', eg(Math.pow(10, 308)));
 }
 
 function ClickB() {
@@ -107,7 +107,7 @@ function ClickB() {
         else { set('clicks', add(get('clicks'), 1)); }
         Earn(parseFloat(worth) * get("multiplier"));
     }
-    else { log("Unlock the B first"); }
+    else log("Unlock the B first");
 }
 
 function UnlockB() {
@@ -120,7 +120,7 @@ function UnlockB() {
             else { set('unlocked', add(get("unlocked"), 1)); } 
             Purchase(cost);
         }
-        else { log("Insufficient Points!") }
+        else { log("Insufficient Points") }
     }
     else log("Click the B");
 }
@@ -170,7 +170,7 @@ var achievements = {
         log("Multiplier is now " + giant(Math.round(get("multiplier"))));
     },
     check : function() {
-        var obj = achievements;
+        var obj = achievements, type = "";
         for (i = 0; i < obj.list.spaces.length; i++) {
             switch (obj.list.spaces[i].toString().split(' ')[2]) {
                 case "Thousand" : amount = 1000 * obj.list.spaces[i].toString().split(' ')[1]; break;
@@ -185,7 +185,6 @@ var achievements = {
                 case "Quinquagintillion" : amount = Math.pow(10,153); break;
                 default: amount = obj.list.spaces[i].toString().split(' ')[1];
             }
-            var type = "";
             switch (obj.list.spaces[i].charAt(0)) {
                 case "E" : type = "points"; break;
                 case "U" : type = "unlocked"; break;
@@ -202,15 +201,13 @@ var achievements = {
             var string = remove(achievements.list.spaces[i], "'"); string = remove(string, " ");
             achievements.list.id.push(string);
         }
-        var text = id("AchievementsList");
-        var type = "";
-        var typeNum = -1;
+        var text = id("AchievementsList"), type = "", typeNum = -1;
         for (i = 0; i < achievements.list.spaces.length; i++) {
             var amount = achievements.list.spaces[i].toString().split(' ')[1];
             if (!type.includes('Unlock')) amount += achievements.list.spaces[i].toString().split(' ')[2].charAt(0);
-            if (type.toString().charAt(0) == achievements.list.id[i].charAt(0)) {
+            if (type.toString().charAt(0) == achievements.list.id[i].charAt(0))
                 text.innerHTML += "<div title='" + achievements.list.spaces[i] + "' class='achieveItem' id='" + achievements.list.id[i] + "'>" + amount + "</div>";
-            } else {
+            else {
                 typeNum++;
                 type = achievements.list.type[typeNum];
                 text.innerHTML += "<div class='achieveCategory'>" + type + "</div><div title='" + achievements.list.spaces[i] + "' class='achieveItem' id='" + achievements.list.id[i] + "'>" + amount + "</div>";
@@ -224,7 +221,7 @@ var askedToReset = 'false';
 var refresh = {
     numbers : function() {
         if (get('points') >= Math.pow(10, 306)) { set('points', eg(Math.pow(10, 307))); id('Points').innerHTML = "Points: Infinity"; if (askedToReset != 'true') { showConfirm("Reset to earn prestige?", 'data.reset.over()', ""); askedToReset = 'true';}}
-        else if (get('points') < 0) id('Points').innerHTML = 'Points: 0';
+        else if (get('points') < 0) { set('points', 0); id('Points').innerHTML = 'Points: ' + giant(get('points')); }
         else id('Points').innerHTML = 'Points: ' + giant(get('points'));
         if (get('interest') >= Math.pow(10, 307)) { set('interest', eg(Math.pow(10, 308))); id('Interest').innerHTML = "Interest: Infinity"; } 
         else id('Interest').innerHTML = 'Interest: ' + giant(get('interest'));
