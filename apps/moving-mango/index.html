@@ -1,21 +1,15 @@
 <!DOCTYPE html><html>
     <head>
         <title>Moving Mango</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        
+        <link rel="stylesheet" type="text/css" href="style.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
         <link rel="shortcut icon" type="image/png" href="icon.png">
-        
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="apple-touch-icon" href="icon.png">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
     </head>
-
-    <body ontouchend="BodyClicked()" id="body">
-        <h1 class="Points" id="Points"></h1>
-        <div class="image Level1" ontouchend="WhenClicked()" id="Mango"></div>
+    <body ontouchend="BodyClicked()">
+        <h1 id="points"></h1>
+        <div class="Level1" ontouchend="WhenClicked()" id="mango"></div>
     </body>
-
-    <script src="script.js"></script>
-
+    <script src="script.min.js"></script>
 </html>

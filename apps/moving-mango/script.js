@@ -1,107 +1,49 @@
-var MangoClicked = false;
-var Worth = 1;
-
-var isMobile = {
+var MangoClicked = false, l = [10, 50, 100, 300, 750], isMobile = {
     Android: function() { return navigator.userAgent.match(/Android/i); },
     iOS: function() { return navigator.userAgent.match(/iPhone|iPad|iPod/i); },
     any: function() { return (isMobile.Android() || isMobile.iOS()); }
 };
-
 function get(what) { return localStorage[what] }
-function id(what) { return document.getElementById(what); }
-
+function set(what, value) { localStorage[what] = value }
+function id(what) { return document.getElementById(what) }
+set('points', get("points") || 0);
+set('level', get("level") || 1);
 function load() {
-    if (localStorage.MovingMangoPoints == undefined) localStorage.MovingMangoPoints = 0;
-    else id("Points").innerHTML = "Points: " + get("MovingMangoPoints");
+    id("points").innerHTML = "Points: " + get("points");
     if (!isMobile.any()) {
-        id("Mango").addEventListener("click", WhenClicked, false);
-        id("body").addEventListener("click", BodyClicked, false);
+        id("mango").addEventListener("click", WhenClicked, false);
+        document.body.addEventListener("click", BodyClicked, false);
     }
-    if (localStorage.mmmLevel == undefined) localStorage.mmmLevel = 1;
-    else {
-        var Level = localStorage.mmmLevel;
-        if (Level == 2) id("Mango").setAttribute("class", "image Level2");
-        if (Level == 3) id("Mango").setAttribute("class", "image Level3");
-        if (Level == 4) id("Mango").setAttribute("class", "image Level4");
-        if (Level == 5) id("Mango").setAttribute("class", "image Level5");
-        if (Level == 6) id("Mango").setAttribute("class", "image Level6");
-    }
-    if (localStorage.mmmWorth == undefined) localStorage.mmmWorth = 1;
-    else Worth = localStorage.mmmWorth;
+    id("mango").setAttribute("class", "Level" + get("level"));
 }
 
 function WhenClicked() {
-    localStorage.MovingMangoPoints = parseFloat(get("MovingMangoPoints")) + parseFloat(Worth);
-    id("Points").innerHTML = "Points: " + get("MovingMangoPoints");
+    set('points', parseFloat(get("points")) + 1);
+    id("points").innerHTML = "Points: " + get("points");
     MangoClicked = true;
-    var Mango = id("Mango");
-    
-    var x = get("MovingMangoPoints");
-    switch (true) {
-        case (x >= 100 && x < 250):
-            if (get("mmmLevel") != 2) {
-                alert("Level 1 Complete!");
-                Mango.setAttribute("class", "image Level2");
-                localStorage.mmmLevel = 2;
-            }
+    for (i = 0; i < l.length; i++) {
+        if (get("points") >= l[i] && get("points") < l[i + 1] && get("level") != i + 2) {
+            set('level', i + 2);
+            alert("Level " + (get("level") - 1) + " Complete!");
+            id("mango").setAttribute("class", "Level" + get("level"));
             break;
-        case (x >= 250 && x < 500):
-            if (get("mmmLevel") != 3) {
-                alert("Level 2 Complete!");
-                Mango.setAttribute("class", "image Level3");
-                localStorage.mmmLevel = 3;
-            }
-            break;
-        case (x >= 500 && x < 1000):
-            if (get("mmmLevel") != 4) {
-                alert("Level 3 Complete!");
-                Mango.setAttribute("class", "image Level4");
-                localStorage.mmmLevel = 4;
-            }
-            break;
-        case (x >= 1000 && x < 2500):
-            if (get("mmmLevel") != 5) {
-                alert("Level 4 Complete!");
-                Mango.setAttribute("class", "image Level5");
-                localStorage.mmmLevel = 5;
-            }
-            break;
-        case (x >= 2500):
-            if (get("mmmLevel") != 6) {
-                alert("Level 5 Complete!");
-                Mango.setAttribute("class", "image Level6");
-                localStorage.mmmLevel = 6;
-            }
-            break;
-        default:
+        }
     }
 }
-
-function AddWorth() {
-    localStorage.mmmWorth *= 2;
-    Worth *= 2;
-}
-
-var WorthTimer = setInterval(AddWorth, 60000);
 
 function BodyClicked() {
     if (MangoClicked == false) {
-        if (get("MovingMangoPoints") >= 25) {
-            localStorage.MovingMangoPoints = parseFloat(get("MovingMangoPoints")) - 25;
-            id("Points").innerHTML = "Points: " + get("MovingMangoPoints");
+        if (get("points") >= 15) {
+            set('points', parseFloat(get("points")) - 15);
+            id("points").innerHTML = "Points: " + get("points");
         } else {
-            localStorage.MovingMangoPoints = 0;
-            id("Points").innerHTML = "Points: " + get("MovingMangoPoints");
-            alert("GAME OVER!! Click to try again!");
-            localStorage.mmmLevel = 1;
-            localStorage.mmmWorth = 1;
-            location.reload();
+            set('points', 0);
+            set('level', 1);
+            load();
+            alert("GAME OVER!!");
         }
     }
-    else {
-        MangoClicked = false;
-    }
+    else MangoClicked = false;
 }
-
 
 load();
