@@ -323,7 +323,7 @@ function changeInfo() {
 }
 
 function submitScore() {
-    if (get("points") != 0) id('winFrame').setAttribute('src', "https://playbclick.com/assets/php/submit.php?username=" + get("username") + "&points=" + Math.round(dcml(get('points'))) + "&email=" + (get("email") || "")  + '&name=' + (get("name") || ""));
+    if (get("points") != 0) id('winFrame').setAttribute('src', "https://playbclick.com/assets/php/submit.php?username=" + get("username") + "&points=" + Math.round(dcml(get('points'))));
 }
 
 function submitForm() {
