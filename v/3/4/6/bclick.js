@@ -41,22 +41,12 @@ function remove(string, what) {
 }
 function random() {
     var randomness= '';
-    for (i = 0; i < Math.ceil(Math.random() * 5); i++) {
-        randomness += Math.ceil(Math.random() * Math.random() * 10).toString().charAt(0);
-    }
+    fl(function(){randomness += Math.ceil(Math.random() * Math.random() * 10).toString().charAt(0)}, Math.ceil(Math.random() * 5));
     var times = (5 - randomness.length);
-    for (i = 0; i < times; i++) {
-        randomness = '0' + randomness;
-    }
+    fl(function(){randomness = "0" + randomness}, times);
     randomness = '1' + randomness;
     return randomness;
 }
-
-var isMobile = {
-    Android: function() { return navigator.userAgent.match(/Android/i); },
-    iOS: function() { return navigator.userAgent.match(/iPhone|iPad|iPod/i); },
-    any: function() { return (isMobile.Android() || isMobile.iOS()); }
-};
 
 // ===== Core Functions ===== //
 var logs = 0;
@@ -250,7 +240,7 @@ var refresh = {
         }
     },
     events : function() {
-        if (!isMobile.any()) {
+        if (!navigator.userAgent.match(/iPhone|iPad|iPod/i) && !navigator.userAgent.match(/Android/i)) {
             var all = document.querySelectorAll('[ontouchend]');
             for (i = 0; i < all.length; i++) {
                 var ontouchend = all[i].getAttribute('ontouchend');
@@ -445,4 +435,8 @@ var bank = {
     }
 }
 // ===== Miscellaneous ===== //
+document.body.oncontextmenu = function(e){e.preventDefault()};
+window.onscroll = function(ev) {
+    if ((window.innerHeight + window.scrollY) == document.body.offsetHeight || window.scrollY == 0) e.preventDefault();
+};
 data.load();
