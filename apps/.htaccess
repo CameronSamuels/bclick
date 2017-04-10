@@ -6,6 +6,7 @@ Redirect 307 /apps/bnoodle https://play.google.com/store/apps/details?id=com.pla
 Redirect 307 /apps/dice https://chrome.google.com/webstore/detail/dice-thrower/gandnjjljgomdonoidfcjjockjngkjcc
 Redirect 307 /apps/delta-cubed http://deltacubed.bitballoon.com
 Redirect 307 /apps/moving-mango http://movingmango.bitballoon.com
+Redirect 307 /apps/doodle-dare http://doodledare.bitballoon.com
 Redirect 307 /apps/word-maker http://wordmaker.bitballoon.com
 Redirect 307 /apps/snippets/canvas-shape-generator http://polygen.bitballoon.com
 Redirect 307 /apps/snippets/marquee-tab-title http://marqueetitle.bitballoon.com
