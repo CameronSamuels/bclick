@@ -1,7 +1,0 @@
-Redirect 301 /android https://play.google.com/store/apps/details?id=com.playbclick.bclick
-Redirect 301 /chrome https://chrome.google.com/webstore/detail/bclick/fccplfmeljdiinmnjbemkgaganpbkghf
-Redirect 301 /ios https://appsto.re/us/kCo4ib.i
-Redirect 301 /web https://playbclick.com/v/3/4/6
-Redirect 301 /bocracy https://bocracy.com
-Redirect 301 /create https://playbclick.com/apps/create
-Redirect 301 /support mailto:team@playbclick.com
