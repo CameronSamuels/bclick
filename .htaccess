@@ -4,9 +4,4 @@ Redirect 301 /ios https://appsto.re/us/kCo4ib.i
 Redirect 301 /web https://playbclick.com/v/3/4/6
 Redirect 301 /bocracy https://bocracy.com
 Redirect 301 /create https://playbclick.com/apps/create
-Redirect 301 /dice https://playbclick.com/apps/dice
-Redirect 301 /bnoodle https://playbclick.com/apps/bnoodle
-ErrorDocument 404 /index.html
-Redirect 301 /feedback mailto:team@playbclick.com
-Redirect 301 /contact mailto:team@playbclick.com
 Redirect 301 /support mailto:team@playbclick.com
