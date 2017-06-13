@@ -31,10 +31,12 @@ main {
 @media screen and (min-height: 500px) { body { zoom: 150%; }}
 
 /*===== Classes =====*/
-.divider {
-    margin: 5px 0px;
+dv {
+    margin: 5px 0;
     border-top: 2px #2a2a2a dashed;
-    height: 0px;
+    height: 0;
+	display: inline-block;
+	width: 100%;
 }
 
 .button {
