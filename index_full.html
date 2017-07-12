@@ -1,41 +1,40 @@
 <!DOCTYPE html><html>
     <head>
-        <title>bClick</title>
-        <link rel="stylesheet" type="text/css" href="assets/css/bclick.min.css" />
-		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
-		<link rel="shortcut icon" type="image/png" href="assets/icons/icon.png">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<link rel="apple-touch-icon" href="assets/icons/256.png">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-		<meta property="og:title" content="bClick - The b-Click-ing game!" />
-		<meta property="og:image" content="assets/icons/256.png" />
-		<meta name="description" content="bClick - The b-Click-ing game! Unlock, Click, Deposit, Win! Made by Cameron Samuels!" />
-		<meta name="apple-itunes-app" content="app-id=1222698762">
+        <title>bClick - The b-Click-ing game!</title>
+        <link rel=stylesheet href=assets/css/bclick.css>
+		<meta name=viewport content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+		<link rel="shortcut icon" href=assets/icons/icon.png>
+		<meta name=apple-mobile-web-app-capable content=yes>
+		<link rel=apple-touch-icon href=assets/icons/256.png>
+		<meta name=apple-mobile-web-app-status-bar-style content=black-translucent>
+		<meta property=og:image content=assets/icons/256.png>
+		<meta name=description content="bClick - The b-Click-ing game! Unlock, Click, Deposit, Win!">
+		<meta name=apple-itunes-app content="app-id=1222698762">
     </head>
-    <body id="body">
-        <div id="loader"></div>
-        <main id="main">
-            <section id="leftSection" class="section"><div id="achievementsGroup" class="section-header header">Achievements</div><div id="AchievementsList"></div></section>
-            <section id="bSection" class="section">
-                <div class="header dashedHeader" id="pointsDiv"><div id="Points"></div></div>
-                <div id="LeftArrow" class="arrow button" ontouchend="b.loop.previous()">&#x21e6;</div> 
-                <div id="bButton" ontouchend="ClickB()"></div>
-                <div id="RightArrow" class="arrow button" ontouchend="b.loop.next()">&#x21e8;</div>
-                <div class="button" id="bUnlock" ontouchend="UnlockB()"></div>
-                <div id="bName"></div>
-                <div class="button" id="btnDeposit" ontouchend="bank.deposit()">Deposit</div>
-                <div class="header dashedHeader" id="interestDiv"><div id="Interest"></div></div>
+    <body id=body>
+        <div id=loader></div>
+        <main id=main>
+            <section id=leftSection class=section><div id=achievementsGroup class="section-header header">Achievements</div><div id=AchievementsList></div></section>
+            <section id=bSection class=section>
+                <div class="header dashedHeader" id="pointsDiv"><div id=Points></div></div>
+                <div id=LeftArrow class="arrow button" ontouchend=b.loop.previous()>&#x21e6;</div> 
+                <div id=bButton ontouchend=ClickB()></div>
+                <div id=RightArrow class="arrow button" ontouchend=b.loop.next()>&#x21e8;</div>
+                <div class=button id=bUnlock ontouchend=UnlockB()></div>
+                <div id=bName></div>
+                <div class=button id=btnDeposit ontouchend=bank.deposit()>Deposit</div>
+                <div class="header dashedHeader" id=interestDiv><div id=Interest></div></div>
             </section>
             <section id="settingsSection" class="section">
                 <div class="section-header header">Settings</div> 
-                <div class="settingGroup" id="generalDiv">
-                    <div class="button" ontouchend="data.reset.reset()">New Game</div>
+                <div class=settingGroup id=generalDiv>
+                    <div class=button ontouchend=data.reset.reset()>New Game</div>
                     <dv></dv>
-                    <div class="button" ontouchend="changeInfo()" id="btnChangeUsername">Change Username</div>
-                    <div class="button" ontouchend="SeeWinners()">Leaderboards</div>
+                    <div class=button ontouchend=changeInfo() id=btnChangeUsername>Change Username</div>
+                    <div class=button ontouchend=SeeWinners()>Leaderboards</div>
                 </div>
-                <div id="infoDiv" class="settingGroup"><div class="category-header header"><span>Information</span></div>
-                <div id="info">
+                <div id=infoDiv class=settingGroup><div class="category-header header"><span>Information</span></div>
+                <div id=info>
                     <div>Version 3.4.6.7</div>
                     <dv></dv>
                     <div>Made by Cameron Samuels</div>
@@ -43,19 +42,19 @@
                     <div>Copyright &copy; 2013-<script>document.write(new Date().getFullYear())</script></div>
                 </div></div>
             </section>
-            <iframe id="winFrame"></iframe>
+            <iframe id=winFrame></iframe>
         </main>
-        <div id="logText" class="flicker"></div>
-        <div id="infoPopup">
+        <div id=logText class=flicker></div>
+        <div id=infoPopup>
             <h2>Change Username</h2><dv></dv>
-            <input id="usernameInput" />
-            <footer><dv></dv><div id="infoSubmitBtn" class="button" ontouchend="submitForm()">Change</div></footer>
+            <input id=usernameInput />
+            <footer><dv></dv><div id=infoSubmitBtn class=button ontouchend=submitForm()>Change</div></footer>
         </div>
-        <div id="confirmPopup">
-            <h1 id="confirmText"></h1>
-            <footer><dv></dv><div id="softResetBtn" class="button" ontouchend="data.reset.soft()">Keep Achievements</div><div id="confirmYesBtn" class="button">Reset</div><div id="confirmNoBtn" class="button">Cancel</div></footer>
+        <div id=confirmPopup>
+            <h1 id=confirmText></h1>
+            <footer><dv></dv><div id=softResetBtn class=button ontouchend=data.reset.soft()>Keep Achievements</div><div id=confirmYesBtn class=button>Reset</div><div id=confirmNoBtn class=button>Cancel</div></footer>
         </div>
-        <div id="popupOverlay"></div>
+        <div id=popupOverlay></div>
     </body>
-    <script src="assets/js/bclick.min.js"></script>
+    <script src=assets/js/bclick.js></script>
 </html>
