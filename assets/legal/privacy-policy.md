@@ -42,7 +42,7 @@ We also do not use Google AdMobs, Google AdWords, Google IMA3, Vast, or any othe
 
 # Contacting Us
 If there are any questions regarding this privacy policy, you may contact us using the information below.
-
+<pre>
 The bClick Team
 Katy, Texas 77494
 United States
@@ -53,5 +53,5 @@ Cameron Samuels
 Katy, TX 77494
 United States
 me@cameronsamuels.com
-
+</pre>
 Last edited on Wednesday, July 12, 2017.
