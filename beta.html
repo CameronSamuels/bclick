@@ -9,14 +9,14 @@
     <meta property=og:image content=assets/icons/256.png>
     <meta name=description content="bClick - The b-Click-ing game! Unlock, Click, Deposit, Win!">
     <meta name=apple-itunes-app content="app-id=1222698762">
-    <body id=body>
+    <body>
         <div id=loader></div>
-        <main id=main>
-            <section id=leftSection class=section>
+        <main>
+            <section id=leftSection>
                 <div id=achievementsGroup class="section-header header">Achievements</div>
                 <div id=AchievementsList></div>
             </section>
-            <section id=bSection class=section>
+            <section id=bSection>
                 <div class="header dashedHeader" id="pointsDiv"><div id=Points></div></div>
                 <div id=LeftArrow class="arrow button" ontouchend=b.loop.previous()>&#x21e6;</div>
                 <div id=bButton ontouchend=ClickB()></div>
@@ -26,7 +26,7 @@
                 <div class=button id=btnDeposit ontouchend=bank.deposit()>Deposit</div>
                 <div class="header dashedHeader" id=interestDiv><div id=Interest></div></div>
             </section>
-            <section id="settingsSection" class="section">
+            <section id="settingsSection">
                 <div class="section-header header">Settings</div>
                 <div class=settingGroup id=generalDiv>
                     <div class=button ontouchend=data.reset.reset()>New Game</div><dv></dv>
@@ -46,13 +46,8 @@
         </main>
         <div id=logText class=flicker></div>
         <div id=infoPopup>
-            <h2>Change Username</h2>
-            <dv></dv>
-            <input id=usernameInput>
-            <footer>
-                <dv></dv>
-                <div id=infoSubmitBtn class=button ontouchend=submitForm()>Change</div>
-            </footer>
+            <h2>Change Username</h2><dv></dv><input id=usernameInput>
+            <footer><dv></dv><div id=infoSubmitBtn class=button ontouchend=submitForm()>Change</div></footer>
         </div>
         <div id=confirmPopup>
             <h1 id=confirmText></h1>

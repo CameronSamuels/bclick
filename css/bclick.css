@@ -1,11 +1,10 @@
 body, html {
     height: 100%;
     word-wrap: break-word;
-    font-size: 90%;
     font-family: monospace, sans-serif;
     user-select: none;
     -webkit-user-select: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
     overflow-y: hidden;
     color: #2a2a2a;
     background: #fff;
@@ -18,13 +17,10 @@ main {
     left: 0; right: 0;
     border: 1px #2a2a2a solid;
 }
-
-@media screen and (max-height: 319px) { body { zoom: 75%; } }
-@media screen and (min-height: 320px) { body { zoom: 100%; } #infoPopup { zoom: 80%; } #confirmPopup { zoom: 80%; } }
-@media screen and (min-height: 400px) { body { zoom: 125%; }}
-@media screen and (min-height: 500px) { body { zoom: 150%; }}
-
-/*===== Classes =====*/
+@media screen and (max-height: 319px) { body { zoom: 75% } }
+@media screen and (min-height: 320px) { #infoPopup { zoom: 80% } #confirmPopup { zoom: 80% } }
+@media screen and (min-height: 400px) { body { zoom: 125% }}
+@media screen and (min-height: 500px) { body { zoom: 150% }}
 dv {
     margin: 5px 0;
     border-top: 2px #2a2a2a dashed;
@@ -32,9 +28,8 @@ dv {
 	display: inline-block;
 	width: 100%;
 }
-
 .button {
-    background-color: rgb(100,100,100);
+    background: #646464;
     border: #2a2a2a solid 1px;
     border-radius: 3px;
     font-size: 12px;
@@ -43,33 +38,26 @@ dv {
     margin: 2.5px 9px;
     cursor: pointer;
 }
-.button:hover { background-color: rgb(120, 120, 120); }
-
-.section {
-    width: 187.6666px !important;
+.button:hover { background: #787878 }
+section {
+    width: 187.66px !important;
     height: 318px; 
     border-bottom: 1px #2a2a2a solid;
     border-right: 1px #2a2a2a solid;
     overflow: hidden;
 }
-
 .header {
     border-bottom: 1px #2a2a2a solid;
     border-top: 1px #2a2a2a solid;
     line-height: 20px;    
     margin-bottom: 5px;
 }
-
-.category-header, .section-header { background-color: yellow !important; }
+.category-header, .section-header { background: yellow !important; }
 .section-header { border-top: 0px; }
-
 .dashedHeader {
     border-top: 1px #2a2a2a dashed;
     border-bottom: 1px #2a2a2a dashed;
 }
-
-/*===== bSection =====*/
-
 #bButton {
     width: 50px;
     height: 50px;
@@ -82,14 +70,12 @@ dv {
     left: calc(50% - 51px);
     cursor: pointer;
 }
-
 #bButton:active {
   width: 45px;
   height: 45px;
   bottom: 123.1px;
   left: calc(50% - 48.5px);
 }
-
 #bName {
     border-radius: 20px;
     border: 1px #2a2a2a solid;
@@ -100,21 +86,17 @@ dv {
     bottom: 70.6px;
     left: 9px;
 }
-
 #bSection { left: calc(50% - 94.5px) }
-
 #interestDiv {
     bottom: 0px;
     margin-bottom: 0px;
     border-bottom-width: 0px;
 }
-
 #interestDiv, #pointsDiv {
     word-wrap: normal;
     white-space: nowrap;
     font-size: 9px;
 }
-
 #btnDeposit, #bUnlock {
     left: 9px;
     margin: 2.5px 0px;
@@ -124,13 +106,9 @@ dv {
     margin: 4.5px 0px;
     left: 12px;
 }
-
 #bUnlock { font-size: 8px; }
 #btnDeposit { bottom: 30px; }
 #pointsDiv { border-top-width: 0px; }
-
-/*===== Arrows =====*/
-
 .arrow {
     border-radius: 25px;
     padding: 5px;
@@ -140,15 +118,11 @@ dv {
     font-size: 20px;
     line-height: 20px;
 }
-
 #LeftArrow { left: calc(50% - 87.5px) }
 #RightArrow { right: calc(50% - 87.5px); }
-
-/*===== Settings =====*/
-
 .achieveItem {
-    background-color: #F00;
-    color: #FFF;
+    background: red;
+    color: #fff;
     border-radius: 15px;
     line-height: 25px;
     font-size: 8px;
@@ -156,10 +130,9 @@ dv {
     padding: calc(7.5% - 13px) 2.5%;
     margin: 2.5px;
 }
-
 .achieveCategory { margin: 2px 0px }
 .achieveCategory, .achieveItem, #info, #logText, #infoPopup, #confirmPopup, #infoPopup input, #bName, .button, .header { text-align: center }
-main, #bButton, .section, .arrow, #btnDeposit, #bUnlock, #bName, #interestDiv, #infoDiv, #loader, #infoPopup footer, #confirmPopup footer { position: absolute }
+main, #bButton, section, .arrow, #btnDeposit, #bUnlock, #bName, #interestDiv, #infoDiv, #loader, #infoPopup footer, #confirmPopup footer { position: absolute }
 #popupOverlay, #logText, #infoPopup, #confirmPopup { position: fixed }
 #logText, #winFrame, #infoPopup, #confirmPopup, #popupOverlay, main { display: none }
 #bButton, .header { background-color: #FFF }
@@ -167,19 +140,14 @@ main, #bButton, .section, .arrow, #btnDeposit, #bUnlock, #bName, #interestDiv, #
 #logText, .button, #bName { color: yellow }
 .button, .achieveItem { display: inline-block }
 #confirmPopup h1, body, html, .arrow { margin: 0px }
-
 #infoDiv { bottom: 10px }
 #info { font-size: 85% }
-
 #info div, #info, .achieveCategory, #infoPopup footer, #confirmPopup footer, #popupOverlay, body, html, .header, .settingGroup { width: 100%; }
-
 #settingsSection {
     left: calc(66.6%);
     border-right: 0px;
     width: 189.3333px !important;
 }
-
-/*===== Messages =====*/
 #logText {
     background-color: #2a2a2a;
     border-radius: 7.5px;
@@ -191,18 +159,13 @@ main, #bButton, .section, .arrow, #btnDeposit, #bUnlock, #bName, #interestDiv, #
     padding: 5px;
 }
 @media screen and (max-width: 500px) { #logText { zoom: 70%; width: 250px; }}
-
-.flicker { animation: flickerAnimation 1.5s infinite }
-
-@keyframes flickerAnimation {
-    0%   { opacity:0; }
-    25%  { opacity:1; }
-    75%  { opacity:1; }
-    100% { opacity:0; }
+.flicker { animation: f 1.5s infinite }
+@keyframes f {
+    0% { opacity:0 }
+    25% { opacity:1 }
+    75% { opacity:1 }
+    100% { opacity:0 }
 }
-
-/* ===== Loading ===== */
-
 #loader {
     border: 16px solid #2a2a2a;
     border-radius: 50%;
@@ -211,15 +174,9 @@ main, #bButton, .section, .arrow, #btnDeposit, #bUnlock, #bName, #interestDiv, #
     height: 150px;
     left: calc(50% - 91px);
     top: calc(50% - 91px);
-    animation: spin 2s linear infinite;
+    animation: s 2s infinite;
 }
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* ===== Other ===== */
-
+@keyframes s { 100% { transform: rotate(360deg); } }
 #infoPopup, #confirmPopup {
     background-color: yellow;
     border-radius: 25px;

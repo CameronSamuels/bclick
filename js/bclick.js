@@ -429,5 +429,5 @@ refresh.all();
 ceiling = get("points");
 setInterval('realEarn()', 1);
 setInterval('bank.collect()', 2500);
-$("main").style.display = "block";
+document.querySelector("main").style.display = "block";
 $('loader').style.display = "none";
