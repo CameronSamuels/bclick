@@ -283,7 +283,7 @@ function SeeWinners() { window.parent.location = "https://playbclick.com/assets/
 function showConfirm(text, yes, no) {
     $('confirmText').innerHTML = text;
     $('confirmYesBtn').setAttribute('ontouchend', "eval(" + yes + ")");
-    $('confirmNoBtn').setAttribute('ontouchend', "eval(" + no + ");document.getElementBy$('confirmPopup').style.display = 'none'; document.getElementBy$('popupOverlay').style.display = 'none'");
+    $('confirmNoBtn').setAttribute('ontouchend', "eval(" + no + ");$('confirmPopup').style.display='';$('popupOverlay').style.display=''");
     $('confirmPopup').style.display = "block";
     $('popupOverlay').style.display = "block";
 }
