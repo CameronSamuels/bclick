@@ -1,12 +1,8 @@
-@font-face {
-  font-family: 'Roboto Mono';
-  src: local('Roboto Mono'), local('RobotoMono-Regular'), url(../assets/fonts/font.woff2) format('woff2');
- }
 body, html {
     height: 100%;
     word-wrap: break-word;
     font-size: 90%;
-    font-family: 'Roboto Mono', monospace, sans-serif;
+    font-family: monospace, sans-serif;
     user-select: none;
     -webkit-user-select: none;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
