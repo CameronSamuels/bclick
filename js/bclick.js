@@ -1,11 +1,5 @@
-var $ = function(e) { return document.getElementById(e) }
-function get(e) { return localStorage[e] }
-function set(e, f) { localStorage.setItem(e, f) }
-function add(e, f) { return parseFloat(e) + parseFloat(f) }
-function sub(e, f) { return parseFloat(e) - parseFloat(f) }
-function fl(e, f) { for (i = 0; i < f; i++) { e() } }
-function ts(e) { return(sub(new Date().getTime(),e) / 1000) }
-var nums = ["", "Thousand", "Million", "Billion", "Trillion", "Quadrillion",
+var $ = function(e) { return document.getElementById(e) },
+nums = ["", "Thousand", "Million", "Billion", "Trillion", "Quadrillion",
 "Quintillion", "Sextillion", "Septillion", "Octillion", "Nonillion", "Decillion",
 "Undecillion", "Duodecillion", "Tredecillion", "Quattuordecillion", "Quindecillion", "Sexdecillion",
 "Septendecillion", "Octodecillion", "Novemdecillion", "Vigintillion", "Unvigintillion",
@@ -14,7 +8,14 @@ var nums = ["", "Thousand", "Million", "Billion", "Trillion", "Quadrillion",
 "Duotrigintillion", "Tretrigintillion", "Quattuortrigintillion", "Quintrigintillion", "Sextrigintillion",
 "Septentrigintillion", "Octotrigintillion", "Novemtrigintillion", "Quadragintillion", "Unquadragintillion",
 "Duoquadragintillion", "Trequadragintillion", "Quattuorquadragintillion", "Quinquadragintillion", "Sexquadragintillion",
-"Septenquadragintillion", "Octoquadragintillion", "Novemquadragintillion", "Quinquagintillion"];
+"Septenquadragintillion", "Octoquadragintillion", "Novemquadragintillion", "Quinquagintillion"], increment, ceiling = get("points"), left = 0,
+askedToReset = 'false', desktop = !navigator.userAgent.match(/iPhone|iPad|iPod/i) && !navigator.userAgent.match(/Android/i), logs = 0;
+function get(e) { return localStorage[e] }
+function set(e, f) { localStorage.setItem(e, f) }
+function add(e, f) { return parseFloat(e) + parseFloat(f) }
+function sub(e, f) { return parseFloat(e) - parseFloat(f) }
+function fl(e, f) { for (i = 0; i < f; i++) { e() } }
+function ts(e) { return(sub(new Date().getTime(),e) / 1000) }
 function dcml(x) {
     var e;if(Math.abs(x) < 1.0) { e = parseInt(x.toString().split('e-')[1]);
     if (e) {x*=Math.pow(10,e-1);x='0.'+(new Array(e)).join('0')+x.toString().substring(2);}}
@@ -47,9 +48,7 @@ function random() {
     randomness = '1' + randomness;
     return randomness;
 }
-
 // ===== Core Functions ===== //
-var logs = 0;
 function log(text) {
     if (logs >= 2) return;
     if ($("logText").style.display == "inline-block") {
@@ -61,10 +60,6 @@ function log(text) {
     $("logText").style.display = "inline-block";
     setTimeout('$("logText").style.display = "none"', 1500);
 }
-
-var increment;
-var ceiling = get("points");
-var left = 0;
 function realEarn() {
     if (get("points") < ceiling) {
 	  set('points', parseFloat(get("points")) + parseFloat(increment));
@@ -74,14 +69,9 @@ function realEarn() {
 	  set('points', parseFloat(get("points")) - parseFloat(increment));
 	  left = parseFloat(get("points")) - parseFloat(ceiling);
     }
-    else { left = 0; }
-	if (left <= 0) {
-	    left = get('points');
-	    ceiling = left;
-	    increment = 0;
-	}
+    else left = 0;
+	if (left <= 0) left = get('points'), ceiling = left, increment = 0;
 }
-
 function Earn(amount) {
     if (get("points") < Math.pow(10, 308)) {
         ceiling = parseFloat(ceiling) + parseFloat(amount);
@@ -98,7 +88,6 @@ function Purchase(amount) {
     }
     else if (get("points") >= Math.pow(10, 308)) set('points', eg(Math.pow(10, 308)));
 }
-
 function ClickB() {
 	name = b.list[get("bPosition")];
 	worth = b[b.list[get("bPosition")]].worth;
@@ -109,7 +98,6 @@ function ClickB() {
     }
     else log("Unlock the B first");
 }
-
 function UnlockB() {
     name = b.list[get("bPosition")];
 	cost = b[b.list[get("bPosition")]].cost;
@@ -124,9 +112,7 @@ function UnlockB() {
     }
     else log("Click the B");
 }
-
 // ===== Achievements ===== //
-
 var achievements = {
     list : {
         spaces : [
@@ -215,9 +201,7 @@ var achievements = {
         }
     }
 }
-
 // ===== Refreshing ===== //
-var askedToReset = 'false', desktop = !navigator.userAgent.match(/iPhone|iPad|iPod/i) && !navigator.userAgent.match(/Android/i);
 var refresh = {
     numbers : function() {
         if (get('points') >= Math.pow(10, 306)) { set('points', eg(Math.pow(10, 307))); $('Points').innerHTML = "Points: Infinity"; if (askedToReset != 'true') { showConfirm("Earn prestige?", 'data.reset.over()', ""); askedToReset = 'true';}}
@@ -225,7 +209,6 @@ var refresh = {
         else $('Points').innerHTML = 'Points: ' + giant(get('points'));
         if (get('interest') >= Math.pow(10, 307)) { set('interest', eg(Math.pow(10, 308))); $('Interest').innerHTML = "Interest: Infinity"; } 
         else $('Interest').innerHTML = 'Interest: ' + giant(get('interest'));
-
     },
     achievements : function() {
         achievements.check();
@@ -250,7 +233,6 @@ var refresh = {
         window.requestAnimationFrame(refresh.all);
     }
 }; 
-
 // ===== Saving Data ===== //
 var data = {
     reset : {
@@ -283,27 +265,21 @@ var data = {
         over : function() { submitScore(); set('username', get("username") + "+"); set('multiplier', get('multiplier') * 25);data.reset.hard()}
     }
 }
-
 // ===== Submission ===== //
-
 function changeInfo() {
     $('usernameInput').value = get('username') || "";
     $('infoPopup').style.display = "block";
     $('popupOverlay').style.display = "block";
 }
-
 function submitScore() {
     if (get("points") != 0) $('winFrame').setAttribute('src', "https://playbclick.com/assets/php/submit.php?username=" + get("username") + "&points=" + Math.round(dcml(get('points'))));
 }
-
 function submitForm() {
     set('username', $('usernameInput').value || 'bClicker' + random());
     $('infoPopup').style.display = "none";
     $('popupOverlay').style.display = "none";
 }
-
 function SeeWinners() { window.parent.location = "https://playbclick.com/assets/php/leaderboards.php" }
-
 function showConfirm(text, yes, no) {
     $('confirmText').innerHTML = text;
     $('confirmYesBtn').setAttribute('ontouchend', "eval(" + yes + ")");
@@ -311,9 +287,7 @@ function showConfirm(text, yes, no) {
     $('confirmPopup').style.display = "block";
     $('popupOverlay').style.display = "block";
 }
-
 // ===== The B's ===== //
-
 var bAmount = 0, b = {
     vars : {
         button : function() { return $("bButton") },
@@ -341,7 +315,6 @@ var bAmount = 0, b = {
         }
     }
 }
-
 function create(name, worth, cost, color, other) {
     this.worth = worth;
     this.cost = cost;
@@ -400,7 +373,6 @@ b.killer = new create('killer', 1e90, 1e93, "#f11", {tooltip:'<br>(Ethan Choo)'}
 b.dovahkinn = new create('dovahkinn', 1e93, 1e96, "#ff0", {tooltip:'<br>(Ethan Choo)'});
 b.phone = new create('phone', 1e96, 1e99, "#000");
 b.burger = new create('burger', 1e99, 1e102, "#6D3200", {tooltip:'<br>(Benz Le)'});
-
 // ===== The Bank ===== //
 var bank = {
     collect : function() {
