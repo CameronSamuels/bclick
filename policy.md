@@ -42,7 +42,7 @@ We also do not use Google AdMobs, Google AdWords, Google IMA3, Vast, or any othe
 If there are any questions regarding this privacy policy, you may contact us using the information below.
 <pre>
 The bClick Team
-Katy, Texas 77494
+Katy, TX 77494
 United States
 team@bocracy.com
 1 (409) 422-5425
@@ -50,6 +50,6 @@ team@bocracy.com
 Cameron Samuels
 Katy, TX 77494
 United States
-me@cameronsamuels.com
+biz@cameronsamuels.com
 </pre>
-Last edited on Wednesday, July 12, 2017.
+Last edited on Wednesday, July 21, 2017.
