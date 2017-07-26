@@ -297,7 +297,7 @@ var bAmount = 0, b = {
     list : [],
     refresh : function() {
         $('bName').innerHTML = b.list[get("bPosition")].toString().toUpperCase() + ' B ' + b[b.list[get("bPosition")]].other.tooltip;
-        b.vars.button().style.backgroundImage = "url('img/" + b.list[get("bPosition")] + ".png')";
+        b.vars.button().style.backgroundImage = "url('http://thebclickteam.tk/lib/bcl/b/" + b.list[get("bPosition")] + ".png')";
         if (get(b.list[get("bPosition")]) == 'false') b.vars.unlock().innerHTML = "Unlock<br>($" + giant(b[b.list[get("bPosition")]].cost) + ")";
 		else b.vars.unlock().innerHTML = "Unlocked!";
         b.vars.section().style.backgroundColor = b[b.list[get("bPosition")]].color;
