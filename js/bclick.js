@@ -72,7 +72,7 @@ function realEarn() {
     else left = 0;
 	if (left <= 0) left = get('points'), ceiling = left, increment = 0;
 }
-function Earn(amount) {
+function earn(amount) {
     if (get("points") < Math.pow(10, 308)) {
         ceiling = parseFloat(ceiling) + parseFloat(amount);
         increment += (parseFloat(amount) / 100); 
@@ -81,24 +81,24 @@ function Earn(amount) {
 	achievements.check();
 }
  
-function Purchase(amount) { 
+function purchase(amount) { 
     if (get("points") < Math.pow(10, 308) && (ceiling - amount) >= 0) {
         increment += (parseFloat(amount) / 100);
         ceiling = parseFloat(ceiling) - parseFloat(amount);
     }
     else if (get("points") >= Math.pow(10, 308)) set('points', eg(Math.pow(10, 308)));
 }
-function ClickB() {
+function click() {
 	name = b.list[get("bPosition")];
 	worth = b[b.list[get("bPosition")]].worth;
     if (get(name) == 'true') {
         if (get('clicks') === undefined) { set('clicks', 0); }
         else { set('clicks', add(get('clicks'), 1)); }
-        Earn(parseFloat(worth) * get("multiplier"));
+        earn(parseFloat(worth) * get("multiplier"));
     }
     else log("Unlock the B first");
 }
-function UnlockB() {
+function unlock() {
     name = b.list[get("bPosition")];
 	cost = b[b.list[get("bPosition")]].cost;
     if (get(name) == 'false') {  
@@ -106,7 +106,7 @@ function UnlockB() {
             set(name, true);
             if (get("unlocked") === undefined) { set("unlocked", 1); }
             else { set('unlocked', add(get("unlocked"), 1)); } 
-            Purchase(cost);
+            purchase(cost);
         }
         else { log("Insufficient Points") }
     }
@@ -376,7 +376,7 @@ b.burger = new create('burger', 1e99, 1e102, "#6D3200", {tooltip:'<br>(Benz Le)'
 // ===== The Bank ===== //
 var bank = {
     collect : function() {
-        Earn(get('interest'));
+        earn(get('interest'));
         d = new Date();
         set('lastPlay', new Date().getTime());
     },
@@ -384,7 +384,7 @@ var bank = {
         var amount = parseFloat(ceiling);
         set('deposited', add(get('deposited'), amount));
         set('interest', parseFloat(get("deposited")) * 0.1);
-        Purchase(amount); 
+        purchase(amount); 
     }
 }
 // ===== Miscellaneous ===== //
