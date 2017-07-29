@@ -394,10 +394,10 @@ else if (get("lastPlay") !== undefined) {
     var earned = Math.min(get('points'), ((get('interest') * 0.05) * Math.min(ts(get('lastPlay')), new Date().getTime() - 3600000) / 2500));
     set('points', add(get("points"), earned));
     if (earned >= 10) log('Earned ' + giant(earned) + ' points offline');
+    achievements.refresh();
 }
 setInterval('submitScore()', 15000);
 if (!get("username")) set('username', 'bClicker' + random());
-achievements.refresh();
 refresh.all();
 ceiling = get("points");
 setInterval('realEarn()', 1);
