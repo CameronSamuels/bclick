@@ -9,7 +9,7 @@ nums = ["", "Thousand", "Million", "Billion", "Trillion", "Quadrillion",
 "Septentrigintillion", "Octotrigintillion", "Novemtrigintillion", "Quadragintillion", "Unquadragintillion",
 "Duoquadragintillion", "Trequadragintillion", "Quattuorquadragintillion", "Quinquadragintillion", "Sexquadragintillion",
 "Septenquadragintillion", "Octoquadragintillion", "Novemquadragintillion", "Quinquagintillion"], increment, ceiling = get("points"), left = 0,
-askedToReset = 'false', desktop = !navigator.userAgent.match(/iPhone|iPad|iPod/i) && !navigator.userAgent.match(/Android/i), logs = 0;
+askedToReset = 'false', desktop = !navigator.userAgent.match(/iPhone|iPad|iPod|Android/i), logs = 0;
 function get(e) { return localStorage[e] }
 function set(e, f) { localStorage.setItem(e, f) }
 function add(e, f) { return parseFloat(e) + parseFloat(f) }
