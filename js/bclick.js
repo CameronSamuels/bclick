@@ -9,7 +9,7 @@ nums = ["", "Thousand", "Million", "Billion", "Trillion", "Quadrillion",
 "Septentrigintillion", "Octotrigintillion", "Novemtrigintillion", "Quadragintillion", "Unquadragintillion",
 "Duoquadragintillion", "Trequadragintillion", "Quattuorquadragintillion", "Quinquadragintillion", "Sexquadragintillion",
 "Septenquadragintillion", "Octoquadragintillion", "Novemquadragintillion", "Quinquagintillion"], increment, ceiling = get("points"), left = 0,
-askedToReset = 'false', desktop = !navigator.userAgent.match(/iPhone|iPad|iPod|Android/i), logs = 0;
+askedToReset = false, desktop = !navigator.userAgent.match(/iPhone|iPad|iPod|Android/i), logs = 0;
 function get(e) { return localStorage[e] }
 function set(e, f) { localStorage.setItem(e, f) }
 function add(e, f) { return parseFloat(e) + parseFloat(f) }
@@ -204,7 +204,7 @@ var achievements = {
 // ===== Refreshing ===== //
 var refresh = {
     numbers : function() {
-        if (get('points') >= Math.pow(10, 306)) { set('points', eg(Math.pow(10, 307))); $('Points').innerHTML = "Points: Infinity"; if (askedToReset != 'true') { showConfirm("Earn prestige?", 'data.reset.over()', ""); askedToReset = 'true';}}
+        if (get('points') >= Math.pow(10, 306)) { set('points', eg(Math.pow(10, 307))); $('Points').innerHTML = "Points: Infinity"; if (askedToReset != true) { showConfirm("Earn prestige?", 'data.reset.over()', ""); askedToReset = true;}}
         else if (get('points') < 0) { set('points', 0); $('Points').innerHTML = 'Points: ' + giant(get('points')); }
         else $('Points').innerHTML = 'Points: ' + giant(get('points'));
         if (get('interest') >= Math.pow(10, 307)) { set('interest', eg(Math.pow(10, 308))); $('Interest').innerHTML = "Interest: Infinity"; } 
