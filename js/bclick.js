@@ -375,20 +375,13 @@ var bank = {
     }
 }
 // ===== Miscellaneous ===== //
-onload = function() {
-    document.oncontextmenu = function(e){e.preventDefault()};
-    if (get("points") === undefined) data.reset.hard();
-    else if (get("lastPlay") !== undefined) {
-        var earned = Math.min(get('points'), ((get('interest') * 0.05) * Math.min(ts(get('lastPlay')), new Date().getTime() - 3600000) / 2500));
-        set('points', add(get("points"), earned));
-        if (earned >= 10) log('Earned ' + giant(earned) + ' points offline');
-        achievements.refresh();
-    }
-    b.refresh();
-    refresh.all();
-    ceiling = get("points");
-    setInterval('realEarn()', 1);
-    setInterval('bank.collect()', 2500);
-    document.querySelector("main").style.display = "block";
-    $('loader').style.display = "none";
-}
+document.oncontextmenu = function(e){e.preventDefault()};
+if (get("points") === undefined) data.reset.hard();
+else achievements.refresh();
+b.refresh();
+refresh.all();
+ceiling = get("points");
+setInterval('realEarn()', 1);
+setInterval('bank.collect()', 2500);
+document.querySelector("main").style.display = "block";
+$('loader').style.display = "none";
