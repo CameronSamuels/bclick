@@ -252,8 +252,8 @@ var data = {
             set('handrawn', true);
             $('AchievementsList').innerHTML = '';
             achievements.refresh();
-            $('confirmPopup').style.display = 'none';
-            $('popupOverlay').style.display = 'none';
+            $('confirmPopup').style.display = '';
+            $('popupOverlay').style.display = '';
         },
         hard : function() {
             for (i = 0; i < achievements.list.id.length; i++) { localStorage.removeItem(achievements.list.id[i]) };
@@ -262,24 +262,10 @@ var data = {
 			data.reset.soft();
         },
         reset : function() { showConfirm("Reset Game?", "data.reset.hard()", "''"); },
-        over : function() { submitScore(); set('username', get("username") + "+"); set('multiplier', get('multiplier') * 25);data.reset.hard()}
+        over : function() { /*submitScore(); set('username', get("username") + "+");*/ set('multiplier', get('multiplier') * 25);data.reset.hard()}
     }
 }
 // ===== Submission ===== //
-function changeInfo() {
-    $('usernameInput').value = get('username') || "";
-    $('infoPopup').style.display = "block";
-    $('popupOverlay').style.display = "block";
-}
-function submitScore() {
-    if (get("points") != 0) $('winFrame').setAttribute('src', "https://playbclick.com/assets/php/submit.php?username=" + get("username") + "&points=" + Math.round(dcml(get('points'))));
-}
-function submitForm() {
-    set('username', $('usernameInput').value || 'bClicker' + random());
-    $('infoPopup').style.display = "none";
-    $('popupOverlay').style.display = "none";
-}
-function SeeWinners() { window.parent.location = "https://playbclick.com/assets/php/leaderboards.php" }
 function showConfirm(text, yes, no) {
     $('confirmText').innerHTML = text;
     $('confirmYesBtn').setAttribute('ontouchend', "eval(" + yes + ")");
@@ -332,16 +318,16 @@ b.saw = new create('saw', 200, 5000, "#f00");
 b.spiky = new create('spiky', 500, 20000, "#FF0080");
 b.electric = new create('electric', 1000, 100000, "#FFA500");
 b.curved = new create('curved', 5000, 500000, "#0ff");
-b.shark = new create('shark', 10000, 2500000, "#33b", {tooltip:'<br>(Michael K)'});
-b.lightning = new create('lightning', 100000, 10000000, "#ff0", {tooltip:'<br>(Michael K)'});
+b.shark = new create('shark', 10000, 2500000, "#33b");
+b.lightning = new create('lightning', 100000, 10000000, "#ff0");
 b.awesome = new create('awesome', 1000000, 100000000, "#909");
 b.thirteen = new create('thirteen', 1e8, 1e9, "#555");
 b.thin = new create('thin', 1e9, 1e11, "#555");
-b.knight = new create('knight', 1e10, 1e12, "#614126", {tooltip:'<br>(Michael K)'});
-b.archer = new create('archer', 1e11, 1e13, "#060", {tooltip:'<br>(Michael K)'});
-b.barbed = new create('barbed', 1e12, 1e15, "#222", {tooltip:'<br>(Michael K)'});
-b.flower = new create('flower', 1e13, 1e16, "#b266b2", {tooltip:'<br>(Michael K)'});
-b.muscle = new create('muscle', 1e14, 1e17, "#0f0", {tooltip:'<br>(Michael K)'});
+b.knight = new create('knight', 1e10, 1e12, "#614126");
+b.archer = new create('archer', 1e11, 1e13, "#060");
+b.barbed = new create('barbed', 1e12, 1e15, "#222");
+b.flower = new create('flower', 1e13, 1e16, "#b266b2");
+b.muscle = new create('muscle', 1e14, 1e17, "#0f0");
 b.bw = new create('bw', 1e15, 1e18, "#000");
 b.honeycomb = new create('honeycomb', 1e16, 1e19, "#ff0");
 b.creative = new create('creative', 1e17, 1e20, "#ffb30d");
@@ -359,18 +345,18 @@ b.spear = new create('spear', 1e48, 1e51, "#333");
 b.superhero = new create('superhero', 1e51, 1e54, "#33f");
 b.chalk = new create('chalk', 1e54, 1e57, "#000");
 b.nature = new create('nature', 1e57, 1e60, "#6D3200", {tooltip:'<br>(Arjun M)'});
-b.golden = new create('golden', 1e60, 1e63, "#ffd700", {tooltip:'<br>(Micheal K)'});
-b.mage = new create('mage', 1e63, 1e66, "#f3f", {tooltip:'<br>(Ethan Choo)'});
-b.carnotaurus = new create('carnotaurus', 1e66, 1e69, "#f11", {tooltip:'<br>(Ethan Choo)'});
-b.business = new create('business', 1e69, 1e72, "#f8f", {tooltip:'<br>(Ethan Choo)'});
+b.golden = new create('golden', 1e60, 1e63, "#ffd700");
+b.mage = new create('mage', 1e63, 1e66, "#f3f");
+b.carnotaurus = new create('carnotaurus', 1e66, 1e69, "#f11");
+b.business = new create('business', 1e69, 1e72, "#f8f");
 b.duck = new create('duck', 1e72, 1e75, "#060");
-b.orchestral = new create('orchestral', 1e75, 1e78, "#6D3200", {tooltip:'<br>(Ethan Choo)'});
+b.orchestral = new create('orchestral', 1e75, 1e78, "#6D3200");
 b.candycane = new create('candycane', 1e78, 1e81, "#f00");
-b.year3 = new create('year3', 1e81, 1e84, "#ff0", {tooltip:'<br>(Aniversary)'});
+b.year3 = new create('year3', 1e81, 1e84, "#ff0", {tooltip:'<br>(3rd Aniversary)'});
 b.skater = new create('skater', 1e84, 1e87, "#6D3200");
 b.worldwar = new create('worldwar', 1e87, 1e90, "#6D3200", {tooltip:'<br>(Andrew L)'});
-b.killer = new create('killer', 1e90, 1e93, "#f11", {tooltip:'<br>(Ethan Choo)'});
-b.dovahkinn = new create('dovahkinn', 1e93, 1e96, "#ff0", {tooltip:'<br>(Ethan Choo)'});
+b.killer = new create('killer', 1e90, 1e93, "#f11");
+b.dovahkinn = new create('dovahkinn', 1e93, 1e96, "#ff0");
 b.phone = new create('phone', 1e96, 1e99, "#000");
 b.burger = new create('burger', 1e99, 1e102, "#6D3200", {tooltip:'<br>(Benz Le)'});
 // ===== The Bank ===== //
@@ -396,8 +382,6 @@ else if (get("lastPlay") !== undefined) {
     if (earned >= 10) log('Earned ' + giant(earned) + ' points offline');
     achievements.refresh();
 }
-setInterval('submitScore()', 15000);
-if (!get("username")) set('username', 'bClicker' + random());
 refresh.all();
 ceiling = get("points");
 setInterval('realEarn()', 1);

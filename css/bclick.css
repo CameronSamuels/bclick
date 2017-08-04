@@ -40,7 +40,7 @@ dv {
     margin: 2.5px 9px;
     cursor: pointer;
 }
-.button:hover { background: #787878 }
+.button:hover { background: #777 }
 section {
     width: 187.66px !important;
     height: 318px; 
@@ -55,7 +55,7 @@ section {
     margin-bottom: 5px;
 }
 .category-header, .section-header { background: yellow !important; }
-.section-header { border-top: 0px; }
+.section-header { border-top: 0 }
 .dashedHeader {
     border-top: 1px #2a2a2a dashed;
     border-bottom: 1px #2a2a2a dashed;
@@ -81,7 +81,7 @@ section {
 #bName {
     border-radius: 20px;
     border: 1px #2a2a2a solid;
-    background-color: rgb(100, 100, 100);
+    background: rgb(100, 100, 100);
     font-size: 10px;
     padding: 8px 15px;
     width: calc(90% - 30px - 2px);
@@ -90,9 +90,9 @@ section {
 }
 #bSection { left: calc(50% - 94.5px) }
 #interestDiv {
-    bottom: 0px;
-    margin-bottom: 0px;
-    border-bottom-width: 0px;
+    bottom: 0;
+    margin-bottom: 0;
+    border-bottom-width: 0;
 }
 #interestDiv, #pointsDiv {
     word-wrap: normal;
@@ -101,16 +101,16 @@ section {
 }
 #btnDeposit, #bUnlock {
     left: 9px;
-    margin: 2.5px 0px;
+    margin: 2.5px 0;
 }
 #btnDeposit:active {
     padding: 6px 12px;
-    margin: 4.5px 0px;
+    margin: 4.5px 0;
     left: 12px;
 }
-#bUnlock { font-size: 8px; }
-#btnDeposit { bottom: 30px; }
-#pointsDiv { border-top-width: 0px; }
+#bUnlock { font-size: 8px }
+#btnDeposit { bottom: 30px }
+#pointsDiv { border-top-width: 0 }
 .arrow {
     border-radius: 25px;
     padding: 5px;
@@ -141,7 +141,7 @@ main, #bButton, section, .arrow, #btnDeposit, #bUnlock, #bName, #interestDiv, #i
 .arrow, .achieveItem, .header { vertical-align: middle }
 #logText, .button, #bName { color: yellow }
 .button, .achieveItem { display: inline-block }
-#confirmPopup h1, body, html, .arrow { margin: 0px }
+#confirmPopup h1, body, html, .arrow { margin: 0 }
 #infoDiv { bottom: 10px }
 #info { font-size: 85% }
 #info div, #info, .achieveCategory, #infoPopup footer, #confirmPopup footer, #popupOverlay, body, html, .header, .settingGroup { width: 100%; }
@@ -151,7 +151,7 @@ main, #bButton, section, .arrow, #btnDeposit, #bUnlock, #bName, #interestDiv, #i
     width: 189.3333px !important;
 }
 #logText {
-    background-color: #2a2a2a;
+    background: #2a2a2a;
     border-radius: 7.5px;
     bottom: 5px;
     left: 0;
@@ -180,7 +180,7 @@ main, #bButton, section, .arrow, #btnDeposit, #bUnlock, #bName, #interestDiv, #i
 }
 @keyframes s { 100% { transform: rotate(360deg); } }
 #infoPopup, #confirmPopup {
-    background-color: yellow;
+    background: yellow;
     border-radius: 25px;
     z-index: 1;
 }
@@ -206,6 +206,6 @@ main, #bButton, section, .arrow, #btnDeposit, #bUnlock, #bName, #interestDiv, #i
     height: 100%;
     background: #2a2a2a;
     opacity: 0.5;
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
 }
