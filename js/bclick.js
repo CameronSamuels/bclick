@@ -111,6 +111,7 @@ function unlock() {
         else { log("Insufficient Points") }
     }
     else log("Click the B");
+    b.refresh();
 }
 // ===== Achievements ===== //
 var achievements = {
