@@ -88,7 +88,7 @@ function purchase(amount) {
     }
     else if (get("points") >= Math.pow(10, 308)) set('points', eg(Math.pow(10, 308)));
 }
-function click() {
+function bclick() {
 	name = b.list[get("bPosition")];
 	worth = b[b.list[get("bPosition")]].worth;
     if (get(name) == 'true') {
@@ -229,7 +229,7 @@ var refresh = {
         }
     },
     all : function() {
-        refresh.numbers(); b.refresh(); refresh.achievements(); refresh.events();
+        refresh.numbers(); refresh.achievements(); refresh.events();
         window.requestAnimationFrame(refresh.all);
     }
 }; 
@@ -374,17 +374,20 @@ var bank = {
     }
 }
 // ===== Miscellaneous ===== //
-document.oncontextmenu = function(e){e.preventDefault()};
-if (get("points") === undefined) data.reset.hard();
-else if (get("lastPlay") !== undefined) {
-    var earned = Math.min(get('points'), ((get('interest') * 0.05) * Math.min(ts(get('lastPlay')), new Date().getTime() - 3600000) / 2500));
-    set('points', add(get("points"), earned));
-    if (earned >= 10) log('Earned ' + giant(earned) + ' points offline');
-    achievements.refresh();
+onload = function() {
+    document.oncontextmenu = function(e){e.preventDefault()};
+    if (get("points") === undefined) data.reset.hard();
+    else if (get("lastPlay") !== undefined) {
+        var earned = Math.min(get('points'), ((get('interest') * 0.05) * Math.min(ts(get('lastPlay')), new Date().getTime() - 3600000) / 2500));
+        set('points', add(get("points"), earned));
+        if (earned >= 10) log('Earned ' + giant(earned) + ' points offline');
+        achievements.refresh();
+    }
+    b.refresh();
+    refresh.all();
+    ceiling = get("points");
+    setInterval('realEarn()', 1);
+    setInterval('bank.collect()', 2500);
+    document.querySelector("main").style.display = "block";
+    $('loader').style.display = "none";
 }
-refresh.all();
-ceiling = get("points");
-setInterval('realEarn()', 1);
-setInterval('bank.collect()', 2500);
-document.querySelector("main").style.display = "block";
-$('loader').style.display = "none";
