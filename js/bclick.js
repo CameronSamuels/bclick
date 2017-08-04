@@ -225,6 +225,7 @@ var refresh = {
             for (i = 0; i < all.length; i++) {
                 var ontouchend = all[i].getAttribute('ontouchend');
                 all[i].setAttribute('onclick', ontouchend);
+                all[i].removeAttribute('ontouchend');
             }
         }
     },
