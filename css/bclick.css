@@ -57,15 +57,8 @@ section {
 }
 .header {
     border-bottom: 1px #646464 solid;
-    border-top: 1px #646464 solid;
     line-height: 20px; 
     margin-bottom: 5px;
-}
-.category-header, .section-header { background: yellow !important; }
-.section-header { border-top: 0 }
-.dashedHeader {
-    border-top: 1px #646464 dashed;
-    border-bottom: 1px #646464 dashed;
 }
 #bButton {
     width: 173px;
@@ -114,7 +107,6 @@ section {
     margin: 7.5px 5px;
 }
 #btnDeposit { bottom: 40px }
-#pointsDiv { border-top-width: 0 }
 .arrow {
     border-radius: 27px;
     padding: 5px;
