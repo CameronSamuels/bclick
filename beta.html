@@ -3,9 +3,7 @@
     <link rel=stylesheet href=css/bclick.css>
     <meta name=viewport content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
     <link rel="shortcut icon" href=ico/icon.png>
-    <meta name=apple-mobile-web-app-capable content=yes>
     <link rel=apple-touch-icon href=ico/256.png>
-    <meta name=apple-mobile-web-app-status-bar-style content=black-translucent>
     <meta property=og:image content=ico/256.png>
     <meta name=description content="The b-Click-ing game! Unlock, Click, Deposit, Win!">
     <meta name=apple-itunes-app content="app-id=1222698762">
@@ -22,20 +20,6 @@
                 <div id=bName></div>
                 <div class=button id=btnDeposit ontouchend=bank.deposit()>Deposit</div>
                 <div class="header dashedHeader" id=interestDiv><div id=Interest></div></div>
-            </section>
-            <section id=settingsSection>
-                <div class="section-header header">Settings</div>
-                <div class=settingGroup id=generalDiv>
-                    <div class=button ontouchend=data.reset.reset()>New Game</div><dv></dv>
-                </div>
-                <div id=infoDiv class=settingGroup>
-                    <div class="category-header header"><span>Information</span></div>
-                    <div id=info>
-                        <div>Version 3.4.7.0</div><dv></dv>
-                        <div>Made by Cameron Samuels</div><dv></dv>
-                        <div>Copyright &copy; 2013-<script>document.write(new Date().getFullYear())</script></div>
-                    </div>
-                </div>
             </section>
         </main>
         <div id=logText class=flicker></div>

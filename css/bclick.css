@@ -12,83 +12,90 @@ body, html {
     -webkit-text-size-adjust: none;
 }
 main {
-    height: 318px;
-    width: 566px;
+    height: 568px;
+    width: 320px;
+    box-sizing: border-box;
     margin: auto;
     top: 0; bottom: 0;
     left: 0; right: 0;
-    border: 1px #2a2a2a solid;
+    border: 1px rgb(100, 100, 100) solid;
 }
-@media screen and (max-height: 319px) { body { zoom: 75% } }
-@media screen and (min-height: 320px) { #infoPopup { zoom: 80% } #confirmPopup { zoom: 80% } }
-@media screen and (min-height: 400px) { body { zoom: 125% }}
-@media screen and (min-height: 500px) { body { zoom: 150% }}
+@media screen and (orientation:landscape) {  
+    html { transform: rotate(90deg) }
+}
+@media screen and (max-height: 319px) and (orientation:landscape) { body { zoom: 75% } }
+@media screen and (min-height: 320px) and (orientation:landscape) { #infoPopup { zoom: 80% } #confirmPopup { zoom: 80% } }
+@media screen and (min-height: 400px) and (orientation:landscape) { body { zoom: 125% }}
+@media screen and (min-height: 500px) and (orientation:landscape) { body { zoom: 150% }}
+@media screen and (max-width: 319px) and (orientation:portrait) { body { zoom: 75% } }
+@media screen and (min-width: 320px) { #infoPopup { zoom: 80% } #confirmPopup { zoom: 80% } }
+@media screen and (min-width: 400px)  and (orientation:portrait) { body { zoom: 125% }}
+@media screen and (min-width: 500px) and (orientation:portrait) { body { zoom: 150% }}
 dv {
     margin: 5px 0;
-    border-top: 2px #2a2a2a dashed;
+    border-top: 2px rgb(100, 100, 100) dashed;
     height: 0;
 	display: inline-block;
 	width: 100%;
 }
 .button {
     background: #646464;
-    border: #2a2a2a solid 1px;
+    border: rgb(100, 100, 100) solid 1px;
     border-radius: 3px;
-    font-size: 12px;
-    padding: 8px 15px;
-    width: calc(90% - 30px - 2px);
+    font-size: 15px;
+    padding: 16px 8px;
+    width: calc(90% - 18px);
     margin: 2.5px 9px;
     cursor: pointer;
 }
 .button:hover { background: #777 }
 section {
-    width: 187.66px !important;
-    height: 318px; 
-    border-bottom: 1px #2a2a2a solid;
-    border-right: 1px #2a2a2a solid;
+    width: 318px !important;
+    height: 566px;
+    box-sizing: border-box;
     overflow: hidden;
 }
 .header {
-    border-bottom: 1px #2a2a2a solid;
-    border-top: 1px #2a2a2a solid;
-    line-height: 20px;    
+    border-bottom: 1px rgb(100, 100, 100) solid;
+    border-top: 1px rgb(100, 100, 100) solid;
+    line-height: 20px; 
     margin-bottom: 5px;
 }
 .category-header, .section-header { background: yellow !important; }
 .section-header { border-top: 0 }
 .dashedHeader {
-    border-top: 1px #2a2a2a dashed;
-    border-bottom: 1px #2a2a2a dashed;
+    border-top: 1px rgb(100, 100, 100) dashed;
+    border-bottom: 1px rgb(100, 100, 100) dashed;
 }
 #bButton {
-    width: 50px;
-    height: 50px;
-    border: 1px rgb(100, 100, 100) solid;
-    border-radius: 3px;
-    padding: 25px;
+    width: 173px;
+    height: 173px;
+    border: 2px rgb(100, 100, 100) solid;
+    border-radius: 6px;
     background-position: center;
     background-size: cover;
-    bottom: 120.6px;
-    left: calc(50% - 51px);
+    /*bottom: 120.6px;*/
+    bottom: calc(50% - 87.5px);
+    left: calc(50% - 87.5px);
     cursor: pointer;
 }
 #bButton:active {
-  width: 45px;
-  height: 45px;
-  bottom: 123.1px;
-  left: calc(50% - 48.5px);
+  width: 160px;
+  height: 160px;
+  bottom: calc(50% - 80px);
+  left: calc(50% - 80px);
 }
 #bName {
-    border-radius: 20px;
-    border: 1px #2a2a2a solid;
+    border-radius: 25px;
+    border: 1px rgb(100, 100, 100) solid;
     background: rgb(100, 100, 100);
-    font-size: 10px;
-    padding: 8px 15px;
-    width: calc(90% - 30px - 2px);
-    bottom: 70.6px;
-    left: 9px;
+    font-size: 15px;
+    padding: 16px 8px;
+    width: calc(90% - 18px);
+    bottom: 96px;
+    /*left: 9px;*/
 }
-#bSection { left: calc(50% - 94.5px) }
+/*#bSection { left: calc(50% - 94.5px) }*/
 #interestDiv {
     bottom: 0;
     margin-bottom: 0;
@@ -97,31 +104,35 @@ section {
 #interestDiv, #pointsDiv {
     word-wrap: normal;
     white-space: nowrap;
-    font-size: 9px;
+    font-size: 14px;
+    line-height: 14px;
+    padding: 8px 0;
 }
-#btnDeposit, #bUnlock {
-    left: 9px;
+#btnDeposit, #bUnlock, #bName {
+    left: calc(50% - 143px);
     margin: 2.5px 0;
 }
 #btnDeposit:active {
-    padding: 6px 12px;
-    margin: 4.5px 0;
-    left: 12px;
+    padding: 11px 3px;
+    margin: 7.5px 5px;
+    /*left: calc(50% - 143px);*/
 }
-#bUnlock { font-size: 8px }
-#btnDeposit { bottom: 30px }
+/*#bUnlock { font-size: 8px }*/
+#btnDeposit { bottom: 40px }
 #pointsDiv { border-top-width: 0 }
 .arrow {
-    border-radius: 25px;
+    border-radius: 27px;
     padding: 5px;
-    width: 20px;
-    height: 20px;
-    top: calc(50% - 12.5px);
-    font-size: 20px;
-    line-height: 20px;
+    width: 40px;
+    height: 40px;
+    border: 2px rgb(100, 100, 100) solid;
+    top: calc(50% - 27px);
+    font-size: 40px;
+    line-height: 42px;
+    vertical-align: middle;
 }
-#LeftArrow { left: calc(50% - 87.5px) }
-#RightArrow { right: calc(50% - 87.5px); }
+#LeftArrow { left: calc(50% - 150px) }
+#RightArrow { right: calc(50% - 150px); }
 .achieveItem {
     background: red;
     color: #fff;
@@ -144,12 +155,7 @@ main, #bButton, section, .arrow, #btnDeposit, #bUnlock, #bName, #interestDiv, #i
 #confirmPopup h1, body, html, .arrow { margin: 0 }
 #infoDiv { bottom: 10px }
 #info { font-size: 85% }
-#info div, #info, .achieveCategory, #infoPopup footer, #confirmPopup footer, #popupOverlay, body, html, .header, .settingGroup { width: 100%; }
-#settingsSection {
-    left: calc(66.6%);
-    border-right: 0px;
-    width: 189.3333px !important;
-}
+#info div, #info, .achieveCategory, #infoPopup footer, #confirmPopup footer, #popupOverlay, body, html, .header { width: 100%; }
 #logText {
     background: #2a2a2a;
     border-radius: 7.5px;
@@ -169,7 +175,7 @@ main, #bButton, section, .arrow, #btnDeposit, #bUnlock, #bName, #interestDiv, #i
     100% { opacity:0 }
 }
 #loader {
-    border: 16px solid #2a2a2a;
+    border: 16px solid rgb(100, 100, 100);
     border-radius: 50%;
     border-top: 16px solid yellow;
     width: 150px;
