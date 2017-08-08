@@ -223,7 +223,7 @@ var refresh = {
         var text = $("AchievementsList");
         for (i = 0; i < achievements.list.spaces.length; i++) {
             var item = $(achievements.list.id[i]);
-            if (get(achievements.list.id[i]) == "true") item.style.background = "#0F0";
+            if (get(achievements.list.id[i]) == "true") item.style.background = "#ff0";
         }
     },
     events : function() {

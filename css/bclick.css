@@ -131,13 +131,14 @@ section {
     background: #fff;
 }
 .achieveItem {
-    background: red;
-    color: #fff;
+    background: transparent;
+    border: 1px #2a2a2a solid;
+    color: #2a2a2a;
     border-radius: 50%;
     line-height: 25px;
     font-size: 14px;
-    width: calc(15% - 5px);
-    padding: calc(7.5% - 7px) 2.5%;
+    width: calc(15% - 7px);
+    padding: calc(7.5% - 8px) 2.5%;
     margin: 2.5px;
 }
 #leftSection .button {
@@ -150,6 +151,14 @@ section {
 .achieveCategory {
     margin: 2px 0px;
     font-size: 16px;
+}
+#achievementsGroup {
+    background: yellow;
+}
+.achieveItem[style] {
+    width: calc(15% - 5px);
+    padding: calc(7.5% - 7px) 2.5%;
+    border: 0;
 }
 .achieveCategory, .achieveItem, #info, #logText, #infoPopup, #confirmPopup, #infoPopup input, #bName, .button, .header { text-align: center }
 main, #bButton, section, .arrow, #btnDeposit, #bUnlock, #bName, #interestDiv, #infoDiv, #loader, #infoPopup footer, #confirmPopup footer { position: absolute }
