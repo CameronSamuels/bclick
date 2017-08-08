@@ -18,7 +18,7 @@ main {
     margin: auto;
     top: 0; bottom: 0;
     left: 0; right: 0;
-    border: 1px rgb(100, 100, 100) solid;
+    border: 1px #646464 solid;
 }
 @media screen and (orientation:landscape) {  
     html { transform: rotate(90deg) }
@@ -33,14 +33,14 @@ main {
 @media screen and (min-width: 500px) and (orientation:portrait) { body { zoom: 150% }}
 dv {
     margin: 5px 0;
-    border-top: 2px rgb(100, 100, 100) dashed;
+    border-top: 2px #646464 dashed;
     height: 0;
 	display: inline-block;
 	width: 100%;
 }
 .button {
     background: #646464;
-    border: rgb(100, 100, 100) solid 1px;
+    border: #646464 solid 1px;
     border-radius: 3px;
     font-size: 15px;
     padding: 16px 8px;
@@ -56,25 +56,24 @@ section {
     overflow: hidden;
 }
 .header {
-    border-bottom: 1px rgb(100, 100, 100) solid;
-    border-top: 1px rgb(100, 100, 100) solid;
+    border-bottom: 1px #646464 solid;
+    border-top: 1px #646464 solid;
     line-height: 20px; 
     margin-bottom: 5px;
 }
 .category-header, .section-header { background: yellow !important; }
 .section-header { border-top: 0 }
 .dashedHeader {
-    border-top: 1px rgb(100, 100, 100) dashed;
-    border-bottom: 1px rgb(100, 100, 100) dashed;
+    border-top: 1px #646464 dashed;
+    border-bottom: 1px #646464 dashed;
 }
 #bButton {
     width: 173px;
     height: 173px;
-    border: 2px rgb(100, 100, 100) solid;
+    border: 2px #646464 solid;
     border-radius: 6px;
     background-position: center;
     background-size: cover;
-    /*bottom: 120.6px;*/
     bottom: calc(50% - 87.5px);
     left: calc(50% - 87.5px);
     cursor: pointer;
@@ -87,15 +86,13 @@ section {
 }
 #bName {
     border-radius: 25px;
-    border: 1px rgb(100, 100, 100) solid;
-    background: rgb(100, 100, 100);
+    border: 1px #646464 solid;
+    background: #646464;
     font-size: 15px;
     padding: 16px 8px;
     width: calc(90% - 18px);
     bottom: 96px;
-    /*left: 9px;*/
 }
-/*#bSection { left: calc(50% - 94.5px) }*/
 #interestDiv {
     bottom: 0;
     margin-bottom: 0;
@@ -115,9 +112,7 @@ section {
 #btnDeposit:active {
     padding: 11px 3px;
     margin: 7.5px 5px;
-    /*left: calc(50% - 143px);*/
 }
-/*#bUnlock { font-size: 8px }*/
 #btnDeposit { bottom: 40px }
 #pointsDiv { border-top-width: 0 }
 .arrow {
@@ -125,7 +120,7 @@ section {
     padding: 5px;
     width: 40px;
     height: 40px;
-    border: 2px rgb(100, 100, 100) solid;
+    border: 2px #646464 solid;
     top: calc(50% - 27px);
     font-size: 40px;
     line-height: 42px;
@@ -175,7 +170,7 @@ main, #bButton, section, .arrow, #btnDeposit, #bUnlock, #bName, #interestDiv, #i
     100% { opacity:0 }
 }
 #loader {
-    border: 16px solid rgb(100, 100, 100);
+    border: 16px solid #646464;
     border-radius: 50%;
     border-top: 16px solid yellow;
     width: 150px;

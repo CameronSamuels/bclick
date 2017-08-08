@@ -264,7 +264,7 @@ var data = {
 			data.reset.soft();
         },
         reset : function() { showConfirm("Reset Game?", "data.reset.hard()", "''"); },
-        over : function() { /*submitScore(); set('username', get("username") + "+");*/ set('multiplier', get('multiplier') * 25);data.reset.hard()}
+        over : function() { set('multiplier', get('multiplier') * 25);data.reset.hard()}
     }
 }
 // ===== Submission ===== //
