@@ -10,6 +10,7 @@ nums = ["", "Thousand", "Million", "Billion", "Trillion", "Quadrillion",
 "Duoquadragintillion", "Trequadragintillion", "Quattuorquadragintillion", "Quinquadragintillion", "Sexquadragintillion",
 "Septenquadragintillion", "Octoquadragintillion", "Novemquadragintillion", "Quinquagintillion"], increment, ceiling = get("points"), left = 0,
 askedToReset = false, desktop = !navigator.userAgent.match(/iPhone|iPad|iPod|Android/i), logs = 0;
+if (desktop) document.querySelector('html').setAttribute('style', 'transform:rotate(0deg) !important;zoom:60%');
 function get(e) { return localStorage[e] }
 function set(e, f) { localStorage.setItem(e, f) }
 function add(e, f) { return parseFloat(e) + parseFloat(f) }
@@ -115,6 +116,12 @@ function unlock() {
 }
 // ===== Achievements ===== //
 var achievements = {
+    show : function() {
+        $('leftSection').style.display = "block";
+    },
+    hide : function() {
+        $('leftSection').style.display = "";
+    },
     list : {
         spaces : [
             "Earn 1 Thousand Points",
@@ -217,7 +224,7 @@ var refresh = {
         var text = $("AchievementsList");
         for (i = 0; i < achievements.list.spaces.length; i++) {
             var item = $(achievements.list.id[i]);
-            if (get(achievements.list.id[i]) == "true") item.style.background = "#0F0";
+            if (get(achievements.list.id[i]) == "true") item.style.background = "#ff0";
         }
     },
     events : function() {
@@ -264,7 +271,7 @@ var data = {
 			data.reset.soft();
         },
         reset : function() { showConfirm("Reset Game?", "data.reset.hard()", "''"); },
-        over : function() { /*submitScore(); set('username', get("username") + "+");*/ set('multiplier', get('multiplier') * 25);data.reset.hard()}
+        over : function() { set('multiplier', get('multiplier') * 25);data.reset.hard()}
     }
 }
 // ===== Submission ===== //

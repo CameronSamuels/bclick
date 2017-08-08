@@ -1,7 +1,7 @@
 body, html {
     height: 100%;
     word-wrap: break-word;
-    font-family: monospace, sans-serif;
+    font-family: sans-serif;
     user-select: none;
     -webkit-user-select: none;
     -webkit-tap-highlight-color: transparent;
@@ -12,156 +12,170 @@ body, html {
     -webkit-text-size-adjust: none;
 }
 main {
-    height: 318px;
-    width: 566px;
+    height: 568px;
+    width: 320px;
+    box-sizing: border-box;
     margin: auto;
     top: 0; bottom: 0;
     left: 0; right: 0;
-    border: 1px #2a2a2a solid;
+    border: 1px #646464 solid;
 }
-@media screen and (max-height: 319px) { body { zoom: 75% } }
-@media screen and (min-height: 320px) { #infoPopup { zoom: 80% } #confirmPopup { zoom: 80% } }
-@media screen and (min-height: 400px) { body { zoom: 125% }}
-@media screen and (min-height: 500px) { body { zoom: 150% }}
+@media screen and (orientation:landscape) {  
+    html { transform: rotate(90deg) }
+}
+@media screen and (max-height: 319px) and (orientation:landscape) { body { zoom: 75% } }
+@media screen and (min-height: 320px) and (orientation:landscape) { #confirmPopup { zoom: 80% } }
+@media screen and (min-height: 400px) and (orientation:landscape) { body { zoom: 125% }}
+@media screen and (min-height: 500px) and (orientation:landscape) { body { zoom: 150% }}
+@media screen and (max-width: 319px) and (orientation:portrait) { body { zoom: 75% } }
+@media screen and (min-width: 320px) { #confirmPopup { zoom: 80% } }
+@media screen and (min-width: 400px)  and (orientation:portrait) { body { zoom: 125% }}
+@media screen and (min-width: 500px) and (orientation:portrait) { body { zoom: 150% }}
 dv {
     margin: 5px 0;
-    border-top: 2px #2a2a2a dashed;
+    border-top: 2px #646464 dashed;
     height: 0;
-	display: inline-block;
-	width: 100%;
+    display: inline-block;
+    width: 100%;
 }
 .button {
     background: #646464;
-    border: #2a2a2a solid 1px;
+    border: #646464 solid 1px;
     border-radius: 3px;
-    font-size: 12px;
-    padding: 8px 15px;
-    width: calc(90% - 30px - 2px);
+    font-size: 15px;
+    padding: 16px 8px;
+    width: calc(90% - 18px);
     margin: 2.5px 9px;
     cursor: pointer;
 }
 .button:hover { background: #777 }
 section {
-    width: 187.66px !important;
-    height: 318px; 
-    border-bottom: 1px #2a2a2a solid;
-    border-right: 1px #2a2a2a solid;
+    width: 318px !important;
+    height: 566px;
+    box-sizing: border-box;
     overflow: hidden;
 }
 .header {
-    border-bottom: 1px #2a2a2a solid;
-    border-top: 1px #2a2a2a solid;
-    line-height: 20px;    
+    border-bottom: 1px #646464 solid;
+    line-height: 20px; 
     margin-bottom: 5px;
 }
-.category-header, .section-header { background: yellow !important; }
-.section-header { border-top: 0 }
-.dashedHeader {
-    border-top: 1px #2a2a2a dashed;
-    border-bottom: 1px #2a2a2a dashed;
-}
 #bButton {
-    width: 50px;
-    height: 50px;
-    border: 1px rgb(100, 100, 100) solid;
-    border-radius: 3px;
-    padding: 25px;
+    width: 173px;
+    height: 173px;
+    border: 2px #646464 solid;
+    border-radius: 6px;
     background-position: center;
     background-size: cover;
-    bottom: 120.6px;
-    left: calc(50% - 51px);
+    bottom: calc(50% - 87.5px);
+    left: calc(50% - 87.5px);
     cursor: pointer;
 }
 #bButton:active {
-  width: 45px;
-  height: 45px;
-  bottom: 123.1px;
-  left: calc(50% - 48.5px);
+  width: 160px;
+  height: 160px;
+  bottom: calc(50% - 80px);
+  left: calc(50% - 80px);
 }
 #bName {
-    border-radius: 20px;
-    border: 1px #2a2a2a solid;
-    background: rgb(100, 100, 100);
-    font-size: 10px;
-    padding: 8px 15px;
-    width: calc(90% - 30px - 2px);
-    bottom: 70.6px;
-    left: 9px;
+    border-radius: 25px;
+    border: 1px #646464 solid;
+    background: #646464;
+    font-size: 15px;
+    padding: 16px 8px;
+    width: calc(90% - 18px);
+    bottom: 96px;
 }
-#bSection { left: calc(50% - 94.5px) }
 #interestDiv {
     bottom: 0;
     margin-bottom: 0;
-    border-bottom-width: 0;
+    border-bottom: 0;
+    border-top: 1px #646464 solid;
 }
-#interestDiv, #pointsDiv {
+#interestDiv, #pointsDiv, #achievementsGroup {
     word-wrap: normal;
     white-space: nowrap;
-    font-size: 9px;
+    padding: 8px 0;
+    font-size: 16px;
+    line-height: 16px;
 }
-#btnDeposit, #bUnlock {
-    left: 9px;
+#btnDeposit, #bUnlock, #bName, #logText {
+    left: calc(50% - 143px);
     margin: 2.5px 0;
 }
-#btnDeposit:active {
-    padding: 6px 12px;
-    margin: 4.5px 0;
-    left: 12px;
-}
-#bUnlock { font-size: 8px }
-#btnDeposit { bottom: 30px }
-#pointsDiv { border-top-width: 0 }
-.arrow {
+#logText {
     border-radius: 25px;
-    padding: 5px;
-    width: 20px;
-    height: 20px;
-    top: calc(50% - 12.5px);
-    font-size: 20px;
-    line-height: 20px;
+    top: 111px;
 }
-#LeftArrow { left: calc(50% - 87.5px) }
-#RightArrow { right: calc(50% - 87.5px); }
+.flicker { animation: f 1.5s infinite }
+#btnDeposit:active {
+    padding: 11px 3px;
+    margin: 7.5px 5px;
+}
+#btnDeposit { bottom: 40px }
+.arrow {
+    border-radius: 27px;
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+    border: 2px #646464 solid;
+    top: calc(50% - 55px);
+    font-size: 40px;
+    line-height: 42px;
+    vertical-align: middle;
+}
+#LeftArrow, #ach { left: calc(50% - 150px) }
+#RightArrow { right: calc(50% - 150px) }
+#ach {
+    top: calc(50% + 10px);
+    font-size: 30px;
+    line-height: 46px;
+}
+#leftSection {
+    display: none;
+    z-index: 3;
+    background: #fff;
+}
 .achieveItem {
-    background: red;
-    color: #fff;
-    border-radius: 15px;
+    background: transparent;
+    border: 1px #2a2a2a solid;
+    color: #2a2a2a;
+    border-radius: 50%;
     line-height: 25px;
-    font-size: 8px;
-    width: calc(15% - 5px);
-    padding: calc(7.5% - 13px) 2.5%;
+    font-size: 14px;
+    width: calc(15% - 7px);
+    padding: calc(7.5% - 8px) 2.5%;
     margin: 2.5px;
 }
-.achieveCategory { margin: 2px 0px }
-.achieveCategory, .achieveItem, #info, #logText, #infoPopup, #confirmPopup, #infoPopup input, #bName, .button, .header { text-align: center }
-main, #bButton, section, .arrow, #btnDeposit, #bUnlock, #bName, #interestDiv, #infoDiv, #loader, #infoPopup footer, #confirmPopup footer { position: absolute }
-#popupOverlay, #logText, #infoPopup, #confirmPopup { position: fixed }
-#logText, #winFrame, #infoPopup, #confirmPopup, #popupOverlay, main { display: none }
-#bButton, .header { background-color: #FFF }
-.arrow, .achieveItem, .header { vertical-align: middle }
-#logText, .button, #bName { color: yellow }
-.button, .achieveItem { display: inline-block }
-#confirmPopup h1, body, html, .arrow { margin: 0 }
-#infoDiv { bottom: 10px }
-#info { font-size: 85% }
-#info div, #info, .achieveCategory, #infoPopup footer, #confirmPopup footer, #popupOverlay, body, html, .header, .settingGroup { width: 100%; }
-#settingsSection {
-    left: calc(66.6%);
-    border-right: 0px;
-    width: 189.3333px !important;
-}
-#logText {
-    background: #2a2a2a;
-    border-radius: 7.5px;
-    bottom: 5px;
+#leftSection .button {
+    margin: auto;
     left: 0;
     right: 0;
-    width: 300px;
-    margin: auto;
-    padding: 5px;
+    position: absolute;
+    bottom: 4px;
 }
-@media screen and (max-width: 500px) { #logText { zoom: 70%; width: 250px; }}
-.flicker { animation: f 1.5s infinite }
+.achieveCategory {
+    margin: 2px 0px;
+    font-size: 16px;
+}
+#achievementsGroup {
+    background: yellow;
+}
+.achieveItem[style] {
+    width: calc(15% - 5px);
+    padding: calc(7.5% - 7px) 2.5%;
+    border: 0;
+}
+.achieveCategory, .achieveItem, #confirmPopup, #bName, .button, .header { text-align: center }
+main, #bButton, section, .arrow, #btnDeposit, #logText, #bUnlock, #bName, #interestDiv, #loader, #confirmPopup footer { position: absolute }
+#popupOverlay, #confirmPopup { position: fixed }
+#logText, #confirmPopup, #popupOverlay, main { display: none }
+#bButton, .header { background-color: #FFF }
+.arrow, .achieveItem, .header { vertical-align: middle }
+.button, #bName { color: yellow }
+.button, .achieveItem { display: inline-block }
+#confirmPopup h1, body, html, .arrow { margin: 0 }
+.achieveCategory, #confirmPopup footer, #popupOverlay, body, html, .header { width: 100%; }
 @keyframes f {
     0% { opacity:0 }
     25% { opacity:1 }
@@ -169,7 +183,7 @@ main, #bButton, section, .arrow, #btnDeposit, #bUnlock, #bName, #interestDiv, #i
     100% { opacity:0 }
 }
 #loader {
-    border: 16px solid #2a2a2a;
+    border: 16px solid #646464;
     border-radius: 50%;
     border-top: 16px solid yellow;
     width: 150px;
@@ -179,19 +193,11 @@ main, #bButton, section, .arrow, #btnDeposit, #bUnlock, #bName, #interestDiv, #i
     animation: s 2s infinite;
 }
 @keyframes s { 100% { transform: rotate(360deg); } }
-#infoPopup, #confirmPopup {
+#confirmPopup {
     background: yellow;
     border-radius: 25px;
     z-index: 1;
 }
-#infoPopup {
-    height: 150px;
-    width: 250px;
-    top: calc(50% - 75px);
-    left: calc(50% - 125px);
-}
-#infoPopup footer, #confirmPopup footer { bottom: 5px }
-#infoPopup input { outline: none; border: 1px #2a2a2a solid; width: 90%;height:30px;box-sizing:border-box; }
 #confirmPopup {
     height: 128px;
     width: 250px;
