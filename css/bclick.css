@@ -113,6 +113,9 @@ section {
     margin: 7.5px 5px;
 }
 #btnDeposit { bottom: 40px }
+#LeftArrow, #RightArrow, #ach { background: #646464 center/80% no-repeat }
+#LeftArrow, #RightArrow { background-image: url(http://thebclickteam.tk/lib/bcl/img/arrow.svg) }
+.arrow:hover { background-color: #777 !important }
 .arrow {
     border-radius: 27px;
     padding: 5px;
@@ -120,16 +123,13 @@ section {
     height: 40px;
     border: 2px #646464 solid;
     top: calc(50% - 55px);
-    font-size: 40px;
-    line-height: 42px;
-    vertical-align: middle;
 }
 #LeftArrow, #ach { left: calc(50% - 150px) }
 #RightArrow { right: calc(50% - 150px) }
+#LeftArrow { transform: rotate(180deg) }
 #ach {
     top: calc(50% + 10px);
-    font-size: 30px;
-    line-height: 46px;
+    background-image: url(http://thebclickteam.tk/lib/bcl/img/star.svg)
 }
 #leftSection {
     display: none;
