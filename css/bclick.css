@@ -35,8 +35,8 @@ dv {
     margin: 5px 0;
     border-top: 2px #646464 dashed;
     height: 0;
-	display: inline-block;
-	width: 100%;
+    display: inline-block;
+    width: 100%;
 }
 .button {
     background: #646464;
@@ -89,7 +89,8 @@ section {
 #interestDiv {
     bottom: 0;
     margin-bottom: 0;
-    border-bottom-width: 0;
+    border-bottom: 0;
+    border-top: 1px #646464 solid;
 }
 #interestDiv, #pointsDiv, #achievementsGroup {
     word-wrap: normal;
@@ -98,10 +99,15 @@ section {
     font-size: 16px;
     line-height: 16px;
 }
-#btnDeposit, #bUnlock, #bName {
+#btnDeposit, #bUnlock, #bName, #logText {
     left: calc(50% - 143px);
     margin: 2.5px 0;
 }
+#logText {
+    border-radius: 25px;
+    top: 111px;
+}
+.flicker { animation: f 1.5s infinite }
 #btnDeposit:active {
     padding: 11px 3px;
     margin: 7.5px 5px;
@@ -160,28 +166,16 @@ section {
     padding: calc(7.5% - 7px) 2.5%;
     border: 0;
 }
-.achieveCategory, .achieveItem, #logText, #confirmPopup, #bName, .button, .header { text-align: center }
-main, #bButton, section, .arrow, #btnDeposit, #bUnlock, #bName, #interestDiv, #loader, #confirmPopup footer { position: absolute }
-#popupOverlay, #logText, #confirmPopup { position: fixed }
+.achieveCategory, .achieveItem, #confirmPopup, #bName, .button, .header { text-align: center }
+main, #bButton, section, .arrow, #btnDeposit, #logText, #bUnlock, #bName, #interestDiv, #loader, #confirmPopup footer { position: absolute }
+#popupOverlay, #confirmPopup { position: fixed }
 #logText, #confirmPopup, #popupOverlay, main { display: none }
 #bButton, .header { background-color: #FFF }
 .arrow, .achieveItem, .header { vertical-align: middle }
-#logText, .button, #bName { color: yellow }
+.button, #bName { color: yellow }
 .button, .achieveItem { display: inline-block }
 #confirmPopup h1, body, html, .arrow { margin: 0 }
 .achieveCategory, #confirmPopup footer, #popupOverlay, body, html, .header { width: 100%; }
-#logText {
-    background: #2a2a2a;
-    border-radius: 7.5px;
-    bottom: 5px;
-    left: 0;
-    right: 0;
-    width: 300px;
-    margin: auto;
-    padding: 5px;
-}
-@media screen and (max-width: 500px) { #logText { zoom: 70%; width: 250px; }}
-.flicker { animation: f 1.5s infinite }
 @keyframes f {
     0% { opacity:0 }
     25% { opacity:1 }
