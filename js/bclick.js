@@ -10,7 +10,7 @@ nums = ["", "Thousand", "Million", "Billion", "Trillion", "Quadrillion",
 "Duoquadragintillion", "Trequadragintillion", "Quattuorquadragintillion", "Quinquadragintillion", "Sexquadragintillion",
 "Septenquadragintillion", "Octoquadragintillion", "Novemquadragintillion", "Quinquagintillion"], increment, ceiling = get("points"), left = 0,
 askedToReset = false, desktop = !navigator.userAgent.match(/iPhone|iPad|iPod|Android/i), logs = 0;
-if (desktop) document.querySelector('html').setAttribute('style', 'transform:rotate(0deg) !important;zoom:60%');
+if (desktop) document.querySelector('html').setAttribute('style', 'transform:rotate(0deg) !important');
 function get(e) { return localStorage[e] }
 function set(e, f) { localStorage.setItem(e, f) }
 function add(e, f) { return parseFloat(e) + parseFloat(f) }
@@ -391,5 +391,11 @@ refresh.all();
 ceiling = get("points");
 setInterval('realEarn()', 1);
 setInterval('bank.collect()', 2500);
+function zoom() {
+    if (innerHeight > innerWidth || desktop) document.body.style.zoom = (innerHeight/568);
+    else if (innerHeight < innerWidth && !desktop) document.body.style.zoom = (innerWidth/568);
+}
+window.onresize = zoom;
+zoom();
 document.querySelector("main").style.display = "block";
 $('loader').style.display = "none";

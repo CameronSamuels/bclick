@@ -5,7 +5,7 @@ body, html {
     user-select: none;
     -webkit-user-select: none;
     -webkit-tap-highlight-color: transparent;
-    overflow-y: hidden;
+    overflow: hidden;
     color: #2a2a2a;
     background: #fff;
     font-size: 90%;
@@ -23,14 +23,6 @@ main {
 @media screen and (orientation:landscape) {  
     html { transform: rotate(90deg) }
 }
-@media screen and (max-height: 319px) and (orientation:landscape) { body { zoom: 75% } }
-@media screen and (min-height: 320px) and (orientation:landscape) { #confirmPopup { zoom: 80% } }
-@media screen and (min-height: 400px) and (orientation:landscape) { body { zoom: 125% }}
-@media screen and (min-height: 500px) and (orientation:landscape) { body { zoom: 150% }}
-@media screen and (max-width: 319px) and (orientation:portrait) { body { zoom: 75% } }
-@media screen and (min-width: 320px) { #confirmPopup { zoom: 80% } }
-@media screen and (min-width: 400px)  and (orientation:portrait) { body { zoom: 125% }}
-@media screen and (min-width: 500px) and (orientation:portrait) { body { zoom: 150% }}
 dv {
     margin: 5px 0;
     border-top: 2px #646464 dashed;
