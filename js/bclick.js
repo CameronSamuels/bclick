@@ -115,6 +115,12 @@ function unlock() {
 }
 // ===== Achievements ===== //
 var achievements = {
+    show : function() {
+        $('leftSection').style.display = "block";
+    },
+    hide : function() {
+        $('leftSection').style.display = "";
+    },
     list : {
         spaces : [
             "Earn 1 Thousand Points",

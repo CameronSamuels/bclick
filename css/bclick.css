@@ -98,12 +98,12 @@ section {
     margin-bottom: 0;
     border-bottom-width: 0;
 }
-#interestDiv, #pointsDiv {
+#interestDiv, #pointsDiv, #achievementsGroup {
     word-wrap: normal;
     white-space: nowrap;
-    font-size: 14px;
-    line-height: 14px;
     padding: 8px 0;
+    font-size: 16px;
+    line-height: 16px;
 }
 #btnDeposit, #bUnlock, #bName {
     left: calc(50% - 143px);
@@ -121,24 +121,44 @@ section {
     width: 40px;
     height: 40px;
     border: 2px #646464 solid;
-    top: calc(50% - 27px);
+    top: calc(50% - 55px);
     font-size: 40px;
     line-height: 42px;
     vertical-align: middle;
 }
-#LeftArrow { left: calc(50% - 150px) }
-#RightArrow { right: calc(50% - 150px); }
+#LeftArrow, #ach { left: calc(50% - 150px) }
+#RightArrow { right: calc(50% - 150px) }
+#ach {
+    top: calc(50% + 10px);
+    font-size: 30px;
+    line-height: 46px;
+}
+#leftSection {
+    display: none;
+    z-index: 3;
+    background: #fff;
+}
 .achieveItem {
     background: red;
     color: #fff;
-    border-radius: 15px;
+    border-radius: 50%;
     line-height: 25px;
-    font-size: 8px;
+    font-size: 14px;
     width: calc(15% - 5px);
-    padding: calc(7.5% - 13px) 2.5%;
+    padding: calc(7.5% - 7px) 2.5%;
     margin: 2.5px;
 }
-.achieveCategory { margin: 2px 0px }
+#leftSection .button {
+    margin: auto;
+    left: 0;
+    right: 0;
+    position: absolute;
+    bottom: 4px;
+}
+.achieveCategory {
+    margin: 2px 0px;
+    font-size: 16px;
+}
 .achieveCategory, .achieveItem, #info, #logText, #infoPopup, #confirmPopup, #infoPopup input, #bName, .button, .header { text-align: center }
 main, #bButton, section, .arrow, #btnDeposit, #bUnlock, #bName, #interestDiv, #infoDiv, #loader, #infoPopup footer, #confirmPopup footer { position: absolute }
 #popupOverlay, #logText, #infoPopup, #confirmPopup { position: fixed }
