@@ -30,10 +30,11 @@ function giant(num) {
     var EG = eg(num);
     var length = EG.toString().length - 1;
     var groups = (length / 3);
-    if (groups.toString().indexOf(".666") != -1 || groups.toString().indexOf(".333") != -1) groups = Math.floor(groups);
+    if (groups.toString().indexOf(".6") != -1 || groups.toString().indexOf(".3") != -1) groups = Math.round(groups);
     EG = "1"; fl(function(){EG+="000"}, groups);
-    if (EG == "1" || nums[groups] === undefined) return num;
-    else if (nums[groups] !== undefined && EG != "1") return(num / EG).toFixed(1) + " " + nums[groups];
+    if (EG == "1" || nums[groups] === undefined || length < 3) return num;
+    else if (num / EG == 1000 || num / EG < 1) return ((num / EG)*1000).toFixed(1) + " " + nums[groups-1];
+    else return(num / EG).toFixed(1) + " " + nums[groups];
 }
 function remove(string, what) {
     var reg = new RegExp(what, 'g');
