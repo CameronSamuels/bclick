@@ -20,13 +20,6 @@ main {
     border-width: 0 1px;
 }
 @media screen and (orientation:landscape) { html { transform: rotate(90deg) } }
-dv {
-    margin: 5px 0;
-    border-top: 2px #4c4c4c dashed;
-    height: 0;
-    display: inline-block;
-    width: 100%;
-}
 .button {
     background: #4c4c4c;
     border: #4c4c4c solid 1px;
@@ -157,13 +150,13 @@ section {
     border: 0;
 }
 .achieveCategory, .achieveItem, #confirmPopup, .button, .header { text-align: center }
-main, #bButton, section, .arrow, #btnDeposit, #logText, #bUnlock, #bName, #interestDiv, #loader, #confirmPopup footer { position: absolute }
+main, #bButton, section, .arrow, #btnDeposit, #logText, #bUnlock, #bName, #interestDiv, #loader { position: absolute }
 #popupOverlay, #confirmPopup { position: fixed }
 #logText, #confirmPopup, #popupOverlay, main { display: none }
 .arrow, .achieveItem, .header { vertical-align: middle }
 .button, .achieveItem { display: inline-block }
 #confirmPopup h1, body, html, .arrow { margin: 0 }
-.achieveCategory, #confirmPopup footer, #popupOverlay, body, html, .header { width: 100%; }
+.achieveCategory, #popupOverlay, body, html, .header { width: 100%; }
 @keyframes f {
     0% { opacity:0 }
     25% { opacity:1 }
