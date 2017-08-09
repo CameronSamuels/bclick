@@ -40,6 +40,7 @@ dv {
     width: calc(90% - 18px);
     margin: 2.5px 9px;
     cursor: pointer;
+    color: yellow;
 }
 .button:active { background: #555 }
 section {
@@ -71,15 +72,17 @@ section {
   bottom: calc(50% - 80px);
   left: calc(50% - 80px);
 }
-#bName {
+#bName, #logText {
     border-radius: 25px;
     border: 1px #4c4c4c solid;
     background: #4c4c4c;
     font-size: 15px;
     padding: 16px 8px;
     width: calc(90% - 18px);
-    bottom: 96px;
+    text-align: center;
+    color: yellow;
 }
+#bName { bottom: 96px }
 #interestDiv {
     bottom: 0;
     margin-bottom: 0;
@@ -160,12 +163,11 @@ section {
     padding: calc(7.5% - 7px) 2.5%;
     border: 0;
 }
-.achieveCategory, .achieveItem, #confirmPopup, #bName, .button, .header { text-align: center }
+.achieveCategory, .achieveItem, #confirmPopup, .button, .header { text-align: center }
 main, #bButton, section, .arrow, #btnDeposit, #logText, #bUnlock, #bName, #interestDiv, #loader, #confirmPopup footer { position: absolute }
 #popupOverlay, #confirmPopup { position: fixed }
 #logText, #confirmPopup, #popupOverlay, main { display: none }
 .arrow, .achieveItem, .header { vertical-align: middle }
-.button, #bName { color: yellow }
 .button, .achieveItem { display: inline-block }
 #confirmPopup h1, body, html, .arrow { margin: 0 }
 .achieveCategory, #confirmPopup footer, #popupOverlay, body, html, .header { width: 100%; }
