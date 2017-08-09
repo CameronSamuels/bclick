@@ -345,7 +345,9 @@ var bank = {
     }
 }
 // ===== Miscellaneous ===== //
-document.oncontextmenu = function(e){e.preventDefault()};
+document.oncontextmenu = function(e){e.preventDefault()},
+document.ontouchmove = function(a){a.preventDefault()},
+document.ontouchstart = function(a){a.preventDefault()};
 if (get("points") === undefined) reset();
 else achievements.refresh();
 b.refresh();
