@@ -9,7 +9,7 @@ nums = ["", "Thousand", "Million", "Billion", "Trillion", "Quadrillion",
 "Septentrigintillion", "Octotrigintillion", "Novemtrigintillion", "Quadragintillion", "Unquadragintillion",
 "Duoquadragintillion", "Trequadragintillion", "Quattuorquadragintillion", "Quinquadragintillion", "Sexquadragintillion",
 "Septenquadragintillion", "Octoquadragintillion", "Novemquadragintillion", "Quinquagintillion"], increment, ceiling = get("points"), left = 0,
-askedToReset = false, desktop = !navigator.userAgent.match(/iPhone|iPad|iPod|Android/i), logs = 0;
+unlocked = 0, askedToReset = false, desktop = !navigator.userAgent.match(/iPhone|iPad|iPod|Android/i), logs = 0;
 if (desktop) document.querySelector('html').setAttribute('style', 'transform:rotate(0deg) !important');
 function get(e) { return localStorage[e] }
 function set(e, f) { localStorage.setItem(e, f) }
@@ -95,8 +95,7 @@ function unlock() {
     if (get(name) == 'false') {  
         if (get("points") >= cost) {
             set(name, true);
-            if (get("unlocked") === undefined) { set("unlocked", 1); }
-            else { set('unlocked', add(get("unlocked"), 1)); } 
+            unlocked++;
             lose(cost);
         }
         else { log("Insufficient Points") }
@@ -236,10 +235,10 @@ var refresh = {
 }; 
 // ===== Saving Data ===== //
 function reset() {
-    increment = 0, ceiling = 0;
+    increment = 0, ceiling = 0, unlocked = 1;
     set('points', 0), set('multiplier', 1),
     set('interest', 0), set('deposited', 0),
-    set('clicks', 0), set('unlocked', 0),
+    set('clicks', 0),
     set('bPosition', 0);
     for (i = 0; i < b.list.length; i++) {
         var item = b.list[i];
@@ -285,8 +284,9 @@ function create(name, worth, cost, tooltip) {
     this.name = name;
     this.tooltip = tooltip || '';
     if (get(name) == undefined) set(name, false);
+    else if (get(name) == "true") unlocked++;
     b.list.push(name);
-    bAmount = add(bAmount, 1);
+    bAmount++;
 }
 b.handrawn = new create('handrawn', 2, 0);
 b.lowercase = new create('lowercase', 10, 100);
@@ -329,7 +329,7 @@ b.business = new create('business', 1e69, 1e72);
 b.duck = new create('duck', 1e72, 1e75);
 b.orchestral = new create('orchestral', 1e75, 1e78);
 b.candycane = new create('candycane', 1e78, 1e81);
-b.year3 = new create('year3', 1e81, 1e84, '<br>(3rd Aniversary)');
+b.year3 = new create('year3', 1e81, 1e84);
 b.skater = new create('skater', 1e84, 1e87);
 b.worldwar = new create('worldwar', 1e87, 1e90, '<br>(Andrew L)');
 b.killer = new create('killer', 1e90, 1e93);
