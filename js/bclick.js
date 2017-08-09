@@ -5,10 +5,7 @@ nums = ["", "Thousand", "Million", "Billion", "Trillion", "Quadrillion",
 "Septendecillion", "Octodecillion", "Novemdecillion", "Vigintillion", "Unvigintillion",
 "Duovigintillion", "Tresvigintillion", "Quattuorvigintillion", "Quinquavigintillion", "Sesvigintillion",
 "Septemvigintillion", "Octovigintillion", "Novemvigintillion", "Trigintillion", "Untrigintillion",
-"Duotrigintillion", "Tretrigintillion", "Quattuortrigintillion", "Quintrigintillion", "Sextrigintillion",
-"Septentrigintillion", "Octotrigintillion", "Novemtrigintillion", "Quadragintillion", "Unquadragintillion",
-"Duoquadragintillion", "Trequadragintillion", "Quattuorquadragintillion", "Quinquadragintillion", "Sexquadragintillion",
-"Septenquadragintillion", "Octoquadragintillion", "Novemquadragintillion", "Quinquagintillion"], increment, ceiling = get("points"), left = 0,
+"Duotrigintillion", "Tretrigintillion", "Quattuortrigintillion"], increment, ceiling = get("points"), left = 0,
 unlocked = 0, askedToReset = false, desktop = !navigator.userAgent.match(/iPhone|iPad|iPod|Android/i), logs = 0;
 if (desktop) document.querySelector('html').setAttribute('style', 'transform:rotate(0deg) !important');
 function get(e) { return localStorage[e] }
@@ -65,20 +62,20 @@ function realEarn() {
 	if (left <= 0) left = get('points'), ceiling = left, increment = 0;
 }
 function earn(a) {
-    if (get("points") < Math.pow(10, 308)) {
+    if (get("points") < 1e105) {
         ceiling = parseFloat(ceiling) + parseFloat(a);
         increment += (parseFloat(a) / 100); 
     }
-    else set('points', eg(Math.pow(10, 308)));
+    else set('points', 1e105);
 	achievements.check();
 }
  
 function lose(a) { 
-    if (get("points") < Math.pow(10, 308) && (ceiling - a) >= 0) {
+    if (get("points") < 1e105 && (ceiling - a) >= 0) {
         increment += (parseFloat(a) / 100);
         ceiling = parseFloat(ceiling) - parseFloat(a);
     }
-    else if (get("points") >= Math.pow(10, 308)) set('points', eg(Math.pow(10, 308)));
+    else if (get("points") >= 1e105) set('points', eg(1e105));
 }
 function bclick() {
 	name = b.list[get("bPosition")];
@@ -196,8 +193,8 @@ var achievements = {
 // ===== Refreshing ===== //
 var refresh = {
     numbers : function() {
-        if (get('points') >= Math.pow(10, 306)) {
-            set('points', eg(Math.pow(10, 307)));
+        if (get('points') >= 1e105) {
+            set('points', eg(1e105));
             $('Points').innerHTML = "Points: Infinity";
             if (askedToReset != true) { 
                 $('confirmPopup').style.display = "block";
@@ -207,7 +204,7 @@ var refresh = {
         }
         else if (get('points') < 0) { set('points', 0); $('Points').innerHTML = 'Points: ' + giant(get('points')); }
         else $('Points').innerHTML = 'Points: ' + giant(get('points'));
-        if (get('interest') >= Math.pow(10, 307)) { set('interest', eg(Math.pow(10, 308))); $('Interest').innerHTML = "Interest: Infinity"; } 
+        if (get('interest') >= 1e105) { set('interest', eg(1e105)); $('Interest').innerHTML = "Interest: Infinity"; } 
         else $('Interest').innerHTML = 'Interest: ' + giant(get('interest'));
     },
     achievements : function() {
