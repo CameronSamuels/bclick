@@ -11,6 +11,7 @@ body, html {
     font-size: 90%;
     -webkit-text-size-adjust: none;
 }
+main, #leftSection { background: #fafafa }
 main {
     height: 568px;
     width: 320px;
@@ -18,21 +19,21 @@ main {
     margin: auto;
     top: 0; bottom: 0;
     left: 0; right: 0;
-    border: 1px #646464 solid;
+    border: 1px #4c4c4c solid;
 }
 @media screen and (orientation:landscape) {  
     html { transform: rotate(90deg) }
 }
 dv {
     margin: 5px 0;
-    border-top: 2px #646464 dashed;
+    border-top: 2px #4c4c4c dashed;
     height: 0;
     display: inline-block;
     width: 100%;
 }
 .button {
-    background: #646464;
-    border: #646464 solid 1px;
+    background: #4c4c4c;
+    border: #4c4c4c solid 1px;
     border-radius: 3px;
     font-size: 15px;
     padding: 16px 8px;
@@ -40,7 +41,7 @@ dv {
     margin: 2.5px 9px;
     cursor: pointer;
 }
-.button:hover { background: #777 }
+.button:active { background: #555 }
 section {
     width: 318px !important;
     height: 566px;
@@ -48,20 +49,21 @@ section {
     overflow: hidden;
 }
 .header {
-    border-bottom: 1px #646464 solid;
+    border-bottom: 1px #4c4c4c solid;
     line-height: 20px; 
     margin-bottom: 5px;
 }
 #bButton {
     width: 173px;
     height: 173px;
-    border: 2px #646464 solid;
+    border: 2px #4c4c4c solid;
     border-radius: 6px;
     background-position: center;
     background-size: cover;
     bottom: calc(50% - 87.5px);
     left: calc(50% - 87.5px);
     cursor: pointer;
+    background-color: #fff;
 }
 #bButton:active {
   width: 160px;
@@ -71,8 +73,8 @@ section {
 }
 #bName {
     border-radius: 25px;
-    border: 1px #646464 solid;
-    background: #646464;
+    border: 1px #4c4c4c solid;
+    background: #4c4c4c;
     font-size: 15px;
     padding: 16px 8px;
     width: calc(90% - 18px);
@@ -82,7 +84,7 @@ section {
     bottom: 0;
     margin-bottom: 0;
     border-bottom: 0;
-    border-top: 1px #646464 solid;
+    border-top: 1px #4c4c4c solid;
 }
 #interestDiv, #pointsDiv, #achievementsGroup {
     word-wrap: normal;
@@ -105,15 +107,15 @@ section {
     margin: 7.5px 5px;
 }
 #btnDeposit { bottom: 40px }
-#LeftArrow, #RightArrow, #ach { background: #646464 center/80% no-repeat }
+#LeftArrow, #RightArrow, #ach { background: #4c4c4c center/80% no-repeat }
 #LeftArrow, #RightArrow { background-image: url(http://thebclickteam.tk/lib/bcl/img/arrow.svg) }
-.arrow:hover { background-color: #777 !important }
+.arrow:active { background-color: #555 !important }
 .arrow {
     border-radius: 27px;
     padding: 5px;
     width: 40px;
     height: 40px;
-    border: 2px #646464 solid;
+    border: 2px #4c4c4c solid;
     top: calc(50% - 55px);
 }
 #LeftArrow, #ach { left: calc(50% - 150px) }
@@ -126,18 +128,18 @@ section {
 #leftSection {
     display: none;
     z-index: 3;
-    background: #fff;
 }
 .achieveItem {
     background: transparent;
-    border: 1px #2a2a2a solid;
+    border: 2px #2a2a2a solid;
     color: #2a2a2a;
     border-radius: 50%;
     line-height: 25px;
     font-size: 14px;
-    width: calc(15% - 7px);
-    padding: calc(7.5% - 8px) 2.5%;
+    width: calc(15% - 9px);
+    padding: calc(7.5% - 9px) 2.5%;
     margin: 2.5px;
+    font-weight: bold;
 }
 #leftSection .button {
     margin: auto;
@@ -162,7 +164,6 @@ section {
 main, #bButton, section, .arrow, #btnDeposit, #logText, #bUnlock, #bName, #interestDiv, #loader, #confirmPopup footer { position: absolute }
 #popupOverlay, #confirmPopup { position: fixed }
 #logText, #confirmPopup, #popupOverlay, main { display: none }
-#bButton, .header { background-color: #FFF }
 .arrow, .achieveItem, .header { vertical-align: middle }
 .button, #bName { color: yellow }
 .button, .achieveItem { display: inline-block }
@@ -175,7 +176,7 @@ main, #bButton, section, .arrow, #btnDeposit, #logText, #bUnlock, #bName, #inter
     100% { opacity:0 }
 }
 #loader {
-    border: 16px solid #646464;
+    border: 16px solid #4c4c4c;
     border-radius: 50%;
     border-top: 16px solid yellow;
     width: 150px;
