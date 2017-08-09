@@ -29,13 +29,8 @@
             </section>
         </main>
         <div id=confirmPopup>
-            <h1 id=confirmText></h1>
-            <footer>
-                <dv></dv>
-                <div id=softResetBtn class=button ontouchend=data.reset.soft()>Keep Achievements</div>
-                <div id=confirmYesBtn class=button>Reset</div>
-                <div id=confirmNoBtn class=button>Cancel</div>
-            </footer>
+            <h1>You won</h1>
+            <div class=button ontouchend=reset()>Reset</div>
         </div>
         <div id=popupOverlay></div>
         <script src=js/bclick.js></script>

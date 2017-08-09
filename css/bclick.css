@@ -7,23 +7,19 @@ body, html {
     -webkit-tap-highlight-color: transparent;
     overflow: hidden;
     color: #2a2a2a;
-    background: #fff;
-    font-size: 90%;
     -webkit-text-size-adjust: none;
 }
 main, #leftSection { background: #fafafa }
 main {
     height: 568px;
-    width: 320px;
-    box-sizing: border-box;
+    width: 318px;
     margin: auto;
     top: 0; bottom: 0;
     left: 0; right: 0;
-    border: 1px #4c4c4c solid;
+    border: #4c4c4c solid;
+    border-width: 0 1px;
 }
-@media screen and (orientation:landscape) {  
-    html { transform: rotate(90deg) }
-}
+@media screen and (orientation:landscape) { html { transform: rotate(90deg) } }
 dv {
     margin: 5px 0;
     border-top: 2px #4c4c4c dashed;
@@ -40,13 +36,12 @@ dv {
     width: calc(90% - 18px);
     margin: 2.5px 9px;
     cursor: pointer;
-    color: yellow;
+    color: #ff0;
 }
 .button:active { background: #555 }
 section {
-    width: 318px !important;
+    width: 318px;
     height: 566px;
-    box-sizing: border-box;
     overflow: hidden;
 }
 .header {
@@ -80,7 +75,7 @@ section {
     padding: 16px 8px;
     width: calc(90% - 18px);
     text-align: center;
-    color: yellow;
+    color: #ff0;
 }
 #bName { bottom: 96px }
 #interestDiv {
@@ -155,9 +150,7 @@ section {
     margin: 2px 0px;
     font-size: 16px;
 }
-#achievementsGroup {
-    background: yellow;
-}
+#achievementsGroup { background: #ff0 }
 .achieveItem[style] {
     width: calc(15% - 5px);
     padding: calc(7.5% - 7px) 2.5%;
@@ -180,7 +173,7 @@ main, #bButton, section, .arrow, #btnDeposit, #logText, #bUnlock, #bName, #inter
 #loader {
     border: 16px solid #4c4c4c;
     border-radius: 50%;
-    border-top: 16px solid yellow;
+    border-top: 16px solid #ff0;
     width: 150px;
     height: 150px;
     left: calc(50% - 91px);
@@ -189,19 +182,13 @@ main, #bButton, section, .arrow, #btnDeposit, #logText, #bUnlock, #bName, #inter
 }
 @keyframes s { 100% { transform: rotate(360deg); } }
 #confirmPopup {
-    background: yellow;
-    border-radius: 25px;
+    background: #ff0;
+    border-radius: 15px;
     z-index: 1;
-}
-#confirmPopup {
-    height: 128px;
+    height: 100px;
     width: 250px;
-    top: calc(50% - 64px);
+    top: calc(50% - 50px);
     left: calc(50% - 125px);
-}
-#confirmYesBtn, #confirmNoBtn {
-    width: calc(42.5% - 30px);
-    margin: 1px calc(1% - 0.5px) !important;
 }
 #popupOverlay {
     height: 100%;

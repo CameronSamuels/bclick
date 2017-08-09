@@ -196,7 +196,15 @@ var achievements = {
 // ===== Refreshing ===== //
 var refresh = {
     numbers : function() {
-        if (get('points') >= Math.pow(10, 306)) { set('points', eg(Math.pow(10, 307))); $('Points').innerHTML = "Points: Infinity"; if (askedToReset != true) { showConfirm("Earn prestige?", 'data.reset.over()', ""); askedToReset = true;}}
+        if (get('points') >= Math.pow(10, 306)) {
+            set('points', eg(Math.pow(10, 307)));
+            $('Points').innerHTML = "Points: Infinity";
+            if (askedToReset != true) { 
+                $('confirmPopup').style.display = "block";
+                $('popupOverlay').style.display = "block";
+                askedToReset = true;
+            }
+        }
         else if (get('points') < 0) { set('points', 0); $('Points').innerHTML = 'Points: ' + giant(get('points')); }
         else $('Points').innerHTML = 'Points: ' + giant(get('points'));
         if (get('interest') >= Math.pow(10, 307)) { set('interest', eg(Math.pow(10, 308))); $('Interest').innerHTML = "Interest: Infinity"; } 
@@ -227,43 +235,22 @@ var refresh = {
     }
 }; 
 // ===== Saving Data ===== //
-var data = {
-    reset : {
-        soft : function() {
-            increment = 0;
-            ceiling = 0;
-            set('points', 0);
-            set('interest', 0);
-            set('deposited', 0);
-            set('clicks', 0);
-            set('unlocked', 0);
-            set('bPosition', 0);
-            for (i = 0; i < b.list.length; i++) {
-                var item = b.list[i];
-                set(item, false);
-            }
-            set('handrawn', true);
-            $('AchievementsList').innerHTML = '';
-            achievements.refresh();
-            $('confirmPopup').style.display = '';
-            $('popupOverlay').style.display = '';
-        },
-        hard : function() {
-            for (i = 0; i < achievements.list.id.length; i++) { localStorage.removeItem(achievements.list.id[i]) };
-            if (get("multiplier") !== undefined && get("multiplier") !== 'NaN' && get("multiplier") >= 20) set('multiplier', (get("multiplier") * 0.05)); 
-			else set('multiplier', 1);
-			data.reset.soft();
-        },
-        reset : function() { showConfirm("Reset Game?", "data.reset.hard()", "''"); },
-        over : function() { set('multiplier', get('multiplier') * 25);data.reset.hard()}
+function reset() {
+    increment = 0, ceiling = 0;
+    set('points', 0), set('multiplier', 1),
+    set('interest', 0), set('deposited', 0),
+    set('clicks', 0), set('unlocked', 0),
+    set('bPosition', 0);
+    for (i = 0; i < b.list.length; i++) {
+        var item = b.list[i];
+        set(item, false);
     }
-}
-function showConfirm(text, yes, no) {
-    $('confirmText').innerHTML = text;
-    $('confirmYesBtn').setAttribute('ontouchend', "eval(" + yes + ")");
-    $('confirmNoBtn').setAttribute('ontouchend', "eval(" + no + ");$('confirmPopup').style.display='';$('popupOverlay').style.display=''");
-    $('confirmPopup').style.display = "block";
-    $('popupOverlay').style.display = "block";
+    set('handrawn', true);
+    for (i = 0; i < achievements.list.id.length; i++) localStorage.removeItem(achievements.list.id[i]);
+    $('AchievementsList').innerHTML = '';
+    achievements.refresh(), b.refresh();
+    $('confirmPopup').style.display = '',
+    $('popupOverlay').style.display = '';
 }
 // ===== The B's ===== //
 var bAmount = 0, b = {
@@ -361,7 +348,7 @@ var bank = {
 }
 // ===== Miscellaneous ===== //
 document.oncontextmenu = function(e){e.preventDefault()};
-if (get("points") === undefined) data.reset.hard();
+if (get("points") === undefined) reset();
 else achievements.refresh();
 b.refresh();
 refresh.all();
