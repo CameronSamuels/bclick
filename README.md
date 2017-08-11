@@ -26,4 +26,4 @@ Our primary team members for bClick include [Cameron Samuels](http://cameronsamu
 [![Ethan Choo](https://git.io/v7frC)](http://github.com/ethanchoo)
 [![Jacob Gelder](https://git.io/v7Joh)](http://github.com/jacobgelder)
 ## License
-bClick is distributed under the [MIT License](LICENSE).
+bClick is distributed under the [Cameron Samuels License](LICENSE).
