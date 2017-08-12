@@ -5,17 +5,13 @@ nums = ["", "Thousand", "Million", "Billion", "Trillion", "Quadrillion",
 "Septendecillion", "Octodecillion", "Novemdecillion", "Vigintillion", "Unvigintillion",
 "Duovigintillion", "Tresvigintillion", "Quattuorvigintillion", "Quinquavigintillion", "Sesvigintillion",
 "Septemvigintillion", "Octovigintillion", "Novemvigintillion", "Trigintillion", "Untrigintillion",
-"Duotrigintillion", "Tretrigintillion", "Quattuortrigintillion", "Quintrigintillion", "Sextrigintillion",
-"Septentrigintillion", "Octotrigintillion", "Novemtrigintillion", "Quadragintillion", "Unquadragintillion",
-"Duoquadragintillion", "Trequadragintillion", "Quattuorquadragintillion", "Quinquadragintillion", "Sexquadragintillion",
-"Septenquadragintillion", "Octoquadragintillion", "Novemquadragintillion", "Quinquagintillion"], increment, ceiling = get("points"), left = 0,
-askedToReset = false, desktop = !navigator.userAgent.match(/iPhone|iPad|iPod|Android/i), logs = 0;
+"Duotrigintillion", "Tretrigintillion", "Quattuortrigintillion"], increment, ceiling = get("points"), left = 0,
+unlocked = 0, askedToReset = false, desktop = !navigator.userAgent.match(/iPhone|iPad|iPod|Android/i), logs = 0;
+if (desktop) document.querySelector('html').setAttribute('style', 'transform:rotate(0deg) !important');
 function get(e) { return localStorage[e] }
 function set(e, f) { localStorage.setItem(e, f) }
 function add(e, f) { return parseFloat(e) + parseFloat(f) }
-function sub(e, f) { return parseFloat(e) - parseFloat(f) }
 function fl(e, f) { for (i = 0; i < f; i++) { e() } }
-function ts(e) { return(sub(new Date().getTime(),e) / 1000) }
 function dcml(x) {
     var e;if(Math.abs(x) < 1.0) { e = parseInt(x.toString().split('e-')[1]);
     if (e) {x*=Math.pow(10,e-1);x='0.'+(new Array(e)).join('0')+x.toString().substring(2);}}
@@ -31,22 +27,15 @@ function giant(num) {
     var EG = eg(num);
     var length = EG.toString().length - 1;
     var groups = (length / 3);
-    if (groups.toString().indexOf(".666") != -1 || groups.toString().indexOf(".333") != -1) groups = Math.floor(groups);
+    if (groups.toString().indexOf(".6") != -1 || groups.toString().indexOf(".3") != -1) groups = Math.round(groups);
     EG = "1"; fl(function(){EG+="000"}, groups);
-    if (EG == "1" || nums[groups] === undefined) return num;
-    else if (nums[groups] !== undefined && EG != "1") return(num / EG).toFixed(1) + " " + nums[groups];
+    if (EG == "1" || nums[groups] === undefined || length < 3) return num;
+    else if (num / EG == 1000 || num / EG < 1) return ((num / EG)*1000).toFixed(1) + " " + nums[groups-1];
+    else return(num / EG).toFixed(1) + " " + nums[groups];
 }
 function remove(string, what) {
     var reg = new RegExp(what, 'g');
     return string.replace(reg, '');
-}
-function random() {
-    var randomness= '';
-    fl(function(){randomness += Math.ceil(Math.random() * Math.random() * 10).toString().charAt(0)}, Math.ceil(Math.random() * 5));
-    var times = (5 - randomness.length);
-    fl(function(){randomness = "0" + randomness}, times);
-    randomness = '1' + randomness;
-    return randomness;
 }
 // ===== Core Functions ===== //
 function log(text) {
@@ -72,21 +61,21 @@ function realEarn() {
     else left = 0;
 	if (left <= 0) left = get('points'), ceiling = left, increment = 0;
 }
-function earn(amount) {
-    if (get("points") < Math.pow(10, 308)) {
-        ceiling = parseFloat(ceiling) + parseFloat(amount);
-        increment += (parseFloat(amount) / 100); 
+function earn(a) {
+    if (get("points") < 1e105) {
+        ceiling = parseFloat(ceiling) + parseFloat(a);
+        increment += (parseFloat(a) / 100); 
     }
-    else set('points', eg(Math.pow(10, 308)));
+    else set('points', 1e105);
 	achievements.check();
 }
  
-function purchase(amount) { 
-    if (get("points") < Math.pow(10, 308) && (ceiling - amount) >= 0) {
-        increment += (parseFloat(amount) / 100);
-        ceiling = parseFloat(ceiling) - parseFloat(amount);
+function lose(a) { 
+    if (get("points") < 1e105 && (ceiling - a) >= 0) {
+        increment += (parseFloat(a) / 100);
+        ceiling = parseFloat(ceiling) - parseFloat(a);
     }
-    else if (get("points") >= Math.pow(10, 308)) set('points', eg(Math.pow(10, 308)));
+    else if (get("points") >= 1e105) set('points', eg(1e105));
 }
 function bclick() {
 	name = b.list[get("bPosition")];
@@ -96,7 +85,7 @@ function bclick() {
         else { set('clicks', add(get('clicks'), 1)); }
         earn(parseFloat(worth) * get("multiplier"));
     }
-    else log("Unlock the B first");
+    else log("Unlock the B");
 }
 function unlock() {
     name = b.list[get("bPosition")];
@@ -104,17 +93,18 @@ function unlock() {
     if (get(name) == 'false') {  
         if (get("points") >= cost) {
             set(name, true);
-            if (get("unlocked") === undefined) { set("unlocked", 1); }
-            else { set('unlocked', add(get("unlocked"), 1)); } 
-            purchase(cost);
+            unlocked++;
+            lose(cost);
         }
         else { log("Insufficient Points") }
     }
-    else log("Click the B");
+    else log("Click the B image");
     b.refresh();
 }
 // ===== Achievements ===== //
 var achievements = {
+    show : function() { $('leftSection').style.display = "block" },
+    hide : function() { $('leftSection').style.display = "" },
     list : {
         spaces : [
             "Earn 1 Thousand Points",
@@ -154,10 +144,10 @@ var achievements = {
     achieve : function(id) {
         set(id, true);
         set('multiplier', Math.min(parseFloat(get('multiplier')) * 1.25, 1000000000));
-        log("Multiplier is now " + giant(Math.round(get("multiplier"))));
+        log("Earned an achievement buff");
     },
     check : function() {
-        var obj = achievements, type = "";
+        var obj = achievements, type = "", amount;
         for (i = 0; i < obj.list.spaces.length; i++) {
             switch (obj.list.spaces[i].toString().split(' ')[2]) {
                 case "Thousand" : amount = 1000 * obj.list.spaces[i].toString().split(' ')[1]; break;
@@ -179,9 +169,7 @@ var achievements = {
                 case "H" : type = "interest"; break;
                 default:
             }
-            if (parseFloat(get(type)) >= parseFloat(amount) && get(obj.list.id[i]) != "true") {
-                achievements.achieve(obj.list.id[i]);
-            }  
+            if (parseFloat(get(type)) >= parseFloat(amount) && get(obj.list.id[i]) != "true") achievements.achieve(obj.list.id[i]);
         }
     }, refresh : function() {
         for (i = 0; i < achievements.list.spaces.length; i++) {
@@ -190,14 +178,14 @@ var achievements = {
         }
         var text = $("AchievementsList"), type = "", typeNum = -1;
         for (i = 0; i < achievements.list.spaces.length; i++) {
-            var amount = achievements.list.spaces[i].toString().split(' ')[1];
-            if (!type.includes('Unlock')) amount += achievements.list.spaces[i].toString().split(' ')[2].charAt(0);
+            var requirement = achievements.list.spaces[i].toString().split(' ')[1];
+            if (achievements.list.spaces[i].toString().split(' ').length == 4) requirement += achievements.list.spaces[i].toString().split(' ')[2].charAt(0);
             if (type.toString().charAt(0) == achievements.list.id[i].charAt(0))
-                text.innerHTML += "<div title='" + achievements.list.spaces[i] + "' class='achieveItem' id='" + achievements.list.id[i] + "'>" + amount + "</div>";
+                text.innerHTML += "<div title='" + achievements.list.spaces[i] + "' class='achieveItem' id='" + achievements.list.id[i] + "'>" + requirement + "</div>";
             else {
                 typeNum++;
                 type = achievements.list.type[typeNum];
-                text.innerHTML += "<div class='achieveCategory'>" + type + "</div><div title='" + achievements.list.spaces[i] + "' class='achieveItem' id='" + achievements.list.id[i] + "'>" + amount + "</div>";
+                text.innerHTML += "<div class='achieveCategory'>" + type + "</div><div title='" + achievements.list.spaces[i] + "' class='achieveItem' id='" + achievements.list.id[i] + "'>" + requirement + "</div>";
             }
         }
     }
@@ -205,10 +193,18 @@ var achievements = {
 // ===== Refreshing ===== //
 var refresh = {
     numbers : function() {
-        if (get('points') >= Math.pow(10, 306)) { set('points', eg(Math.pow(10, 307))); $('Points').innerHTML = "Points: Infinity"; if (askedToReset != true) { showConfirm("Earn prestige?", 'data.reset.over()', ""); askedToReset = true;}}
+        if (get('points') >= 1e105) {
+            set('points', eg(1e105));
+            $('Points').innerHTML = "Points: Infinity";
+            if (askedToReset != true) { 
+                $('confirmPopup').style.display = "block";
+                $('popupOverlay').style.display = "block";
+                askedToReset = true;
+            }
+        }
         else if (get('points') < 0) { set('points', 0); $('Points').innerHTML = 'Points: ' + giant(get('points')); }
         else $('Points').innerHTML = 'Points: ' + giant(get('points'));
-        if (get('interest') >= Math.pow(10, 307)) { set('interest', eg(Math.pow(10, 308))); $('Interest').innerHTML = "Interest: Infinity"; } 
+        if (get('interest') >= 1e105) { set('interest', eg(1e105)); $('Interest').innerHTML = "Interest: Infinity"; } 
         else $('Interest').innerHTML = 'Interest: ' + giant(get('interest'));
     },
     achievements : function() {
@@ -217,7 +213,7 @@ var refresh = {
         var text = $("AchievementsList");
         for (i = 0; i < achievements.list.spaces.length; i++) {
             var item = $(achievements.list.id[i]);
-            if (get(achievements.list.id[i]) == "true") item.style.background = "#0F0";
+            if (get(achievements.list.id[i]) == "true") item.style.background = "#ff0";
         }
     },
     events : function() {
@@ -236,44 +232,22 @@ var refresh = {
     }
 }; 
 // ===== Saving Data ===== //
-var data = {
-    reset : {
-        soft : function() {
-            increment = 0;
-            ceiling = 0;
-            set('points', 0);
-            set('interest', 0);
-            set('deposited', 0);
-            set('clicks', 0);
-            set('unlocked', 0);
-            set('bPosition', 0);
-            for (i = 0; i < b.list.length; i++) {
-                var item = b.list[i];
-                set(item, false);
-            }
-            set('handrawn', true);
-            $('AchievementsList').innerHTML = '';
-            achievements.refresh();
-            $('confirmPopup').style.display = '';
-            $('popupOverlay').style.display = '';
-        },
-        hard : function() {
-            for (i = 0; i < achievements.list.id.length; i++) { localStorage.removeItem(achievements.list.id[i]) };
-            if (get("multiplier") !== undefined && get("multiplier") !== 'NaN' && get("multiplier") >= 20) set('multiplier', (get("multiplier") * 0.05)); 
-			else set('multiplier', 1);
-			data.reset.soft();
-        },
-        reset : function() { showConfirm("Reset Game?", "data.reset.hard()", "''"); },
-        over : function() { /*submitScore(); set('username', get("username") + "+");*/ set('multiplier', get('multiplier') * 25);data.reset.hard()}
+function reset() {
+    increment = 0, ceiling = 0, unlocked = 1;
+    set('points', 0), set('multiplier', 1),
+    set('interest', 0), set('deposited', 0),
+    set('clicks', 0),
+    set('bPosition', 0);
+    for (i = 0; i < b.list.length; i++) {
+        var item = b.list[i];
+        set(item, false);
     }
-}
-// ===== Submission ===== //
-function showConfirm(text, yes, no) {
-    $('confirmText').innerHTML = text;
-    $('confirmYesBtn').setAttribute('ontouchend', "eval(" + yes + ")");
-    $('confirmNoBtn').setAttribute('ontouchend', "eval(" + no + ");$('confirmPopup').style.display='';$('popupOverlay').style.display=''");
-    $('confirmPopup').style.display = "block";
-    $('popupOverlay').style.display = "block";
+    set('handrawn', true);
+    for (i = 0; i < achievements.list.id.length; i++) localStorage.removeItem(achievements.list.id[i]);
+    $('AchievementsList').innerHTML = '';
+    achievements.refresh(), b.refresh();
+    $('confirmPopup').style.display = '',
+    $('popupOverlay').style.display = '';
 }
 // ===== The B's ===== //
 var bAmount = 0, b = {
@@ -284,11 +258,10 @@ var bAmount = 0, b = {
     },
     list : [],
     refresh : function() {
-        $('bName').innerHTML = b.list[get("bPosition")].toString().toUpperCase() + ' B ' + b[b.list[get("bPosition")]].other.tooltip;
+        $('bName').innerHTML = b.list[get("bPosition")].toString().toUpperCase() + ' B ' + b[b.list[get("bPosition")]].tooltip;
         b.vars.button().style.backgroundImage = "url('http://thebclickteam.tk/lib/bcl/b/" + b.list[get("bPosition")] + ".png')";
         if (get(b.list[get("bPosition")]) == 'false') b.vars.unlock().innerHTML = "Unlock<br>($" + giant(b[b.list[get("bPosition")]].cost) + ")";
 		else b.vars.unlock().innerHTML = "Unlocked!";
-        b.vars.section().style.backgroundColor = b[b.list[get("bPosition")]].color;
     },
     loop : {
         next : function() {
@@ -298,91 +271,95 @@ var bAmount = 0, b = {
         },
         previous : function() {
             if (get("bPosition") == 0) set("bPosition", (bAmount - 1));
-            else set("bPosition", sub(get("bPosition"), 1));
+            else set("bPosition", parseFloat(get("bPosition")) - 1);
             b.refresh();
         }
     }
 }
-function create(name, worth, cost, color, other) {
+function create(name, worth, cost, tooltip) {
     this.worth = worth;
     this.cost = cost;
-    this.color = color;
     this.name = name;
-    this.other = other || {tooltip:''};
+    this.tooltip = tooltip || '';
     if (get(name) == undefined) set(name, false);
+    else if (get(name) == "true") unlocked++;
     b.list.push(name);
-    bAmount = add(bAmount, 1);
+    bAmount++;
 }
-b.handrawn = new create('handrawn', 2, 0, "#fff");
-b.lowercase = new create('lowercase', 10, 100, "#999");
-b.regular = new create('regular', 50, 500, "#333");
-b.saw = new create('saw', 200, 5000, "#f00");
-b.spiky = new create('spiky', 500, 20000, "#FF0080");
-b.electric = new create('electric', 1000, 100000, "#FFA500");
-b.curved = new create('curved', 5000, 500000, "#0ff");
-b.shark = new create('shark', 10000, 2500000, "#33b");
-b.lightning = new create('lightning', 100000, 10000000, "#ff0");
-b.awesome = new create('awesome', 1000000, 100000000, "#909");
-b.thirteen = new create('thirteen', 1e8, 1e9, "#555");
-b.thin = new create('thin', 1e9, 1e11, "#555");
-b.knight = new create('knight', 1e10, 1e12, "#614126");
-b.archer = new create('archer', 1e11, 1e13, "#060");
-b.barbed = new create('barbed', 1e12, 1e15, "#222");
-b.flower = new create('flower', 1e13, 1e16, "#b266b2");
-b.muscle = new create('muscle', 1e14, 1e17, "#0f0");
-b.bw = new create('bw', 1e15, 1e18, "#000");
-b.honeycomb = new create('honeycomb', 1e16, 1e19, "#ff0");
-b.creative = new create('creative', 1e17, 1e20, "#ffb30d");
-b.rubiks = new create('rubiks', 1e18, 1e21, "#f00");
-b.star = new create('star', 1e21, 1e24, "#000");
-b.impossible = new create('impossible', 1e24, 1e27, "#555");
-b.ghost = new create('ghost', 1e27, 1e30, "#444");
-b.poke = new create('poke', 1e30, 1e33, "#f00");
-b.giant = new create('giant', 1e33, 1e36, "#6D3200");
-b.election = new create('election', 1e36, 1e39, "#00f");
-b.baseball = new create('baseball', 1e39, 1e42, "#6D3200");
-b.picasso = new create('picasso', 1e42, 1e45, "#F633F6");
-b.challah = new create('challah', 1e45, 1e48, "#6D3200");
-b.spear = new create('spear', 1e48, 1e51, "#333");
-b.superhero = new create('superhero', 1e51, 1e54, "#33f");
-b.chalk = new create('chalk', 1e54, 1e57, "#000");
-b.nature = new create('nature', 1e57, 1e60, "#6D3200", {tooltip:'<br>(Arjun M)'});
-b.golden = new create('golden', 1e60, 1e63, "#ffd700");
-b.mage = new create('mage', 1e63, 1e66, "#f3f");
-b.carnotaurus = new create('carnotaurus', 1e66, 1e69, "#f11");
-b.business = new create('business', 1e69, 1e72, "#f8f");
-b.duck = new create('duck', 1e72, 1e75, "#060");
-b.orchestral = new create('orchestral', 1e75, 1e78, "#6D3200");
-b.candycane = new create('candycane', 1e78, 1e81, "#f00");
-b.year3 = new create('year3', 1e81, 1e84, "#ff0", {tooltip:'<br>(3rd Aniversary)'});
-b.skater = new create('skater', 1e84, 1e87, "#6D3200");
-b.worldwar = new create('worldwar', 1e87, 1e90, "#6D3200", {tooltip:'<br>(Andrew L)'});
-b.killer = new create('killer', 1e90, 1e93, "#f11");
-b.dovahkinn = new create('dovahkinn', 1e93, 1e96, "#ff0");
-b.phone = new create('phone', 1e96, 1e99, "#000");
-b.burger = new create('burger', 1e99, 1e102, "#6D3200", {tooltip:'<br>(Benz Le)'});
+b.handrawn = new create('handrawn', 2, 0);
+b.lowercase = new create('lowercase', 10, 100);
+b.regular = new create('regular', 50, 500);
+b.saw = new create('saw', 200, 5000);
+b.spiky = new create('spiky', 500, 20000);
+b.electric = new create('electric', 1000, 100000);
+b.curved = new create('curved', 5000, 500000);
+b.shark = new create('shark', 10000, 2500000);
+b.lightning = new create('lightning', 100000, 10000000);
+b.awesome = new create('awesome', 1000000, 100000000);
+b.thirteen = new create('thirteen', 1e8, 1e9);
+b.thin = new create('thin', 1e9, 1e11);
+b.knight = new create('knight', 1e10, 1e12);
+b.archer = new create('archer', 1e11, 1e13);
+b.barbed = new create('barbed', 1e12, 1e15);
+b.flower = new create('flower', 1e13, 1e16);
+b.muscle = new create('muscle', 1e14, 1e17);
+b.bw = new create('bw', 1e15, 1e18);
+b.honeycomb = new create('honeycomb', 1e16, 1e19);
+b.creative = new create('creative', 1e17, 1e20);
+b.rubiks = new create('rubiks', 1e18, 1e21);
+b.star = new create('star', 1e21, 1e24);
+b.impossible = new create('impossible', 1e24, 1e27);
+b.ghost = new create('ghost', 1e27, 1e30);
+b.poke = new create('poke', 1e30, 1e33);
+b.giant = new create('giant', 1e33, 1e36);
+b.election = new create('election', 1e36, 1e39);
+b.baseball = new create('baseball', 1e39, 1e42);
+b.picasso = new create('picasso', 1e42, 1e45);
+b.challah = new create('challah', 1e45, 1e48);
+b.spear = new create('spear', 1e48, 1e51);
+b.superhero = new create('superhero', 1e51, 1e54);
+b.chalk = new create('chalk', 1e54, 1e57);
+b.nature = new create('nature', 1e57, 1e60, '<br>(Arjun M)');
+b.golden = new create('golden', 1e60, 1e63);
+b.mage = new create('mage', 1e63, 1e66);
+b.carnotaurus = new create('carnotaurus', 1e66, 1e69);
+b.business = new create('business', 1e69, 1e72);
+b.duck = new create('duck', 1e72, 1e75);
+b.orchestral = new create('orchestral', 1e75, 1e78);
+b.candycane = new create('candycane', 1e78, 1e81);
+b.year3 = new create('year3', 1e81, 1e84);
+b.skater = new create('skater', 1e84, 1e87);
+b.worldwar = new create('worldwar', 1e87, 1e90, '<br>(Andrew L)');
+b.killer = new create('killer', 1e90, 1e93);
+b.dovahkinn = new create('dovahkinn', 1e93, 1e96);
+b.phone = new create('phone', 1e96, 1e99);
+b.burger = new create('burger', 1e99, 1e102, '<br>(Benz Le)');
 // ===== The Bank ===== //
 var bank = {
-    collect : function() {
-        earn(get('interest'));
-        d = new Date();
-        set('lastPlay', new Date().getTime());
-    },
+    collect : function() { earn(get('interest')) },
     deposit : function() {
-        var amount = parseFloat(ceiling);
-        set('deposited', add(get('deposited'), amount));
+        var a = parseFloat(ceiling);
+        set('deposited', add(get('deposited'), a));
         set('interest', parseFloat(get("deposited")) * 0.1);
-        purchase(amount); 
+        lose(a); 
     }
 }
 // ===== Miscellaneous ===== //
-document.oncontextmenu = function(e){e.preventDefault()};
-if (get("points") === undefined) data.reset.hard();
+document.oncontextmenu = function(e){e.preventDefault()},
+document.ontouchmove = function(a){a.preventDefault()},
+document.ontouchstart = function(a){a.preventDefault()};
+if (get("points") === undefined) reset();
 else achievements.refresh();
 b.refresh();
 refresh.all();
 ceiling = get("points");
 setInterval('realEarn()', 1);
 setInterval('bank.collect()', 2500);
+function zoom() {
+    if (innerHeight > innerWidth || desktop) document.body.style.zoom = (innerHeight/568);
+    else document.body.style.zoom = (innerWidth/568);
+}
+window.onresize = zoom;
+zoom();
 document.querySelector("main").style.display = "block";
 $('loader').style.display = "none";
