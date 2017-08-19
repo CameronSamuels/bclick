@@ -195,17 +195,17 @@ var refresh = {
     numbers : function() {
         if (get('points') >= 1e105) {
             set('points', eg(1e105));
-            $('Points').innerHTML = "Points: Infinity";
+            $('Points').innerHTML = "Infinity Points";
             if (askedToReset != true) { 
                 $('confirmPopup').style.display = "block";
                 $('popupOverlay').style.display = "block";
                 askedToReset = true;
             }
         }
-        else if (get('points') < 0) { set('points', 0); $('Points').innerHTML = 'Points: ' + giant(get('points')); }
-        else $('Points').innerHTML = 'Points: ' + giant(get('points'));
-        if (get('interest') >= 1e105) { set('interest', eg(1e105)); $('Interest').innerHTML = "Interest: Infinity"; } 
-        else $('Interest').innerHTML = 'Interest: ' + giant(get('interest'));
+        else if (get('points') < 0) { set('points', 0); $('Points').innerHTML = giant(get('points')) + " Points"; }
+        else $('Points').innerHTML = giant(get('points')) + " Points";
+        if (get('interest') >= 1e105) { set('interest', eg(1e105)); $('Interest').innerHTML = "Infinity Interest"; } 
+        else $('Interest').innerHTML = giant(get('interest')) + " Interest";
     },
     achievements : function() {
         achievements.check();
