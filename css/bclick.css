@@ -71,6 +71,7 @@ section {
     color: #ff0;
 }
 #bName { bottom: 96px }
+#bName, #bUnlock { white-space: pre }
 #interestDiv {
     bottom: 0;
     margin-bottom: 0;

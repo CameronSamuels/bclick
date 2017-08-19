@@ -45,7 +45,7 @@ function log(text) {
         setTimeout(function(){logs--;log(text)}, 1500);
         return;
     }
-    $("logText").innerHTML = text;
+    $("logText").textContent = text;
     $("logText").style.display = "inline-block";
     setTimeout('$("logText").style.display = "none"', 1500);
 }
@@ -195,17 +195,17 @@ var refresh = {
     numbers : function() {
         if (get('points') >= 1e105) {
             set('points', eg(1e105));
-            $('Points').innerHTML = "Infinity Points";
+            $('Points').textContent = "Infinity Points";
             if (askedToReset != true) { 
                 $('confirmPopup').style.display = "block";
                 $('popupOverlay').style.display = "block";
                 askedToReset = true;
             }
         }
-        else if (get('points') < 0) { set('points', 0); $('Points').innerHTML = giant(get('points')) + " Points"; }
-        else $('Points').innerHTML = giant(get('points')) + " Points";
-        if (get('interest') >= 1e105) { set('interest', eg(1e105)); $('Interest').innerHTML = "Infinity Interest"; } 
-        else $('Interest').innerHTML = giant(get('interest')) + " Interest";
+        else if (get('points') < 0) { set('points', 0); $('Points').textContent = giant(get('points')) + " Points"; }
+        else $('Points').textContent = giant(get('points')) + " Points";
+        if (get('interest') >= 1e105) { set('interest', eg(1e105)); $('Interest').textContent = "Infinity Interest"; } 
+        else $('Interest').textContent = giant(get('interest')) + " Interest";
     },
     achievements : function() {
         achievements.check();
@@ -258,10 +258,10 @@ var bAmount = 0, b = {
     },
     list : [],
     refresh : function() {
-        $('bName').innerHTML = b.list[get("bPosition")].toString().toUpperCase() + ' B ' + b[b.list[get("bPosition")]].tooltip;
+        $('bName').textContent = b.list[get("bPosition")].toString().toUpperCase() + ' B\n' + b[b.list[get("bPosition")]].tooltip;
         b.vars.button().style.backgroundImage = "url('http://thebclickteam.tk/lib/bcl/b/" + b.list[get("bPosition")] + ".png')";
-        if (get(b.list[get("bPosition")]) == 'false') b.vars.unlock().innerHTML = "Unlock<br>($" + giant(b[b.list[get("bPosition")]].cost) + ")";
-		else b.vars.unlock().innerHTML = "Unlocked!";
+        if (get(b.list[get("bPosition")]) == 'false') b.vars.unlock().textContent = "Unlock\n($" + giant(b[b.list[get("bPosition")]].cost) + ")";
+		else b.vars.unlock().textContent = "Unlocked!";
     },
     loop : {
         next : function() {
@@ -319,7 +319,7 @@ b.challah = new create('challah', 1e45, 1e48);
 b.spear = new create('spear', 1e48, 1e51);
 b.superhero = new create('superhero', 1e51, 1e54);
 b.chalk = new create('chalk', 1e54, 1e57);
-b.nature = new create('nature', 1e57, 1e60, '<br>(Arjun M)');
+b.nature = new create('nature', 1e57, 1e60, '(Arjun M)');
 b.golden = new create('golden', 1e60, 1e63);
 b.mage = new create('mage', 1e63, 1e66);
 b.carnotaurus = new create('carnotaurus', 1e66, 1e69);
@@ -329,11 +329,11 @@ b.orchestral = new create('orchestral', 1e75, 1e78);
 b.candycane = new create('candycane', 1e78, 1e81);
 b.year3 = new create('year3', 1e81, 1e84);
 b.skater = new create('skater', 1e84, 1e87);
-b.worldwar = new create('worldwar', 1e87, 1e90, '<br>(Andrew L)');
+b.worldwar = new create('worldwar', 1e87, 1e90, '(Andrew L)');
 b.killer = new create('killer', 1e90, 1e93);
 b.dovahkinn = new create('dovahkinn', 1e93, 1e96);
 b.phone = new create('phone', 1e96, 1e99);
-b.burger = new create('burger', 1e99, 1e102, '<br>(Benz Le)');
+b.burger = new create('burger', 1e99, 1e102, '(Benz Le)');
 // ===== The Bank ===== //
 var bank = {
     collect : function() { earn(get('interest')) },
