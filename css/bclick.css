@@ -98,7 +98,7 @@ section {
     margin: 7.5px 5px;
 }
 #btnDeposit { bottom: 40px }
-#LeftArrow, #RightArrow, #ach { background: #4c4c4c center/80% no-repeat }
+#LeftArrow, #RightArrow, #ach { background: #4c4c4c 80%/80% no-repeat }
 #LeftArrow, #RightArrow { background-image: url(http://thebclickteam.tk/lib/bcl/img/arrow.svg) }
 .arrow:active { background-color: #555 !important }
 .arrow {
