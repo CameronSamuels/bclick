@@ -100,7 +100,7 @@ section {
 }
 #btnDeposit { bottom: 40px }
 #LeftArrow, #RightArrow, #ach { background: #4c4c4c 80%/80% no-repeat }
-#LeftArrow, #RightArrow { background-image: url(http://thebclickteam.tk/lib/bcl/img/arrow.svg) }
+#LeftArrow, #RightArrow { background-image: url(https://blib.tk/bcl/img/arrow.svg) }
 .arrow:active { background-color: #555 !important }
 .arrow {
     border-radius: 27px;
@@ -115,7 +115,7 @@ section {
 #LeftArrow { transform: rotate(180deg) }
 #ach {
     top: calc(50% + 10px);
-    background-image: url(http://thebclickteam.tk/lib/bcl/img/star.svg)
+    background-image: url(https://blib.tk/bcl/img/star.svg)
 }
 #leftSection {
     display: none;
