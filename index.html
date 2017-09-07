@@ -1,12 +1,12 @@
 <!DOCTYPE html><html>
     <title>bClick</title>
-    <link rel=stylesheet href=css/main.css>
-    <meta name=viewport content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
-    <link rel="shortcut icon" href=https://blib.tk/bcl/ico/icon.png>
-    <link rel=apple-touch-icon href=https://blib.tk/bcl/ico/256.png>
-    <meta property=og:image content=https://blib.tk/bcl/ico/256.png>
-    <meta name=description content="The b-Click-ing game! Unlock, Click, Deposit, Win!">
-    <meta name=apple-itunes-app content="app-id=1222698762">
+    <link rel="stylesheet" href="css/main.css">
+    <meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <link rel="shortcut icon" href="https://blib.tk/bcl/ico/icon.png">
+    <link rel="apple-touch-icon" href="https://blib.tk/bcl/ico/256.png">
+    <meta property="og:image" content="https://blib.tk/bcl/ico/256.png">
+    <meta name="description" content="The b-Click-ing game! Unlock, Click, Deposit, Win!">
+    <meta name="apple-itunes-app" content="app-id=1222698762">
     <meta content="yes" name="apple-mobile-web-app-capable">
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -19,30 +19,30 @@
 
     </script>
     <body>
-        <div id=loader></div>
+        <div id="loader"></div>
         <main>
-            <section id=leftSection>
-                <div id=achievementsGroup class="section-header header">Achievements</div>
-                <div id=AchievementsList></div>
+            <section id="leftSection">
+                <div id="achievementsGroup" class="section-header header">Achievements</div>
+                <div id="AchievementsList"></div>
                 <div class="button" ontouchend="achievements.hide()">Go back</div>
             </section>
-            <section id=bSection>
-                <div class="header" id="pointsDiv"><div id=Points></div></div>
-                <div id=LeftArrow class="arrow button" ontouchend=b.loop.previous()></div>
-                <div id=ach class="arrow button" ontouchend=achievements.show()></div>
-                <div id=bButton ontouchend=bclick()></div>
-                <div id=RightArrow class="arrow button" ontouchend=b.loop.next()></div>
-                <div class=button id=bUnlock ontouchend=unlock()></div>
-                <div id=logText class=flicker></div>
-                <div id=bName></div>
-                <div class=button id=btnDeposit ontouchend=bank.deposit()>Deposit</div>
-                <div class="header" id=interestDiv><div id=Interest></div></div>
+            <section id="bSection">
+                <div class="header" id="pointsDiv"><div id="Points"></div></div>
+                <div id="LeftArrow" class="arrow button" ontouchend="b.loop.previous()"></div>
+                <div id="ach" class="arrow button" ontouchend="achievements.show()""></div>
+                <div id="bButton" ontouchend=bclick()></div>
+                <div id="RightArrow" class="arrow button" ontouchend="b.loop.next()"></div>
+                <div class="button" id="bUnlock" ontouchend="unlock()""></div>
+                <div id="logText" class="flicker"></div>
+                <div id="bName"></div>
+                <div class="button" id="btnDeposit" ontouchend="bank.deposit()">Deposit</div>
+                <div class="header" id="interestDiv"><div id="Interest"></div></div>
             </section>
         </main>
-        <div id=confirmPopup>
+        <div id="confirmPopup">
             <h1>You won</h1>
-            <div class=button ontouchend=reset()>Reset</div>
+            <div class="button" ontouchend="reset()">Reset</div>
         </div>
-        <div id=popupOverlay></div>
-        <script src=js/main.js></script>
+        <div id="popupOverlay"></div>
+        <script src="js/main.js"></script>
 </body></html>
