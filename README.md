@@ -10,7 +10,7 @@ Get trillions, and maybe even septillions of points a second!
 - A bank to give points every few seconds
 - Achievements to give boosts
 ## Links
-Play online at <https://bclick.ml>.<br>
+Play online at <https://thebclickteam.tk/bclick>.<br>
 [![Get it on iOS](http://svgur.com/i/2Gm.svg)](https://itunes.apple.com/us/app/bclick/id1222698762)
 [![Get it on Android](http://svgur.com/i/2GC.svg)](https://play.google.com/store/apps/details?id=com.playbclick.bclick)
 ## Contributing
