@@ -10,14 +10,14 @@ Get trillions, and maybe even septillions of points a second!
 - A bank to give points every few seconds
 - Achievements to give boosts
 ## Links
-Play online at <https://thebclickteam.tk/bclick>.<br>
+Play online at <https://b.xel.company/bclick>.<br>
 [![Get it on iOS](http://svgur.com/i/2Gm.svg)](https://itunes.apple.com/us/app/bclick/id1222698762)
 [![Get it on Android](http://svgur.com/i/2GC.svg)](https://play.google.com/store/apps/details?id=com.playbclick.bclick)
 ## Contributing
 Contributing to our game [via GitHub](https://git.io/vdqtW) or any other way is very appreciative. You may submit issues, pr's, or anything else.
 ## Team
 [Cameron Samuels](https://cameronsamuels.com) - Project Manager, Lead Developer, Graphic Designer
-<br>[Ethan Choo](https://github.com/ethanchoo) - Graphic Designer
+<br>[Ethan Choo](https://ethanchoo.ml) - Graphic Designer
 ## License
 bClick is distributed under the [Cameron Samuels License](LICENSE).
 ## Privacy Policy
