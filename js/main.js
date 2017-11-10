@@ -333,7 +333,7 @@ b.worldwar = new create('worldwar', 1e87, 1e90, '(Andrew L)');
 b.killer = new create('killer', 1e90, 1e93);
 b.dovahkinn = new create('dovahkinn', 1e93, 1e96);
 b.phone = new create('phone', 1e96, 1e99);
-b.burger = new create('burger', 1e99, 1e102, '(Benz Le)');
+b.burger = new create('burger', 1e99, 1e102, '(Benz L)');
 // ===== The Bank ===== //
 var bank = {
     collect : function() { earn(get('interest')) },
