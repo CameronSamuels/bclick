@@ -259,7 +259,7 @@ var bAmount = 0, b = {
     list : [],
     refresh : function() {
         $('bName').textContent = b.list[get("bPosition")].toString().toUpperCase() + ' B\n' + b[b.list[get("bPosition")]].tooltip;
-        b.vars.button().style.backgroundImage = "url('https://blib.tk/bcl/b/" + b.list[get("bPosition")] + ".png')";
+        b.vars.button().style.backgroundImage = "url('b/" + b.list[get("bPosition")] + ".png')";
         if (get(b.list[get("bPosition")]) == 'false') b.vars.unlock().textContent = "Unlock\n($" + giant(b[b.list[get("bPosition")]].cost) + ")";
 		else b.vars.unlock().textContent = "Unlocked!";
     },

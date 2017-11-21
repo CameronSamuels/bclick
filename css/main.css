@@ -101,7 +101,7 @@ section {
 #btnDeposit { bottom: 40px }
 #LeftArrow, #RightArrow {
     background: #4c4c4c 80%/80% no-repeat;
-    background-image: url(https://blib.tk/bcl/img/arrow.svg);
+    background-image: url(../img/arrow.svg);
 }
 .arrow:active { background-color: #555 !important }
 .arrow {
@@ -117,7 +117,7 @@ section {
 #LeftArrow { transform: rotate(180deg) }
 #ach {
     top: calc(50% + 10px);
-    background: #4c4c4c 50%/80% no-repeat url(https://blib.tk/bcl/img/star.svg);
+    background: #4c4c4c 50%/80% no-repeat url(../img/star.svg);
 }
 #leftSection {
     display: none;
