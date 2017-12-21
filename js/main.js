@@ -242,7 +242,7 @@ function reset() {
         var item = b.list[i];
         set(item, false);
     }
-    set('handrawn', true);
+    set('hand_drawn', true);
     for (i = 0; i < achievements.list.id.length; i++) localStorage.removeItem(achievements.list.id[i]);
     $('AchievementsList').innerHTML = '';
     achievements.refresh(), b.refresh();
@@ -258,7 +258,7 @@ var bAmount = 0, b = {
     },
     list : [],
     refresh : function() {
-        $('bName').textContent = b.list[get("bPosition")].toString().toUpperCase() + ' B\n' + b[b.list[get("bPosition")]].tooltip;
+        $('bName').textContent = b.list[get("bPosition")].toString().toUpperCase().replace("_", " ") + ' B\n' + b[b.list[get("bPosition")]].tooltip;
         b.vars.button().style.backgroundImage = "url('b/" + b.list[get("bPosition")] + ".png')";
         if (get(b.list[get("bPosition")]) == 'false') b.vars.unlock().textContent = "Unlock\n($" + giant(b[b.list[get("bPosition")]].cost) + ")";
 		else b.vars.unlock().textContent = "Unlocked!";
@@ -286,7 +286,7 @@ function create(name, worth, cost, tooltip) {
     b.list.push(name);
     bAmount++;
 }
-b.handrawn = new create('handrawn', 2, 0);
+b.hand_drawn = new create('hand_drawn', 2, 0);
 b.lowercase = new create('lowercase', 10, 100);
 b.regular = new create('regular', 50, 500);
 b.saw = new create('saw', 200, 5000);
