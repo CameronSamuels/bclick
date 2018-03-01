@@ -12,7 +12,7 @@ You may also fork this repo and submit a pr to resolve an issue or improve the a
 
 ## Team
 **Cameron Samuels** - Developer, Graphic Designer
-**Ethan Choo** - Graphic Designer
+<br>**Ethan Choo** - Graphic Designer
 
 ## Legal
 bClick is distributed under the [Cameron Samuels License](LICENSE).
