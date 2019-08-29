@@ -26,4 +26,4 @@ You may also fork this repo and submit a pull request to resolve an issue or imp
 <br>**Contributors** - Michael, Arjun, Alwin, Andrew, Benz
 
 ## Legal
-bClick is distributed under the [Cameron Samuels License](LICENSE).
+bClick is distributed under the [MIT License](LICENSE).
